@@ -1,0 +1,2293 @@
+<div id="entry_article">
+<details class="hidden">
+    <summary>
+        <img
+          border="0"
+          data-original-width="1"
+          data-original-height="1"
+          width="1"
+          height="1"
+          src="https://1.bp.blogspot.com/-7F7q_2ctN5c/XeY2erXbvdI/AAAAAAAAAMI/19CLaBbK--4Kp5-69kxwMWpv84P0gZ8BQCLcBGAsYHQ/s1600/null.png"
+        />
+        <div id="entry_brief"><em><i>
+            ICONIX process is UML Use Case driven but more lightweight than RUP.
+            It is designed for Software Development OOD, but for electronics,
+            such OOD method could also solve the problem. This blog entry share
+            an unusually use of the method to solve such problem.
+        </i></em></div>
+    </summary>
+    <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+</details>
+
+
+<div class="naturalsciencefont0">
+    <div>
+        @Audience: <!-- i>you should have both knownledge on computer science and
+        digital electronics to read this blog.</i -->
+
+        <i>This blog blog entry is about Software Engineering and Digital
+        Electronics topics</i>
+    </div>
+
+    <!--div>
+        &nbsp;
+    </div>
+    <div style="text-align: center; width: 100%;">
+        <img
+            src="https://2.bp.blogspot.com/-4k9pUvHK3Kk/XCxtm9UZwCI/AAAAAAAAAMI/IyCVgMoYSOgAMy9_yCIAhVj_V1V5tRH3ACLcBGAs/s1600/caution_sw_hw_inter.png"
+            border="0"
+            data-original-height="482"
+            data-original-width="855"
+            height="241"
+            width="427"
+        />
+        <div>
+            <b>Figure</b> 0: <i>Software, Hardware Fusion</i>
+            <div><section id="use_case_diagram">&nbsp;</section></div>
+        </div>
+    </div-->
+
+
+    <div>
+        &nbsp;
+    </div>
+    <div>
+        This case study demonstrates how to apply Iconix process to design
+        hardware circuit for a simple electronics project. The electronics
+        project is used as an example to prove that UML could be used as a
+        thinking tools for designing purpose. The case study starts to
+        analyst use cases of a load eject CD tray system support user to
+        load or remove discs in tray, then base on this analyst result to
+        propose a controller circuit design to drive the tray box.
+    </div>
+    <div class="lindent0a">
+        <div>
+            Software processes:
+        </div>
+        <div class="lindent0b">
+            <div>
+                As Software life cycle 
+                <a href="https://phamsodiep.blogspot.com/2018/12/software-life-cycle-ripped-version.html">
+                    (ripped version),
+                </a>
+                we need below documents:
+            </div>
+            <div class="lindent0c">
+                <div>
+                    SRS – Software requirements specification
+                </div>
+            </div>
+            <div class="lindent0c">
+                <div>
+                    SDD – Software design description
+                </div>
+            </div>
+            <div class="lindent0c">
+                <div>
+                    STD – Software test documentation
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lindent0a">
+        <div>
+            Iconix process:
+        </div>
+        <div class="lindent00">
+            <div>
+                1. Domain Model and Use case model
+            </div>
+        </div>
+        <div class="lindent00">
+            <div>
+                2. Use case description text
+            </div>
+        </div>
+        <div class="lindent00">
+            <div>
+                3. Robustness diagram
+            </div>
+        </div>
+        <div class="lindent00">
+            <div>
+                4. Sequential diagram
+            </div>
+        </div>
+    </div>
+    <div class="lindent0a">
+        <div>
+            SRS – Software requirements specification
+        </div>
+        <div class="lindent0b">
+            <div>
+                First, we need to fill SRS with content of #1 and #2 as
+                Iconix process. We start this by analyzing domain model
+                and identify use cases. These activities are type of
+                <i>Work outside in</i> of Iconix process.
+            </div>
+        </div>
+        <div class="lindent0b">
+            <div>
+                There are two solutions for use case diagrams:
+            </div>
+            <div class="lindent00">
+                <div>
+                    1. Solution 1 use cases: Eject Disk, Load Disk
+                </div>
+                <div>
+                    <img
+                        src="https://3.bp.blogspot.com/-ii-Rqtwg0fc/XCoopu7KYpI/AAAAAAAAAKo/txzkYoLPCH45iAVC3X9WkYoEeU2HYHiUgCLcBGAs/s1600/UseCases%2BTmp.jpg"
+                        border="0"
+                        data-original-height="482"
+                        data-original-width="856"
+                        height="360"
+                        width="640"
+                    />
+                    <div style="width: 640px; text-align:center;">
+                        <b>Figure</b> 1: <i>Solution 1 use case diagram</i>
+                        <div><section id="use_case_diagram">&nbsp;</section></div>
+                    </div>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div>&nbsp;</div>
+                <div>
+                    2. Solution 2 use cases: Open tray, Close tray
+                </div>
+                <div>
+                    <img
+                        src="https://1.bp.blogspot.com/-y3K-MOmr5dA/XCrr36J0U3I/AAAAAAAAALk/eoEKOpD4jmUOpSCc4idCY0I-tsuqISCRgCLcBGAs/s1600/UseCases.jpg"
+                        border="0"
+                        data-original-height="305"
+                        data-original-width="708"
+                        height="248"
+                        width="576"
+                    />
+                    <div style="width: 576px; text-align:center;">
+                        <b>Figure</b> 2: <i>Solution 2 use case diagram</i>
+                        <div>&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lindent0b">
+            <div>
+                Base on <a href="https://phamsodiep.blogspot.com/2018/12/use-case-tips-gatherspace.html">use case tips</a>,
+                we analyst the solutions
+            </div>
+            <div class="lindent00">
+                <div>
+                    1. Solution 1: Eject Disk, Load Disk
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <b>&#x2295;</b> pros: easy for user to understand, close with user goal
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <b>&#x2296;</b> cons:
+                    </div>
+                    <div class="lindent0c">
+                        <div>
+                            As "Tip 4. Identify reuse opportunity for use cases",
+                            behavior is not reuse, duplicate behavior is operated
+                            for both use case. (both use cases need open tray
+                            behavior and close tray behavior)
+                        </div>
+                    </div>
+                    <div class="lindent0c">
+                        <div>
+                            <i>Disk</i> is an object should not be managed by
+                            system. Taking disc out or putting new disk into tray
+                            is not managed by <i>Tray Box System</i>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div>
+                    2. Solution 2: Open tray, Close tray
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <b>&#x2295;</b> pros: easy for user to understand,
+                        offer user operation to archive final goal.
+                        User operation is an concrete and clear goal.
+                    </div>
+                    <div class="lindent0c">
+                        <div>
+                            To eject disk:
+                        </div>
+                        <div class="lindent00">
+                            1. Execute use case <i>Open tray</i>
+                        </div>
+                        <div class="lindent00">
+                            2. Take the disk out
+                        </div>
+                        <div class="lindent00">
+                            3. Execute use case <i>Close tray</i>
+                        </div>
+                    </div>
+                    <div class="lindent0c">
+                        <div>
+                            To load disk:
+                        </div>
+                        <div class="lindent00">
+                            1. Execute use case <i>Open tray</i>
+                        </div>
+                        <div class="lindent00">
+                            2. Put new disk into (take old disk out
+                            if there is some existing in the tray)
+                        </div>
+                        <div class="lindent00">
+                            3. Execute use case <i>Close tray</i>
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <b>&#x261e;</b> The usage is trivial and obvious. It is not need to
+                        be mentioned in <i>SUD – Software user documentation IEEE 1063</i>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <b>&#x2296;</b> cons: n/a
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lindent0b">
+            <div>
+                Base on pros and cons, we select solution #2 and develop domain model as below:
+            </div>
+            <!-- div class="lindent0c">
+                <div>
+                    Domain model
+                </div>
+            </div -->
+            <div>&nbsp;</div>
+            <div>
+                <img
+                    src="https://4.bp.blogspot.com/-JA3Nvvsacrg/XCorfcc22KI/AAAAAAAAAK8/NHRVs-epOOMCS1FK-aJEwBVZi3MwsRe9ACLcBGAs/s1600/Domain%2BModel00.jpg"
+                    border="0"
+                    data-original-height="153"
+                    data-original-width="541"
+                    height="153"
+                    width="541"
+                />
+                <div style="width: 541px; text-align:center;">
+                    <b>Figure</b> 3:<i>Domain model class diagram</i>
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+        </div>
+        <div class="lindent00">
+            <div style="border-left: 3px solid lightgray; margin-top: 20px; margin-bottom: 20px;">
+                <div style="margin-left: 10px;">
+                    Lesson learn:
+                        <i>
+                            A good use case diagram should split the system
+                            boundary fine. That means: the inner system must not
+                            include extra objects or behaviors, and the outter
+                            system user should easy understanding the system
+                            behavior.
+                        </i>
+                </div>
+            </div>
+        </div>
+        <div class="lindent0b">
+            <div>
+                Fill the SRS document with ripped version content:
+                <a href="https://phamsodiep.blogspot.com/2018/12/software-life-cycle-ripped-version.html#srs_template">
+                    link
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="lindent0a">
+        <div>
+            SRS – Software requirements specification
+        </div>
+        <div class="lindent00">
+            Initial analyst <i>(Work outside in)</i> is finished with use case
+            diagram. From that outcome, we fill the SRS content as below
+            document.
+            <i>
+                (It is notified that the section 4. System Features is unfilled.
+                It is conducted from next refining of analyst.)
+            </i>
+        </div>
+        <div style="border: 2px solid lightgray; margin-top: 20px; margin-bottom: 20px;"><div style="margin: 10px;">
+            <div class="lindent00">
+                <div>
+                    1. Introduction
+                </div>
+                <div class="lindent00">
+                    <i>T.B.D.</i>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div>
+                    2. Overall Description
+                </div>
+                <div class="lindent00">
+                    <div>
+                        2.1 Product Perspective
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            The system manages cd tray box. It supports user to
+                            load/eject discs and notifies the CD Player its
+                            current state (open or close).
+                            <!-- The system manages the load/eject cd tray box with its
+                            driver circuit. There are two actors comunicate with the
+                            system: User and CD Player. There is a load/eject button
+                            in system that user could push to trigger the box open or
+                            close. The button toogles the box state: -->
+                        </div>
+                        <!-- div class="lindent0a">
+                            If the box is closed, pushing the button results in the
+                            box is opened.
+                        </div>
+                        <div class="lindent0a">
+                            If the box is opened, pushing the button results in the
+                            box is closed.
+                        </div -->
+                    </div>
+                    <!-- div class="lindent00">
+                        <div>
+                            The CD Player is notified by the tray box state via a
+                            relay:
+                        </div>
+                        <div class="lindent0a">
+                            Relay output is contacted: the cd tray box is closed.
+                        </div>
+                        <div class="lindent0a">
+                            Relay output is opened: the cd tray box is opened.
+                        </div>
+                    </div -->
+                    <div class="lindent00">
+                        <div>
+                            The domain model class diagram of system is as below:
+                        </div>
+                        <div>
+                            &nbsp;
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <img
+                                src="https://3.bp.blogspot.com/-6bN6c0N1NmA/XCossZbnjMI/AAAAAAAAALI/tWSuuPAClKQnGWyceyyJ7YbxWnIcEAAUQCLcBGAs/s1600/Domain%2BModel%2BDetail.jpg"
+                                border="0"
+                                data-original-height="584"
+                                data-original-width="597"
+                                height="584"
+                                width="597"
+                            />
+                            <div style="width: 597px; text-align:center;">
+                                <b>Figure</b> 1:
+                                <i>System domain model class diagram</i>
+                                <div>&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div><section id="TrayBoxSystemStateDiagram">
+                            <img
+                                src="https://2.bp.blogspot.com/-difT3uXEWoc/XC7u61wVAVI/AAAAAAAAAM4/OXaetc4o1Tg62IZgfYcBr-A12eK3wpRiwCLcBGAs/s1600/Tray%2BBox%2BStates%2BEnduser%2BView.jpg"
+                                border="0"
+                                data-original-height="457"
+                                data-original-width="464"
+                                height="457"
+                                width="464"
+                            />
+                            <div style="width: 464px; text-align:center;">
+                                <b>Figure</b> 2:
+                                <i>Tray Box System state diagram</i>
+                                <div>&nbsp;</div>
+                            </div>
+                        </section></div>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        2.2 Product Functions
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <img
+                                src="https://1.bp.blogspot.com/-y3K-MOmr5dA/XCrr36J0U3I/AAAAAAAAALk/eoEKOpD4jmUOpSCc4idCY0I-tsuqISCRgCLcBGAs/s1600/UseCases.jpg"
+                                border="0"
+                                data-original-height="305"
+                                data-original-width="708"
+                                height="248"
+                                width="576"
+                            />
+                            <div style="width: 576px; text-align:center;"><a href="#use_case_diagram" style="color: black;" title="See also: candidate solution 2">
+                                <b>Figure</b> 3: <i>System use case diagram</i>
+                                <div>&nbsp;</div>
+                            </a></div>
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            2.2.1 User
+                        </div>
+                        <div class="lindent00">
+                            Comunicate with the system for load disk or eject disk operations.
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            2.2.2 CD Player
+                        </div>
+                        <div class="lindent00">
+                            Comunicate with the system for cd tray box state notification.
+                        </div>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        2.3 User Classes and Characteristics
+                    </div>
+                    <div class="lindent0a">
+                        Product end user: there is no skill requirements for this class of user.
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <section id="operatingEnvironment">2.4 Operating Environment</section>
+                    </div>
+                    <div class="lindent00">
+                        Electronic enviroment with power supply source is 5v.
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div><section id="design_implementation_constraints">
+                        2.5 Design and Implementation Constraints
+                    </section></div>
+                    <div class="lindent0a">
+                        <i>For relay and button:</i> no constraint, it is up to
+                        designer for selecting reasonable electronics
+                        components.
+                    </div>
+                    <div class="lindent0a">
+                        <i>For the controller circuit:</i> it is required that solution
+                        is simpled and have no firmware or MCU. Solution should
+                        be implemented with logic gates or similar ICs.
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            <i>Tray Box:</i> it is required that the component
+                            part ZZZ is used to support physical mount suitable
+                            to CD Player case and the optical part of
+                            Sony KSS-213C.
+                        </div>
+                        <div style="width: 100%; text-align: center;">
+                            <div>&nbsp;</div>
+                            <img
+                                src="https://1.bp.blogspot.com/-6ixN32c_wIg/XCoAgNH6UaI/AAAAAAAAAKM/44d2yqBSfDQKLidgJJhl1s7egUYhf5f9ACLcBGAs/s1600/cd1.gif"
+                                border="0"
+                                data-original-height="308"
+                                data-original-width="411"
+                                height="204"
+                                width="274"
+                            />
+                            <div>&nbsp;</div>
+                            <img
+                                src="https://3.bp.blogspot.com/-hpHK25sVLpM/XCoAnXDPsMI/AAAAAAAAAKQ/j0wLU0N6g1gVImFQ2-snWb_mdsWb1zUvgCLcBGAs/s1600/cd2.gif"
+                                border="0"
+                                data-original-height="244"
+                                data-original-width="411"
+                                height="162"
+                                width="274"
+                            />
+                            <div>&nbsp;</div>
+                            <img
+                                src="https://3.bp.blogspot.com/-3bBEIQkvcXQ/XCoAtmWO0tI/AAAAAAAAAKU/Mq-BK4nXFDsq0RMuzt4-tgwD14Qd7wY0wCLcBGAs/s1600/cd3.gif"
+                                border="0"
+                                data-original-height="230"
+                                data-original-width="411"
+                                height="152"
+                                width="274"
+                            />
+                            <div>
+                                <b>Figure</b> 4: <i>Tray Box component sample</i>
+                                <div>&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        2.6 User Documentation
+                    </div>
+                    <div class="lindent00">
+                        T.B.D.
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        2.7 Assumptions and Dependencies
+                    </div>
+                    <div class="lindent00">
+                        T.B.D. (describle the load/eject motor current
+                        assumptions)
+                    </div>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div>
+                    3. External Interface Requirements
+                </div>
+                <div class="lindent00">
+                    <div>
+                        3.1 User Interfaces
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            Use only one button "load/eject" for both operations
+                            load and eject disc. Pushing button will toogle the
+                            box state:
+                        </div>
+                        <div class="lindent0a">
+                            If the box is closed, pushing the button results in the
+                            box is opened.
+                        </div>
+                        <div class="lindent0a">
+                            If the box is opened, pushing the button results in the
+                            box is closed.
+                        </div>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <section id="hardware_interfaces">
+                            3.2 Hardware Interfaces
+                        </section>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>CD Player</i>: System comunicates with CD Player to
+                            notify tray box state. The interface is a relay with
+                            below behavior:
+                        </div>
+                        <div class="lindent0a">
+                            Relay output is contacted: the cd tray box is closed.
+                        </div>
+                        <div class="lindent0a">
+                            Relay output is opened: the cd tray box is opened.
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>User</i>: System comunicates with user via a push/release button
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>CD tray box</i>: This is an inner hardware part
+                            of the system. Since
+                            <a
+                                href="#design_implementation_constraints"
+                                style="color: black;"
+                                title="See also: 2.5 Design and Implementation Constraints">
+                                implementation constraint
+                            </a>
+                            requires that component part ZZZ must be used for
+                            CD tray box, so the hardware interface need
+                            definition. It is as below:
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                To drive the tray box open or close via a motor:
+                            </div>
+                            <div class="lindent0b">
+                                Applying positive voltage to the motor results
+                                in tray box is driven to open.
+                            </div>
+                            <div class="lindent0b">
+                                Applying negative voltage to the motor results
+                                in tray box is driven to close.
+                            </div>
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                The tray box current state is notified via a
+                                switch with 3 points contact. They are: point IN,
+                                point OUT and point COMMON. The states are
+                                notified as below:
+                            </div>
+                            <div class="lindent0b">
+                                They tray box is closed if COMMON is contacted to IN
+                            </div>
+                            <div class="lindent0b">
+                                They tray box is openned if COMMON is contacted to OUT
+                            </div>
+                            <div class="lindent0b">
+                                They tray box is in changing state if COMMON is
+                                neither contacted to IN or OUT.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        3.3 Software Interfaces
+                    </div>
+                    <div class="lindent00">
+                        N/A (not available): since there is no software in this
+                        system.
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        3.4 Communications Interfaces
+                    </div>
+                    <div class="lindent00">
+                        N/A (not available): this system is made of hardware only
+                        so the communication is done via electronics signal
+                        (TTL level). See section
+                        <a href="#hardware_interfaces">
+                            3.2 Hardware Interfaces
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div>
+                    4. System Features
+                </div>
+                <div class="lindent00">
+                    T.B.D.
+                    <i>
+                        (is filled by
+                        <a href="#analyst_iter2">
+                            <i>next refining</i>
+                        </a>
+                        of analyst)
+                    </i>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div>
+                    5. Other Nonfunctional Requirements
+                </div>
+                <div class="lindent00">
+                    T.B.D.
+                </div>
+                <div class="lindent00">
+                    <div>
+                        5.1 Performance Requirements
+                    </div>
+                    <div class="lindent00">
+                        T.B.D.
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        5.2 Safety Requirements
+                    </div>
+                    <div class="lindent0a">
+                        In case of power cut occurs right the moment CD tray box
+                        is in changing state. The system must automatically
+                        changes its state to closed once the power is on again.
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        5.3 Security Requirements
+                    </div>
+                    <div class="lindent00">
+                        None
+                    </div>
+                    <div class="lindent00">
+                        <b>&#x261e;</b> For simplicity, this system ignores this
+                        type of requirement. For the complex case, this
+                        requirement could be:
+                            <i>
+                                "CD Player should have a way to lock the CD
+                                tray box system from its changing state to openned
+                                so that the CD is available for CD Player access
+                                with out exception that user ejects the discs
+                                while it is accessing."
+                            </i>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        5.4 Software Quality Attributes
+                    </div>
+                    <div class="lindent00">
+                        T.B.D.
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        5.5 Business Rules
+                    </div>
+                    <div class="lindent00">
+                        T.B.D.
+                    </div>
+                </div>
+            </div>
+        </div></div>
+        <div class="lindent00"><section id="analyst_iter2">
+            Next refining of analyst: we further do <i>Work outside in</i> to
+            analyst the system features by specifying use case detail
+            description.
+            <i>
+                (fill the section 4. System Features)
+            </i>
+        </section></div>
+        <div class="lindent00">
+            <b>&#x261e;</b> Content of <i>4. System Features:</i>
+        </div>
+        <div class="lindent00">
+            <div style="border: 2px solid lightgray; margin-top: 20px; margin-bottom: 20px;"><div style="margin: 10px;">
+                <div class="lindent00">
+                    <div>
+                        <section id="user_usecases">4.1 User</section>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            4.1.1 Open Tray
+                        </div>
+                        <div class="lindent00">
+                            <div>
+                                <img
+                                    src="https://3.bp.blogspot.com/-Hjz9ynaAmNM/XCru4aQ9_zI/AAAAAAAAALw/JbO4w1DP2nkJDGcAmz1lccRsa24EkK_NQCLcBGAs/s1600/OpenTrayUsecaseDetail.jpg"
+                                    border="0"
+                                    data-original-height="210"
+                                    data-original-width="718"
+                                    height="210"
+                                    width="718"
+                                />
+                                <div style="width: 718px; text-align:center;">
+                                    <b>Figure</b> 5: <i>Open Tray use case diagram</i>
+                                    <div>&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Table 1: Open Tray use case diagram - START -->
+
+
+
+
+
+
+
+
+
+
+
+<div class="lindent00">
+  <table class="uc_description">
+      <!-- ID -->
+      <tr>
+          <td>
+              ID
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Use Case Name -->
+      <tr>
+          <td>
+              Use Case Name
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Description -->
+      <tr>
+          <td>
+              Description
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- XRef -->
+      <tr>
+          <td>
+              XRef
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Primary Actor -->
+      <tr>
+          <td>
+              Primary Actor
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Secondary Actor -->
+      <tr>
+          <td>
+              Secondary Actor
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Include use cases -->
+      <tr>
+          <td>
+              Include use cases
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Trigger -->
+      <tr>
+          <td>
+              Trigger
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Precondition -->
+      <tr>
+          <td>
+              Precondition
+          </td>
+          <td>
+              Tray Box System state is Closed.
+          </td>
+      </tr>
+
+      <!-- Postconditions -->
+      <tr>
+          <td>
+              Postconditions
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Basic Path -->
+      <tr>
+          <td>
+              Basic Path
+          </td>
+          <td>
+              <ol class="uc_desc_flow">
+                  <li>
+                      <i>User</i> pushes <i>Load/Eject</i> button then releases
+                      it.
+                  </li>
+                  <li>
+                      <i>Tray Box System</i> drives the <i>tray box</i> to open.
+                  </li>
+                  <li>
+                      <i>Tray Box System</i> notifies <i>CD Player</i> its
+                      state is open.
+                  </li>
+                  <li>
+                      <i>User</i> regconizes open state by seeing that the
+                      tray is opened and stop moving.
+                  </li>
+              </ol>
+          </td>
+      </tr>
+
+      <!-- Alternative Paths -->
+      <tr>
+          <td>
+              Alternative Paths
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Exception Paths -->
+      <tr>
+          <td>
+              Exception Paths
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Other -->
+      <tr>
+          <td>
+              Other
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+  </table>
+
+                                <div style="text-align:center; width: 100%">
+                                    <b>Table</b> 1: <i>Open Tray use case description</i>
+                                    <div>&nbsp;</div>
+                                </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- Table 1: Open Tray use case diagram - END -->
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            4.1.2 Close Tray
+                        </div>
+                        <div class="lindent00">
+                            <div>
+                                <img
+                                    src="https://1.bp.blogspot.com/-KwGpLiFonRE/XCrwVCfTIgI/AAAAAAAAAL8/fFZ_hqQJx5IoP6mCTy5n7JbUOI9tEArTACLcBGAs/s1600/CloseTrayUsecaseDetail.jpg"
+                                    border="0"
+                                    data-original-height="217"
+                                    data-original-width="708"
+                                    height="217"
+                                    width="708"
+                                />
+                                <div style="width: 708px; text-align:center;">
+                                    <b>Figure</b> 6: <i>Close Tray use case diagram</i>
+                                    <div>&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Table 2: Close Tray use case diagram - START -->
+
+
+
+
+
+
+
+
+
+
+<div class="lindent00">
+  <table class="uc_description">
+      <!-- ID -->
+      <tr>
+          <td>
+              ID
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Use Case Name -->
+      <tr>
+          <td>
+              Use Case Name
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Description -->
+      <tr>
+          <td>
+              Description
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- XRef -->
+      <tr>
+          <td>
+              XRef
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Primary Actor -->
+      <tr>
+          <td>
+              Primary Actor
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Secondary Actor -->
+      <tr>
+          <td>
+              Secondary Actor
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Include use cases -->
+      <tr>
+          <td>
+              Include use cases
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Trigger -->
+      <tr>
+          <td>
+              Trigger
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Precondition -->
+      <tr>
+          <td>
+              Precondition
+          </td>
+          <td>
+              Tray Box System state is Open.
+          </td>
+      </tr>
+
+      <!-- Postconditions -->
+      <tr>
+          <td>
+              Postconditions
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Basic Path -->
+      <tr>
+          <td>
+              Basic Path
+          </td>
+          <td>
+              <ol class="uc_desc_flow">
+
+                  <li>
+                      <i>User</i> pushes <i>Load/Eject</i> button then releases
+                      it.
+                  </li>
+                  <li>
+                      <i>Tray Box System</i> drives the <i>tray box</i> to close.
+                  </li>
+                  <li>
+                      <i>User</i> regconizes close state by seeing that the
+                      tray is closed.
+                  </li>
+                  <li>
+                      <i>Tray Box System</i> notifies <i>CD Player</i> its
+                      state is closed.
+                  </li>
+              </ol>
+          </td>
+      </tr>
+
+      <!-- Alternative Paths -->
+      <tr>
+          <td>
+              Alternative Paths
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Exception Paths -->
+      <tr>
+          <td>
+              Exception Paths
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+
+      <!-- Other -->
+      <tr>
+          <td>
+              Other
+          </td>
+          <td>
+              T.B.D.
+          </td>
+      </tr>
+  </table>
+
+                                <div style="text-align:center; width: 100%">
+                                    <b>Table</b> 2: <i>Close Tray use case description</i>
+                                    <div>&nbsp;</div>
+                                </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+                        <!-- Table 2: Close Tray use case diagram - END -->
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        4.2 CD Player
+                    </div>
+                    <div class="lindent00">
+                        This actor never acts as primary actor. It always plays
+                        as secondary actor for use cases of User actor. See
+                        section
+                            <a href="#user_usecases">
+                                4.1 User
+                            </a>
+                        for details.
+                    </div>
+                </div>
+            </div></div>
+        </div>
+        <div class="lindent00">
+            <b>&#x261e;</b> Final content of SRS document could be downloaded via <a href="#tmp" onClick="alert('Not created yet. Will come soon (T.B.D.)');">link</a>
+            <section id="tmp">&nbsp;</section>
+        </div>
+    </div>
+    <div class="lindent0a">
+        <div>
+            SDD – Software design description (follow Iconix process)
+        </div>
+        <div class="lindent00">
+            <div>
+                We conducted SRS document by thinking about what is the system
+                that we need to build. We thought about the problem domain.
+                Now that we have SRS document, we need another way to thinking
+                to solve our problem, the solution domain way of thinking.
+                In this domain:
+            </div>
+            <div class="lindent0b">
+                The UML diagrams are differ since the view point is different.
+            </div>
+            <div class="lindent0b">
+                Take into account both requirements or constraints in the SRS
+                document and the existing component (available from the market
+                or available from our library) to provide solution.
+            </div>
+            <div>&nbsp;</div>
+            <div style="width: 100%; text-align:center;">
+                <img
+                    src="https://4.bp.blogspot.com/-Iz6E2fcgY8A/XCnT14y4gkI/AAAAAAAAAJ0/df9rVEZeJPozwidrLwmtpdh5ISzPEiYigCLcBGAs/s1600/einsteinThinkingQuotes01.jpg"
+                    border="0"
+                    data-original-height="554"
+                    data-original-width="554"
+                    height="277"
+                    width="277"
+                />
+                <div style="width: 100%; text-align:center;">
+                    <b>Figure</b> 4: <i>Einstein Thinking Wisdom</i>
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            &nbsp;
+        </div>
+        <div>
+            <i>Refining 1</i>: Portray the system behavior from use case
+            description with trivial assumption (design constraint, relay,
+            button selection...)
+        </div>
+        <div class="lindent00">
+            <!--
+            Re-describing use case descriptions in sequencial diagram is easy
+            and straightforward. The result is as below document:
+            -->
+            <div>
+                The SRS document helps us to define the scope of the problem. In the
+                section <i>2.5 Design and Implementation Constraints</i>, it is
+                required that:
+            </div>
+            <div class="lindent00">
+                1. Tray Box component part must be ZZZ for case dimension and
+                optical part compatiable.
+            </div>
+            <div class="lindent00">
+                2. Controller circuit must not be implemented in MCU with
+                programming firmware. It should be built on logic gates or
+                similar ICs.
+            </div>
+        </div>
+        <div class="lindent00">
+            <div>
+                We need to do some <i>Work from the inside out</i> base on these
+                constraints. Constraints #1 is strict results in only one
+                selecting of used components. Constraints #2 is more free so
+                there are some options for the selecting.
+            </div>
+            <div class="lindent00">
+                <b>&#x261e;</b> For #1: we need to consult the
+                component part ZZZ
+                <a
+                    href="#hardware_interfaces"
+                    style="color: black;"
+                    title="See also: 3.2 Hardware Interfaces [CD tray box]">
+                    behavior.
+                </a>
+            </div>
+            <div class="lindent00">
+                <b>&#x261e;</b> For #2: T.B.D.
+            </div>
+        </div>
+        <div class="lindent00">
+            <div>
+                With knowledge about
+                <a
+                    href="#hardware_interfaces"
+                    style="color: black;"
+                    title="See also: 3.2 Hardware Interfaces [CD tray box]">
+                    component part ZZZ behavior,
+                </a>
+                we re-describle the use cases descriptions (basic path)
+                as below sequential diagram:
+            </div>
+        </div>
+        <div style="border: 2px solid lightgray; margin-top: 20px; margin-bottom: 20px;"><div style="margin: 10px;">
+            <div class="lindent0a">
+                <div>
+                    Open Tray
+                </div>
+                <div class="lindent00">
+                    <div style="width: 100%; text-align:center;">
+                        <div><section id="ucOpenTrayHappyPathRobust00">&nbsp;<section></div>
+                        <div class="hscrollable_container"><div style="width:1330px; height:598px">
+                            <img
+                                src="https://4.bp.blogspot.com/-n-tV_33Z4zA/XC2Tl4ITnOI/AAAAAAAAAMg/oyGUmwyCJWgDCHYHWRtqCRBtv8hnqcrtwCLcBGAs/s1600/ucOpenTraySeq_FixMistype.jpg"
+                                border="0"
+                                data-original-height="718"
+                                data-original-width="1600"
+                                height="596"
+                                width="1328"
+                            />
+                        </div></div>
+                        <div style="width: 100%; text-align:center;">
+                            <b>Figure</b> 1: <i>Sequencial diagram of use case Open Tray (happy path)</i>
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lindent0a">
+                <div>
+                    Close Tray
+                </div>
+                <div class="lindent00">
+                    <i>T.B.D.</i>
+                </div>
+            </div>
+        </div></div>
+        <div class="lindent00">
+            <div>
+                Notes:
+            </div>
+            <div class="lindent0b">
+                In the diagram, the note with colour
+                <i style="background-color: #fecccb;">&nbsp; &nbsp; &nbsp;</i>
+                is counterpart of the step which is described in the basic path
+                section of the
+                <a
+                    href="#user_usecases"
+                    style="color: black;"
+                    title="See also: Content of 4. System Features">
+                    use case description.
+                </a>
+                Use the note index for step id lookup mapping.
+            </div>
+            <div class="lindent0b">
+                Messages are sent to class Tray Box (the interface) are
+                identified by consulting
+                <a
+                    href="#hardware_interfaces"
+                    style="color: black;"
+                    title="See also: 3.2 Hardware Interfaces [CD tray box]">
+                    component part ZZZ behavior.
+                </a>
+            </div>
+        </div>
+
+        <div>
+            &nbsp;
+        </div>
+        <div>
+            <i>Refining 2</i>: Analyst the fan-in, fan-out of the class
+            <i>Tray Box System</i> to take note its behavior. From this outcome,
+            we could go further for designing. These activities are type of
+            <i>bridge the "what/how" gap</i> of Iconix process
+            (Robustness diagrams).
+        </div>
+        <div class="lindent00">
+            <div>
+                Review
+                <a
+                  href="#ucOpenTrayHappyPathRobust00"
+                  style="color: black;"
+                  title="See also: Figure 1: Sequencial diagram of use case Open Tray (happy path)">
+                <i>
+                    figure 1, Sequencial diagram of use case Open Tray (happy path),
+                </i></a>
+                with zooming into class <i>Tray Box System</i> to notice that:
+                <div style="width: 100%; text-align:center;">
+                    <div>&nbsp;</div>
+                    <img
+                        src="https://3.bp.blogspot.com/-FlNLpozk3qo/XC2VQrxXe_I/AAAAAAAAAMs/3WoU1XXBA0U5UmpmF-s4bmM2R8EmAzWUQCLcBGAs/s1600/fanin-fanout-analyst-fixMissType.jpg"
+                        border="0"
+                        data-original-height="806"
+                        data-original-width="604"
+                        height="403"
+                        width="302"
+                    />
+                    <div style="width: 100%; text-align:center;">
+                        <b>Figure</b> 5: <i>Zooming of class Tray Box System</i>
+                        <div>&nbsp;</div>
+                    </div>
+                </div>
+                <div class="lindent0b">
+                    <div>
+                        The class has two
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://en.wikipedia.org/wiki/Sequence_diagram"
+                          style="color: black;"
+                          title="See also: Wikipedia, the free encyclopedia - Sequence diagram [Activation boxes]">
+                        <i>
+                            activation boxes
+                        </i></a>
+                        and three trigger events that request the class need
+                        to process for its responses message (notice the red
+                        rectangles and red circles). This means that the class
+                        need two methods to process for its comming request
+                        trigger events:
+                    </div>
+                    <div class="lindent0c">
+                        The first method processes toggle state request from
+                        load/eject button. Then it waits for another event
+                        comming, notifyState(changing) message, from the
+                        <i>Tray Box</i> to response to <i>CD Player</i> actor
+                        before finishing this method process.
+                    </div>
+                    <div class="lindent0c">
+                        The second one processes stop moving motor request from
+                        <i>Tray Box.</i>
+                    </div>
+                </div>
+                <div class="lindent0b">
+                    <div><section id="incommingEventsResp">
+                        Examine each incomming events, we conduct conclusion
+                        and take note as below:
+                    </section></div>
+                    <div class="lindent00">
+                        A1. toogleState() message results in drive
+                        motor run.
+                    </div>
+                    <div class="lindent00">
+                        A2. notifyState(Open) message results in results in
+                        drive motor stop.
+                    </div>
+                    <div class="lindent00">
+                        A3. notifyState(Changing) message results in results in
+                        drive relay opened.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lindent00">
+            <div>
+                Similar analyst for sequencial diagram of use case Close Tray
+                (happy path).
+            </div>
+            <div class="lindent00">
+                <div>
+                    Examine each incomming events, we conduct conclusion
+                    and take note as below:
+                </div>
+                <div class="lindent00">
+                    B1. toogleState() message results in drive
+                    motor run.
+                </div>
+                <div class="lindent00">
+                    B2. notifyState(Closed) message results in results in
+                    drive motor stop.
+                </div>
+                <div class="lindent00">
+                    B3. notifyState(Closed) message results in results in
+                    drive relay closed.
+                </div>
+            </div>
+        </div>
+        <div class="lindent00">
+            <div>
+                Base on #A1, #A2, #A3 and #B1, #B2, #B#, we need to define:
+            </div>
+            <div class="lindent0b">
+                How to drive motor.
+            </div>
+            <div class="lindent0b">
+                How to drive relay.
+            </div>
+            <div class="lindent0b">
+                How to conduct response (or process incomming events).
+            </div>
+        </div>
+        <div class="lindent00">
+            <div>
+                Now that, the responsibilities of class <i>Tray Box System</i>
+                are clear. This class acts as a controller to drive tray box
+                motor and relay by processing events from button and
+                box state sensor, the messages <i>notifyState</i> from
+                <i>Tray Box,</i> we rename the class <i>Tray Box System</i>
+                to <i>Tray Box Controller</i> and use the controller icon of
+                the Robustness diagram to model it as <i>Figure 6a</i> below.
+<!--
+                In the next refining, refining 3, we do some activies of
+                <i>Work from the inside out</i> to implement them.
+-->
+            </div>
+            <div style="width: 100%; text-align:center;"><section id="Fig6_TrayBoxSystemClassDiagram">
+                <div>&nbsp;</div>
+                <img
+                    src="https://1.bp.blogspot.com/-OClPWDU5JnE/XDQjelJTz8I/AAAAAAAAAPw/tu_KbKBLqDg4o--yKj9s1xYjSYjt3AHOQCEwYBhgL/s1600/ClassDiagram_Design_Rf2_alt.jpg"
+                    border="0"
+                    data-original-height="408"
+                    data-original-width="693"
+                    height="408"
+                    width="693"
+                />
+                <div style="width: 100%; text-align:center;">
+                    <b>Figure</b> 6a: <i>Tray Box System class diagram</i>
+                    <div>&nbsp;</div>
+                </div>
+                <img
+                    src="https://1.bp.blogspot.com/-FV7pLWgACV8/XDQje81UWYI/AAAAAAAAAP0/nIWSmzn9LX4nHz-hooe3aQL913xEQkdIgCLcBGAs/s1600/ClassDiagram_Design_Rf2_alt_sub.jpg"
+                    border="0"
+                    data-original-height="408"
+                    data-original-width="693"
+                    height="408"
+                    width="693"
+                />
+                <div style="width: 100%; text-align:center;">
+                    <b>Figure</b> 6b: <i>Tray Box System class diagram</i>
+                    <div>&nbsp;</div>
+                </div>
+            </section></div>
+            <div>
+                As
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://en.wikipedia.org/wiki/SOLID"
+                    style="color: black;"
+                    title="See also: Wikipedia, the free encyclopedia - SOLID"
+                >
+                    S.O.L.I.D.
+                </a>
+                principle, the
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://en.wikipedia.org/wiki/Single_responsibility_principle"
+                    style="color: black;"
+                    title="See also: Wikipedia, the free encyclopedia - Single responsibility principle"
+                >
+                    "S"
+                </a>
+                one, it is recommended that the class <i>Tray Box Controller</i>
+                should be broken into two classes <i>Tray Controller</i> and
+                <i>Relay Controller</i> because of its two responsibilities
+                as <i>Figure 6b</i> above.
+            </div>
+        </div>
+        <div><section id="DesignRefining3">
+            <i>Refining 3</i>: analyst 
+            <i>Tray Box Controller</i> subsystem
+            behavior for design or implementation approach.
+        </section></div>
+        <div class="lindent00">
+            <div>
+                Work from the inside out reasoning:
+            </div>
+            <div class="lindent0b">
+                <div>
+                    <i>To drive motor,</i>
+                    base on
+                    <a
+                        href="#hardware_interfaces"
+                        style="color: black;"
+                        title="See also: 3.2 Hardware Interfaces description"
+                    >
+                        hardware interfaces description,
+                    </a>
+                    the motor rotating direction is controlled by the voltage
+                    polarity applying to it. To implement this, we could:
+                </div>
+                <div class="lindent00">
+                    1. Use H bridge circuit (build from scratch or buy IC)
+                </div>
+                <div class="lindent00">
+                    <div>
+                        2. Use two voltages suppy power source. Wire the GND to
+                        negative wire of motor and the positive wire is:
+                    </div>
+                    <div class="lindent0c">
+                        wired to +5V to rotate forward direction
+                    </div>
+                    <div class="lindent0c">
+                        or wired to -5V to rotate reverse direction
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <b>&#x261e;</b> Solution #1 is selected since
+                    <a
+                        href="#operatingEnvironment"
+                        style="color: black;"
+                        title="See also: 2.4 Operating Environment"
+                    >
+                        <i>operating environment</i>
+                    </a> section states that power supply source is single
+                    voltage with 5v only. For simplicity, we use H bride IC and
+                    the candidate that is suitable for our solution is
+                    Texas Instruments™ chip part number <i>drv8833.</i>
+                </div>
+            </div>
+            <div class="lindent0b">
+                <div>
+                    <i>To drive relay,</i> we could:
+                </div>
+                <div class="lindent00">
+                    1. Select relay that applying voltage to coil results in
+                    relay contact is closed.
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Electrical_contacts#Form_A_contacts"
+                        style="color: black;"
+                        title="See also: See also: Wikipedia, the free encyclopedia - 
+Electrical contacts [Form A contacts]"
+                    >
+                        (Form A)
+                    </a>
+                </div>
+                <div class="lindent00">
+                    2. Select relay that applying voltage to coil results in
+                    relay contact is open.
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Electrical_contacts#Form_B_contacts"
+                        style="color: black;"
+                        title="See also: See also: Wikipedia, the free encyclopedia - 
+Electrical contacts [Form B contacts]"
+                    >
+                        (Form B)
+                    </a>
+                </div>
+                <div class="lindent00">
+                    3. Select relay that applying voltage to coil results in
+                    relay contact is transfered. 
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Electrical_contacts#Form_C_contacts"
+                        style="color: black;"
+                        title="See also: Wikipedia, the free encyclopedia - 
+Electrical contacts [Form C contacts]"
+                    >
+                        (Form C)
+                    </a>
+                </div>
+                <div class="lindent00">
+                    <b>&#x261e;</b> Solution using <i>Form B</i> or <i>Form C</i>
+                    relay is selected since the most time of the system
+                    operating, <i>The Tray Box System</i> state is <i>Closed,</i>
+                    this means the relay contacted is closed in that state.
+                    We should use <i>Form B</i> or <i>Form C</i> to implement this.
+                </div>
+            </div>
+            <div class="lindent0b">
+
+                <!-- div>
+                    <i>To conduct response (or process incomming events):</i>
+                    analyzing <i>Tray Box Driver</i>
+                    <a
+                        href="#incommingEventsResp"
+                        style="color: black;"
+                        title="See also: incomming events responses">
+                        responsibilities,
+                    </a>
+                    we conclude that the class should implements 2 interfaces:
+                </div -->
+
+                <div>
+                    <i>To conduct response (or process incomming events):</i>
+                    analyzing <i>Tray Box Controller</i> behavior.
+                </div>
+            </div>
+            <div>
+                Analyzing <i>Tray Box Controller</i> behavior by
+                <i>work outside in</i> on the
+                <a
+                    href="#TrayBoxSystemStateDiagram"
+                    style="color: black;"
+                    title="See also: SRS – Software requirements specification [Tray Box System state diagram]">
+                    Tray Box System state diagram.
+                </a>
+                The result is conducted as below sequence of refining:
+            </div>
+            <div style="width: 100%; text-align:center;">
+                <div>&nbsp;</div>
+                <img
+                    src="https://2.bp.blogspot.com/-difT3uXEWoc/XC7u61wVAVI/AAAAAAAAAM4/OXaetc4o1Tg62IZgfYcBr-A12eK3wpRiwCLcBGAs/s1600/Tray%2BBox%2BStates%2BEnduser%2BView.jpg"
+                    border="0"
+                    data-original-height="457"
+                    data-original-width="464"
+                    height="457"
+                    width="464"
+                />
+                <div style="width: 100%; text-align:center;">
+                    <a
+                        href="#TrayBoxSystemStateDiagram"
+                        style="color: black;"
+                        title="See also: SRS – Software requirements specification [Tray Box System state diagram]">
+                        <b>Figure</b> 7a: <i>Tray Box System state diagram</i>
+                    </a>                        
+                    <div>&nbsp;</div>
+                    <div>Refine</div>
+                    <h1>&#x21e9;</h1>
+                </div>
+            </div>
+            <div style="width: 100%; text-align:center;">
+                <div>&nbsp;</div>
+                <img
+                    src="https://1.bp.blogspot.com/-2FJly_dBaW0/XC76eAzqcEI/AAAAAAAAANE/7lhv2kb31mQIyaksRiaBaOW5vMFTglDbwCLcBGAs/s1600/TrayBoxStatesRefine1.jpg"
+                    border="0"
+                    data-original-height="452"
+                    data-original-width="634"
+                    height="452"
+                    width="634"
+                />
+                <div style="width: 100%; text-align:center;">
+                    <b>Figure</b> 7b: <i>Tray Box state diagram</i> (refining 1)
+                    <div>&nbsp;</div>
+                    <div>Refine</div>
+                    <h1>&#x21e9;</h1>
+                </div>
+            </div>
+            <div style="width: 100%; text-align:center;">
+                <div>&nbsp;</div>
+                <img
+                    src="https://3.bp.blogspot.com/-JCEd9uM5LRE/XC77GyRSmKI/AAAAAAAAANM/vALqO4J8xZkvyqQZPSU8CDKiIDVktcr3gCLcBGAs/s1600/TrayBoxStatesRefine2.jpg"
+                    border="0"
+                    data-original-height="604"
+                    data-original-width="724"
+                    height="604"
+                    width="724"
+                />
+                <div style="width: 100%; text-align:center;">
+                    <b>Figure</b> 7c: <i>Tray Box state diagram</i> (refining 2)
+                    <div>&nbsp;</div>
+                    <div>Refine</div>
+                    <h1>&#x21e9;</h1>
+                </div>
+            </div>
+            <div style="width: 100%; text-align:center;">
+                <div>&nbsp;</div>
+                <img
+                    src="https://4.bp.blogspot.com/-yNztrn7ke4U/XC7-kPn1GnI/AAAAAAAAANg/gFcvH00d80UGxK9igxGnftKJXy0CzzBVgCLcBGAs/s1600/TrayBoxStatesRefine3.jpg"
+                    border="0"
+                    data-original-height="754"
+                    data-original-width="846"
+                    height="754"
+                    width="846"
+                />
+                <div>&nbsp;</div>
+                <img
+                    src="https://4.bp.blogspot.com/-5exjqN00kXo/XC8G1JyDHbI/AAAAAAAAAOA/F5LnjEO0evEy3_hnW-SBfbNT0EWwaO9owCLcBGAs/s1600/TrayBoxStatesRefine3_2.jpg"
+                    border="0"
+                    data-original-height="336"
+                    data-original-width="588"
+                    height="336"
+                    width="588"
+                />
+                <div style="width: 100%; text-align:center;">
+                    <b>Figure</b> 7d: <i>Tray Box state diagrams</i> (refining 3)
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <b>&#x261e;</b> In the <i>Tray Box state diagrams</i>
+                    (figure 7d) above, the behavior of relay is not portrayed
+                    yet so we need to do further analysing for this. We consult
+                    sequential diagrams of happy paths of both use cases in
+                    conjunction with the state diagram to conclude that:
+                </div>
+                <div class="lindent0b">
+                    Entering <i>closed</i> state results in notify
+                    <i>CD Player</i> actor new <i>closed</i> state.
+                </div>
+                <div class="lindent0b">
+                    Exiting <i>closed</i> state results in notify
+                    <i>CD Player</i> actor new <i>open</i> state.
+                </div>
+                <div>
+                    We put these conclusion as notes into the state diagrams
+                    as below:
+                </div>
+                <div style="width: 100%; text-align:center;">
+                    <div><section id="Figure7e">&nbsp;</section></div>
+                    <img
+                        src="https://2.bp.blogspot.com/-g-nBfCJ6fKU/XC8DhWQ2z9I/AAAAAAAAANs/ORrD7ryqFAYVGU0II2JxTuDHkQLDlAduwCLcBGAs/s1600/TrayBoxStatesRefine4.jpg"
+                        border="0"
+                        data-original-height="646"
+                        data-original-width="1038"
+                        height="646"
+                        width="1038"
+                    />
+                    <div style="width: 100%; text-align:center;">
+                        <b>Figure</b> 7e: <i>Tray Box state diagram</i> (refining 4)
+                        <div>&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <i>Refining 4</i>: design
+            <i>Tray Box Controller</i> subsystem.
+            <div class="lindent00">
+                The
+                <a
+                    href="#Fig6_TrayBoxSystemClassDiagram"
+                    style="color: black;"
+                    title="See also: Figure 6: Tray Box System class diagram"
+                >
+                    Figure 6b, Tray Box System class diagram,
+                </a>
+                portrays the system static model in a nutshell view,
+                it does not portray in detail each controller implements
+                which interface. In this refining, we will use the analyst
+                result of refining 3 to refine the class diagram.
+            </div>
+            <div class="lindent00">
+                <div>
+                    There are two tasks for implementation:
+                </div>
+                <div class="lindent0b">
+                    Implement to drive Relay: T.B.D.
+                </div>
+                <div class="lindent0b">
+                    Implement to drive Tray Box Motor: see below analysing.
+                </div>
+            </div>
+            <div class="lindent00">
+                <div>
+                    Analyse to implement to drive Tray Box Motor
+                    (realize interface <i>Tray Driver</i>):
+                </div>
+                <div class="lindent00">
+                    <div>
+                        As
+                        <i>Refining 3,</i>
+                        we will use Texas Instruments™ chip part number drv8833
+                        to drive Tray Box Motor.
+                        Consulting the datasheet of drv8833, we have below
+                        propose solution:
+                    </div>
+                    <div class="lindent0b">
+                        <div>
+                            <i>To control motor rotating dimension:</i>
+                            connect <i>Flip Flop</i> output to <i>IN1</i>, <i>IN2</i>
+                            pins of chip drv8833,
+                            implement the <i>Flip Flop</i> with
+                            motor rotating dimension
+                            is derived as below table:
+                        </div>
+                        <div style="width: 100%; text-align:center;">
+                            <div>&nbsp;</div>
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="http://www.ti.com/lit/ds/symlink/drv8833.pdf"
+                                style="color: black;"
+                                title="See also: datasheet of TI™ drv8833 [Table 1 @ page 9]"
+                            >
+                                <img
+                                    src="https://2.bp.blogspot.com/-USsE1Q6Dac0/XDBERUcrXTI/AAAAAAAAAOM/QHKghiHjp2Mk7_GkAqizwSMeQpYxhK4DgCLcBGAs/s1600/table1_drv8833.jpg"
+                                    border="0"
+                                    data-original-height="144"
+                                    data-original-width="382"
+                                    height="144"
+                                    width="382"
+                                />
+                                <div>&nbsp;</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lindent0b">
+                        <div>
+                            <i>To control motor runing state (start/stop):</i>
+                            drive the pin
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="http://www.ti.com/lit/ds/symlink/drv8833.pdf"
+                                style="color: black;"
+                                title="See also: datasheet of TI™ drv8833 [7.3.4 nSLEEP Operation @ page 11]"
+                            >
+                                nSLEEP
+                            </a>
+                            of chip drv8833 as below: 
+                        </div>
+                        <div class="lindent0c">
+                            To stop motor: drive nSLEEP pin to slow.
+                        </div>
+                        <div class="lindent0c">
+                            To start motor: drive nSLEEP pin to high.
+                        </div>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div>
+                        Interface to <i>Drv8833</i> is portrayed as below
+                        diagram:
+                    </div>
+                    <div style="width: 100%; text-align:center;">
+                        <div>&nbsp;</div>
+                        <img
+                            src="https://1.bp.blogspot.com/-x-ys3983wEY/XDSz7GfyKpI/AAAAAAAAAQE/ew9Uv7jpIq8jRYi_ET3faE4oY7ZtrA8GgCLcBGAs/s1600/drv8833ClassDiagram.jpg"
+                            border="0"
+                            data-original-height="392"
+                            data-original-width="898"
+                            height="392"
+                            width="898"
+                        />
+                        <div style="width: 100%; text-align:center;">
+                            <b>Figure</b> 8: <i>Drv8833 class diagram</i>
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div>
+                        Updating                
+                        <a
+                            href="#Fig6_TrayBoxSystemClassDiagram"
+                            style="color: black;"
+                            title="See also: Figure 6: Tray Box System class diagram"
+                        >
+                            Tray Box System class diagram
+                        </a>
+                        with <i>Drv8833 class diagram</i> above
+                        results in below refined class diagram:
+                    </div>
+                    <div style="width: 100%; text-align:center;">
+                        <div>&nbsp;</div>
+                        <div id="ClassDiagram_Design_Rf3_2">
+                            <img
+                                src="https://4.bp.blogspot.com/-pUtQxMJK-DQ/XDWG50iL-dI/AAAAAAAAAQU/1VzrtP3Qw64EIPA0RCpfkvMmPHRFRNVIgCLcBGAs/s1600/ClassDiagram_Design_Rf3_alt.jpg"
+                                border="0"
+                                data-original-height="824"
+                                data-original-width="856"
+                                height="824"
+                                width="856"
+                            />
+                            <input type="button" value="Show verbose" onclick="document.getElementById('ClassDiagram_Design_Rf3_2Verbose').style.display = 'block'; document.getElementById('ClassDiagram_Design_Rf3_2').style.display = 'none';" />
+                        </div>
+                        <div id="ClassDiagram_Design_Rf3_2Verbose" style="display: none;">
+                            <img
+                                src="https://3.bp.blogspot.com/-T-KkiLoDje4/XDWG55TQc8I/AAAAAAAAAQY/UEZTIquOk04Qkb4mIyQPJjFBkOPovP2sgCEwYBhgL/s1600/ClassDiagram_Design_Rf3_alt_verbose.jpg"
+                                border="0"
+                                data-original-height="824"
+                                data-original-width="856"
+                                height="824"
+                                width="856"
+                            />
+                            <input type="button" value="Hide verbose" onclick="document.getElementById('ClassDiagram_Design_Rf3_2').style.display = 'block'; document.getElementById('ClassDiagram_Design_Rf3_2Verbose').style.display = 'none';" /><br />
+                            <div style="width: 100%; text-align:left;"><img
+                                src="https://1.bp.blogspot.com/-Lm3yIugVtac/XDWPHP7TebI/AAAAAAAAAQ4/hpxOZv1z03kjIn9YoTYGeO7c6uWPFW9kACLcBGAs/s1600/ClassDiagram_Design_Rf3_alt_verbose_legend.jpg"
+                                border="0"
+                                data-original-height="213"
+                                data-original-width="402"
+                                height="213"
+                                width="402"
+                            /></div>
+                        </div>
+                        <div style="width: 100%; text-align:center;">
+                            <div>&nbsp;</div>
+                            <b>Figure</b> 9: <i>Tray Box System class diagram (detail)</i>
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                    <div>
+                        Updating                
+                        <a
+                            href="#Figure7e"
+                            style="color: black;"
+                            title="See also: Figure 7e: Tray Box state diagram (refining 4)"
+                        >
+                            Tray Box state diagram (refining 4)
+                        </a>
+                        with
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://en.wikipedia.org/wiki/UML_state_machine#Guard_conditions"
+                          style="color: black;"
+                          title="See also: Wikipedia, the free encyclopedia - UML state machine [Guard conditions]">
+                            guard
+                        </a>                        
+                        is derived from <i>Drv8833</i> behaviors
+                        analyse result results in below refined class diagram:
+                    </div>
+                    <div style="width: 100%; text-align:center;">
+                        <div><section id="Figure10">&nbsp;</section></div>
+                        <img
+                            src="https://3.bp.blogspot.com/-cxR4wwcx-O4/XDCfQP44R1I/AAAAAAAAAOY/DDp-4mncRZ8d3QrW3r6_Al1vsQr9I-oxwCLcBGAs/s1600/TrayBoxStatesRefineWithGuard.jpg"
+                            border="0"
+                            data-original-height="646"
+                            data-original-width="985"
+                            height="646"
+                            width="985"
+                        />
+                        <div style="width: 100%; text-align:center;">
+                            <b>Figure</b> 10: <i>Tray Box state diagram</i> (with guard)
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="lindent0a">
+        <div>
+            Solution implementation
+        </div>
+        <div class="lindent0b">
+            <div>
+                <i>Direction controller</i> implementation:
+            </div>
+            <div class="lindent00">
+                <div>
+                    It is noticed that, in the case that nSLEEP is always high,
+                    (we ignore nSLEEP and force it be always high because
+                    that is responsibility of class
+                    <i>Start Stop controller</i> )
+                    the state will be continuously transited in a cycle
+                    as below state diagram:
+                </div>
+                <div style="width: 100%; text-align:center;">
+                    <div>&nbsp;</div>
+                    <img
+                        src="https://1.bp.blogspot.com/-T5UOozS9ZPQ/XDChKHkLDMI/AAAAAAAAAOk/JuQmbf8WILU-J6pOSkjA-wpeSaF-vEOrgCLcBGAs/s1600/TrayBoxStatesCircleTransition.jpg"
+                        border="0"
+                        data-original-height="714"
+                        data-original-width="994"
+                        height="714"
+                        width="994"
+                    />
+                    <div style="width: 100%; text-align:center;">
+                        <b>Figure</b> 11: <i>Tray Box state diagram</i> (in the case that nSLEEP is always high)
+                        <div>&nbsp;</div>
+                    </div>
+                </div>
+                <div>
+                    <i>Analysing notes:</i>
+                </div>
+                <div class="lindent0c">
+                    The cycle is that: 1 &#x2192; 2 &#x2192; 3 &#x2192; 4
+                    then repeat (4 &#x2192; 1)
+                </div>
+                <div class="lindent0c">
+                    <div>
+                        A cycle includes two semi-cycles:
+                    </div>
+                    <div class="lindent00">
+                        1. Semi-cycle 1 (Closed &#x2192; Open): Finishing
+                        this semi-cycle results in next state is
+                        <i>changing closed.</i>
+                    </div>
+                    <div class="lindent00">
+                        2. Semi-cycle 2 (Open &#x2192; Closed): Finishing
+                        this semi-cycle results in next state is
+                        <i>changing open.</i>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        Inspecting behavior of each Flip Flop type, the
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://en.wikipedia.org/wiki/Flip-flop_(electronics)#Simple_set-reset_latches"
+                          style="color: black;"
+                          title="See also: Wikipedia, the free encyclopedia - Flip-flop (electronics) [Simple set-reset latches]">
+                            Set-Reset Flip Flop
+                        </a>
+                        is mostly matched for our need:
+                    </div>
+                    <div class="lindent00">
+                        1. Finishing Semi-cycle 1
+                        (guard  <i>COMMON is transfered to OUT</i>)
+                        &#x2192; trigger input <i>R</i> of the <i>Flip Flop</i>
+                        for next state <i>changing closed</i> entering.
+                    </div>
+                    <div class="lindent00">
+                        2. Finishing Semi-cycle 2
+                        (guard  <i>COMMON is transfered to IN</i>)
+                        &#x2192; trigger input <i>S</i> of the <i>Flip Flop</i>
+                        for next state <i>changing open</i> entering.
+                    </div>
+                    <div>
+                        <b>&#x261e;</b> Our solution to implement
+                        <i>Direction controller</i> class
+                        is that connecting
+                        COMMON to constant <i>high</i> level,
+                        OUT to <i>R</i> and IN to <i>S</i> of the
+                        <i>Flip Flop</i>. (with the <i>Flip Flop</i> input
+                        pins are pulled-down)
+                    </div>
+                    <div style="width: 100%; text-align:center;">
+                        <div>&nbsp;</div>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://en.wikipedia.org/wiki/Flip-flop_(electronics)#Simple_set-reset_latches"
+                          style="color: black;"
+                          title="See also: Wikipedia, the free encyclopedia - Flip-flop (electronics) [Simple set-reset latches]">
+                            <img
+                                src="https://3.bp.blogspot.com/-LnOIlm9AbRg/XDXSz0JGwFI/AAAAAAAAARs/BR-bqeVe1sUNZA4Ez2ayCl9lZmhozlB7ACLcBGAs/s1600/SRFipFlop.gif"
+                                border="0"
+                                data-original-height="241"
+                                data-original-width="330"
+                                height="241"
+                                width="330"
+                            />
+                        </a>
+                        <div style="width: 100%; text-align:center;">
+                            <b>Figure</b> 12: <i>Simple set-reset latches</i>
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <b>&#x261e;</b> The final circuit for
+                            <i>Direction controller</i>
+                            class is as below:
+                        </div>
+                        <div style="width: 100%; text-align:center;">
+                            <div>&nbsp;</div>
+                            <img
+                                src="https://4.bp.blogspot.com/-NSRZ0MDj6Lk/XDXor0XKCJI/AAAAAAAAASk/5bW8sMww43giCm4NdFIhKO7nNXTEVv09ACLcBGAs/s1600/dirctrlcir.jpg"
+                                border="0"
+                                data-original-height="325"
+                                data-original-width="889"
+                                height="325"
+                                width="889"
+                            />
+                            <div style="width: 100%; text-align:center;">
+                                <b>Figure</b> 13: <i>Direction controller circuit</i>
+                                <div>&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lindent0b">
+            <div>
+                <i>Start Stop controller</i> implementation:
+            </div>
+            <div class="lindent00">
+                <div>
+                  Analyzing the
+                        <a
+                            href="#Figure10"
+                            style="color: black;"
+                            title="See also: Figure 10: Tray Box state diagram (with guard)"
+                        >
+                            Tray Box state diagram (with guard):
+                        </a>                      
+                </div>
+                <div class="lindent0c">
+                    The <i>stable</i> state (stop) is entered whenever
+                    COMMON is transferred to OUT or IN.
+                </div>
+                <div class="lindent0c">
+                    <div>
+                        The <i>changing</i> state (start) is entered if:
+                    </div>
+                    <div class="lindent00">
+                        1. <i>Guard condition</i>: COMMON is isolated
+                          (neither transferred to OUT or IN).
+                    </div>
+                    <div class="lindent00">
+                        2. <i>Trigger event</i>: Load/Eject button is pushed.
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <i>Implement guard:</i>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <b>&#x261e;</b> A
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="https://en.wikipedia.org/wiki/NOR_gate"
+                              style="color: black;"
+                              title="See also: Wikipedia, the free encyclopedia - NOR gate">
+                              NOR gate
+                            </a>
+                            with two inputs could implement this as below
+                            description:
+                        </div>
+                        <div class="lindent00">
+                            1. Connect COMMON to constant <i>high</i> level. (This
+                            is consistent with <i>Direction controller</i>
+                            implementation.)
+                        </div>
+                        <div class="lindent00">
+                            2. Connect OUT and IN to two inputs of the
+                            <i>NOR gate</i>
+                        </div>
+                        <div class="lindent00">
+                            3. Connect output of the <i>NOR gate</i> to
+                            pin <i>nSLEEP</i> of chip <i>Drv8833</i>.
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <i>Implement trigger:</i>
+                    </div>
+                    <div class="lindent00">
+                        <b>&#x261e;</b> We need a way to dominate the
+                        logic <i>level</i> to <i>nSLEEP</i> pin so that
+                        whenever the Load/Eject button is pushed, the
+                        nSLEEP is driven <i>high</i>.
+                        This could be implemented by instead of directly
+                        connect output of the <i>NOR gate</i> in guard
+                        implementation to pin <i>nSLEEP</i> of
+                        chip <i>Drv8833</i> (as step #3), we connect it via
+                        a circuit that enable pushing Load/Eject button results
+                        in <i>nSLEEP</i> is driven to <i>high</i>.
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        The final circuit for <i>Start Stop controller</i>
+                        class is as below:
+                    </div>
+                    <div style="width: 100%; text-align:center;">
+                        <div>&nbsp;</div>
+                        <img
+                            src="https://2.bp.blogspot.com/-LeVcIb9JBZ8/XDXmIdUc_HI/AAAAAAAAASM/hsoWnWU-S28DIAwWm3sUXqkCkoN5rtCxwCLcBGAs/s1600/startstopcir.jpg"
+                            border="0"
+                            data-original-height="362"
+                            data-original-width="827"
+                            height="362"
+                            width="827"
+                        />
+                        <div style="width: 100%; text-align:center;">
+                            <b>Figure</b> 14: <i>Start Stop controller circuit</i>
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lindent0b">
+            <div>
+                <i>Tray Controller</i> subsystem circuit is a merge of
+                <i>figure 13</i> and <i>figure 14</i> as below
+                combined circuit:
+            </div>
+            <div style="width: 100%; text-align:center;">
+                <div>&nbsp;</div>
+                <img
+                    src="https://4.bp.blogspot.com/--k-iajowt08/XDXsxPzdeGI/AAAAAAAAATA/Zd0KZRyx5ak7i1GU2GaLkukYAVPvLTPKACLcBGAs/s1600/TrayControllerCir.jpg"
+                    border="0"
+                    data-original-height="379"
+                    data-original-width="889"
+                    height="379"
+                    width="889"
+                />
+                <div style="width: 100%; text-align:center;">
+                    <b>Figure</b> 15: <i>Tray Controller subsystem circuit</i>
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lindent0a">
+        <div>
+            Solution verification
+        </div>
+        <div class="lindent0b">
+            <div>
+                T.B.D.
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/huyj2ee/se-iconix-use-case-driven-design-case.htm</div>
+<div id="githubver" class="hidden">1.0.0</div>
+<script>doDefaultDecorate();</script>
+</div>
+
+
+
