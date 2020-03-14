@@ -1,0 +1,116 @@
+<div id="entry_article">
+<details class="hidden">
+    <summary>
+        <img
+          border="0"
+          data-original-width="1"
+          data-original-height="1"
+          width="1"
+          height="1"
+          src="https://1.bp.blogspot.com/-7F7q_2ctN5c/XeY2erXbvdI/AAAAAAAAAMI/19CLaBbK--4Kp5-69kxwMWpv84P0gZ8BQCLcBGAsYHQ/s1600/null.png"
+        />
+        <div id="entry_brief"><em><i>
+            FFmpeg is a free and open-source project for handling video, audio,
+            and other multimedia files and streams. It supports a CUI
+            application (console command) for multimedia files editing, also
+            a codec library used for software developing. This blog entry shares
+            some usage guideline of the console command one.  
+        </i></em></div>
+    </summary>
+    <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+</details>
+
+
+<div class="naturalsciencefont0">
+    <div ID=" I. Installation" class="para0">
+        <div>
+            <b>I. Installation</b>
+        </div>
+        <div class="lindent00">
+            <div>
+                1. For Debian linux
+            </div>
+            <div class="lindent00">
+                <i>apt install ffmpeg</i>
+            </div>
+        </div>
+        <div class="lindent00">
+            <div>
+                2. For Windows
+            </div>
+            <div class="lindent0a">
+                Download bundle at website: <i>https://www.ffmpeg.org</i>
+                (something like this: <i>https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-20200312-675bb1f-win32-static.zip
+                </i>)
+            </div>
+            <div class="lindent0a">
+                Extract zip file and update Windows <i>PATH</i> environment
+                variable point to folder <i>ffmpeg\bin</i>
+            </div>
+        </div>
+    </div>
+    <div ID=" II. Usecase or multimedia files operations" class="para0">
+        <div>
+            <b>II. Usecase or multimedia files operations</b>
+        </div>
+        <div class="lindent00">
+            <div>
+                1. Simple codec/format convert
+            </div>
+            <div class="lindent00">
+                <i>C:\Users\Guest>ffmpeg -i LiuLangGe.m4a LiuLangGe.mp3</i>
+            </div>
+            <div class="lindent00">
+                <i>C:\Users\Guest>ffmpeg -i LiuLangGe.mp4 LiuLangGe.mkv</i>
+            </div>
+        </div>
+        <div class="lindent00">
+            <div>
+                2. Codec/format convert
+            </div>
+            <div class="lindent00">
+                <i>
+                  C:\Users\Guest>ffmpeg -i LiuLangGe.mp4
+                  -c:v libx265 -c:a copy LiuLangGe.mkv
+                </i>
+            </div>
+            <div class="lindent00">
+                &#x261E; This will convert input file <i>LiuLangGe.mp4</i> to
+                output file <i>LiuLangGe.mkv</i> with video encoder codec
+                <i>libx265</i> and audio encoder codec is same with input audio
+                codec (<i>copy</i>)
+            </div> 
+        </div>
+        <div class="lindent00">
+            <div>
+                3. Multimedia files cut (extract a time duration of source file)
+            </div>
+            <div class="lindent00">
+                <i>
+                  C:\Users\Guest>ffmpeg -i AndyLauVol234.mp4
+                  -ss 00:01:00 -to 00:04:00 Song1.mp4
+                </i>
+            </div>
+            <div class="lindent00">
+                &#x261E; This will extract <i>Song 1</i> which lasts from
+                00:01:00 to 00:04:00 of the full volume file
+                <i>AndyLauVol234.mp4</i> results in a file name <i>Song1.mp4</i>
+                of duration lengh of 3 minutes. 
+            </div> 
+        </div>
+    </div>
+    <div ID=" III. Multi-cores cpu and performance tips" class="para0">
+        <div>
+            <b>III. Multi-cores cpu and performance tips</b>
+        </div>
+        <div class="lindent00">
+            T.B.D.
+        </div>
+    </div>
+</div>
+
+<div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/util-ffmpeg-command-line.htm</div>
+<div id="githubver" class="hidden">1.0.0</div>
+<script>doDefaultDecorate();</script>
+</div>
+
