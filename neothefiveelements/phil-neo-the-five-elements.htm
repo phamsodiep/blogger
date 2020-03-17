@@ -1,0 +1,418 @@
+<div id="entry_article">
+<details class="hidden">
+    <summary>
+        <img
+          border="0"
+          data-original-width="1"
+          data-original-height="1"
+          width="1"
+          height="1"
+          src="https://1.bp.blogspot.com/-7F7q_2ctN5c/XeY2erXbvdI/AAAAAAAAAMI/19CLaBbK--4Kp5-69kxwMWpv84P0gZ8BQCLcBGAsYHQ/s1600/null.png"
+        />
+        <div id="entry_brief"><em><i>
+            The Five Elements is a fivefold conceptual scheme that many
+            traditional Chinese fields used to explain a wide array of
+            phenomena, from cosmic cycles to the interaction between
+            internal organs. It is an ancient though, this blog entry tries
+            to model the conceptual scheme into mathematics graph
+            (graph theory) so that it is friendly with modern science and
+            names it as Neo The Five Elements. This Neo The Five Elements
+            then could be applied to model some other modern science fields.
+        </i></em></div>
+    </summary>
+    <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+</details>
+
+
+<div class="naturalsciencefont0">
+    <div ID=" I. Genuine Fivefold conceptual scheme" class="para0">
+        <div>
+            <b>I. Genuine Fivefold conceptual scheme</b>
+        </div>
+        <div class="lindent00">
+            <div>
+                The genuine though is based on two concepts: phases or
+                elements and cycles.
+            </div>
+            <div ID=" I.1. phases or elements" class="lindent0a">
+                <div>
+                    There are five phases/elements:
+                </div>
+
+                <div class="lindent0b">
+                    Spring/Wood: a period of growth, which generates
+                    abundant wood and vitality
+                </div>
+                <div class="lindent0b">
+                    Summer/Fire: a period of swelling, flowering, brimming
+                    with fire and energy
+                </div>
+                <div class="lindent0b">
+                    Earth: the in-between transitional seasonal periods,
+                    or a separate 'season' known as Late Summer or Long
+                    Summer – in the latter case associated with leveling
+                    and dampening (moderation) and fruition
+                </div>
+                <div class="lindent0b">
+                    Metal/Autumn: a period of harvesting and collecting
+                </div>
+                <div class="lindent0b">
+                    Water/Winter: a period of retreat, where stillness
+                    and storage pervades
+                </div>
+            </div>
+            <div ID=" I.2. cycles" class="lindent0a">
+                <div>
+                    Cycles: there is two cycles
+                </div>
+                <div ID=" I.2.1 creation" class="lindent0b">
+                    <div>
+	                    A generating or creation (生, shēng) cycle,
+	                    also known as "mother-son"
+                    </div>
+                    <div class="lindent0c">
+						Wood feeds Fire
+                    </div>
+                    <div class="lindent0c">
+                        Fire creates Earth (ash)
+                    </div>
+                    <div class="lindent0c">
+                        Earth bears Metal
+                    </div>
+                    <div class="lindent0c">
+                        Metal collects Water
+                    </div>
+                    <div class="lindent0c">
+                        Water nourishes Wood
+                    </div>
+                </div>
+                <div ID=" I.2.1 overcoming" class="lindent0b">
+                    <div>
+                        An overcoming or destruction (剋/克, kè) cycle,
+                        also known as "grandfather-grandson"
+                    </div>
+                    <div class="lindent0c">
+                        Wood parts Earth (such as roots or trees can
+                        prevent soil erosion)
+                    </div>
+                    <div class="lindent0c">
+                        Earth dams (or muddies or absorbs) Water
+                    </div>
+                    <div class="lindent0c">
+                        Water extinguishes Fire
+                    </div>
+                    <div class="lindent0c">
+                        Fire melts Metal
+                    </div>
+                    <div class="lindent0c">
+                        Metal chops Wood
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ID=" II. Neo The Five Elements" class="para0">
+        <div>
+            <b>II. Neo The Five Elements</b>
+        </div>
+        <div ID=" II.1 Modeling" class="lindent00">
+            <div>
+	            <b>1. Modeling Genuine Fivefold conceptual scheme into
+	            a mathematics graphs is straightforward.</b>
+            </div>
+	        <div ID=" II.1.1 elements" class="lindent00">
+	            <div>
+	                Elements is modeled as numbers of range [0..4]. <br />
+	                <i>Elements</i> = {0, 1, 2, 3, 4}
+	            </div>
+	            <div class="lindent0a">
+	                0: presents water element
+	            </div>
+	            <div class="lindent0a">
+	                1: presents wood element
+	            </div>
+	            <div class="lindent0a">
+	                2: presents fire element
+	            </div>
+	            <div class="lindent0a">
+	                3: presents earth element
+	            </div>
+	            <div class="lindent0a">
+	                4: presents metal element
+	            </div>
+	        </div>
+	        <div ID=" II.1.2 cycles" class="lindent00">
+	            <div>
+	                Cycles: there are two cycle, each cycle is modeled as a
+	                mathematics circular graph that vertex set is <i>Elements</i>.
+	            </div>
+	            <div ID=" II.2.1 Creation cycle" class="lindent00">
+	                <div>
+	                    1. Creation cycle
+	                </div>
+	                <div class="lindent00">
+	                    <div>
+	                        Graph definition:
+	                        <i>Creation</i> = (<i>Elements</i>, <i>Ec</i>)
+	                    </div>
+	                    <div class="lindent0a">
+	                        <div>
+	                            Where <i>Ec</i> =
+	                            {(0, 1), (1, 2), (2, 3), (3, 4), (4, 0)}
+	                        </div>
+	                        <div class="lindent0b">
+	                            (0, 1): Water nourishes Wood
+	                        </div>
+	                        <div class="lindent0b">
+	                            (1, 2): Wood feeds Fire
+	                        </div>
+	                        <div class="lindent0b">
+	                            (2, 3): Fire creates Earth (ash)
+	                        </div>
+	                        <div class="lindent0b">
+	                            (3, 4): Earth bears Metal
+	                        </div>
+	                        <div class="lindent0b">
+	                            (4, 0): Metal collects Water
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div ID=" II.2.2 Overcoming cycle" class="lindent00">
+	                <div>
+	                    2. Overcoming cycle
+	                </div>
+	                <div class="lindent00">
+	                    <div>
+	                        Graph definition:
+	                        <i>Overcoming</i> = (<i>Elements</i>, <i>Eo</i>)
+	                    </div>
+	                    <div class="lindent0a">
+	                        <div>
+	                            Where <i>Eo</i> =
+	                            {(0, 2), (1, 3), (2, 4), (3, 0), (4, 1)}
+	                        </div>
+	                        <div class="lindent0b">
+	                            (0, 2): Water extinguishes Fire
+	                        </div>
+	                        <div class="lindent0b">
+	                            (1, 3): Wood parts Earth
+	                            (such as roots or trees can prevent soil erosion)
+	                        </div>
+	                        <div class="lindent0b">
+	                            (2, 4): Fire melts Metal
+	                        </div>
+	                        <div class="lindent0b">
+	                            (3, 0): Earth dams (or muddies or absorbs) Water
+	                        </div>
+	                        <div class="lindent0b">
+	                            (4, 1): Metal chops Wood
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div ID=" II.1.3 result graphs" class="lindent00">
+	            <div>
+	                Result graphs
+	            </div>
+	            <div class="lindent00">
+	                T.B.D.
+	            </div>
+	        </div>
+        </div>
+        <div ID=" II.2 Properties of Neo The Five Elements graphs" class="lindent00">
+            <div>
+	            <b>2. Properties of Neo The Five Elements graphs</b>
+            </div>
+	        <div ID=" II.2.1 Creation cycle" class="lindent0a">
+	            Creation cycle: <br />
+	            <i>Ec</i> =
+	            {(0, 1), (1, 2), (2, 3), (3, 4), (4, 0)} <br />
+	            <i>Ec</i> =
+	            {
+	                (e<sub>1</sub>, e<sub>2</sub>) |
+	                (e<sub>1</sub> &#x2208; <i>Elements</i>) &#8743;
+	                (e<sub>2</sub> &#x2208; <i>Elements</i>) &#8743;
+	                e<sub>2</sub> = (e<sub>1</sub> + 1) mod 5
+	            }
+	        </div>
+	        <div ID=" II.2.2 Creation cycle" class="lindent0a">
+	            Overcoming cycle: <br />
+	            <i>Eo</i> =
+	            {(0, 2), (1, 3), (2, 4), (3, 0), (4, 1)} <br />
+	            <i>Eo</i> =
+	            {
+	                (e<sub>1</sub>, e<sub>2</sub>) |
+	                (e<sub>1</sub> &#x2208; <i>Elements</i>) &#8743;
+	                (e<sub>2</sub> &#x2208; <i>Elements</i>) &#8743;
+	                e<sub>2</sub> = (e<sub>1</sub> + 2) mod 5
+	            }
+	        </div>
+        </div>
+        <div ID=" II.3 Generic Neo The Five Elements graphs" class="lindent00">
+            <div>
+	            <b>3. Generic Neo The Five Elements graphs</b>
+            </div>
+            <div>
+                Base on properties of Neo The Five Elements graphs, we could
+                build a generic Neo The Five Elements graphs as below:
+            </div>
+	        <div class="lindent00">
+                <div ID=" II.3.1 Set building">
+                   Given 道: <i>Tao</i> = {0} <br />
+                   Given 兩極:  <i>LoengGit</i> = {-1, 1} <br />
+                   Given 三才:
+                   <i>SamChoi</i> = <i>LoengGit</i> &#x22C3;  <i>Tao</i>
+                   = {-1, 0, 1} <br />
+                   <div class="lindent00">
+                       <div>
+                           Where: 
+                       </div>
+                       <div class="lindent0a">
+                                                                          天: 1
+                       </div>
+                       <div class="lindent0a">
+                                                                          人: 0
+                            (People is born from Tao and endups life with
+                            returnning to Tao)
+                       </div>
+                       <div class="lindent0a">
+                                                                          地: -1
+                       </div>
+                   </div>
+                   Given 兩儀:
+                   <i>LoengJi</i> = {<i>X</i>, <i>Y</i>}
+                   where: <i>X</i> = <i>Y</i> = <i>SamChoi</i>
+                   <br />
+                </div>
+                <div ID=" II.3.2 Elements mapping">
+                    <div>
+                        Given <i>N</i> = {0, 1, 2, 3, 4}
+                        We build a mapping as below:
+                    </div>
+	                <div class="lindent00">
+	                   <div class="lindent00">
+	                       <i>f</i>: <i>X</i> x <i>Y</i> &#x2192; <i>N</i>
+	                       <div class="lindent00">
+	                           <i>f</i>(<i>x</i>, <i>y</i>) = 3
+	                           if |<i>x</i>| = |<i>y</i>|
+	                       </div>
+	                       <div class="lindent00">
+	                           <div>
+	                               Otherwise:
+	                           </div>
+	                           <div class="lindent00">
+	                               <i>f</i>(-1, 0) = 4
+	                           </div>
+	                           <div class="lindent00">
+	                               <i>f</i>(0, 1) = 0
+	                           </div>
+	                           <div class="lindent00">
+	                               <i>f</i>(1, 0) = 1
+	                           </div>
+	                           <div class="lindent00">
+	                               <i>f</i>(0, -1) = 2
+	                           </div>
+	                       </div>
+	                   </div>
+	                </div>
+	                <div>
+	                   We build a relation <i>R</i> on <i>X</i> x <i>Y</i>
+	                   as below:
+	                </div>
+	                <div class="lindent00">
+	                   <div class="lindent00">
+	                       (<i>x</i><sub>1</sub>, <i>y</i><sub>1</sub>)
+	                       <i>R</i>
+	                       (<i>x</i><sub>2</sub>, <i>y</i><sub>2</sub>)
+	                       &#x21d4;
+	                       <i>f</i>(<i>x</i><sub>1</sub>, <i>y</i><sub>1</sub>)
+	                       =
+	                       <i>f</i>(<i>x</i><sub>2</sub>, <i>y</i><sub>2</sub>) 
+	                   </div>
+	                </div>
+	                <div>
+	                   This <i>R</i> is an equivalence relation and it partitions
+	                   <i>X</i> x <i>Y</i> as a family of classes:
+	                </div>
+	                <div class="lindent00">
+	                   <i>X</i> x <i>Y</i> =
+	                   [3] &#x22c3; [4] &#x22c3; [0] &#x22c3; [1] &#x22c3; [2]
+	                </div>
+	                <div>
+	                   Base on family of classes, we define:
+	                </div>
+	                <div class="lindent00">
+	                   <i>Elements</i> = {0, 1, 2, 3, 4}
+	                </div>
+                </div>
+                <div ID=" II.3.3 Graph building">
+                    <div>
+                        As properties of Neo The Five Elements graphs, we have
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Creation</i> = (<i>Elements</i>, <i>Ec</i>)
+                        </div>
+                        <div class="lindent00">
+                            <i>Ec</i> =
+                            {
+                            (<i>e</i><sub>1</sub>, <i>e</i><sub>2</sub>) |
+                            (<i>e</i><sub>1</sub> &#x2208; <i>Elements</i>)
+                            &#8743;
+                            (<i>e</i><sub>2</sub> &#x2208; <i>Elements</i>)
+                            &#8743;
+                            <i>e</i><sub>2</sub> =
+                            (<i>e</i><sub>1</sub> + 1) mod 5
+                            }
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Overcoming</i> = (<i>Elements</i>, <i>Eo</i>)
+                        </div>
+                        <div class="lindent00">
+                            <i>Eo</i> =
+                            {
+                            (e<sub>1</sub>, e<sub>2</sub>) |
+                            (e<sub>1</sub> &#x2208; <i>Elements</i>) &#8743;
+                            (e<sub>2</sub> &#x2208; <i>Elements</i>) &#8743;
+                            e<sub>2</sub> = (e<sub>1</sub> + 2) mod 5
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        So:
+                    </div>
+                    <div class="lindent00">
+                        <i>GenericNTFE</i> =
+                        (<i>Creation</i>, <i>Overcoming</i>)
+                    </div>
+                </div>
+	        </div>
+        </div>
+    </div>
+    <div ID=" III. Summary" class="para0">
+        <div>
+            <b>III. Summary</b>
+        </div>
+        <div class="lindent00">
+            T.B.D.
+        </div>
+    </div>
+    <div ID=" IV. Reference" class="para0">
+        <div>
+            <b>IV. Reference</b>
+        </div>
+        <div class="lindent0a">
+            https://en.wikipedia.org/wiki/Wuxing_(Chinese_philosophy)
+        </div>
+    </div>
+</div>
+
+
+<div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/neothefiveelements/phil-neo-the-five-elements.htm</div>
+<div id="githubver" class="hidden">1.0.0</div>
+<script>doDefaultDecorate();</script>
+</div>
