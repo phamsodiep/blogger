@@ -1,0 +1,106 @@
+.hidden {
+    display: none;
+}
+
+div.naturalsciencefont0 {
+    font-family: Times;
+}
+
+div.socialsciencefont0 {
+    font-family: calibri;
+}
+
+div.sourcecodefont0 {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+}
+
+textarea.sourcecodefont0 {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+}
+
+textarea.txt_sourcecodefont0
+{
+    background: transparent;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+}
+
+div.txt_sourcecodefont0
+{
+    background: transparent;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+    overflow-y: scroll;
+    width: 100%;
+    height: 300px;
+}
+
+div.txt_sourcecodefont1
+{
+    background: transparent;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+    width: 100%;
+}
+
+input[type=button].view_switch {
+    color: grey;
+    background-color: transparent;
+    border: 1px solid silver;
+    padding: 5px 10px;
+}
+
+div.para0 {
+    margin: 5px 0 0 0;
+}
+
+div.lindent00 {
+    margin: 0 0 0 25px;
+}
+
+div.lindent0a {
+    display: list-item;
+    list-style-type: disc;
+    margin: 0 0 0 25px;
+}
+
+div.lindent0b {
+    display: list-item;
+    list-style-type: circle;
+    margin: 0 0 0 25px;
+}
+
+div.lindent0c {
+    display: list-item;
+    list-style-type: square;
+    margin: 0 0 0 25px;
+}
+
+div.hscrollable_container {
+    overflow-x:scroll;
+    overflow-y:hidden;
+    width:100%;
+    height:100%;
+}
+
+table.uc_description {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.uc_description tr, table.uc_description tr td {
+  border: 1px solid black;
+}
+
+table.uc_description tr td:first-child {
+  width: 200px;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+ol.uc_desc_flow {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
