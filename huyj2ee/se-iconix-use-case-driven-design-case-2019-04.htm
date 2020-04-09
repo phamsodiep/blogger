@@ -1,0 +1,1241 @@
+<div id="entry_article">
+<details class="hidden">
+    <summary>
+        <img
+          border="0"
+          data-original-width="1"
+          data-original-height="1"
+          width="1"
+          height="1"
+          src="https://1.bp.blogspot.com/-7F7q_2ctN5c/XeY2erXbvdI/AAAAAAAAAMI/19CLaBbK--4Kp5-69kxwMWpv84P0gZ8BQCLcBGAsYHQ/s1600/null.png"
+        />
+        <div id="entry_brief_tmp"><em><i>
+            ICONIX process is UML Use Case driven but more lightweight than RUP.
+            This blog entry shares an example of following the process to
+            develop Lines 98 game, a simple interesting classical game.
+        </i></em></div>
+    </summary>
+    <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+</details>
+
+
+<div class="naturalsciencefont0">
+    <div ID=" I. Game introduction" class="para0">
+        <div ID=" I.1. Game introduction" >
+            <b>I. Game introduction</b>
+        </div>
+        <div id="narrative_source">
+            <div class="lindent00">
+                Lines 98 is a simple interesting classical game. The game is
+                composed by balls generated on a board that player could make a
+                ball moving. To do scores, player must arrange 5 or more balls
+                of the same colour consecutively in straight lines (vertically,
+                horizontally or diagonally). The game is started by a page
+                load/refresh or a reset button clicked by player. After reseting,
+                3 new balls is generated, then player could move a ball. After
+                reseting, there are only 3 balls existed, so no scores is done
+                after this first ball moving. If there is no scores done after
+                a moving ball, 3 new balls is generated, then player could make
+                a new ball moving. If this new moving results in 5 or more balls
+                of the same colour consecutively are in straight lines, scores
+                are done (all balls do score will be removed), and new scores is
+                displayed on the score board. In the case of scores done, there
+                is no new balls generated, player could make a new ball moving
+                then. If player's total scores reach to a preset limitation,
+                player wins a price which results in web page will show some
+                hidden content that is meaningful to player. The score is
+                computed as following:
+            </div>
+            <div class="lindent00">
+                <div class="lindent00">
+                    <i>score</i> = <i>n</i> * (1 + 5 - <i>n</i>)
+                </div>
+                <div>
+                    where <i>n</i> is total removed balls count
+                </div>
+            </div>
+            <div ID=" I.2 Ambitious points"  class="lindent00">
+                <div class="para_sep0">
+                    Ambitious points and its clarifying (this could be archived
+                    by interview with stake-holders in practice):
+                </div>
+                <div class="lindent0a">
+                    <div>
+                        If there are some straight lines that has 5 or more
+                        balls arranged, how scores are done?
+                    </div>
+                    <div class="lindent00">
+                        &#x261E;
+                        <i>
+                            All of straight lines that has 5 or more balls
+                            arranged is scored (all balls in these lines are
+                            moved).
+                        </i>
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div>
+                        If new generated balls are arranged one or some straight
+                        lines, how scores are done?
+                    </div>
+                    <div class="lindent00">
+                        &#x261E;
+                        <i>
+                            Process as a ball moving is made, this means that
+                            these generated balls are also removed and then let
+                            user makes a new ball moving.
+                        </i>
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div>
+                        How to set preset limitation score?
+                    </div>
+                    <div class="lindent00">
+                        &#x261E;
+                        <i>
+                            The preset limitation score is hard coded in game.
+                        </i>
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div>
+                        How to show the hidden content?
+                    </div>
+                    <div class="lindent00">
+                        &#x261E;
+                        <i>
+                            The hidden content is hard coded, and should be
+                            obfuscated so that player hard to cheat to show them
+                            without playing game. Obfuscating content function
+                            is out of scope of this game, it will be implemented
+                            in another system. This system just need to invoke
+                            a java script call back function named onWinPrice.
+                            But this call back function will be obfuscated also
+                            in the future while integrating with the showing
+                            content system.
+                        </i>
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div>
+                        If after generating or moving ball that results in
+                        scores done and board is empty because all of remain
+                        balls are removed, how to process the game in this case.
+                    </div>
+                    <div class="lindent00">
+                        &#x261E;
+                        <i>
+                            In such case, player wins a price.
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ID=" II. Requirement analyzing" class="para0">
+        <div>
+            <b>II. Requirement analyzing</b>
+            <input
+              class="view_switch"
+              type="button"
+              value="content is hidden"
+              onclick="displaySwitch(this, 'requirement_analyzing', ['content is displayed', 'content is hidden']);"
+              title="click to show/hide Requirement analyzing content"
+            />
+        </div>
+
+
+
+
+
+<div class="requirement_analyzing_content_is_displayed" style="display: none;">
+
+
+
+
+
+        <div ID=" II.1. Hight-light keywords" class="lindent00">
+            <div>
+                We begin analyzing by high-lighting requirement narrative key
+                words (verbs, terms and adjectives) to identify:
+            </div>
+            <div class="lindent0a">
+                Use cases
+            </div>
+            <div class="lindent0a">
+                Domain objects
+            </div>
+            <div class="lindent0a">
+                Some initial objects attributes and methods.
+            </div>
+        </div>
+        <div class="lindent00">
+            <div class="para_sep0">
+                This results below high-lighted documents:
+            </div>
+            <div class="para_sep0">
+                <div class="para_box0" id="highlightednarrative">
+                </div>
+            </div>
+        </div>
+        <div ID=" II.2. Define keywords" class="lindent00">
+            <div class="para_sep0">
+                Keywords analyzing for concept grasping (this also needs
+                consult from stake-holders in practice):
+            </div>
+            <div class="lindent0a">
+                <div>
+                    Terms (nouns):
+                </div>
+                <div class="lindent0b">
+                    <i>Lines 98</i>:
+                    Our implemented system, the game application.
+                </div>
+                <div class="lindent0b">
+                    <i>The game</i>:
+                    All about the game logic.
+                </div>
+                <div class="lindent0b">
+                    <i>Balls</i>:
+                    A game object that player will interactive to move it
+                    while playing.
+                </div>
+                <div class="lindent0b">
+                    <i>Board</i>:
+                    A game object houses balls.
+                </div>
+                <div class="lindent0b">
+                    <i>Player</i>:
+                    An user who is outside the implemented system (Lines 98),
+                    interactives with system for playing.
+                </div>
+                <div class="lindent0b">
+                    <i>Straight lines</i>:
+                    A game logic that balls are arranged vertically,
+                    horizontally or diagonally.
+                </div>
+                <div class="lindent0b">
+                    <i>Page</i>: web page which houses the game application
+                    (Lines 98 system).
+                </div>
+                <div class="lindent0b">
+                    <i>Reset button</i>:
+                    An HTML GUI button, that player could click to reset the
+                    game.
+                </div>
+                <div class="lindent0b">
+                    <i>Scores</i>:
+                    Scores of players which are computed as game logic.
+                </div>
+                <div class="lindent0b">
+                    <i>Score board</i>:
+                    An HTML GUI interface displays current total scores of
+                    players.
+                </div>
+                <div class="lindent0b">
+                    <i>Total scores</i>:
+                    All accumulated scores of player.
+                </div>
+                <div class="lindent0b">
+                    <i>Preset limitation</i>:
+                    Win price score that if players's total scores excesses this
+                    limitation, he/she will wins prices and could view the
+                    hidden content.
+                </div>
+                <div class="lindent0b">
+                    <i>Hidden content</i>:
+                    A blog content is offucated and not showed after page is
+                    loaded. Player needs to play to accumulate a total scores
+                    excesses preset limitation to show this content.
+                </div>
+                <div class="lindent0b">
+                    <i>Another system</i>: system implemented to show the
+                    hidden content. Because the hidden content is offucated
+                    (encoded) so that user could not cheat to show, so this
+                    system is need. This is an anonymous term, we could name
+                    it as <i>Content Owner</i>.
+                </div>
+            </div>
+            <div class="lindent0a">
+                <div>
+                    Verbs:
+                </div>
+                <div class="lindent0b">
+                    <i>Generated</i>: behavior that creates new balls
+                </div>
+                <div class="lindent0b">
+                    <i>Balls moving</i>: behavior that moves a balls from cell
+                    to cell.
+                </div>
+                <div class="lindent0b">
+                    <i>Do scores</i>: behavior that removes balls and make
+                    scores for players following game logic.
+                </div>
+                <div class="lindent0b">
+                    <i>Is started</i>: synonym of reseting
+                </div>
+                <div class="lindent0b">
+                    <i>Load/refresh</i>: HTML browser load or refresh action.
+                </div>
+                <div class="lindent0b">
+                    <i>Clicked</i>: behavior that triggers reset button.
+                </div>
+                <div class="lindent0b">
+                    <i>Reseting</i>: behavior that initializes game, this
+                    create some new initial balls for game.
+                </div>
+                <div class="lindent0b">
+                    <i>Removed</i>: behavior that removes balls (so do scores
+                    behavior include this behavior).
+                </div>
+                <div class="lindent0b">
+                    <i>Displayed</i>: behavior that updates current player's
+                    total scores to score board.
+                </div>
+                <div class="lindent0b">
+                    <i>Wins a price</i>: a state of game indicates that player
+                    wins a price which means that he/she could view the hidden
+                    content then. (This is a verb indicates that player have
+                    been commited win price action, it is also a state of the
+                    game).
+                </div>
+                <div class="lindent0b">
+                    <i>Show</i>: behavior of "another system"
+                    (<i>Content owner</i>) does decode the
+                    hidden content and show it to player.
+                </div>
+            </div>
+            <div class="lindent0a">
+                <div>
+                    Adjectives:
+                </div>
+                <div class="lindent0b">
+                    <i>Colour</i>: attribute of the ball.
+                </div>
+                <div class="lindent0b">
+                    <i>Empty</i>: attribute or state of the board.
+                </div>
+            </div>
+        </div>
+        <div ID=" II.3. Develope keywords into domain terms" class="lindent00">
+            <div class="para_sep0">
+                Keywords developing for domain model:
+            </div>
+            <div class="lindent0a">
+                <div>
+                    Terms (nouns):
+                </div>
+                <div class="lindent0b">
+                    <i>Lines 98</i>:
+                    In domain model, this term is developed into our implemented
+                    system. It creates a system boundary between actors outside
+                    the system which could interact with system inner objects
+                    to fulfill their intent or need.
+                </div>
+                <div class="lindent0b">
+                    <i>The game</i>:
+                    developed into an object of class <i>Game Application</i>
+                    in domain model. This object has responsibility to make
+                    decsision following game logic.
+                </div>
+                <div class="lindent0b">
+                    <i>Balls</i>:
+                    Game objects of boundary category (stereotype) class named
+                    <i>Ball</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Board</i>:
+                    A game object of class <i>Game Board</i> of boundary
+                    category (stereotype).
+                </div>
+                <div class="lindent0b">
+                    <i>Player</i>:
+                    An actor outside the system that interacts with system for
+                    playing.
+                </div>
+                <div class="lindent0b">
+                    <i>Straight lines</i>:
+                    This terms is rejected to be developed as an object in
+                    domain model. It is just a concepts of game algorithm.
+                </div>
+                <div class="lindent0b">
+                    <i>Page</i>: HTML page outside the system boundary. Its
+                    onload function will trigger the game reset event. We could
+                    review this term latter and make no decision in this step
+                    of analyzing.
+                </div>
+                <div class="lindent0b">
+                    <i>Reset button</i>:
+                    An object of class <i>Button</i> of boundary category
+                    (stereotype), could listen to user (Player) click event and
+                    notify <i>Game Application</i> object about this event as
+                    game reset event.
+                </div>
+                <div class="lindent0b">
+                    <i>Scores</i>:
+                    This term is rejected to be developed as an object in
+                    domain model. It is just an attribute of game logic.
+                </div>
+                <div class="lindent0b">
+                    <i>Score board</i>:
+                    An object of class <i>Score Board</i> of boundary category
+                    (stereotype), could accept <i>display</i> request from
+                    <i>Game Application</i> and make updated information (
+                    Player's <i>total scores</i>) available to <i>Player</i>.
+                    (displayed).
+                </div>
+                <div class="lindent0b">
+                    <i>Total scores</i>:
+                    This terms is rejected to be developed as an object in
+                    domain model. It is just an attribute of game logic, it is
+                    also information displayed on <i>Score Board</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Preset limitation</i>:
+                    This terms is rejected to be developed as an object in
+                    domain model. It is just an attribute of game logic.
+                </div>
+                <div class="lindent0b">
+                    <i>Hidden content</i>:
+                    This terms is rejected to be developed as an object in
+                    domain model. It is just an attribute of
+                    <i>Content owner</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Another system</i>:
+                    An actor outside the system that interacts with system for
+                    <i>Hidden content</i> showing. It is named as
+                    <i>Content owner</i> actor class.
+                </div>
+            </div>
+            <div class="lindent0a">
+                <div>
+                    Verbs:
+                </div>
+                <div class="lindent0b">
+                    <i>Generated</i>: this behavior creates new ball. This
+                    could be initially a responsibility of an object of class
+                    <i>Ball Manager</i>. It is named as <i>generate</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Balls moving</i>: this behavior is commited by
+                    <i>Player</i> with intents do a play turn. It is named as
+                    <i>move ball</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Do scores</i>: this is a behavior of an object of class
+                    <i>Game Application</i>. It does computation to make
+                    descision about ball removing, it also compute and update
+                    <i>Player</i>'s total score. It is named as <i>do score</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Is started</i>: rejected this term from domain model
+                    because of synonym.
+                </div>
+                <div class="lindent0b">
+                    <i>Load/refresh</i>: an event of <i>Page</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Clicked</i>: this is <i>Player</i>'s behavior with intent
+                    to reset game. It is named as <i>reset game</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Reseting</i>: this is a behavior of an object of class
+                    <i>Game Application</i>. It reinitializes whole game
+                    objects to restart a new game. It is named as
+                    <i>reset game</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Removed</i>: this behavior removes balls, it could be
+                    a responsibility of an object of class <i>Ball Manager</i>.
+                    It is named as <i>remove balls</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Displayed</i>: this is behavior of class
+                    <i>Score board</i>. It is named as <i>display</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Wins a price</i>: this is an intent of <i>Player</i>, but
+                    it is also behavior of class <i>Game Application</i>.
+                    It is named as <i>onWinPrice</i> and associated to class
+                    <i>Game Application</i>. For <i>Player</i>'s intent, we will
+                    review this candidate use case latter.
+                </div>
+                <div class="lindent0b">
+                    <i>Show</i>: this is a behavior of class
+                    <i>Content owner</i> which is outside the system. It is
+                    named as <i>show</i>.
+                </div>
+            </div>
+            <div class="lindent0a">
+                <div>
+                    <i>Adjectives</i>:
+                </div>
+                <div class="lindent0b">
+                    <i>Colour</i>: this is an attribute of class <i>Ball</i>.
+                    It is named as <i>colour</i>.
+                </div>
+                <div class="lindent0b">
+                    <i>Empty</i>: this is an attribute or state of class
+                    <i>Game Board</i>. We need further analyzing to model this
+                    latter.
+                </div>
+            </div>
+        </div>
+        <div ID=" II.4. Domain model" class="lindent00">
+            <div class="para_sep0">
+                Domain model:
+            </div>
+            <div class="lindent00">
+                <div>
+                    <img
+                      border="0"
+                      data-original-height="461"
+                      data-original-width="721"
+                      src="https://1.bp.blogspot.com/-gmB3znOajPE/Xoy6AP3kXdI/AAAAAAAAAN4/ULOqetinKhEDzJxvImQ1lszTEQpg1ueQACNcBGAsYHQ/s1600/Domain_Classes.png"
+                    />
+                </div>
+            </div>
+            <div class="lindent00">
+                <div class="para_sep0">
+                    <i>Note:</i> <i>Browser</i> is introduced into domain model
+                    as an Actor instead of <i>Page</i>, because <i>Browser</i>
+                    triggers onPageLoad event not <i>Page</i> which is
+                    identified as term in the keywords list. <i>Page</i> just
+                    listen to this event.
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+    </div>
+    <div ID=" III. Use cases identifying" class="para0">
+        <div>
+            <b>III. Use cases identifying</b>
+            <input
+              class="view_switch"
+              type="button"
+              value="content is hidden"
+              onclick="displaySwitch(this, 'usecases_identifying', ['content is displayed', 'content is hidden']);"
+              title="click to show/hide Use cases identifying content"
+            />
+        </div>
+
+
+
+
+
+<div class="usecases_identifying_content_is_displayed" style="display: none;">
+
+
+
+
+
+        <div ID=" III.1. Actors identifying" class="lindent00">
+            <div>
+                <b>1. Actors identifying</b>
+            </div>
+            <div class="lindent0a">
+                <div>
+                    <i>Player</i>: this actor interacts with system to fulfill
+                    his/her intents:
+                </div>
+                <div class="lindent0b">
+                    Do a play turn: use case <i>Move Ball</i>
+                </div>
+                <div class="lindent0b">
+                    Reset game: use case <i>Reset Game</i>
+                </div>
+            </div>
+            <div class="lindent0a">
+                <i>Content owner</i>: this actor interacts with system to
+                decode and show hidden content. System will send message to it
+                to fulfill this action in the case of <i>Player</i> wins a
+                price.
+            </div>
+            <div class="lindent0a">
+                <i>Browser</i>: this actor houses <i>Lines 98</i> application.
+                For technical view, it interacts with application for events
+                and acts as a platform. For domain view (problem view), it
+                interacts with system for <i>Reset Game</i> purpose. We skip
+                the technical view for SRS documents.
+            </div>
+        </div>
+        <div ID=" III.1. Actors identifying" class="lindent00">
+            <div>
+                <b>2. Use cases identifying</b>
+            </div>
+            <div class="lindent0a">
+                <div>
+                    <i>Player</i>
+                </div>
+                <div class="lindent0b">
+                    <i>Reset Game</i>
+                </div>
+                <div class="lindent0b">
+                    <div>
+                        <i>Move Ball</i>
+                    </div>
+                    <div class="lindent0c">
+                        «Extend» <i>Notify Gameover</i>
+                    </div>
+                    <div class="lindent0c">
+                        «Extend» <i>Notify win price</i>
+                    </div>
+                </div>
+                <div class="lindent0b">
+                    <i>View Score</i>: <i>Score Board</i> process
+                    <i>display</i> request from <i>Game Application</i> and make
+                    this information available to <i>Player</i>. <i>Player</i>  
+                    could view this information at anytime that he/she needs
+                    to.
+                </div>
+            </div>
+            <div class="lindent0a">
+                <div>
+	                <i>Content Owner</i>
+                </div>
+                <div class="lindent0c">
+                    <i>Notify win price</i> (which is extended from
+                    <i>Move Ball</i>)
+                </div>
+            </div>
+            <div class="lindent0a">
+                <div>
+                    <i>Browser</i>
+                </div>
+                <div class="lindent0b">
+                    <i>Reset Game</i>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+    </div>
+    <div ID=" IV. SRS – Software requirements specification" class="para0">
+        <div>
+            <b>IV. SRS – Software requirements specification</b>
+            <input
+              class="view_switch"
+              type="button"
+              value="content is hidden"
+              onclick="displaySwitch(this, 'srs_doc', ['content is hidden', 'content is show']);"
+              title="click to show/hide SRS document"
+            />
+        </div>
+
+
+
+
+
+<div class="srs_doc_content_is_show" style="display: none;">
+
+
+
+
+
+        <div ID=" 1. Introduction" class="lindent00">
+            <div>
+                <div class="para_sep1">
+                    <b>1. Introduction</b>
+                </div>
+            </div>
+            <div id="srsnarrative">
+            </div>
+        </div>
+        <div ID=" 2. Overall Description" class="lindent00">
+            <div>
+                <div class="para_sep1">
+                    <b>2. Overall Description</b>
+                </div>
+            </div>
+            <div ID=" 2.1. Product Perspective">
+                <div>
+                    <b>2.1. Product Perspective</b>
+                </div>
+                <div class="lindent00">
+                    Line 98 supports Player to make a ball move, records and
+                    displays Player's core. It lets Player reset the game to
+                    create a new game, notify Player if the game is over or
+                    notify Content Owner system if Player total scores exceeds a
+                    limit to win a price.
+                </div>
+                <div class="lindent00">
+                    <div>
+                        The domain model class diagram of system is as below:
+                    </div>
+                    <div
+                      style="position: relative; left: -40px; width: 800px;"
+                      class="para_sep0"
+                    >
+                        <img
+                          border="0"
+                          data-original-height="521"
+                          data-original-width="794"
+                          src="https://1.bp.blogspot.com/-LMoN3Yz66OE/XozMoGX0imI/AAAAAAAAAOc/JEmp2DGokDg46CzcONvKT0mBS2ZpMmD7gCNcBGAsYHQ/s1600/Domain_View.png"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div ID=" 2.2. Product Functions">
+                <div>
+                    <b>2.2. Product Functions</b>
+                </div>
+                <div
+                  style="position: relative; left: 10px; width: 800px;"
+                  class="para_sep0"
+                >
+                    <img
+                      border="0"
+                      data-original-height="505"
+                      data-original-width="739"
+                      src="https://1.bp.blogspot.com/-Zog5L_YDhOU/XozSMUU2R8I/AAAAAAAAAOo/8qeV9fnF-qsRA31LJJ4Q-V39KM9DioZAQCNcBGAsYHQ/s1600/Use_Cases.png"
+                    />
+                </div>
+                <div class="lindent0a">
+                    <i>Player</i>: interacts with system to play game.
+                </div>
+                <div class="lindent0a">
+                    <i>Content Owner</i>: interacts with system to be notified about
+                    <i>Player</i>'s Win Price event.
+                </div>
+            </div>
+            <div ID=" 2.3. User Classes and Characteristics">
+                <div>
+                    <b>2.3. User Classes and Characteristics</b>
+                </div>
+                <div class="lindent0a">
+                    <i>Player</i>: Player should know how to play Line 98 game.
+                    There is no game tutorial for this application.
+                </div>
+            </div>
+            <div ID=" 2.4. Operating Environment">
+                <div>
+                    <b>2.4. Operating Environment</b>
+                </div>
+                <div class="lindent0a">
+                    HTML5 supported browser.
+                </div>
+            </div>
+            <div ID=" 2.5. Design and Implementation Constraints">
+                <div>
+                    <b>2.5. Design and Implementation Constraints</b>
+                </div>
+                <div class="lindent0a">
+                    <i>For deployment</i>: application must be deployable on
+                    Blogger which mean that: Javascript and css must be
+                    embedded in single HTML file. They could not be hosted.
+                </div>
+                <div class="lindent0a">
+                    <i>Ofucating</i>: source code must be offucated to prevent
+                    cheating.
+                </div>
+                <div class="lindent0a">
+                    <i>Source code size</i>: is reasonble which means that it could
+                    be deployed on Blogger and loaded with a normal performance.
+                </div>
+                <div class="lindent0a">
+                    <div>
+                        <i>Configuration setting</i>: these parameters should be
+                        configured as Javascript hard-coded constants which then be
+                        offucated while deploying:
+                    </div>
+                    <div class="lindent0b">
+                        <i>Win price score</i>: score that Player must reach to
+                        to win a price (show hidden content).
+                    </div>
+                    <div class="lindent0b">
+                        <i>Game board dimension</i>: game board dimension in cell
+                        count unit.
+                    </div>
+                    <div class="lindent0b">
+                        <i>Ball generating count</i>: number of balls will be
+                        generated for each game turn that have no score is done.
+                    </div>
+                    <div class="lindent0b">
+                        <i>Min balls to score</i>: minimum number of balls of the
+                        same colour consecutively in straight lines to be removed
+                        and do scores.
+                    </div>
+                    <div class="lindent0b">
+                        <i>Colour list</i>: a list of 7 colour values to paint
+                        balls. List has fixed size of 7 and colour is represented
+                        as css colour string (example: "#00ccff")
+                    </div>
+                    <div class="lindent0b">
+                        <i>Animation speed</i>: a ratio of real number to adjust
+                        all animation speeds: ball moving, ball generating, ball
+                        removing...
+                    </div>
+                </div>
+            </div>
+            <div ID=" 2.6. User Documentation">
+                <div>
+                    <b>2.6. User Documentation</b>
+                </div>
+                <div class="lindent00">
+                    none
+                </div>
+            </div>
+            <div ID=" 2.7. Assumptions and Dependencies">
+                <div>
+                    <b>2.7. Assumptions and Dependencies</b>
+                </div>
+                <div class="lindent00">
+                    It is assumed that React is selected as development framework.
+                    This could be changed and reviewed if React could not solved
+                    the problem.
+                </div>
+            </div>
+        </div>
+        <div ID=" 3. External Interface Requirements" class="lindent00">
+            <div class="para_sep1">
+                <b>3. External Interface Requirements</b>
+            </div>
+            <div ID=" 3.1. User Interfaces">
+                <div>
+                    <b>3.1. User Interfaces</b>
+                </div>
+            </div>
+            <div ID=" 3.2. Hardware Interfaces">
+                <div>
+                    <b>3.2. Hardware Interfaces</b>
+                </div>
+            </div>
+            <div ID=" 3.3. Software Interfaces">
+                <div>
+                    <b>3.3. Software Interfaces</b>
+                </div>
+            </div>
+            <div ID=" 3.4. Communications Interfaces">
+                <div>
+                    <b>3.4. Communications Interfaces</b>
+                </div>
+            </div>
+        </div>
+        <div ID=" 4. System Features" class="lindent00">
+            <div class="para_sep1">
+                <b>4. System Features</b>
+            </div>
+            <div ID=" 4.1. Player">
+                <div>
+                    <b>4.1. Player</b>
+                </div>
+                <div class="lindent00">
+                    <b>4.1.1. Reset Game</b>
+                </div>
+                <div class="lindent00">
+                    <b>4.1.2. Move Ball</b>
+                </div>
+                <div class="lindent00">
+                    <b>4.1.3. View Score</b>
+                </div>
+            </div>
+            <div ID=" 4.2. Content Owner">
+                <div>
+                    <b>4.2. Content Owner</b>
+                </div>
+                <div class="lindent00">
+                    <b>4.1.1. Notify Win Price</b>
+                </div>
+            </div>
+            <div ID=" 4.3. Browser">
+                <div>
+                    <b>4.3. Browser</b>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <b>4.1.1. Reset Game</b>
+                    </div>
+                </div>
+            </div>
+        </div>            
+        <div ID=" 5. Other Nonfunctional Requirements" class="lindent00">
+            <div class="para_sep1">
+                <b>5. Other Nonfunctional Requirements</b>
+            </div>
+            <div ID=" 5.1. Performance Requirements">
+                <div>
+                    <b>5.1. Performance Requirements</b>
+                </div>
+            </div>
+            <div ID=" 5.2. Safety Requirements">
+                <div>
+                    <b>5.2. Safety Requirements</b>
+                </div>
+            </div>
+            <div ID=" 5.3. Security Requirements">
+                <div>
+                    <b>5.3. Security Requirements</b>
+                </div>
+            </div>
+            <div ID=" 5.4. Software Quality Attributes">
+                <div>
+                    <b>5.4. Software Quality Attributes</b>
+                </div>
+            </div>
+            <div ID=" 5.5. Business Rules">
+                <div>
+                    <b>5.5. Business Rules</b>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+    </div>
+    <div ID=" V. SDD – Software design description" class="para0">
+        <div>
+            <b>V. SDD – Software design description</b>
+            <input
+              class="view_switch"
+              type="button"
+              value="content is hidden"
+              onclick="displaySwitch(this, 'sdd_doc', ['content is hidden', 'content is show']);"
+              title="click to show/hide SDD document"
+            />
+        </div>
+
+
+
+
+
+<div class="sdd_doc_content_is_show" style="display: none;">
+
+
+
+
+
+    <div ID=" V. SDD – Software design description" class="para0">
+        <div ID=" V.1. Introduction" class="lindent00">
+            <div>
+                <b>1. Introduction</b>
+            </div>
+            <div class="lindent00">
+                <div><i>1.1. Purpose</i></div>
+                <div>
+                    This document sketchs developed application in a generic
+                    view so that developers could follow up this to develop Line
+                    98 game.
+                </div>
+            </div>
+            <div class="lindent00">
+                <div><i>1.2. Scope</i></div>
+                <div class="lindent0a">
+                    Goal: implement Line 98 game as SRS document.
+                </div>
+                <div class="lindent0a">
+                    Description and scope: please consult SRS document.
+                </div>
+                <div class="lindent0a">
+                    Benefit, brief description of product: please consult SRS
+                    document.
+                </div>
+            </div>
+            <div class="lindent00">
+                <div><i>1.3. Overview</i></div>
+                <div class="lindent00">
+                    <del>Provide an overview of this document and its organization.</del>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div><i>1.4. Reference material</i></div>
+                <div class="lindent0a">
+                    SRS – Software requirements specification
+                </div>
+            </div>
+            <div class="lindent00">
+                <div><i>1.5. Definitions and acronyms</i></div>
+                <div class="lindent00">
+                    <div>
+                        <del>Items are most likely not known to the audience.</del>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ID=" V.2. System overview" class="lindent00">
+            <div>
+                <b>2. System overview</b>
+            </div>
+            <div class="lindent00">
+                <del>General description of the functionality, context and design</del>
+            </div>
+            <div class="lindent00">
+                <del>Background information</del>
+            </div>
+        </div>
+        <div ID=" V.3. System architecture" class="lindent00">
+            <div>
+                <b>3. System architecture</b>
+            </div>
+            <div class="lindent00">
+                <div><i>3.1. Architectural design</i></div>
+                <div class="lindent00">
+                    <del>How responsibilities are partitioned and assigned to
+                    subsystems?</del>
+                </div>
+                <div class="lindent00">
+                    <del>Layers: from high level which interacts with user down to
+                    low level which interacts with system platform.</del>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div><i>3.2. Decomposition description</i></div>
+                <div class="lindent00">
+                    <del>Describle the classes structure and their relationships.</del>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div><i>3.3. Design rationale</i></div>
+                <div class="lindent0a">
+                    <del>For selecting the architecture</del>
+                </div>
+                <div class="lindent0a">
+                    <del>For critical issues and trade/offs clarification</del>
+                </div>
+            </div>
+        </div>
+        <div ID=" V.4. Data design" class="lindent00">
+            <div>
+                <b>4. Data design</b>
+            </div>
+            <div class="lindent00">
+                <div><i>4.1. Data description</i></div>
+                <div class="lindent0a">
+                    <del>How the information domain of your system is transformed
+                    into data structures</del>
+                </div>
+                <div class="lindent0a">
+                    <del>How the major data or system entities are stored, processed
+                    and organized.</del>
+                </div>
+                <div class="lindent0a">
+                    <div><del>List any databases or data storage items</del></div>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div><i>4.2. Data dictionary</i></div>
+                <div>
+                    <del>Alphabetically list the system entities or major data along
+                    with their types and descriptions. If you provided a
+                    functional description  in  Section 3.2, list all the
+                    functions and function parameters. If you provided an OO
+                    description, list the objects and its attributes, methods
+                    and method parameters.</del>
+                </div>
+            </div>
+        </div>
+        <div ID=" V.5. Component design" class="lindent00">
+            <div>
+                <b>5. Component design</b>
+            </div>
+            <div class="lindent00">
+                <del>In this section, we take a closer look at what each
+                component does in a more systematic way. If you gave
+                a functional description in section 3.2, provide a summary
+                of your algorithm for each function listed in 3.2 in procedural
+                description language (PDL) or pseudocode. If you gave an OO
+                description, summarize each object member function for all the
+                objects listed in 3.2 in PDL or pseudocode. Describe any local
+                data when necessary.</del>
+            </div>
+        </div>
+        <div ID=" V.6. Human interface design" class="lindent00">
+            <div>
+                <b>6. Human interface design</b>
+            </div>
+            <div class="lindent00">
+                <div><i>6.1. Overview of user interface</i></div>
+                <div class="lindent00">
+                    <del>Describe the functionality of the system from the user’s
+                    perspective. Explain  how the user will be  able  to use
+                    your system to complete  all the  expected  features and
+                    the  feedback information that will be displayed for the
+                    user</del>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div><i>6.2. Screen images</i></div>
+                <div class="lindent00">
+                    <del>Display screenshots showing the interface from the user’s
+                    perspective. These can be  handdrawn or you can use an
+                    automated drawing tool. Just make them as accurate as
+                    possible. (Graph paper works well.)</del>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div><i>6.3. Screen objects and actions</i></div>
+                <div class="lindent00">
+                    <del>A discussion of screen objects and actions associated with
+                    those objects.</del>
+                </div>
+            </div>
+        </div>
+        <div ID=" V.7. Requirements matrix" class="lindent00">
+            <div>
+                <div><b>7. Requirements matrix</b></div>
+                <div class="lindent00">
+                    <del>Provide a cross­reference that traces components and data
+                    structures to the requirements in your SRS document.
+                    Use  a  tabular  format to show  which system  components
+                    satisfy each of the  functional requirements from the SRS.
+                    Refer to the functional requirements by the numbers/codes
+                    that you gave them in the SRS.</del>
+                </div>
+            </div>
+        </div>
+        <div ID=" V.8. Appendices" class="lindent00">
+            <div>
+                <div><b>8. Appendices</b></div>
+                <div class="lindent00">
+                    None
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+    </div>
+</div>
+
+
+<div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/huyj2ee/se-iconix-use-case-driven-design-case-2019-04.htm</div>
+<div id="githubver" class="hidden">0.0.1</div>
+<script>doDefaultDecorate();</script>
+<script>
+function cloneHtmlContent(srcId, desId) {
+  let srcElem = document.getElementById(srcId);
+  if (srcElem !== null && typeof srcElem.innerHTML === "string") {
+    let desElem = document.getElementById(desId);
+    if (desElem !== null && typeof desElem.innerHTML === "string") {
+      desElem.innerHTML = srcElem.innerHTML;
+    }
+  }
+}
+
+function doHighlight(elemId, reqs) {
+  const ESPAN = "</span>";
+  const CLASSES = [
+    "hl_black_tor",        // 0
+    "hl_azure_dra",        // 1
+    "hl_vermilion_bir",    // 2
+    "hl_yellow_qil",       // 3
+    "hl_white_tig"         // 4
+  ];
+
+  let elem = document.getElementById(elemId);
+  let chunks = [];
+  let content = elem.innerHTML;
+  let idx = 0;
+  if (elem !== null && typeof elem.innerHTML === "string") {
+    for (let i = 0; i < reqs.length; i++) {
+      let req = reqs[i];
+      let id = content.indexOf(req[0], idx);
+      if (id < 0) {
+        return false;
+      }
+      chunks[chunks.length] = [idx, id]
+      idx = id + req[0].length;
+    }
+  }
+  let highlightedContent = "";
+  for (let i = 0; i < chunks.length; i++) {
+    highlightedContent += content.substring(chunks[i][0], chunks[i][1]);
+    let clId = reqs[i][1];
+    let varId = 0;
+    let tmpClId = Math.floor(clId / 100);
+    if (tmpClId > 0) {
+      clId = tmpClId;
+      varId = 2;
+    }
+    else {
+      tmpClId = Math.floor(clId / 10);
+      if (tmpClId > 0) {
+        clId = tmpClId;
+        varId = 1;
+      }
+    }
+    highlightedContent +=
+      `<span class="${CLASSES[clId]}${varId}">${reqs[i][0]}</span>`;
+  }
+  highlightedContent += content.substring(idx, content.length);
+  elem.innerHTML = highlightedContent;
+  return true;
+}
+
+cloneHtmlContent("narrative_source", "srsnarrative");
+cloneHtmlContent("narrative_source", "highlightednarrative");
+let highlightResult = doHighlight(
+  "highlightednarrative",
+  [
+    ["Lines 98", 40],
+    ["The game", 40],
+    ["balls", 40],
+    ["generated", 10],
+    ["board", 40],
+    ["player", 40],
+    ["ball moving", 10],
+    ["do scores", 10],
+    ["colour", 20],
+    ["straight lines", 40],
+    ["is started", 10],
+    ["page", 40],
+    ["load/refresh", 10],
+    ["reset button", 40],
+    ["clicked", 10],
+    ["reseting", 10],
+    ["scores", 40],
+    ["removed", 10],
+    ["displayed", 10],
+    ["score board", 40],
+    ["total scores", 40],
+    ["preset limitation", 40],
+    ["wins a price", 10],
+    ["show", 10],
+    ["hidden content", 40],
+    ["another system", 40],
+    ["empty", 20],
+  ]
+);
+if (!highlightResult) {
+  alert('highlight error for div id #highlightednarrative');
+}
+</script>
+</div>
+
