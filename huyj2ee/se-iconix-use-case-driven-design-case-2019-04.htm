@@ -130,6 +130,22 @@
                         </i>
                     </div>
                 </div>
+                <div class="lindent0a">
+                    <div>
+                        How to determine if game is over?
+                    </div>
+                    <div class="lindent00">
+                        &#x261E;
+                        <i>
+                            Game is over if ball generating could not be
+                            executed or after a ball generating, no new ball
+                            move could be conducted. This means that game is
+                            over if remains empty cells count of the game board
+                            (the cells that have no ball occupied) should be
+                            greater than 5 cells.
+                        </i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -493,7 +509,7 @@
                       border="0"
                       data-original-height="461"
                       data-original-width="721"
-                      src="https://1.bp.blogspot.com/-gmB3znOajPE/Xoy6AP3kXdI/AAAAAAAAAN4/ULOqetinKhEDzJxvImQ1lszTEQpg1ueQACNcBGAsYHQ/s1600/Domain_Classes.png"
+                      src="https://1.bp.blogspot.com/-B1Qmb4lbgT8/XpA9BhZhaxI/AAAAAAAAAO0/tm4QtkAKx-kuOKj7Et9d2iNnfiVuf7NGQCNcBGAsYHQ/s1600/Domain_Classes.png"
                     />
                 </div>
             </div>
@@ -519,9 +535,9 @@
 
 
     </div>
-    <div ID=" III. Use cases identifying" class="para0">
+    <div ID=" III. Interaction analyzing" class="para0">
         <div>
-            <b>III. Use cases identifying</b>
+            <b>III. Interaction analyzing</b>
             <input
               class="view_switch"
               type="button"
@@ -571,7 +587,7 @@
                 the technical view for SRS documents.
             </div>
         </div>
-        <div ID=" III.1. Actors identifying" class="lindent00">
+        <div ID=" III.2. Use cases identifying" class="lindent00">
             <div>
                 <b>2. Use cases identifying</b>
             </div>
@@ -617,6 +633,207 @@
                 <div class="lindent0b">
                     <i>Reset Game</i>
                 </div>
+            </div>
+        </div>
+        <div ID=" III.3. Use cases analyzing" class="lindent00">
+            <div>
+                <b>3. Use cases analyzing</b>
+            </div>
+            <div class="lindent00">
+                <div>
+                    <i>Player</i>
+                </div>
+                <div class="lindent0a">
+                    <div><i>Reset Game</i></div>
+                    <div class="lindent0b">
+                        Player clicks reset button.
+                    </div>
+                    <div class="lindent0b">
+                        Reset button sends reset event to game application.
+                    </div>
+                    <div class="lindent0b">
+                        Game application renders initial game board.
+                    </div>
+                    <div class="lindent0b">
+                        <div>
+                            Game application generates three initial balls:
+                        </div>
+                        <div class="lindent0c">
+                            Game application creates new three balls with
+                            random colour and cell position.
+                        </div>
+                        <div class="lindent0c">
+                            Game application renders this generating animation.
+                        </div>
+                    </div>
+                    <div class="lindent0b">
+                        Game application waits player for a ball move.
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div><i>Move Ball</i></div>
+                    <div class="lindent00">
+                        <div>
+                            To make a move ball, player needs to make two steps:
+                        </div>
+                        <div class="lindent0b">
+                            Select a ball.
+                        </div>
+                        <div class="lindent0b">
+                            Select an empty cell to move to.
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Happy path flow</i> (after moving, game
+                            application waits for a new ball move):
+                        </div>
+                        <div class="lindent00">
+                            1. Player clicks a ball.
+                        </div>
+                        <div class="lindent00">
+                            2. Game application renders focused animation for
+                            target ball.
+                        </div>
+                        <div class="lindent00">
+                            3. Game application waits player for a destination
+                            cell request.
+                        </div>
+                        <div class="lindent00">
+                            4. Player clicks an empty cell.
+                        </div>
+                        <div class="lindent00">
+                            5. Game application renders ball moving animation.
+                        </div>
+                        <div class="lindent00">
+                            6. Game application generates three new balls and
+                            renders this generating animation.
+                        </div>
+                        <div class="lindent00">
+                            7. Game application waits player for a new ball
+                            move.
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Alternative flow 1</i> (after moving, game is
+                            over). At step #5 of happy path, the game is over.
+                            Process is continued as below steps:
+                        </div>
+                        <div class="lindent00">
+                            A6. Alert message "Game Over" as an HTML5 alert.
+                        </div>
+                        <div class="lindent00">
+                            A7. Game application puts system into Game Over
+                            state which prevents player make any futher ball
+                            moving.
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Alternative flow 2</i> (after moving, some balls
+                            is removed). At step #5 of happy path, some balls is
+                            removed following game logic. Process is continued
+                            as below steps:
+                        </div>
+                        <div class="lindent00">
+                            A6. Game application removes scored balls and
+                            renders this removing animation.
+                        </div>
+                        <div class="lindent00">
+                            A7. Game application renderes updated total scores
+                            to score board.
+                        </div>
+                        <div class="lindent00">
+                            Process is continued at happy path flow's step #7.
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Alternative flow 3</i> (balls generating results
+                            in some score is done). At step #6 of happy path
+                            flow, there are five or more balls of the
+                            same colour consecutively in straight lines.
+                            Process is continued as below steps: 
+                        </div>
+                        <div class="lindent00">
+                            A7. Game application removes scored balls and
+                            renders this removing animation.
+                        </div>
+                        <div class="lindent00">
+                            A8. Game application renderes updated total scores
+                            to score board.
+                        </div>
+                        <div class="lindent00">
+                            Process is continued at happy path flow's step #7.
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Alternative flow 4</i> (Player switchs target
+                            ball). At step #4 of happy path flow, Player clicks
+                            a ball instead of click an empty cell. Process is
+                            continued as below steps:
+                        </div>
+                        <div class="lindent00">
+                            A5. Game application renders previous focused
+                            ball as normal ball (no animation).
+                        </div>
+                        <div class="lindent00">
+                            Process is continued at happy path flow's step #2
+                            with focused ball is the switched ball one.
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Exception flow 1</i> (Game board is empty)
+                            At step #A6 of alternative flow 2, game board is
+                            empty. Process is continued as below steps:
+                        </div>
+                        <div class="lindent00">
+                            E1. Alert message "You won price" as an HTML5 alert.
+                        </div>
+                        <div class="lindent00">
+                            E2. Game application puts system into win price
+                            state which prevents player make any futher ball
+                            moving.
+                        </div>
+                        <div class="lindent00">
+                            E3. Game application sends notify to content onwer
+                            about this event.
+                        </div>
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <i>View Score</i>
+                </div>
+            </div>
+        </div>
+        <div ID=" III.4. System state analyzing" class="lindent00">
+            <div>
+                <b>4. System state analyzing</b>
+            </div>
+            <div class="lindent00">
+                <del>
+                Most game is stateful system and this system is too.
+                <br />
+                On use case...
+                <br />
+                If player click a ball ... previous, then click another...
+                <br />
+                If palyer click an empty cell but not click a ball previously...
+                <br />
+                The behavior is differnce because the system is state full.
+                <br />
+                This section try to analyst this base on use case description
+                analyzing.
+                </del>
+            </div>
+            <div class="lindent00">
+                <div><i>4.1 State identifying</i></div>
+            </div>
+            <div class="lindent00">
+                <div><i>4.2 State machine diagram</i></div>
             </div>
         </div>
 
@@ -841,7 +1058,17 @@
                     <b>4.1. Player</b>
                 </div>
                 <div class="lindent00">
-                    <b>4.1.1. Reset Game</b>
+                    <div><b>4.1.1. Reset Game</b></div>
+                    <div class="lindent00">
+                        <img
+                          border="0"
+                          data-original-height="224"
+                          data-original-width="451"
+                          src="https://1.bp.blogspot.com/-sy7fsQttfNw/XpB6gl5SffI/AAAAAAAAAPA/jOBknSPG7FwhXwYREv6bMyA0nx1-5_GowCNcBGAsYHQ/s1600/Reset_UC.png"
+                        />
+                    </div>
+                </div>
+                <div id="4_1_1_reset_game_uc" class="lindent00">
                 </div>
                 <div class="lindent00">
                     <b>4.1.2. Move Ball</b>
@@ -985,34 +1212,90 @@
                 <b>2. System overview</b>
             </div>
             <div class="lindent00">
-                <del>General description of the functionality, context and design</del>
+                Overview, Line 98 is an interactive game application. It
+                accepts user input about reset command request, move a ball
+                request to make decision following Line 98 game logic and feeds
+                back user about his/her current score, game balls and its
+                animation represents: ball generating, ball moving and ball
+                being removed. It also notifies the Content Owner system to
+                decode the hidden content, show them to user in the case of
+                user win a price with his/her total scores exceeds the price
+                score limitation or notifies user that the game is over in the
+                case of game is over.
             </div>
-            <div class="lindent00">
-                <del>Background information</del>
+            <div
+              style="position: relative; left: 10px; width: 800px;"
+              class="para_sep1"
+            >
+                <img
+                  border="0"
+                  data-original-height="505"
+                  data-original-width="739"
+                  src="https://1.bp.blogspot.com/-Zog5L_YDhOU/XozSMUU2R8I/AAAAAAAAAOo/8qeV9fnF-qsRA31LJJ4Q-V39KM9DioZAQCNcBGAsYHQ/s1600/Use_Cases.png"
+                />
             </div>
         </div>
         <div ID=" V.3. System architecture" class="lindent00">
             <div>
                 <b>3. System architecture</b>
             </div>
-            <div class="lindent00">
+            <div ID=" V.3.1. Architectural design" class="lindent00">
                 <div><i>3.1. Architectural design</i></div>
                 <div class="lindent00">
-                    <del>How responsibilities are partitioned and assigned to
-                    subsystems?</del>
-                </div>
-                <div class="lindent00">
-                    <del>Layers: from high level which interacts with user down to
-                    low level which interacts with system platform.</del>
+                    <div
+                      style="position: relative; left: -40px; width: 800px; text-align: center;"
+                      class="para_sep0"
+                    >
+                        <img
+                          border="0"
+                          data-original-height="530"
+                          data-original-width="381"
+                          src="https://1.bp.blogspot.com/-dmD6_S6PWAE/XpHeN1TdHHI/AAAAAAAAAPM/ltGvWm3VPckSMs7n1qndD3S_vpHTRE8VACNcBGAsYHQ/s1600/Architecture.png"
+                        />
+                    </div>
                 </div>
             </div>
-            <div class="lindent00">
+            <div ID=" V.3.2. Decomposition description" class="lindent00">
                 <div><i>3.2. Decomposition description</i></div>
                 <div class="lindent00">
-                    <del>Describle the classes structure and their relationships.</del>
+                    <div><i>Static structure</i></div>
+                    <div class="lindent00">
+                        <div
+                          style="position: relative; left: -150px; width: 850px; text-align: center;"
+                          class="para_sep0"
+                        >
+                            <img
+                              border="0"
+                              data-original-height="591"
+                              data-original-width="844"
+                              src="https://1.bp.blogspot.com/-vb7oIGzIqWc/XpHo1GRaQKI/AAAAAAAAAPY/qC-MH3GjV50DI_G-JQ7zQMlGFpPsulzAwCNcBGAsYHQ/s1600/DomainClasses.png"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div><i>Use case realizations</i></div>
+                    <div class="lindent00">
+                        <div><i>Player</i></div>
+                        <div class="lindent00">
+                            <div><i>Reset Game</i></div>
+                            <div id="reset_game_png"></div>
+                        </div>
+                        <div class="lindent00">
+                            <div><i>Move Ball</i></div>
+                            <div id="reset_game__"></div>
+                        </div>
+                        <div class="lindent00">
+                            <div><i>View Score</i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div><i>Implementation class diagram</i></div>
+                    <div id="designclasses_png"></div>
                 </div>
             </div>
-            <div class="lindent00">
+            <div ID=" V.3.3. Design rationale" class="lindent00">
                 <div><i>3.3. Design rationale</i></div>
                 <div class="lindent0a">
                     <del>For selecting the architecture</del>
@@ -1073,28 +1356,38 @@
             </div>
             <div class="lindent00">
                 <div><i>6.1. Overview of user interface</i></div>
-                <div class="lindent00">
-                    <del>Describe the functionality of the system from the user’s
-                    perspective. Explain  how the user will be  able  to use
-                    your system to complete  all the  expected  features and
-                    the  feedback information that will be displayed for the
-                    user</del>
+                <div class="lindent0a">
+                    <div><i>Player</i></div>
+                    <div class="lindent0b">
+                        <div>Reset Game</div>
+                    </div>
+                    <div class="lindent0b">
+                        <div>Move Ball</div>
+                    </div>
+                    <div class="lindent0b">
+                        <div>View Score</div>
+                    </div>
                 </div>
             </div>
             <div class="lindent00">
                 <div><i>6.2. Screen images</i></div>
-                <div class="lindent00">
-                    <del>Display screenshots showing the interface from the user’s
-                    perspective. These can be  handdrawn or you can use an
-                    automated drawing tool. Just make them as accurate as
-                    possible. (Graph paper works well.)</del>
+                <div class="lindent0a">
+                    <div><i>Player</i></div>
+                    <div class="lindent0b">
+                        <div>Reset Game</div>
+                    </div>
+                    <div class="lindent0b">
+                        <div>Move Ball</div>
+                    </div>
+                    <div class="lindent0b">
+                        <div>View Score</div>
+                    </div>
                 </div>
             </div>
             <div class="lindent00">
                 <div><i>6.3. Screen objects and actions</i></div>
                 <div class="lindent00">
-                    <del>A discussion of screen objects and actions associated with
-                    those objects.</del>
+                    @TODO: cell, ball, reset button == cell is empty ball
                 </div>
             </div>
         </div>
@@ -1136,9 +1429,112 @@
 
 
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/huyj2ee/se-iconix-use-case-driven-design-case-2019-04.htm</div>
-<div id="githubver" class="hidden">0.0.1</div>
+<div id="githubver" class="hidden">0.0.2</div>
 <script>doDefaultDecorate();</script>
 <script>
+function fillHscrollableImg(
+  elemId,
+  imgSrc,
+  orgW,
+  height,
+  leftAdj,
+  clippedW,
+  scrollClass
+) {
+  let elem = document.getElementById(elemId);
+  if (!(elem !== null && typeof elem.innerHTML === "string")) {
+    return false;
+  }
+  let ww = orgW;
+  let hh = height;
+  let scrollDiv =
+    typeof scrollClass === "string" ?
+    `<div class="${scrollClass}">`:
+    "<div>";
+  elem.innerHTML = `
+    <div style="position: relative; left: ${leftAdj}px; width: ${clippedW}px;">
+        ${scrollDiv}
+            <div style="width:${ww}px; height:${hh}px">
+                <img
+                  border="0"
+                  data-original-height="${height}"
+                  data-original-width="${orgW}"
+                  height="${height}
+                  width="${orgW}"
+                  src="${imgSrc}"
+                />
+            </div>
+        </div>
+    </div>
+  `;
+  return true;
+}
+
+const UC_DESC_EN = {
+  id :        "ID",
+  ucName:     "Use Case Name",
+  desc:       "Description",
+  xref:       "XRef",
+  priAct:     "Primary Actor",
+  secAct:     "Secondary Actor",
+  incUc:      "Include use cases",
+  trigger:    "Trigger",
+  preCond:    "Precondition",
+  postCond:   "Postconditions",
+  basicPath:  "Basic Path",
+  altPath:    "Alternative Paths",
+  exceptPath: "Exception Paths",
+  other:      "Other",
+  none:       "None"
+};
+const UC_DESC_PATH_IDS = [10, 11, 12];
+function fillUCDesc(elemId, ucDesc) {
+  let elem = document.getElementById(elemId);
+  if (!(elem !== null && typeof elem.innerHTML === "string")) {
+    return false;
+  }
+  if (!Array.isArray(ucDesc)) {
+    return false;
+  }
+  let fillPath = function(steps) {
+    if (steps === null) {
+      return "";
+    }
+    return [
+      '<ol class="uc_desc_flow"><li>',
+      steps.join("</li><li>"),
+      '</li></ol>'
+    ].join("");
+  }
+  let tabElem = document.createElement("TABLE");
+  tabElem.className = "uc_description";
+  for (let i = 0; i < ucDesc.length; i++) {
+    let row = ucDesc[i];
+    if (!Array.isArray(row)) {
+      return false;
+    }
+    let rowElem = document.createElement("TR");    
+    for (let j = 0; j < 2; j++) {
+      let colElem = document.createElement("TD");
+      if (j === 0) {
+        colElem.innerHTML = "<b>" + row[j] + "</b>";
+      }
+      else {
+        if (UC_DESC_PATH_IDS.includes(i)) {
+          colElem.innerHTML = fillPath(row[j]);
+        }
+        else {
+          colElem.innerHTML = row[j];
+        }
+      }
+      rowElem.appendChild(colElem);
+    }
+    tabElem.appendChild(rowElem);
+  }
+  elem.appendChild(tabElem);
+  return true;
+}
+
 function cloneHtmlContent(srcId, desId) {
   let srcElem = document.getElementById(srcId);
   if (srcElem !== null && typeof srcElem.innerHTML === "string") {
@@ -1161,18 +1557,19 @@ function doHighlight(elemId, reqs) {
 
   let elem = document.getElementById(elemId);
   let chunks = [];
-  let content = elem.innerHTML;
   let idx = 0;
-  if (elem !== null && typeof elem.innerHTML === "string") {
-    for (let i = 0; i < reqs.length; i++) {
-      let req = reqs[i];
-      let id = content.indexOf(req[0], idx);
-      if (id < 0) {
-        return false;
-      }
-      chunks[chunks.length] = [idx, id]
-      idx = id + req[0].length;
+  if (!(elem !== null && typeof elem.innerHTML === "string")) {
+    return false;
+  }
+  let content = elem.innerHTML;
+  for (let i = 0; i < reqs.length; i++) {
+    let req = reqs[i];
+    let id = content.indexOf(req[0], idx);
+    if (id < 0) {
+      return false;
     }
+    chunks[chunks.length] = [idx, id]
+    idx = id + req[0].length;
   }
   let highlightedContent = "";
   for (let i = 0; i < chunks.length; i++) {
@@ -1236,6 +1633,62 @@ let highlightResult = doHighlight(
 if (!highlightResult) {
   alert('highlight error for div id #highlightednarrative');
 }
+
+let ucDesc = UC_DESC_EN;
+let fillUC4_1_1_reset_game_uc = fillUCDesc("4_1_1_reset_game_uc", [
+  [ucDesc.id, "ResetGame"],
+  [ucDesc.ucName, "Reset Game"],
+  [ucDesc.desc, ""],
+  [ucDesc.xref, ""],
+  [ucDesc.priAct, "Player"],
+  [ucDesc.secAct, "None"],
+  [ucDesc.incUc, "None"],
+  [ucDesc.trigger, ""],
+  [ucDesc.preCond, ""],
+  [ucDesc.postCond, [
+      "Game have been initialized with three balls generated and game is in ",
+      "<i>Move Waiting</i> state."
+    ].join("")
+  ],
+  [ucDesc.basicPath, [
+      "f",
+      "s",
+      "m"
+    ]
+  ],
+  [ucDesc.altPath, null
+  ],
+  [ucDesc.exceptPath, null],
+  [ucDesc.other, null]
+]);
+if (!(fillUC4_1_1_reset_game_uc)) {
+  alert("Failure to fill use case description 4_1_1_reset_game_uc");
+}
+
+fillHscrollableImg(
+    "reset_game_png",
+    [
+      "https://1.bp.blogspot.com/-NZamg8UYRUg/XpHo-0yOpLI/AAAAAAAAAPc/",
+      "0G_atvexKVEZzpLJmR0fl_NkB9OLmV1fACNcBGAsYHQ/s1600/ResetGame.png"
+    ].join(""),
+    951,
+    821,
+    -155,
+    860,
+    "hscrollable_container"
+);
+fillHscrollableImg(
+    "designclasses_png",
+    [
+      "https://1.bp.blogspot.com/-_H8Iy65rZug/XpLnDlil-uI/AAAAAAAAAPs/",
+      "R483igLaYiIAqnUnb0FcslVPVzt6ny4YwCNcBGAsYHQ/s1600/DesignClasses.png"
+    ].join(""),
+    678,
+    789,
+    -30,
+    678,
+    null
+);
 </script>
 </div>
 
