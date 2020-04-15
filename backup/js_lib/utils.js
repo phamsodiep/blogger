@@ -186,3 +186,59 @@ function clearHighlighted(elemId, removeClass) {
   }
   return true;
 }
+
+function doScrollIntoViewDecoration() {
+  let topLvElem = document.getElementById("entry_article");
+  // Extract targetId
+  let targetId = "";
+  let curUrl = window.location.href;
+  let idx = curUrl.length;
+  for (let ch = curUrl.charAt(--idx); ch !== '/'; ch = curUrl.charAt(--idx)) {
+    if(ch === "#") {
+      targetId = curUrl.substring(idx + 1);
+      break;
+    }
+  }
+  // id prefixed with 'cmd_' is reserved to command param sent to app
+  let isCmd = targetId.startsWith("cmd_");
+  if (isCmd) {
+    return;
+  }
+  // retrieve element
+  let targetElem = document.getElementById(targetId);
+  if (!(targetElem !== null && topLvElem !== null)) {
+    return;
+  }
+  // travel up and search for hidden div
+  let classNames = [];
+  let groups = [];
+  let stateNames = [];
+  for (let elem = targetElem.parentNode; elem !== topLvElem; elem = elem.parentNode) {
+    if (elem.nodeName === "DIV" &&  elem.style.display === "none") {
+      let className = elem.className;
+      let endIdx = className.indexOf("$");
+      if (endIdx >= 0) {
+        classNames[classNames.length] = className;
+        groups[groups.length] = className.substring(0, endIdx);
+        stateNames[stateNames.length] =
+          className.substring(endIdx + 1).split("_").join(" ");
+      }
+    }
+  }
+  // do decoration by clicking button
+  for(let i = 0; i < groups.length; i++) {
+    let elemId = groups[i] + "$";
+    let elem = document.getElementById(elemId);
+    if (elem !== null) {
+      for (
+        let curStateName = elem.value.toString();
+        curStateName !== stateNames[i];
+        curStateName = elem.value.toString()
+      ) {
+        elem.click();
+      }
+    }
+  }
+  // Scroll to
+  targetElem.scrollIntoView();
+}

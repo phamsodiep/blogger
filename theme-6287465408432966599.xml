@@ -3909,6 +3909,62 @@ ol.uc_desc_flow {
                   }
               }
           }
+
+          function doScrollIntoViewDecoration() {
+            let topLvElem = document.getElementById(&quot;entry_article&quot;);
+            // Extract targetId
+            let targetId = &quot;&quot;;
+            let curUrl = window.location.href;
+            let idx = curUrl.length;
+            for (let ch = curUrl.charAt(--idx); ch !== &quot;/&quot;; ch = curUrl.charAt(--idx)) {
+              if(ch === &quot;#&quot;) {
+                targetId = curUrl.substring(idx + 1);
+                break;
+              }
+            }
+            // id prefixed with 'cmd_' is reserved to command param sent to app
+            let isCmd = targetId.startsWith(&quot;cmd_&quot;);
+            if (isCmd) {
+              return;
+            }
+            // retrieve element
+            let targetElem = document.getElementById(targetId);
+            if (!(targetElem !== null &amp;&amp; topLvElem !== null)) {
+              return;
+            }
+            // travel up and search for hidden div
+            let classNames = [];
+            let groups = [];
+            let stateNames = [];
+            for (let elem = targetElem.parentNode; elem !== topLvElem; elem = elem.parentNode) {
+              if (elem.nodeName === &quot;DIV&quot; &amp;&amp;  elem.style.display === &quot;none&quot;) {
+                let className = elem.className;
+                let endIdx = className.indexOf(&quot;$&quot;);
+                if (endIdx &gt;= 0) {
+                  classNames[classNames.length] = className;
+                  groups[groups.length] = className.substring(0, endIdx);
+                  stateNames[stateNames.length] =
+                    className.substring(endIdx + 1).split(&quot;_&quot;).join(&quot; &quot;);
+                }
+              }
+            }
+            // do decoration by clicking button
+            for(let i = 0; i &lt; groups.length; i++) {
+              let elemId = groups[i] + &quot;$&quot;;
+              let elem = document.getElementById(elemId);
+              if (elem !== null) {
+                for (
+                  let curStateName = elem.value.toString();
+                  curStateName !== stateNames[i];
+                  curStateName = elem.value.toString()
+                ) {
+                  elem.click();
+                }
+              }
+            }
+            // Scroll to
+            targetElem.scrollIntoView();
+          }
       </script>
 
 
