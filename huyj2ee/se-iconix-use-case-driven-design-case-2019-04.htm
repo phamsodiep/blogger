@@ -504,14 +504,7 @@
                 Domain model:
             </div>
             <div class="lindent00">
-                <div>
-                    <img
-                      border="0"
-                      data-original-height="461"
-                      data-original-width="721"
-                      src="https://1.bp.blogspot.com/-B1Qmb4lbgT8/XpA9BhZhaxI/AAAAAAAAAO0/tm4QtkAKx-kuOKj7Et9d2iNnfiVuf7NGQCNcBGAsYHQ/s1600/Domain_Classes.png"
-                    />
-                </div>
+                <figure id="fig_domain_model_class_diag"></figure>
             </div>
             <div class="lindent00">
                 <div class="para_sep0">
@@ -1260,17 +1253,7 @@
                 <div class="lindent00">
                     <div><i>Static structure</i></div>
                     <div class="lindent00">
-                        <div
-                          style="position: relative; left: -150px; width: 850px; text-align: center;"
-                          class="para_sep0"
-                        >
-                            <img
-                              border="0"
-                              data-original-height="591"
-                              data-original-width="844"
-                              src="https://1.bp.blogspot.com/-vb7oIGzIqWc/XpHo1GRaQKI/AAAAAAAAAPY/qC-MH3GjV50DI_G-JQ7zQMlGFpPsulzAwCNcBGAsYHQ/s1600/DomainClasses.png"
-                            />
-                        </div>
+                        <figure id="fig_designed_class_diag"></figure>
                     </div>
                 </div>
                 <div class="lindent00">
@@ -1279,7 +1262,7 @@
                         <div><i>Player</i></div>
                         <div class="lindent00">
                             <div><i>Reset Game</i></div>
-                            <div id="reset_game_png"></div>
+                            <figure id="fig_reset_game_seq_diag"></figure>
                         </div>
                         <div class="lindent00">
                             <div><i>Move Ball</i></div>
@@ -1432,14 +1415,16 @@
 <div id="githubver" class="hidden">0.0.2</div>
 <script>doDefaultDecorate();</script>
 <script>
-function fillHscrollableImg(
+function fillFigure(
   elemId,
   imgSrc,
   orgW,
   height,
   leftAdj,
   clippedW,
-  scrollClass
+  scrollClass,
+  figId,
+  figCaption
 ) {
   let elem = document.getElementById(elemId);
   if (!(elem !== null && typeof elem.innerHTML === "string")) {
@@ -1451,6 +1436,12 @@ function fillHscrollableImg(
     typeof scrollClass === "string" ?
     `<div class="${scrollClass}">`:
     "<div>";
+  let figCap = typeof figCaption === "string" ?
+    `<i>${figCaption}</i>` : "";
+  let figcaption = "";
+  if (typeof figId === "string") {
+    figcaption = `<figcaption><b>Figure</b> ${figId}: ${figCap}</figcaption>`;
+  }
   elem.innerHTML = `
     <div style="position: relative; left: ${leftAdj}px; width: ${clippedW}px;">
         ${scrollDiv}
@@ -1465,6 +1456,7 @@ function fillHscrollableImg(
                 />
             </div>
         </div>
+        <div style="text-align: center" class="para_sep0">${figcaption}</div>
     </div>
   `;
   return true;
@@ -1664,20 +1656,7 @@ let fillUC4_1_1_reset_game_uc = fillUCDesc("4_1_1_reset_game_uc", [
 if (!(fillUC4_1_1_reset_game_uc)) {
   alert("Failure to fill use case description 4_1_1_reset_game_uc");
 }
-
-fillHscrollableImg(
-    "reset_game_png",
-    [
-      "https://1.bp.blogspot.com/-NZamg8UYRUg/XpHo-0yOpLI/AAAAAAAAAPc/",
-      "0G_atvexKVEZzpLJmR0fl_NkB9OLmV1fACNcBGAsYHQ/s1600/ResetGame.png"
-    ].join(""),
-    951,
-    821,
-    -155,
-    860,
-    "hscrollable_container"
-);
-fillHscrollableImg(
+fillFigure(
     "designclasses_png",
     [
       "https://1.bp.blogspot.com/-_H8Iy65rZug/XpLnDlil-uI/AAAAAAAAAPs/",
@@ -1688,6 +1667,48 @@ fillHscrollableImg(
     -30,
     678,
     null
+);
+fillFigure(
+    "fig_domain_model_class_diag",
+    [
+      "https://1.bp.blogspot.com/-B1Qmb4lbgT8/XpA9BhZhaxI/AAAAAAAAAO0/",
+      "tm4QtkAKx-kuOKj7Et9d2iNnfiVuf7NGQCNcBGAsYHQ/s1600/Domain_Classes.png"
+    ].join(""),
+    721,
+    461,
+    0,
+    721,
+    null,
+    "II",
+    "Basic investigation domain model classes"
+);
+fillFigure(
+    "fig_designed_class_diag",
+    [
+      "https://1.bp.blogspot.com/-vb7oIGzIqWc/XpHo1GRaQKI/AAAAAAAAAPY/",
+      "qC-MH3GjV50DI_G-JQ7zQMlGFpPsulzAwCNcBGAsYHQ/s1600/DomainClasses.png"
+    ].join(""),
+    844,
+    591,
+    -150,
+    850,
+    null,
+    "3.3.2.1",
+    "System overview class diagram"
+);
+fillFigure(
+    "fig_reset_game_seq_diag",
+    [
+      "https://1.bp.blogspot.com/-NZamg8UYRUg/XpHo-0yOpLI/AAAAAAAAAPc/",
+      "0G_atvexKVEZzpLJmR0fl_NkB9OLmV1fACNcBGAsYHQ/s1600/ResetGame.png"
+    ].join(""),
+    951,
+    821,
+    -196,
+    860,
+    "hscrollable_container",
+    "3.3.2.2",
+    "Reset Game sequence diagram"
 );
 </script>
 </div>
