@@ -3877,7 +3877,7 @@ ol.uc_desc_flow {
               }
             }
           }
-          function displaySwitch(me, classPrefix, captions) {
+          function switchDisplay(me, captions) {
               if (captions &amp;&amp; captions.length &gt; 1 &amp;&amp; me &amp;&amp; me.value) {
                   var curCaption = me.value;
                   var found = -1;
@@ -3898,7 +3898,7 @@ ol.uc_desc_flow {
                       me.value = captions[next];
                       // update display
                       for (var i = 0; i &lt; captions.length; i++) {
-                          var className = classPrefix.concat(&#39;_&#39;);
+                          var className = me.id;
                           className = className.concat(captions[i].replace(/ /g, &#39;_&#39;));
                           var newStyle = i == next ? &quot;display: block;&quot; : &quot;display: none;&quot;;
                           var elements = document.getElementsByClassName(className);
