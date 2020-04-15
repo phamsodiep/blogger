@@ -153,10 +153,11 @@
         <div>
             <b>II. Requirement analyzing</b>
             <input
+              id="requirement_analyzing$"
               class="view_switch"
               type="button"
               value="content is hidden"
-              onclick="displaySwitch(this, 'requirement_analyzing', ['content is displayed', 'content is hidden']);"
+              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
               title="click to show/hide Requirement analyzing content"
             />
         </div>
@@ -165,7 +166,7 @@
 
 
 
-<div class="requirement_analyzing_content_is_displayed" style="display: none;">
+<div class="requirement_analyzing$content_is_displayed" style="display: none;">
 
 
 
@@ -532,10 +533,11 @@
         <div>
             <b>III. Interaction analyzing</b>
             <input
+              id="usecases_identifying$"
               class="view_switch"
               type="button"
               value="content is hidden"
-              onclick="displaySwitch(this, 'usecases_identifying', ['content is displayed', 'content is hidden']);"
+              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
               title="click to show/hide Use cases identifying content"
             />
         </div>
@@ -544,7 +546,7 @@
 
 
 
-<div class="usecases_identifying_content_is_displayed" style="display: none;">
+<div class="usecases_identifying$content_is_displayed" style="display: none;">
 
 
 
@@ -845,10 +847,11 @@
         <div>
             <b>IV. SRS – Software requirements specification</b>
             <input
+              id="srs_doc$"
               class="view_switch"
               type="button"
               value="content is hidden"
-              onclick="displaySwitch(this, 'srs_doc', ['content is hidden', 'content is show']);"
+              onclick="switchDisplay(this, ['content is hidden', 'content is show']);"
               title="click to show/hide SRS document"
             />
         </div>
@@ -857,7 +860,7 @@
 
 
 
-<div class="srs_doc_content_is_show" style="display: none;">
+<div class="srs_doc$content_is_show" style="display: none;">
 
 
 
@@ -1135,10 +1138,11 @@
         <div>
             <b>V. SDD – Software design description</b>
             <input
+              id="sdd_doc$"
               class="view_switch"
               type="button"
               value="content is hidden"
-              onclick="displaySwitch(this, 'sdd_doc', ['content is hidden', 'content is show']);"
+              onclick="switchDisplay(this, ['content is hidden', 'content is show']);"
               title="click to show/hide SDD document"
             />
         </div>
@@ -1147,7 +1151,7 @@
 
 
 
-<div class="sdd_doc_content_is_show" style="display: none;">
+<div class="sdd_doc$content_is_show" style="display: none;">
 
 
 
@@ -1711,5 +1715,6 @@ fillFigure(
     "Reset Game sequence diagram"
 );
 </script>
+<script>doScrollIntoViewDecoration();</script>
 </div>
 
