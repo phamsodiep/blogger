@@ -242,3 +242,177 @@ function doScrollIntoViewDecoration() {
   // Scroll to
   targetElem.scrollIntoView();
 }
+
+const DiepSrcCode = {
+  FORMAT_JAVA: 0,
+  FORMAT_JS: 1,
+
+  FORMATS: [
+    // FORMAT_JAVA
+    [
+      ["  ", "&nbsp;&nbsp;"],
+      ["package", "<b style='color: olive;'>package</b>"],
+      ["import", "<b style='color: olive;'>import</b>"],
+      ["public", "<b style='color: green;'>public</b>"],
+      ["private", "<b style='color: green;'>private</b>"],
+      ["void", "<b style='color: green;'>void</b>"],
+      ["for", "<b style='color: maroon;'>for</b>"],
+      ["if", "<b style='color: maroon;'>if</b>"],
+      ["this", "<b style='color: maroon;'>this</b>"],
+      ["return", "<b style='color: maroon;'>return</b>"]
+    ],
+    // FORMAT_JS
+    [
+      ["  ", "&nbsp;&nbsp;"],
+      // keywords
+      ["import[ ]", "<b style='color: blue;'>import</b>&nbsp;"],
+      ["export[ ]", "<b style='color: blue;'>export</b>&nbsp;"],
+      ["extends[ ]", "<b style='color: blue;'>extends</b>&nbsp;"],
+      ["super[(]", "<b style='color: blue;'>super</b>("],
+      ["new[ ]", "<b style='color: blue;'>new</b>&nbsp;"],
+      ["constructor[(]", "<b style='color: darkgoldenrod;'>constructor</b>("],
+      ["[ ]undefined", "&nbsp;<b style='color: blueviolet;'>undefined</b>"],
+      ["[ ]null", "&nbsp;<b style='color: blue;'>null</b>"],
+      ["[ ]false", "&nbsp;<b style='color: blue;'>false</b>"],
+      ["[ ]true", "&nbsp;<b style='color: blue;'>true</b>"],
+      ["const[ ]", "<b style='color: blue;'>const</b>&nbsp;"],
+      ["let[ ]", "<b style='color: blue;'>let</b>&nbsp;"],
+      ["var[ ]", "<b style='color: blue;'>var</b>&nbsp;"],
+      ["for[ ]", "<b style='color: blue;'>for</b>&nbsp;"],
+      ["if[ ]", "<b style='color: blue;'>if</b>&nbsp;"],
+      ["else[ ]", "<b style='color: blue;'>else</b>&nbsp;"],
+      ["switch[(]", "<b style='color: blue;'>switch</b>("],
+      ["case[ ]", "<b style='color: blue;'>case</b>&nbsp;"],
+      ["break", "<b style='color: blue;'>break</b>"],
+      ["default:", "<b style='color: blue;'>default</b>:"],
+      ["this", "<b style='color: blue;'>this</b>"],
+      ["return[ ]", "<b style='color: blue;'>return</b>&nbsp;"],
+      ["typeof[ ]", "<b style='color: blue;'>typeof</b>&nbsp;"],
+      ["function[ ]", "<b style='color: blue;'>function</b>&nbsp;"],
+
+      // objects
+      ["document[.]", "<b style='color: darkgoldenrod;'>document</b>."],
+      ["Array", "<b style='color: blueviolet;'>Array</b>"],
+      ["Math[.]", "<b style='color: blueviolet;'>Math</b>."],
+      //["Object", "<b style='color: blueviolet;'>Object</b>"],
+      // methods
+      ["toString[(][)]", "<b style='color: blueviolet;'>toString</b>()"],
+      ["setTimeout[(]", "<b style='color: darkgoldenrod;'>setTimeout</b>("],
+      ["alert[(]", "<b style='color: darkgoldenrod;'>alert</b>("],
+      ["Object.assign[(]",
+        [
+          "<b style='color: blueviolet;'>Object</b>",
+          ".",
+          "<b style='color: darkgoldenrod;'>assign</b>("
+        ].join("")
+      ],
+    ]
+  ],
+
+  commentedOutHtmlWrap: function (s, skipBreak) {
+    if (skipBreak) {
+        return "<i style='color: teal;'>".concat(s, "</i>");
+    }
+    return "<i style='color: teal;'>".concat(s, "</i><br />");
+  },
+
+  formatLine: function (formatId, line, skipBreak) {
+    let formats = DiepSrcCode.FORMATS[formatId];
+    for (let j = 0; j < formats.length; j++) {
+        let format = formats[j];
+        let regExp = new RegExp(format[0], 'g');
+        line = line.replace(regExp, format[1])
+    }
+    if (skipBreak) {
+        return line;
+    }
+    return line.concat("<br />");
+  },
+
+  processCommentedOut: function (line, formatId) {
+    let idx = line.indexOf("//");
+    if (idx >= 0) {
+        let html =
+          DiepSrcCode.formatLine(formatId, line.substring(0, idx), true);
+        html = html.concat(
+          DiepSrcCode.commentedOutHtmlWrap(line.substring(idx, line.length))
+        );
+        return [true, html];
+    }
+    idx = line.indexOf("/*");
+    if (idx >= 0) {
+        let html =
+          DiepSrcCode.formatLine(formatId, line.substring(0, idx), true);
+        html = html.concat(
+          DiepSrcCode.commentedOutHtmlWrap(line.substring(idx, line.length))
+        );
+        return [false, html];;
+    }
+    return null;
+  },
+
+  detectCommentedOutClose: function (line, formatId) {
+      let idx = line.indexOf("*/");
+      if (idx >= 0) {
+          idx += 2;
+          let html =
+            DiepSrcCode.commentedOutHtmlWrap(line.substring(0, idx), true);
+          html = html.concat(
+            DiepSrcCode.formatLine(formatId, line.substring(idx, line.length))
+          );
+          return [false, html];
+      }
+      return [true, DiepSrcCode.commentedOutHtmlWrap(line)];
+  },
+
+  escapeJSX: function (txtId) {
+    let txtComp = document.getElementById(txtId);
+    if (txtComp !== null) {
+      let str = txtComp.value.toString();
+      let regExp = new RegExp("[<]", 'g');
+      str = str.replace(regExp, "&lt;");
+      regExp = new RegExp("[>]", 'g');
+      str = str.replace(regExp, "&gt;");
+      txtComp.value = str;
+    }
+  },
+
+  fillCFamilySourceCode: function (txtId, formatId) {
+    // parse and convert source code
+    let html = "";
+    let txtComp = document.getElementById(txtId);
+    let onCommentedOut = false;
+    if (txtComp) {
+      let lines = txtComp.value.split(/\r?\n/);
+      for (let i = 0; i < lines.length; i++) {
+          let line = lines[i];
+          if (onCommentedOut) {
+              let detect = DiepSrcCode.detectCommentedOutClose(line, formatId);
+              onCommentedOut = detect[0];
+              html = html.concat(detect[1]);
+              continue;
+          }
+          let commentedOut = DiepSrcCode.processCommentedOut(line, formatId);
+          if (commentedOut == null) {
+              html = html.concat(DiepSrcCode.formatLine(formatId, line));
+          }
+          else {
+              if (commentedOut[0]) {
+                  html = html.concat(commentedOut[1]);
+              }
+              else {
+                  html = html.concat(commentedOut[1]);
+                  onCommentedOut = true;
+              }
+          }
+      }
+
+      // apply converted source code to target div
+      let divElement = document.createElement("DIV");
+      divElement.innerHTML = html;
+      divElement.className = "txt_sourcecodefont1";
+      txtComp.parentNode.insertBefore(divElement, txtComp);
+    }
+  }
+};
+
