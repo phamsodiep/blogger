@@ -1,0 +1,1169 @@
+<div id="entry_article">
+<details class="hidden">
+    <summary>
+        <img
+          border="0"
+          data-original-width="1"
+          data-original-height="1"
+          width="1"
+          height="1"
+          src="https://1.bp.blogspot.com/-7F7q_2ctN5c/XeY2erXbvdI/AAAAAAAAAMI/19CLaBbK--4Kp5-69kxwMWpv84P0gZ8BQCLcBGAsYHQ/s1600/null.png"
+        />
+        <div id="entry_brief_tmp"><em><i>
+            React is a JavaScript library for building Web user interfaces. It
+            is maintained by Facebook. It supports renderring data to DOM
+            programmatically. Template is composed by JSX, a Javascript
+            extension supports embedded HTML. This blog entry shares some
+            basic concepts and how to leverage frame work to build Line 98 line
+            game step by step.<br />
+            <br />
+            <b>Audience:</b> software engineer with Javascript, CSS3 and UML
+            knowledge – <b>Topic:</b> React programming
+        </i></em></div>
+    </summary>
+    <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+</details>
+
+
+<div class="naturalsciencefont0">
+    <div ID=" I. Create a project" class="para_sep1">
+        <div>
+            <b>I. Create a project</b>
+        </div>
+        <div ID=" I.1. Prerequisites">
+            <div><b>1. Prerequisites</b></div>
+            <div class="lindent0a">
+                NodeJS
+            </div>
+        </div>
+        <div ID=" I.2. Create a project" class="para_sep1">
+            <div><b>2. Create a project</b></div>
+            <div class="lindent00">
+                <div>Launch below command:</div>
+                <div class="lindent00">
+                    npx create-react-app <i>line_98_game</i>
+                </div>
+                <div class="lindent0a">
+                    <div>Where:</div>
+                    <div class="lindent0b">
+                        <i>line_98_game</i>: project name, it is also the
+                        name of project folder
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ID=" I.3. Run project" class="para_sep1">
+            <div><b>3. Run project</b></div>
+            <div class="lindent00">
+                <div>
+                    Switch current folder to project folder and launch below
+                    command:
+                </div>
+                <div class="lindent00">
+                    npx start
+                </div>
+                <div>
+                    Open web browser to url <i>http://localhost:3000</i>
+                    for test.
+                </div>
+                <div class="lindent0a">
+                    <div>Notes:</div>
+                    <div class="lindent0b">
+                        <div>
+                            To export project into static HTML files so that it
+                            could be tested without NodeJS server. Launch below
+                            command:
+                        </div>
+                        <div class="lindent00">
+                            npx run build
+                        </div>
+                    </div>
+                    <div class="lindent0b">
+                        Exported static HTML files are located at folder:
+                        <i>build</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ID=" II. Line 98 implementation introduction" class="para_sep1">
+        <div>
+            <b>II. Line 98 implementation introduction</b>
+        </div>
+        <div ID=" II.1. Introduction">
+            <div><b>1. Introduction</b></div>
+            <div class="lindent00">
+                We will implement Line 98 game in React with design is located 
+                at <i>https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html</i>
+            </div>
+        </div>
+        <div ID=" II.2. Feature evolution" class="para_sep1">
+            <div><b>2. Feature evolution</b></div>
+            <div class="lindent00">
+                We are implementing system with learning React intent. We start
+                with no knowledge about React. To make thing easier for learning
+                purpose, we will degrade system features and break down tasks,
+                then implement them step by step with feature evolution.
+            </div>
+            <div class="lindent00">
+                <div>System will evolute via version history as below:</div>
+                <div class="lindent0a">
+                    <i>0.1.0:</i>
+                    With this version, user just sees a game board. No
+                    interaction could be conducted.
+                </div>
+                <div class="lindent0a">
+                    <i>0.2.0:</i>
+                </div>
+                <div class="lindent0a">
+                    <i>0.3.0:</i>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div><i>Note:</i></div>
+                <div class="lindent00">
+                    Game algorithm is also ready in github for source
+                    code copy/paste so that we could pay attention to React
+                    learning. <br />
+                    Link:
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://github.com/phamsodiep/react_line_98_game"
+                    >
+                      https://github.com/phamsodiep/react_line_98_game
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ID=" III. Learning React by Line 98 implementation" class="para_sep1">
+        <div>
+            <b>III. Learning React by Line 98 implementation</b>
+        </div>
+        <div ID=" III.1. Basic concepts">
+            <div><b>1. Basic concepts</b></div>
+            <div ID=" III.1.1. JSX">
+                <div><i>1.1. JSX</i></div>
+                <div ID=" III.1.1.1 Concept" class="lindent00">
+                    <div><i>1.1.1 Concept</i></div>
+                    <div>
+                        <div>JSX example:</div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.1.1:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+const element = <h1>Line 98</h1>;</textarea>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div>
+                        React is developed in Javascript without real HTML tags.
+                        JSX is an extension of Javascript to depicts HTML
+                        template that React could understand. JSX is then
+                        compiled into pure Javascript by NodeJS plug-in. JSX
+                        needs compilation because it is neither Javascript
+                        string or HTML.
+                    </div>
+                </div>
+                <div ID=" III.1.1.2 JSX Expression" class="lindent00">
+                    <div class="para_sep1"><i>1.1.2 JSX Expression</i></div>
+                    <div>
+                        <div>
+                            JSX interprets Javascript expression (variables,
+                            constants, functions...) to compose it into HTML
+                            representation via JSX expression. For example:
+                        </div>
+                        <div class="lindent00">
+                            <div>
+
+
+
+
+
+<textarea id="jsxsrc:1.1.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+const name = 'Josh Perez';
+const element = <h1>Hello, {name}</h1>;</textarea>
+
+
+
+
+
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    <i>{name}</i> is a JSX expression. The HTML
+                                    representation of <i>{name}</i> will be
+                                    substituted by value of Javascript variable
+                                    named <i>name</i> which is <i>Josh Perez
+                                    </i>. This is equivalent to below HTML
+                                    rendering:
+                                </div>
+                                <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.1.2:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<h1>Hello, Josh Perez</h1></textarea>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            Notes:
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                Expression could be placed at attribute also:
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.1.2:3" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+let url="http:/☯/localhost/nemo.jpg";
+const imgEle = <img src={url} />;</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                Expression value could also be a JSX
+                                (nested JSX):
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.1.2:4" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+let url="http:/☯/localhost/nemo.jpg";
+const imgEle = <img src={url} />;
+const divEle = <div>{imgEle}<div>;</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.1.1.3 React elements" class="lindent00">
+                    <div class="para_sep1"><i>1.1.3 React elements</i></div>
+                    <div>
+                        <div>
+                            Const or variable created by JSX is naturaly
+                            Javascript Object type. For example of element
+                            const:
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.1.3:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+// Note: this structure is simplified
+const element = {
+  type: 'h1',
+  props: {
+    children: 'Line 98'
+  }
+}</textarea>
+
+
+
+
+
+                        </div>
+                        <div>
+                            We call this as React element. React element is
+                            just data of Object type not real DOM. We need to
+                            invoke React render function to render this
+                            element into HTML5 real DOM.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.1.2. React Component" class="para_sep1">
+                <div><i>1.2. React Component</i></div>
+                <div ID=" III.1.2.1. Purpose" class="lindent00">
+                    <div>
+                        <i>1.2.1. Purpose</i>
+                    </div>
+                    <div>
+                        <div>
+                            React Component is an encapsulation object to render
+                            a chunks of HTML. For example GameBoard React
+                            Component is designed to render HTML tags present
+                            GameBoard include:
+                        </div>
+                        <div class="lindent0a">
+                            A list of div tag presents cells of GameBoard which
+                            user could click to (div tags listen to user's
+                            onClick event).
+                        </div>
+                        <div class="lindent0a">
+                            An background image presents cells boundary lines
+                            (draws grid).
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.1.2.2. Definition" class="lindent00">
+                    <div class="para_sep1">
+                        <i>1.2.2. Definition</i>
+                    </div>
+                    <div>
+                        <div>
+                            React Component is an ES6 (new
+                            version of Javascript that is supported by many
+                            modern browsers) class that:
+                        </div>
+                        <div class="lindent0a">
+                            Extends from React.Component class.
+                        </div>
+                        <div class="lindent0a">
+                            Has render method return a JSX.
+                        </div>
+                        <div class="lindent0a">
+                            Has properties and internal state (these concepts
+                            will be explained in the next sections).
+                        </div>
+                        <div>
+                            For example:
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.2.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+class GameTitle extends React.Component {
+  render() {
+    return <h1>Line 98 </h1>;
+  }
+}</textarea>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.1.2.3. Rendering" class="lindent00">
+                    <div class="para_sep1">
+                        <i>1.2.3. Rendering</i>
+                    </div>
+                    <div>
+                        <div>
+                            To render JSX:
+                        </div>
+                        <div class="lindent0b">
+                            <div>
+                                Create an element in HTML file and assign an id
+                                to it. For example:
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.2.3:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<div id="line_98_title"></div></textarea>
+
+
+
+
+
+</div>
+                        </div>
+                        <div class="lindent0b">
+                            <div>
+                                Invoke function ReactDOM.render to fill the
+                                element content (.innerHTML) with React element
+                                content as below:
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.2.3:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+const element = <h1>Line 98</h1>;
+ReactDOM.render(
+  element,
+  document.getElementById('line_98_title')
+);</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            To render React Component:
+                        </div>
+                        <div class="lindent0b">
+                            It is similar to rendering JSX because React
+                            Component needs to be reprented as a JSX before
+                            rendering.
+                        </div>
+                        <div class="lindent0b">
+                            <div>JSX of GameTitle component is as below:</div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.2.3:3" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+let gameTitleElem = <GameTitle />;
+</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="lindent0b">
+                            <div>Then, we could render it:</div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.2.3:4" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+ReactDOM.render(
+  gameTitleElem,
+  document.getElementById('line_98_title')
+);</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.1.2.4. Properties" class="lindent00">
+                    <div class="para_sep1">
+                        <i>1.2.4. Properties</i>
+                    </div>
+                    <div>
+                        <div>
+                            JSX expression could be placed at attribute also,
+                            for JSX of React Component, these attributes
+                            are accessed from Component (ES6 class) as
+                            properties named as <i>props</i>. For example:
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.2.3:5" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+let titleStr = "Line 98 Game";
+let gameTitleElem = <GameTitle title={titleStr}/>;
+
+ReactDOM.render(
+  gameTitleElem,
+   document.getElementById('line_98_title')
+);</textarea>
+
+
+
+
+
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                Where:
+                            </div>
+                            <div class="lindent0b">
+                                <div>
+                                    <i>title</i>={title}: <i>title</i> is an
+                                    attribute of React Component GameTitle. It
+                                    could be accessed in GameTitle class as
+                                    <i>this.props.title</i>:
+                                </div>
+                                <div class="lindent00">
+                                    <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.2.3:6" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+class GameTitle extends React.Component {
+  render() {
+    return <h1> this.props.title </h1>;
+  }
+}</textarea>
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                Note:
+                            </div>
+                            <div class="lindent0b">
+                                Property is readonly that means that we could
+                                not assign new value to <i>this.props.title</i>
+                                in GameTitle class implementation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.1.3. Exercises" class="para_sep1">
+                <div><i>1.3. Exercises</i></div>
+                <div ID=" III.1.3.1. Setup environments" class="lindent00">
+                    <div>
+                        <i>1.3.1. Setup environments</i>
+                        <input
+                          id="setup_env_131$"
+                          class="view_switch"
+                          type="button"
+                          value="content is hidden"
+                          onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                          title="click to show/hide Setup environments content"
+                        />
+
+
+
+
+
+<div class="setup_env_131$content_is_displayed" style="display: none;">
+
+
+
+
+
+                        <div>
+                            <div>
+                                We will create a project name <i>line_98_game</i> by
+                                following instructions in section <i>I. Create a
+                                project</i> then implement a very simple code to
+                                test. The code will render a h1 tag with
+                                "Hello, world!" text in italic. Follow below
+                                steps for implementation:
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Create project with below command:
+                                </div>
+                                <div class="lindent00">
+                                    npx create-react-app <i>line_98_game</i>
+                                </div>
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Move or delete all files of below folders:
+                                </div>
+                                <div class="lindent0b">
+                                    public
+                                </div>
+                                <div class="lindent0b">
+                                    src
+                                </div>
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Create an HTML file named <i>index.html</i>
+                                    in folder <i>public</i> for a div entry with
+                                    an id of value "line98EntryPoint" so that
+                                    ReactDOM.render could render to.
+                                </div>
+                                <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.3.1:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8" />
+    <title>Line 98</title>
+  </head>
+  <body>
+    <div id="line98EntryPoint"></div>
+  </body>
+</html></textarea>
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Create a Javascript file named <i>index.js</i>
+                                    in folder <i>src</i> for React source code
+                                    implementation.
+                                </div>
+                                <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.3.1:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+let msgElem = <i>Hello, world!</i>;
+ReactDOM.render(
+  <h1>{msgElem}</h1>,
+  document.getElementById('line98EntryPoint')
+);</textarea>
+
+
+
+
+
+                                </div>
+                                <div>
+                                    <i>Note</i>:
+                                    We need to import <i>React</i> and ReactDOM for
+                                    basic React libraries.
+                                </div>
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Launch below command to start NodeJS server:
+                                </div>
+                                <div class="lindent00">
+                                    npx start
+                                </div>
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Open web browser to below url for test:
+                                </div>
+                                <div class="lindent00">
+                                    http://localhost:3000/
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+                    </div>
+                </div>
+                <div ID=" III.1.3.2. Implement Hello component" class="lindent00">
+                    <div class="para_sep1">
+                        <i>1.3.2. Implement Hello component</i>
+                        <input
+                          id="impl_hello_comp$"
+                          class="view_switch"
+                          type="button"
+                          value="content is hidden"
+                          onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                          title="click to show/hide mplement Hello component content"
+                        />
+
+
+
+
+
+<div class="impl_hello_comp$content_is_displayed" style="display: none;">
+
+
+
+
+
+                        <div>
+                            <div class="lindent0a">
+                                <div>
+                                    Create class <i>Hello</i> extends
+                                    <i>React.Component</i> with <i>render()</i>
+                                    method in source code file <i>index.js</i>
+                                    as below, then follow steps of section
+                                    <i>1.3.1. Setup environments</i> for test:
+                                </div>
+                                <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:1.3.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Hello extends React.Component {
+  render() {
+    let msgElem = <i>Hello, world!</i>;
+    return <h1>{msgElem}</h1> ;
+  }
+}
+ReactDOM.render(
+  <Hello />,
+  document.getElementById('line98EntryPoint')
+);</textarea>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ID=" III.2. Component Lifecycle Methods" class="para_sep1">
+            <div><b>2. Component Lifecycle Methods</b></div>
+            <div ID=" III.2.1. Mounting and Unmounting">
+                <div><i>2.1. Mounting and unmounting</i></div>
+                <div class="lindent0a">
+                    <i>Mounting</i> is behavior renders component to real DOM
+                    for the first time.
+                </div>
+                <div class="lindent0a">
+                    <i>Unmounting</i> is behavior remove component from real
+                    DOM.
+                </div>
+            </div>
+            <div ID=" III.2.2. Lifecycle Methods" class="para_sep1">
+                <div><i>2.2. Lifecycle methods</i></div>
+                <div class="lindent00">
+                    <div>
+                        <i>Lifecycle methods</i> are methods of component class
+                        is invoked when a component mounts and unmounts.
+                        They are:
+                    </div>
+                    <div class="lindent0a">
+                        <i>componentDidMount()</i>: method is invoked after the
+                        component output has been rendered to the DOM.
+                    </div>
+                    <div class="lindent0a">
+                        <i>componentWillUnmount()</i>: method is invoked
+                        immediately before a component is unmounted and
+                        destroyed.
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="https://stackoverflow.com/questions/40760308/how-to-properly-use-componentwillunmount-in-reactjs"
+                            >
+                              (stack overflow)
+                            </a>
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.2.3. Exercises" class="para_sep1">
+                <div><i>2.3. Exercises</i></div>
+                <div ID=" III.2.3.2. Implement version 0.1.0" class="lindent00">
+                    <div>
+                        <i>2.3.2. Implement version 0.1.0</i>
+                        <input
+                          id="impl_ver_010$"
+                          class="view_switch"
+                          type="button"
+                          value="content is hidden"
+                          onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                          title="click to show/hide Implement version 0.1.0 content"
+                        />
+
+
+
+
+
+<div class="impl_ver_010$content_is_displayed" style="display: none;">
+
+
+
+
+
+                        <div>
+                            <div class="lindent0a">
+                                As SDD – Software design description,
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_designed_class_diag"
+                                >
+                                  <b>Figure</b> 3.3.2.1:
+                                  <i>System overview class diagram</i>,
+                                </a>
+                                <i>GameBoard</i> stereotype is <i>Boundary</i>.
+                                Thus, we will implement class <i>GameBoard</i>
+                                as React Component.
+                            </div>
+                            <div class="lindent0a">
+                                As <i>II.2. Feature evolution</i> section,
+                                <i>GameBoard</i> just needs to draw cells.
+                                To draw cells we need a <i>Canvas</i> tag
+                                which is then, rendered programmatically in
+                                Javascript. It is a real DOM manipulation
+                                so we need to hook to method
+                                <i>componentDidMount()</i> for such real DOM
+                                ready.
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Implementation steps is as below:
+                                </div>
+                                <div class="lindent0b">
+                                    <div>
+                                        Remove class <i>Hello</i> implementation
+                                        and replace it with class
+                                        <i>GameBoard</i> implementation as
+                                        below:
+                                    </div>
+                                    <div>
+
+
+
+
+
+<textarea id="jsxsrc:2.3.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+T.B.D</textarea>
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ID=" ???. References" class="para_sep1">
+        <div>
+            <b>???. References</b>
+        </div>
+        <div class="lindent0a">
+            <i>React tutorial</i>: https://reactjs.org/docs/hello-world.html
+        </div>
+        <div class="lindent0a">
+            <i>Stack overflow</i>: https://stackoverflow.com/
+        </div>
+    </div>
+</div>
+
+
+<div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/js-jsx-react-in-a-nutshell.htm</div>
+<div id="githubver" class="hidden">0.0.1</div>
+<script>doDefaultDecorate();</script>
+<script>
+function doScrollIntoViewDecoration() {
+  let topLvElem = document.getElementById("entry_article");
+  // Extract targetId
+  let targetId = "";
+  let curUrl = window.location.href;
+  let idx = curUrl.length;
+  for (let ch = curUrl.charAt(--idx); ch !== '/'; ch = curUrl.charAt(--idx)) {
+    if(ch === "#") {
+      targetId = curUrl.substring(idx + 1);
+      break;
+    }
+  }
+  // id prefixed with 'cmd_' is reserved to command param sent to app
+  let isCmd = targetId.startsWith("cmd_");
+  if (isCmd) {
+    return;
+  }
+  // retrieve element
+  let targetElem = document.getElementById(targetId);
+  if (!(targetElem !== null && topLvElem !== null)) {
+    return;
+  }
+  // travel up and search for hidden div
+  let classNames = [];
+  let groups = [];
+  let stateNames = [];
+  for (let elem = targetElem.parentNode; elem !== topLvElem; elem = elem.parentNode) {
+    if (elem.nodeName === "DIV" &&  elem.style.display === "none") {
+      let className = elem.className;
+      let endIdx = className.indexOf("$");
+      if (endIdx >= 0) {
+        classNames[classNames.length] = className;
+        groups[groups.length] = className.substring(0, endIdx);
+        stateNames[stateNames.length] =
+          className.substring(endIdx + 1).split("_").join(" ");
+      }
+    }
+  }
+  // do decoration by clicking button
+  for(let i = 0; i < groups.length; i++) {
+    let elemId = groups[i] + "$";
+    let elem = document.getElementById(elemId);
+    if (elem !== null) {
+      for (
+        let curStateName = elem.value.toString();
+        curStateName !== stateNames[i];
+        curStateName = elem.value.toString()
+      ) {
+        elem.click();
+      }
+    }
+  }
+  // Scroll to
+  targetElem.scrollIntoView();
+}
+doScrollIntoViewDecoration();
+
+
+const DiepSrcCode = {
+  FORMAT_JAVA: 0,
+  FORMAT_JS: 1,
+
+  FORMATS: [
+    // FORMAT_JAVA
+    [
+      ["  ", "&nbsp;&nbsp;"],
+      ["package", "<b style='color: olive;'>package</b>"],
+      ["import", "<b style='color: olive;'>import</b>"],
+      ["public", "<b style='color: green;'>public</b>"],
+      ["private", "<b style='color: green;'>private</b>"],
+      ["void", "<b style='color: green;'>void</b>"],
+      ["for", "<b style='color: maroon;'>for</b>"],
+      ["if", "<b style='color: maroon;'>if</b>"],
+      ["this", "<b style='color: maroon;'>this</b>"],
+      ["return", "<b style='color: maroon;'>return</b>"]
+    ],
+    // FORMAT_JS
+    [
+      ["  ", "&nbsp;&nbsp;"],
+      // keywords
+      ["import[ ]", "<b style='color: blue;'>import</b>&nbsp;"],
+      ["export[ ]", "<b style='color: blue;'>export</b>&nbsp;"],
+      ["class[ ]", "<b style='color: blue;'>class</b>&nbsp;"],
+      ["extends[ ]", "<b style='color: blue;'>extends</b>&nbsp;"],
+      ["super[(]", "<b style='color: blue;'>super</b>("],
+      ["new[ ]", "<b style='color: blue;'>new</b>&nbsp;"],
+      ["constructor[(]", "<b style='color: darkgoldenrod;'>constructor</b>("],
+      ["[ ]undefined", "&nbsp;<b style='color: blueviolet;'>undefined</b>"],
+      ["[ ]null", "&nbsp;<b style='color: blue;'>null</b>"],
+      ["[ ]false", "&nbsp;<b style='color: blue;'>false</b>"],
+      ["[ ]true", "&nbsp;<b style='color: blue;'>true</b>"],
+      ["const[ ]", "<b style='color: blue;'>const</b>&nbsp;"],
+      ["let[ ]", "<b style='color: blue;'>let</b>&nbsp;"],
+      ["var[ ]", "<b style='color: blue;'>var</b>&nbsp;"],
+      ["for[ ]", "<b style='color: blue;'>for</b>&nbsp;"],
+      ["if[ ]", "<b style='color: blue;'>if</b>&nbsp;"],
+      ["else[ ]", "<b style='color: blue;'>else</b>&nbsp;"],
+      ["switch[(]", "<b style='color: blue;'>switch</b>("],
+      ["case[ ]", "<b style='color: blue;'>case</b>&nbsp;"],
+      ["break", "<b style='color: blue;'>break</b>"],
+      ["default:", "<b style='color: blue;'>default</b>:"],
+      ["this", "<b style='color: blue;'>this</b>"],
+      ["return[ ]", "<b style='color: blue;'>return</b>&nbsp;"],
+      ["typeof[ ]", "<b style='color: blue;'>typeof</b>&nbsp;"],
+      ["function[ ]", "<b style='color: blue;'>function</b>&nbsp;"],
+
+      // objects
+      ["document[.]", "<b style='color: darkgoldenrod;'>document</b>."],
+      ["Array", "<b style='color: blueviolet;'>Array</b>"],
+      ["Math[.]", "<b style='color: blueviolet;'>Math</b>."],
+      //["Object", "<b style='color: blueviolet;'>Object</b>"],
+      // methods
+      ["toString[(][)]", "<b style='color: blueviolet;'>toString</b>()"],
+      ["setTimeout[(]", "<b style='color: darkgoldenrod;'>setTimeout</b>("],
+      ["alert[(]", "<b style='color: darkgoldenrod;'>alert</b>("],
+      ["Object.assign[(]",
+        [
+          "<b style='color: blueviolet;'>Object</b>",
+          ".",
+          "<b style='color: darkgoldenrod;'>assign</b>("
+        ].join("")
+      ],
+      ["[\u262F]", ""]
+    ]
+  ],
+
+  commentedOutHtmlWrap: function (s, skipBreak) {
+    if (skipBreak) {
+        return "<i style='color: teal;'>".concat(s, "</i>");
+    }
+    return "<i style='color: teal;'>".concat(s, "</i><br />");
+  },
+
+  formatLine: function (formatId, line, skipBreak) {
+    let formats = DiepSrcCode.FORMATS[formatId];
+    for (let j = 0; j < formats.length; j++) {
+        let format = formats[j];
+        let regExp = new RegExp(format[0], 'g');
+        line = line.replace(regExp, format[1])
+    }
+    if (skipBreak) {
+        return line;
+    }
+    return line.concat("<br />");
+  },
+
+  processCommentedOut: function (line, formatId) {
+    let idx = line.indexOf("//");
+    if (idx >= 0) {
+        let html =
+          DiepSrcCode.formatLine(formatId, line.substring(0, idx), true);
+        html = html.concat(
+          DiepSrcCode.commentedOutHtmlWrap(line.substring(idx, line.length))
+        );
+        return [true, html];
+    }
+    idx = line.indexOf("/*");
+    if (idx >= 0) {
+        let html =
+          DiepSrcCode.formatLine(formatId, line.substring(0, idx), true);
+        html = html.concat(
+          DiepSrcCode.commentedOutHtmlWrap(line.substring(idx, line.length))
+        );
+        return [false, html];;
+    }
+    return null;
+  },
+
+  detectCommentedOutClose: function (line, formatId) {
+      let idx = line.indexOf("*/");
+      if (idx >= 0) {
+          idx += 2;
+          let html =
+            DiepSrcCode.commentedOutHtmlWrap(line.substring(0, idx), true);
+          html = html.concat(
+            DiepSrcCode.formatLine(formatId, line.substring(idx, line.length))
+          );
+          return [false, html];
+      }
+      return [true, DiepSrcCode.commentedOutHtmlWrap(line)];
+  },
+
+  escapeJSX: function (txtId) {
+    let txtComp = document.getElementById(txtId);
+    if (txtComp !== null) {
+      let str = txtComp.value.toString();
+      let regExp = new RegExp("[<]", 'g');
+      str = str.replace(regExp, "&lt;");
+      regExp = new RegExp("[>]", 'g');
+      str = str.replace(regExp, "&gt;");
+      txtComp.value = str;
+    }
+  },
+
+  fillCFamilySourceCode: function (txtId, formatId) {
+    // parse and convert source code
+    let html = "";
+    let txtComp = document.getElementById(txtId);
+    let onCommentedOut = false;
+    if (txtComp) {
+      let lines = txtComp.value.split(/\r?\n/);
+      for (let i = 0; i < lines.length; i++) {
+          let line = lines[i];
+          if (onCommentedOut) {
+              let detect = DiepSrcCode.detectCommentedOutClose(line, formatId);
+              onCommentedOut = detect[0];
+              html = html.concat(detect[1]);
+              continue;
+          }
+          let commentedOut = DiepSrcCode.processCommentedOut(line, formatId);
+          if (commentedOut == null) {
+              html = html.concat(DiepSrcCode.formatLine(formatId, line));
+          }
+          else {
+              if (commentedOut[0]) {
+                  html = html.concat(commentedOut[1]);
+              }
+              else {
+                  html = html.concat(commentedOut[1]);
+                  onCommentedOut = true;
+              }
+          }
+      }
+
+      // apply converted source code to target div
+      let divElement = document.createElement("DIV");
+      divElement.innerHTML = html;
+      divElement.className = "txt_sourcecodefont1";
+      txtComp.parentNode.insertBefore(divElement, txtComp);
+    }
+  }
+};
+
+let snippets  = document.querySelectorAll('*[id^="jsxsrc:"]');
+for (let i = 0; i<snippets.length; i++) {
+  let id = snippets[i].id;
+  DiepSrcCode.escapeJSX(id);
+  DiepSrcCode.fillCFamilySourceCode(id, DiepSrcCode.FORMAT_JS);
+}
+</script>
+</div>
+
