@@ -267,6 +267,7 @@ const DiepSrcCode = {
       // keywords
       ["import[ ]", "<b style='color: blue;'>import</b>&nbsp;"],
       ["export[ ]", "<b style='color: blue;'>export</b>&nbsp;"],
+      ["class[ ]", "<b style='color: blue;'>class</b>&nbsp;"],
       ["extends[ ]", "<b style='color: blue;'>extends</b>&nbsp;"],
       ["super[(]", "<b style='color: blue;'>super</b>("],
       ["new[ ]", "<b style='color: blue;'>new</b>&nbsp;"],
@@ -306,6 +307,7 @@ const DiepSrcCode = {
           "<b style='color: darkgoldenrod;'>assign</b>("
         ].join("")
       ],
+      ["[\u262F]", ""]
     ]
   ],
 
