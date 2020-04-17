@@ -586,7 +586,15 @@ class GameTitle extends React.Component {
                                 project</i> then implement a very simple code to
                                 test. The code will render a h1 tag with
                                 "Hello, world!" text in italic. Follow below
-                                steps for implementation:
+                                steps for implementation, github source code is
+                                also available at
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://github.com/phamsodiep/react_line_98_game/commit/2e2fb708b6568167e8449c1dfcc56257da6a5cdb"
+                                >
+                                  link.
+                                </a>
                             </div>
                             <div class="lindent0a">
                                 <div>
@@ -730,7 +738,15 @@ ReactDOM.render(
                                     <i>React.Component</i> with <i>render()</i>
                                     method in source code file <i>index.js</i>
                                     as below, then follow steps of section
-                                    <i>1.3.1. Setup environments</i> for test:
+                                    <i>1.3.1. Setup environments</i> for test.
+                                    Github source code is also available at
+                                    <a
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      href="https://github.com/phamsodiep/react_line_98_game/commit/6a8ddde0a714c77fe8c5d4639aa8d3c90bd4242a"
+                                    >
+                                      link.
+                                    </a>
                                 </div>
                                 <div class="lindent00">
 
@@ -803,13 +819,13 @@ ReactDOM.render(
                     <div class="lindent0a">
                         <i>componentWillUnmount()</i>: method is invoked
                         immediately before a component is unmounted and
-                        destroyed.
+                        destroyed
                             <a
                               target="_blank"
                               rel="noopener noreferrer"
                               href="https://stackoverflow.com/questions/40760308/how-to-properly-use-componentwillunmount-in-reactjs"
                             >
-                              (stack overflow)
+                              (stack overflow).
                             </a>
                     </div>
                 </div>
@@ -840,7 +856,7 @@ ReactDOM.render(
 
                         <div>
                             <div class="lindent0a">
-                                As SDD â€“ Software design description,
+                                As SDD – Software design description,
                                 <a
                                   target="_blank"
                                   rel="noopener noreferrer"
@@ -865,7 +881,15 @@ ReactDOM.render(
                             </div>
                             <div class="lindent0a">
                                 <div>
-                                    Implementation steps is as below:
+                                    Implementation steps is as below, github
+                                    source code is also available at
+                                    <a
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      href="https://github.com/phamsodiep/react_line_98_game/commit/6925ee6cc978240b4895153e7ac9554343d954b5"
+                                    >
+                                      link.
+                                    </a>
                                 </div>
                                 <div class="lindent0b">
                                     <div>
@@ -874,6 +898,58 @@ ReactDOM.render(
                                         <i>GameBoard</i> implementation as
                                         below:
                                     </div>
+                                    <div class="lindent0c">
+                                        Implement <i>render()</i> method
+                                        to render two divs and one canvas:
+                                        <div class="lindent0c">
+                                            Div <i>gameBoard</i> houses
+                                            canvas and future <i>Ball</i>
+                                            component which is not available
+                                            in this version. This div layouts
+                                            its child elements in
+                                            <i>relative</i> position.
+                                        </div>
+                                        <div class="lindent0c">
+                                            Div <i>container</i> houses div
+                                            <i>gameBoard</i>. We need this div
+                                            to make div <i>gameBoard</i> is
+                                            compatiable with default layout
+                                            of webpage.
+                                        </div>
+                                        <div class="lindent0c">
+                                            Canvas <i>gameboard_bg</i> element
+                                            render GameBoard's grid. We need a
+                                            canvas for rendering instead of
+                                            a grid of divs for simplicity
+                                            (reduce number of elements in
+                                            webpage).
+                                        </div>
+                                    </div>
+                                    <div class="lindent0c">
+                                        <div>
+                                            Implement method
+                                            <i>componentDidMount()</i>
+                                            to render grid in canvas:
+                                        </div>
+                                        <div class="lindent0c">
+                                            We can not render canvas in
+                                            <i>render()</i> method because JSX
+                                            is virtual DOM, not real DOM. Within
+                                            <i>render()</i> method, the canvas
+                                            does not exist.
+                                        </div>
+                                        <div class="lindent0c">
+                                            We assign canvas with id of value
+                                            <i>gameboard_bg</i> so that method
+                                            <i>componentDidMount()</i> could
+                                            refer to.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lindent0b">
+                                    <div>
+                                        Result source code is as below:
+                                    </div>
                                     <div>
 
 
@@ -881,13 +957,103 @@ ReactDOM.render(
 
 
 <textarea id="jsxsrc:2.3.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
-T.B.D</textarea>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+class GameBoard extends React.Component {
+  componentDidMount() {
+    let bgImg = document.getElementById("gameboard_bg");
+    if (bgImg === null) return;
+    let i = 0;
+    let n = 9; // dimension
+    let thick = 1;
+    let cellSize = 50;
+    let width = n * cellSize + thick * (n + thick);
+
+    // Context retrieving and initializing
+    bgImg.width = width;
+    bgImg.height = width;
+    bgImg.style.position = "absolute";
+    bgImg.style.left = 0;
+    bgImg.style.top = 0;
+    let canvasContext = bgImg.getContext("2d");
+    canvasContext.translate(0, 0);
+    canvasContext.lineWidth = 1;
+
+    // Render board surface
+    canvasContext.fillStyle = "#eeeeee";
+    canvasContext.fillRect(
+      0,
+      0,
+      width,
+      width
+    );
+
+    // Render board cells border
+    // |  |  |...
+    canvasContext.fillStyle = "#000000";
+    for (i = 0; i <= n; i++) {
+      let x = i * (cellSize + thick);
+      canvasContext.fillRect(x, 0, thick, width);
+    }
+    // =
+    for (i = 0; i <= n; i++) {
+      let y = i * (cellSize + thick);
+      canvasContext.fillRect(0, y, width, thick);
+    }
+  }
+
+  render() {
+    // dimension * cellSize + lineWidth * (dimension + 1)
+    let width = 9 * 50 + 1 * (9 + 1);
+    let gameBoardStyle = {
+      position: "relative",
+      width: "100%",
+      height: "100%",
+      borderWidth: "0px",
+      borderStyle: "none",
+      margin: "0px 0px 0px 0px",
+      padding: "0px 0px 0px 0px"
+    };
+    let containerStyle = {
+      position: "static",
+      width: width + "px",
+      height: width + "px",
+      borderWidth: "0px",
+      borderStyle: "none",
+      margin: "0px 0px 0px 0px",
+      padding: "0px 0px 0px 0px"
+    };
+    return (
+      <div style={containerStyle}>
+        <div style={gameBoardStyle}>
+          <canvas id="gameboard_bg">
+          </canvas>
+        </div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <GameBoard />,
+  document.getElementById('line98EntryPoint')
+);</textarea>
 
 
 
 
 
                                     </div>
+                                    <br />
+                                    <input
+                                      class="view_switch"
+                                      type="button"
+                                      value="hide exercise"
+                                      onclick="document.getElementById('impl_ver_010$').click();"
+                                      title="click to hide Implement version 0.1.0 exercise"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -922,7 +1088,7 @@ T.B.D</textarea>
 
 
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/js-jsx-react-in-a-nutshell.htm</div>
-<div id="githubver" class="hidden">0.0.1</div>
+<div id="githubver" class="hidden">0.0.2</div>
 <script>doDefaultDecorate();</script>
 <script>
 function doScrollIntoViewDecoration() {
