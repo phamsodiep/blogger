@@ -856,7 +856,7 @@ ReactDOM.render(
 
                         <div>
                             <div class="lindent0a">
-                                As SDD � Software design description,
+                                As SDD – Software design description,
                                 <a
                                   target="_blank"
                                   rel="noopener noreferrer"
@@ -1072,6 +1072,618 @@ ReactDOM.render(
                 </div>
             </div>
         </div>
+        <div ID=" III.3. Refs and the DOM" class="para_sep1">
+            <div><b>3. Refs and the DOM</b></div>
+            <div ID=" III.3.1. Purpose">
+                <div>
+                    <i>3.1 Purpose</i>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        Refs provide a way to access real HTML DOM nodes or
+                        React component created in the render method. This
+                        is meaningful to:
+                    </div>
+                    <div class="lindent0a">
+                        Managing focus, text selection, or media playback. In
+                        our Line 98 game case, we could access to canvas real
+                        HTML DOM node via ref instead of via its declared id
+                        <i>gameboard_bg</i>.
+                    </div>
+                    <div class="lindent0a">
+                        Integrating with third-party DOM libraries.
+                    </div>
+                    <div class="lindent0a">
+                        Triggering imperative animations.
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.3.2. Steps to create a ref" class="para_sep1">
+                <div>
+                    <i>3.2 Steps to create a ref</i>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <i>3.2.1 Create with React.createRef()</i>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Create a ref in <i>constructor</i> method by
+                            <i>React.createRef()</i> method, assign it to
+                            Component property for later access:
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:3.2.1:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+constructor(props) {
+  super(props);
+  this.myRef = React.createRef(); // assign it to Component property named myRef for later access
+}</textarea>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Assign property <i>myRef </i> to <i>ref</i> JSX
+                            attribute in method <i>render()</i>:
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:3.2.1:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+render() {
+  return <Hello ref={this.myRef} />;
+}</textarea>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div class="para_sep1">
+                        <i>3.2.2 Let React creates it silently, then access it
+                        via callback function</i>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Declare a bind call back function as a hook for
+                            access:
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:3.2.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+onDivCreate = (elem) => {
+  let _th☯is = this;
+  elem.onclick = function () {
+    alert(_th☯is.msg);
+  }
+}</textarea>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Assign this call back function to target element's
+                            JSX attribute:
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:3.2.2:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+render() {
+  this.msg = "Hello, Pham So Diep!";
+  return <div ref={this.onDivCreate}>Click me fo☯r a hello message</div> ;
+}</textarea>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.3.3. Access to ref" class="para_sep1">
+                <div>
+                    <i>3.3. Access to ref</i>
+                </div>
+                <div ID=" III.3.3.1 Life cycle" class="lindent00">
+                    <div>
+                        <i>3.3.1 Lifecycle</i>
+                    </div>
+                    <div>
+                        <div>
+                            <it>Ref</it> could be created in <i>constructor</i>
+                            method implemenation, but it target reference is
+                            only available after <i>render()</i> method
+                            invoking. Thus, access should be done at
+                            component lifecycle call back method 
+                            <i>componentDidMount</i> for such availability.
+                            For example, in method <i>componentDidMount</i>
+                            implementation of below source code example, the
+                            reference could be accessed via <i>current</i> 
+                            property, so once the div tag is clicked, message
+                            <i>"Hello, Pham Duc Huy!"</i> is showed instead of
+                            the default one <i>"Hello, Pham So Diep!"</i>:
+                            <input
+                              id="snippet_331_life_cycle$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide example source code content"
+                            />
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<div class="snippet_331_life_cycle$content_is_displayed" style="display: none;">
+
+
+
+
+
+<textarea id="jsxsrc:3.3.1:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+class Hello extends React.Component {
+  onDivCreate = (elem) => {
+    let _th☯is = this;
+    elem.onclick = function () {
+      alert(_th☯is.msg);
+    }
+  }
+
+  render() {
+    this.msg = "Hello, Pham So Diep!";
+    return <div ref={this.onDivCreate}>Click me fo☯r a hello message</div> ;
+  }
+}
+
+class HelloContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef(); // assign it to Component property for later access
+  }
+
+  render() {
+    return <Hello ref={this.myRef}/>;
+  }
+
+  componentDidMount() {
+    this.myRef.current.msg =
+      "Hello, Pham Duc Huy!"; // the reference could be accessed via current property
+  }
+}
+
+ReactDOM.render(
+  <HelloContainer />,
+  document.getElementById('line98EntryPoint')
+);</textarea>
+
+
+
+
+
+                            <br />
+                            <input
+                              class="view_switch"
+                              type="button"
+                              value="hide example source code"
+                              onclick="document.getElementById('snippet_331_life_cycle$').click();"
+                              title="click to hide example source code content"
+                            />
+</div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.3.3.2 Real HTML DOM node or React component" class="lindent00">
+                    <div class="para_sep1">
+                        <i>3.3.2 Real HTML DOM node or React component</i>
+                    </div>
+                    <div>
+                        <div>
+                            Object that Ref references to could be a real HTML
+                            DOM node or React component. This depends to the JSX
+                            of the refs attribute. In the case of JSX of HTML
+                            tag, Ref references to real HTML DOM node, in the
+                            case of JSX of React component, Ref references to
+                            that React component. For example, in source code
+                            example of section 3.3.1 Life cycle,
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                JSX of HTML tag:
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:3.3.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<div ref={this.onDivCreate}>Click me fo☯r a hello message</div></textarea>
+
+
+
+
+
+                            </div>
+                            <div>
+                                Ref references to a real HTML DOM node.
+                                <i>onclick</i> is event hander call back
+                                function of real HTML DOM node:
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:3.3.2:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+onDivCreate = (elem) => {
+  let _this = this;
+  elem.onclick = function () {
+    alert(_this.msg);
+  }
+}</textarea>
+
+
+
+
+
+                            </div>
+                            <div>
+                                <i>Note:</i> We could also access to
+                                <i>elem.innerHTML</i> to alter div text content
+                                if we need.
+                            </div>
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                JSX of React component:
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:3.3.2:3" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<Hello ref={this.myRef}/>;</textarea>
+
+
+
+
+
+                            </div>
+                            <div>
+                                Ref references to React component.
+                                <i>this.myRef.current</i> is reference of Hello
+                                component. We altered <i>msg</i> property of
+                                this component for alert message decoration:
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:3.3.2:4" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+componentDidMount() {
+  this.myRef.current.msg =
+    "Hello, Pham Duc Huy!"; // the reference could be accessed via current property
+}</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.3.4. Best practices" class="para_sep1">
+                <div>
+                    <i>3.4 Best practices</i>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        Don't Overuse Refs, because they manipulate on real DOM
+                        and/or not follow React default dataflow behavior.
+                    </div>
+                    <div class="lindent0a">
+                        Avoid <i>ref</i> callback is defined as an inline
+                        function, use bound method instead.
+                    </div>
+                    <div class="lindent0a">
+                        Avoid to use the <i>ref</i> attribute on function
+                        components (function components is component that is
+                        declared as Javascript function instead of ES6 class).
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.3.5. Exercise" class="para_sep1">
+                <div>
+                    <i>3.5 Exercise</i>
+                </div>
+                <div>
+                    <div class="lindent00">
+                        We will develop Line 98 version 0.1.0 further to
+                        version 0.1.1 in exercise 3.5.1, then to version 0.1.2.
+                        in exercise 3.5.2. New verions try to remove id
+                        <i>gameboard_bg</i> of canvas by implementing with
+                        React Ref. Such removal is very helpfull if we need two
+                        instances of Line 98 game in one web page.
+                    </div>
+                    <div ID=" III.3.5.1 Exercise" class="lindent00">
+                        <div class="para_sep1">
+                            <i>3.5.1 Leverage React Ref to remove id
+                            gameboard_bg of canvas element</i>
+                            <input
+                              id="impl_exer_351$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide source code implementation of exercise 3.5.1"
+                            />
+                        </div>
+
+
+
+
+
+<div class="impl_exer_351$content_is_displayed" style="display: none;">
+
+
+
+
+
+                        <div>
+                            <div>
+                                Implementation steps are as below,
+                                github source code is also available at
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://github.com/phamsodiep/react_line_98_game/commit/5ff385d449f389ed863bc9d22986c6d2cd5085b4"
+                                >
+                                  link.
+                                </a>
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Implement <i>constructor</i> method to
+                                    create gameboardBgRef
+                                </div>
+                                <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:3.5.1:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+constructor(props) {
+  super(props);
+  this.gameboardBgRef = React.createRef();
+}</textarea>
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Replace <i>canvas</i>'s HTML id with its
+                                    React <i>ref</i> attribute:
+                                </div>
+                                <div class="lindent00">
+<textarea id="jsxsrc:3.5.1:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+render() {
+  .....
+
+  return (
+    <div style={containerStyle}>
+      <div style={gameBoardStyle}>
+        <canvas ref={this.gameboardBgRef}>
+        </canvas>
+      </div>
+    </div>
+  );
+}</textarea>
+                                </div>
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Retrieve <i>bgImg</i> in method
+                                    <i>componentDidMount()</i> implementation
+                                    by <i>this.gameboardBgRef.current;</i>
+                                    instead of previous version one
+                                    <i>
+                                        document.getElementById("gameboard_bg")
+                                    </i>:
+                                </div>
+                                <div class="lindent00">
+<textarea id="jsxsrc:3.5.1:3" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+componentDidMount() {
+  //let bgImg = document.getElementById("gameboard_bg");
+  let bgImg = this.gameboardBgRef.current;
+  //if (bgImg === null) return;
+  let i = 0;
+
+  .....
+}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+                    </div>
+                    <div ID=" III.3.5.2 Exercise" class="lindent00">
+                        <div class="para_sep1">
+                            <i>3.5.2 Alternative solution of 3.5.1 with out
+                            implementing method componentDidMount</i>
+                            <input
+                              id="impl_exer_352$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide source code implementation of exercise 3.5.2"
+                            />
+                        </div>
+
+
+
+
+
+<div class="impl_exer_352$content_is_displayed" style="display: none;">
+
+
+
+
+
+                        <div>
+                            <div>
+                                Implementation steps are as below,
+                                github source code is also available at
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://github.com/phamsodiep/react_line_98_game/commit/ddf90a64f8812f42b144945be0c366412c4c4cf5"
+                                >
+                                  link.
+                                </a>
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    In method <i>render()</i> implementation,
+                                    replace attribute <i>ref</i> of
+                                    <i>canvas</i> from
+                                    <i>this.gameboardBgRef</i>
+                                    to <i>onCanvasCreate</i>:
+                                </div>
+
+
+
+
+
+<textarea id="jsxsrc:3.5.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+render() {
+  .....
+
+  return (
+    <div style={containerStyle}>
+      <div style={gameBoardStyle}>
+        <canvas ref={this.onCanvasCreate}>
+        </canvas>
+      </div>
+    </div>
+  );
+}</textarea>
+
+
+
+
+
+                            </div>
+                            <div class="lindent0a">
+                                Remove method <i>constructor</i> implementation
+                                since we do not need <i>this.gameboardBgRef</i>
+                                anymore.
+                            </div>
+                            <div class="lindent0a">
+                                <div>
+                                    Refactor by renaming method
+                                    <i>componentDidMount</i> to
+                                    <i>onCanvasCreate</i> as a bind call back
+                                    function, since we do not
+                                    need this method is invoked in such
+                                    lifecycle anymore, and change access to
+                                    <i>bgImg</i> as below:
+                                </div>
+
+
+
+
+
+<textarea id="jsxsrc:3.5.2:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+//componentDidMount() {
+onCanvasCreate = (bgImg) => {
+  //let bgImg = this.gameboardBgRef.current;
+  let i = 0;
+
+  .....
+}</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div ID=" ???. References" class="para_sep1">
         <div>
@@ -1081,6 +1693,20 @@ ReactDOM.render(
             <i>React tutorial</i>: https://reactjs.org/docs/hello-world.html
         </div>
         <div class="lindent0a">
+            <div><i>React documents</i>:</div>
+            <div>
+                <div class="lindent0a">
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://reactjs.org/docs/refs-and-the-dom.html"
+                    >
+                      Refs and the DOM
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="lindent0a">
             <i>Stack overflow</i>: https://stackoverflow.com/
         </div>
     </div>
@@ -1088,7 +1714,7 @@ ReactDOM.render(
 
 
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/js-jsx-react-in-a-nutshell.htm</div>
-<div id="githubver" class="hidden">0.0.2</div>
+<div id="githubver" class="hidden">0.0.3</div>
 <script>doDefaultDecorate();</script>
 <script>
 function doScrollIntoViewDecoration() {
