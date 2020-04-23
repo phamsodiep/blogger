@@ -7,7 +7,7 @@
           data-original-height="1"
           width="1"
           height="1"
-          src="https://1.bp.blogspot.com/-7F7q_2ctN5c/XeY2erXbvdI/AAAAAAAAAMI/19CLaBbK--4Kp5-69kxwMWpv84P0gZ8BQCLcBGAsYHQ/s1600/null.png"
+          src="https://2.bp.blogspot.com/-2of9KoZp8vc/Xp_w58hoeMI/AAAAAAAAAOE/-4LKN93rwEsDzD9rlvXjhANXUQwhHrqHQCLcBGAsYHQ/s1600/null.png"
         />
         <div id="entry_brief_tmp"><em><i>
             React is a JavaScript library for building Web user interfaces. It
@@ -108,15 +108,16 @@
             <div class="lindent00">
                 <div>System will evolute via version history as below:</div>
                 <div class="lindent0a">
-                    <i>0.1.0:</i>
-                    With this version, user just sees a game board. No
+                    <i>0.1:</i>
+                    On this version, user just sees a game board. No
                     interaction could be conducted.
                 </div>
                 <div class="lindent0a">
-                    <i>0.2.0:</i>
+                    <i>0.2:</i>
+                    On this version, use case <i>Reset Game</i> is available.
                 </div>
                 <div class="lindent0a">
-                    <i>0.3.0:</i>
+                    <i>0.3:</i>
                 </div>
             </div>
             <div class="lindent00">
@@ -1353,7 +1354,7 @@ ReactDOM.render(
 
 <textarea id="jsxsrc:3.3.2:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
 onDivCreate = (elem) => {
-  let _this = this;
+  let _thi☯s = this;
   elem.onclick = function () {
     alert(_this.msg);
   }
@@ -1684,6 +1685,535 @@ onCanvasCreate = (bgImg) => {
                 </div>
             </div>
         </div>
+        <div ID=" III.4. Handling Events" class="para_sep1">
+            <div><b>4. Handling Events</b></div>
+            <div ID=" III.4.1 Introduction">
+                <div>
+                    <i>4.1 Introduction</i>
+                </div>
+                <div class="lindent00">
+                    We could handle events on real HTML DOM elements by Ref,
+                    but it is not recommended to do that because of React
+                    dataflow and React component data access (properties,
+                    states...). Handling events with React elements is very
+                    similar to handling events on DOM elements, with some
+                    difference that is introduced in following section.
+                </div>
+            </div>
+            <div ID=" III.4.2 Programming" class="para_sep1">
+                <div>
+                    <i>4.2 Programming</i>
+                </div>
+                <div ID=" III.4.2.1 JSX declartion" class="lindent00">
+                    <div>
+                        <i>4.2.1 JSX declartion:</i>
+                    </div>
+                    <div>
+                        <div>
+                            Events declartion syntax for JSX is as below:
+                        </div>
+                        <div class="lindent0a">
+                            React events are named using camelCase, rather
+                            than lowercase.
+                        </div>
+                        <div class="lindent0a">
+                            With JSX you pass a function as the event handler,
+                            rather than a string.
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            Example:
+                        </div>
+                        <div class="lindent00">
+                            <div>
+
+
+
+
+
+<textarea id="jsxsrc:4.2.1:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<button onClick={this.resetGame}>
+  Reset
+</button></textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.4.2.2 Handling Events method programming" class="lindent00">
+                    <div class="para_sep1">
+                        <i>4.2.2 Handling Events method programming:</i>
+                    </div>
+                    <div>
+                        <div class="lindent0a">
+                            <div>
+                                To handle event without <i>this</i>
+                                refrence access.
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:4.2.1:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+resetGame() {
+  alert('Type of thi☯s is ' + (typeof this));
+}
+</textarea>
+
+
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                To handle event with <i>this</i>
+                                refrence access to React component, we need to
+                                bind the method to <i>this</i>.
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:4.2.1:3" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+resetGame = () => {
+  alert('Type of thi☯s is ' + (typeof this));
+}
+</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                To pass <i>parameters</i> to handle event, we
+                                need to bind the method to <i>parameters</i>
+                                too. The <i>this</i> reference must be the first
+                                binded <i>parameter</i>.
+                                <input
+                                  id="parameters_event_demo_421$"
+                                  class="view_switch"
+                                  type="button"
+                                  value="content is hidden"
+                                  onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                                  title="click to show/hide source code example"
+                                />
+                            </div>
+
+
+
+
+
+<div class="parameters_event_demo_421$content_is_displayed" style="display: none;">
+
+
+
+
+
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:4.2.1:4" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class ResetButton extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  resetGame = (id) => {
+    alert('Type of thi☯s: ' + (typeof this) + ' - id: ' + id);
+  }
+
+  render() {
+    let id = 1998;
+    return (
+      <button onClick={(reactEventObj) => this.resetGame(id)}>
+        Reset
+      </button>
+    );
+  }
+}
+
+ReactDOM.render(
+  <ResetButton />,
+  document.getElementById('line98EntryPoint')
+);</textarea>
+
+
+
+
+
+                            </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.4.2.3 Event propagation" class="lindent00">
+                    <div class="para_sep1">
+                        <i>4.2.3 Event propagation:</i>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Event is propagated from inner element to
+                            outer element:
+                            <input
+                              id="propagation_demo_423$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide source code example"
+                            />
+                        </div>
+
+
+
+
+
+<div class="propagation_demo_423$content_is_displayed" style="display: none;">
+
+
+
+
+
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:4.2.3:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+class ResetButton extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  resetGame = (id, eventObj) => {
+    alert('Type of thi☯s: ' + (typeof this) + ' - id: ' + id);
+  }
+
+  render() {
+    let divCallBackFunc = function () {
+      alert('hi! I am div tag');
+    };
+    let id = 1998;
+    return (
+      <div onClick={divCallBackFunc}>
+        <button onClick={(reactEventObj) => this.resetGame(id, reactEventObj)}>
+          Reset
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <ResetButton />,
+  document.getElementById('line98EntryPoint')
+);</textarea>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+                    </div>
+                    <div class="lindent0a">
+                        <div class="para_sep1">
+                            To stop event propagation from inner element, invoke
+                            method <i>stopPropagation</i>.
+                            <input
+                              id="stop_propagation_423$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide source code example"
+                            />
+                        </div>
+
+
+
+
+
+<div class="stop_propagation_423$content_is_displayed" style="display: none;">
+
+
+
+
+
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:4.2.3:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+class ResetButton extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  resetGame = (id, eventObj) => {
+    alert('Type of this: ' + (typeof this) + ' - id: ' + id);
+    eventObj.stopPropagation();
+  }
+
+  render() {
+    let divCallBackFunc = function () {
+      alert('hi! I am div tag');
+    };
+    let id = 1998;
+    return (
+      <div onClick={divCallBackFunc}>
+        <button onClick={(reactEventObj) => this.resetGame(id, reactEventObj)}>
+          Reset
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <ResetButton />,
+  document.getElementById('line98EntryPoint')
+);</textarea>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+                    </div>
+                    <div class="lindent0a">
+                        <div class="para_sep1">
+                            To prevent default behavior (for example submit
+                            form) just invoke method <i>preventDefault</i>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ID=" III.4.3 Exercises" class="para_sep1">
+            <div>
+                <i>4.3 Exercises</i>
+            </div>
+            <div class="lindent00">
+                <div>
+                    Implement <i>Button</i> component:
+                </div>
+                <div class="lindent0a">
+                    As SDD – Software design description,
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_designed_class_diag"
+                    >
+                      <b>Figure</b> 3.3.2.1:
+                      <i>System overview class diagram</i>,
+                    </a>
+                    <i>Button</i> stereotype is <i>Boundary</i>.
+                    Thus, we will implement class <i>Button</i>
+                    as React Component.
+                </div>
+                <div class="lindent0a">
+                    <div>
+                        As <i>II.2. Feature evolution</i> section, version 0.2
+                        implements <i>Reset Game</i> use case. The first
+                        subversion of this version, 0.2.1, we will implement
+                        a <i>Button</i> that trigger to show an alert message
+                        <i>'Game reseting...'</i>.
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div>
+                        As <i>I. Game introduction</i> section,
+                        <i>Question 7</i>:
+                    </div>
+                    <div class="lindent0b">
+                        <i>Button</i>'s css requires
+                        customization. We will implement a <i>Button</i>
+                        supports customized css name passed as component's
+                        property named <i>className</i>.
+                    </div>
+                    <div class="lindent0b">
+                        <i>Button</i>'s caption requires
+                        customization. We will pass this parameter as
+                        component's property named <i>caption</i>.
+                    </div>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div>
+                    Source code implementation is as below,
+                    github source code is also available at
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://github.com/phamsodiep/react_line_98_game/commit/0952218ba495a312922456852361f296e0093882"
+                    >
+                      link.
+                    </a>
+                    <input
+                      id="impl_exer_43$"
+                      class="view_switch"
+                      type="button"
+                      value="content is hidden"
+                      onclick="switchDisplay(this, ['index.html', 'index.js', 'content is hidden']);"
+                      title="click to switch view between source code file in list: index.js, index.html"
+                    />
+                </div>
+
+
+
+
+
+<div class="impl_exer_43$index.html" style="display: none;">
+                <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:4.3:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Line 98</title>
+  </head>
+  <body>
+    <style>
+      div.reset_button {
+        border-radius:25px;
+        background:#73ad21;
+        padding:20px;
+        width:50px;
+        height:25px;
+        text-align:center
+      }
+    </style>
+    <div id="line98ResetButton"></div>
+    <br />
+    <div id="line98EntryPoint"></div>
+  </body>
+</html></textarea>
+
+
+
+
+
+                </div>
+</div>
+
+
+
+
+
+<div class="impl_exer_43$index.js" style="display: none;">
+                <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:4.3:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class ResetButton extends React.Component {
+  resetGame() {
+    alert('Game reseting...');
+  }
+
+  render() {
+    let caption = this.props.caption;
+    caption = typeof caption === "string" ? caption : "Reset";
+    return (
+      <div className={this.props.className} onClick={this.resetGame}>
+        {caption}
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <ResetButton className="reset_button" caption="重置" />,
+  document.getElementById('line98ResetButton')
+);</textarea>
+
+
+
+
+
+                </div>
+</div>
+
+
+
+
+
+            </div>
+        </div>
     </div>
     <div ID=" ???. References" class="para_sep1">
         <div>
@@ -1714,7 +2244,7 @@ onCanvasCreate = (bgImg) => {
 
 
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/js-jsx-react-in-a-nutshell.htm</div>
-<div id="githubver" class="hidden">0.0.3</div>
+<div id="githubver" class="hidden">0.0.4</div>
 <script>doDefaultDecorate();</script>
 <script>
 function doScrollIntoViewDecoration() {
