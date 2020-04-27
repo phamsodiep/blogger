@@ -109,12 +109,26 @@
                 <div>System will evolute via version history as below:</div>
                 <div class="lindent0a">
                     <i>0.1:</i>
-                    On this version, user just sees a game board. No
+                    On this version, user just sees a <i>Game Board</i>. No
                     interaction could be conducted.
                 </div>
                 <div class="lindent0a">
-                    <i>0.2:</i>
-                    On this version, use case <i>Reset Game</i> is available.
+                    <div>
+                        <i>0.2:</i>
+                        On this version, use case <i>Reset Game</i>
+                        is available.
+                    </div>
+                    <div class="lindent0b">
+                        <i>0.2.1:</i>
+                        Clicking reset <i>Button</i> triggers an alert message
+                        <i>'Game reseting...'</i> showed.
+                    </div>
+                    <div class="lindent0b">
+                        <i>0.2.2:</i>
+                        Clicking reset <i>Button</i> results in system
+                        initializes an <i>Game Board</i> with full of
+                        <i>Ball</i>s rendered in cyan colour.
+                    </div>
                 </div>
                 <div class="lindent0a">
                     <i>0.3:</i>
@@ -240,7 +254,7 @@ const element = <h1>Hello, {name}</h1>;</textarea>
 
 <textarea id="jsxsrc:1.1.2:3" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
 let url="http:/☯/localhost/nemo.jpg";
-const imgEle = <img src={url} />;</textarea>
+const imgEle = <im☯g src={url} />;</textarea>
 
 
 
@@ -261,7 +275,7 @@ const imgEle = <img src={url} />;</textarea>
 
 <textarea id="jsxsrc:1.1.2:4" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
 let url="http:/☯/localhost/nemo.jpg";
-const imgEle = <img src={url} />;
+const imgEle = <im☯g src={url} />;
 const divEle = <div>{imgEle}<div>;</textarea>
 
 
@@ -833,9 +847,9 @@ ReactDOM.render(
             </div>
             <div ID=" III.2.3. Exercises" class="para_sep1">
                 <div><i>2.3. Exercises</i></div>
-                <div ID=" III.2.3.2. Implement version 0.1.0" class="lindent00">
+                <div class="lindent00">
                     <div>
-                        <i>2.3.2. Implement version 0.1.0</i>
+                        Implement version 0.1.0
                         <input
                           id="impl_ver_010$"
                           class="view_switch"
@@ -2052,83 +2066,82 @@ ReactDOM.render(
                     </div>
                 </div>
             </div>
-        </div>
-        <div ID=" III.4.3 Exercises" class="para_sep1">
-            <div>
-                <i>4.3 Exercises</i>
-            </div>
-            <div class="lindent00">
+            <div ID=" III.4.3 Exercises" class="para_sep1">
                 <div>
-                    Implement <i>Button</i> component:
+                    <i>4.3 Exercises</i>
                 </div>
-                <div class="lindent0a">
-                    As SDD – Software design description,
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_designed_class_diag"
-                    >
-                      <b>Figure</b> 3.3.2.1:
-                      <i>System overview class diagram</i>,
-                    </a>
-                    <i>Button</i> stereotype is <i>Boundary</i>.
-                    Thus, we will implement class <i>Button</i>
-                    as React Component.
-                </div>
-                <div class="lindent0a">
+                <div class="lindent00">
                     <div>
-                        As <i>II.2. Feature evolution</i> section, version 0.2
-                        implements <i>Reset Game</i> use case. The first
-                        subversion of this version, 0.2.1, we will implement
-                        a <i>Button</i> that trigger to show an alert message
-                        <i>'Game reseting...'</i>.
+                        Implement <i>Button</i> component:
+                    </div>
+                    <div class="lindent0a">
+                        Due to SDD – Software design description,
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_designed_class_diag"
+                        >
+                          <b>Figure</b> 3.3.2.1:
+                          <i>System overview class diagram</i>,
+                        </a>
+                        <i>Button</i> stereotype is <i>Boundary</i>.
+                        Thus, we will implement class <i>Button</i>
+                        as React Component.
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            As <i>II.2. Feature evolution</i> section, version 0.2
+                            implements <i>Reset Game</i> use case. The first
+                            subversion of this version, 0.2.1, we will implement
+                            a <i>Button</i> that trigger to show an alert message
+                            <i>'Game reseting...'</i>.
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            As <i>I. Game introduction</i> section,
+                            <i>Question 7</i>:
+                        </div>
+                        <div class="lindent0b">
+                            <i>Button</i>'s css requires
+                            customization. We will implement a <i>Button</i>
+                            supports customized css name passed as component's
+                            property named <i>className</i>.
+                        </div>
+                        <div class="lindent0b">
+                            <i>Button</i>'s caption requires
+                            customization. We will pass this parameter as
+                            component's property named <i>caption</i>.
+                        </div>
                     </div>
                 </div>
-                <div class="lindent0a">
+                <div class="lindent00">
                     <div>
-                        As <i>I. Game introduction</i> section,
-                        <i>Question 7</i>:
+                        Source code implementation is as below,
+                        github source code is also available at
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://github.com/phamsodiep/react_line_98_game/commit/0952218ba495a312922456852361f296e0093882"
+                        >
+                          link.
+                        </a>
+                        <input
+                          id="impl_exer_43$"
+                          class="view_switch"
+                          type="button"
+                          value="content is hidden"
+                          onclick="switchDisplay(this, ['index.html', 'index.js', 'content is hidden']);"
+                          title="click to switch view between source code file in list: index.js, index.html"
+                        />
                     </div>
-                    <div class="lindent0b">
-                        <i>Button</i>'s css requires
-                        customization. We will implement a <i>Button</i>
-                        supports customized css name passed as component's
-                        property named <i>className</i>.
-                    </div>
-                    <div class="lindent0b">
-                        <i>Button</i>'s caption requires
-                        customization. We will pass this parameter as
-                        component's property named <i>caption</i>.
-                    </div>
-                </div>
-            </div>
-            <div class="lindent00">
-                <div>
-                    Source code implementation is as below,
-                    github source code is also available at
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://github.com/phamsodiep/react_line_98_game/commit/0952218ba495a312922456852361f296e0093882"
-                    >
-                      link.
-                    </a>
-                    <input
-                      id="impl_exer_43$"
-                      class="view_switch"
-                      type="button"
-                      value="content is hidden"
-                      onclick="switchDisplay(this, ['index.html', 'index.js', 'content is hidden']);"
-                      title="click to switch view between source code file in list: index.js, index.html"
-                    />
-                </div>
 
 
 
 
 
 <div class="impl_exer_43$index.html" style="display: none;">
-                <div class="lindent00">
+                    <div class="lindent00">
 
 
 
@@ -2162,7 +2175,7 @@ ReactDOM.render(
 
 
 
-                </div>
+                    </div>
 </div>
 
 
@@ -2170,7 +2183,7 @@ ReactDOM.render(
 
 
 <div class="impl_exer_43$index.js" style="display: none;">
-                <div class="lindent00">
+                    <div class="lindent00">
 
 
 
@@ -2205,14 +2218,1141 @@ ReactDOM.render(
 
 
 
-                </div>
+                    </div>
 </div>
 
 
 
 
 
+                </div>
             </div>
+        </div>
+        <div ID=" III.5. State" class="para_sep1">
+            <div><b>5. State</b></div>
+            <div ID=" III.5.1. Concepts">
+                <div>
+                    <i>5.1. Concepts</i>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        From OOP perspective, state are all attributes values
+                        of an object. From React Component perspective, this
+                        term is used with a little variant. <i>State</i> is a
+                        special attributes of React Component that:
+                    </div>
+                    <div class="lindent0a">
+                        It is local or encapsulated, it is not accessible to
+                        any other component. (<i>To share it, component could
+                        pass its value to child component via React properties,
+                        because React properties is readonly, child component
+                        could not change parent component state.</i>)
+                    </div>
+                    <div class="lindent0a">
+                        Changing <i>state</i> values following programming
+                        convention results in React Component re-render to
+                        reflect this data update.
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.5.2. Access">
+                <div class="para_sep1">
+                    <i>5.2. Access</i>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        Access is done via React component class special
+                        property <i>this.state</i>. For example:
+                        <input
+                          id="state_access_demo_52$"
+                          class="view_switch"
+                          type="button"
+                          value="content is hidden"
+                          onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                          title="click to show/hide State access example content"
+                        />
+                    </div>
+
+
+
+
+
+<div class="state_access_demo_52$content_is_displayed" style="display: none;">
+<textarea id="jsxsrc:5.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        counter: 1
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{this.state.counter}</h1>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Hello />,
+  document.getElementById('line98EntryPoint')
+);</textarea>
+</div>
+
+
+
+
+
+                </div>
+            </div>
+            <div ID=" III.5.3. Request re-render">
+                <div class="para_sep1">
+                    <i>5.3. Request re-render</i>
+                </div>
+                <div class="lindent00">
+                    Directly assigning to <i>this.state</i> property of
+                    component class does not result in method <i>render()</i>
+                    is invoked by React. We could request React re-render to
+                    reflect this state changing by invoking to
+                    <i>this.forceUpdate()</i>.
+                </div>
+            </div>
+            <div ID=" III.5.4. Update convention">
+                <div class="para_sep1">
+                    <i>5.4. Update convention</i>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <i>State</i> updating could results in component
+                        re-render (React invokes <i>render()</i> method), if we
+                        invoke <i>this.setState()</i> method instead of directly
+                        assign as <i>constructor</i> method implementation. For
+                        example, below source code will re-render to display
+                        updated <i>counter</i> once div tag is clicked.
+                        <input
+                          id="update_convention_demo_53$"
+                          class="view_switch"
+                          type="button"
+                          value="content is hidden"
+                          onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                          title="click to show/hide Update convention example demonstration source code"
+                        />
+                    </div>
+                    <div class="lindent00">
+
+
+
+
+
+<div class="update_convention_demo_53$content_is_displayed" style="display: none;">
+
+
+
+
+
+<textarea id="jsxsrc:5.2:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.counter = 1;
+    this.state = {
+      caption: "Current: ",
+      counter: this.counter
+    };
+  }
+
+  onUpCounter = () => {
+    this.counter++;
+    this.setState({
+      counter: this.counter
+    });
+  }
+
+  render() {
+    return (
+      <div onClick={this.onUpCounter}>
+        <h1>
+          <span>{this.state.caption}</span>
+          <span>{this.state.counter}</span>
+        </h1>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Hello />,
+  document.getElementById('line98EntryPoint')
+);
+</textarea>
+
+
+
+
+
+</div>
+
+
+
+
+
+                    </div>
+                </div>
+                    <div class="lindent00">
+                        <i>Note</i>: <i>this.setState()</i> method does not
+                        update state entirely, it merges state instead. Thus,
+                        just <i>counter</i> is merged back to
+                        <i>this.state.counter</i>, the remains properties of
+                        <i>this.state</i> is untouched
+                        (<i>this.state.caption</i>).
+                    </div>
+            </div>
+            <div ID=" III.5.5. Passing state to child component">
+                <div class="para_sep1">
+                    <i>5.5. Passing state to child component</i>
+                </div>
+                <div ID=" III.5.5.1. Passing state" class="lindent00">
+                    <div>
+                        <i>5.5.1. Passing state</i>
+                    </div>
+                    <div>
+                        Just pass desired property of <i>this.state</i> to child
+                        component via child component property. For example, as
+                        below source code demonstration:
+                        <input
+                          id="passing_state_to_child_541$"
+                          class="view_switch"
+                          type="button"
+                          value="content is hidden"
+                          onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                          title="click to show/hide passing state to child component example source code"
+                        />
+                    </div>
+
+
+
+
+
+<div class="passing_state_to_child_541$content_is_displayed" style="display: none;">
+
+
+
+
+
+                    <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:5.4.1:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class ProgressIndicators extends React.Component {
+  render() {
+    let step = typeof this.props.percent === "number" ?
+      Math.floor(this.props.percent / 10) % 11 : 0;
+    let containerWidth = 120;
+    let indicatorWidth = step * 12;
+    let containerStyle = {
+      height: 12,
+      width: containerWidth,
+      backgroundColor: "lightblue"
+    };
+    let indicatorStyle = {
+      height: 12,
+      width: indicatorWidth,
+      backgroundColor: "black"
+    };
+    return (
+      <div style={containerStyle}>
+        <div style={indicatorStyle}>
+        </div>
+      </div>
+    );
+  }
+}
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      percent: 50
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <ProgressIndicators percent={this.state.percent} />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Counter />,
+  document.getElementById('line98EntryPoint')
+);</textarea>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+                </div>
+                <div ID=" III.5.5.2. Synchronous updating for state and properties" class="lindent00">
+                    <div class="para_sep1">
+                        <i>
+                            5.5.2. Synchronous updating for state and properties
+                        </i>
+                    </div>
+                    <div>
+                        Component rendering is based on both <i>this.state</i>
+                        and <i>this.props</i>. However, <i>this.state</i> could
+                        be updated by an event handler, this results in
+                        <i>this.state</i> and <i>this.props</i> values are not
+                        synchronized. To make sure updating is synchronized,
+                        we invoke the second version of <i>this.setState()</i>
+                        method which accepts a callback function as parameter.
+                        React will invoke this callback function to update state
+                        once the values is synchronous available. For example,
+                        as below source code demonstration:
+                        <input
+                          id="state_properties_synchronous_updating_542$"
+                          class="view_switch"
+                          type="button"
+                          value="content is hidden"
+                          onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                          title="click to show/hide synchronous updating for state and properties example source code"
+                        />
+                    </div>
+                    <div class="lindent00">
+
+
+
+
+
+<div class="state_properties_synchronous_updating_542$content_is_displayed" style="display: none;">
+
+
+
+
+
+<textarea id="jsxsrc:5.5.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class ProgressIndicators extends React.Component {
+  render() {
+    let step = typeof this.props.percent === "number" ?
+      Math.floor(this.props.percent / 10) % 11 : 0;
+    let containerWidth = 120;
+    let indicatorWidth = step * 12;
+    let containerStyle = {
+      height: 12,
+      width: containerWidth,
+      backgroundColor: "lightblue"
+    };
+    let indicatorStyle = {
+      height: 12,
+      width: indicatorWidth,
+      backgroundColor: "black"
+    };
+    return (
+      <div style={containerStyle}>
+        <div style={indicatorStyle}>
+        </div>
+      </div>
+    );
+  }
+}
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      percent: 0
+    };
+  }
+
+  onUpCounter = () => {
+    this.setState((state, props) => ({
+      percent: (state.percent + 10) % 110
+    }));
+  }
+
+  render() {
+    return (
+      <div onClick={this.onUpCounter}>
+        <ProgressIndicators percent={this.state.percent} />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Counter />,
+  document.getElementById('line98EntryPoint')
+);</textarea>
+
+
+
+
+
+</div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.5.6. Exercise">
+                <div class="para_sep1">
+                    <i>5.6. Exercise</i>
+                </div>
+                <div class="lindent00">
+                    Implement version <i>0.2.2</i>, clicking reset
+                    <i>Button</i> results in system initializes a
+                    <i>Game Board</i> with full of <i>Ball</i>s rendered
+                    in cyan colour.
+                    <br />
+                    <input
+                      id="exercise_content_56$"
+                      class="view_switch"
+                      type="button"
+                      value="content is hidden"
+                      onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                      title="click to show/hide exercise 5.6. content"
+                    />
+                </div>
+
+
+
+
+
+<div class="exercise_content_56$content_is_displayed" style="display: none;">
+
+
+
+
+
+                <div class="lindent00">
+                    <div>
+                        Due to SDD – Software design description,
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_designed_class_diag"
+                        >
+                          <b>Figure</b> 3.3.2.1:
+                          <i>System overview class diagram</i>:
+                        </a>
+                    </div>
+                    <div class="lindent0a">
+                        <i>GameBoard</i> implements <i>BallManager</i>, with
+                        note that cell without ball has a null ball to listen
+                        on select cell event.
+                        Thus, we will implement interface <i>BallManager</i>
+                        to render such null ball for <i>Reset Game</i> use case.
+                    </div>
+                    <div class="lindent0a">
+                        Because of null balls, rendered colour is transparent.
+                        However, for debug purpose, rendered colour is
+                        temporary set to cyan.
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        Implementation steps are as below, github source code
+                        is also available at
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="#9a72622e7ffaf93197a382ab25bd6a6bfafd9c69"
+                        >
+                          link.
+                        </a>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Implement <i>resetGame()</i> method for
+                            <i>GameBoard</i> (<i>BallManager</i> interface
+                            of class <i>GameBoard</i>):
+                            <input
+                              id="reset_game_55$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide resetGame() method source code content"
+                            />
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<div class="reset_game_55$content_is_displayed" style="display: none;">
+<textarea id="jsxsrc:5.6:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+
+resetGame() {
+  let dimension = 9;
+  let balls = [];
+  let i = 0;
+  let j = 0;
+  for (i = 0; i < dimension; i++) {
+    balls[i] = [];
+    for (j = 0; j < dimension; j++) {
+      balls[i][j] = 1; // cyan colour
+    }
+  }
+  // Update balls property of this.state by this function
+  // results in this.render() method invoked by React
+  this.setState((state, props) => ({
+    balls: balls
+  }));
+}
+</textarea>
+</div>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Implement to render balls:
+                            <input
+                              id="render_ball_55$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide resetGame() method source code content"
+                            />
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<div class="render_ball_55$content_is_displayed" style="display: none;">
+<textarea id="jsxsrc:5.6:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+
+render() {
+  .....
+
+  let balls = this.createBalls();
+  return (
+    <div style={containerStyle}>
+      <div style={gameBoardStyle}>
+        <canvas ref={this.onCanvasCreate}>
+        </canvas>
+        {balls}
+      </div>
+    </div>
+  );
+}
+
+createBalls() {
+  if (this.state === null) { // this.state is null if resetGame() is not invoked
+    return [];
+  }
+  let dimension = 9;
+  let balls = [];
+  let i = 0;
+  let j = 0;
+  for (i = 0; i < dimension; i++) {
+    for (j = 0; j < dimension; j++) {
+      balls[balls.length] = this.createBall(i, j, this.state.balls[i][j]);
+    }
+  }
+  return balls;
+}
+
+createBall(r, c, colourId) {
+  let thick = 1;
+  let cellSize = 50;
+  let sz = cellSize + thick;
+  let left = c * sz;
+  let top = r * sz;
+
+  return (<Ball
+    left={left}
+    top={top}
+    colourId={colourId}
+  />);
+}
+</textarea>
+</div>
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="lindent0a">
+                        <div>
+                            Implement to invoke <i>resetGame()</i> once
+                            <i>ResetButton</i> is clicked:
+                            <input
+                              id="reset_game_trigger_55$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide resetGame() method source code content"
+                            />
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<div class="reset_game_trigger_55$content_is_displayed" style="display: none;">
+<textarea id="jsxsrc:5.6:3" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+// Save GameBoard reference to gameBoardRef global variable
+var gameBoardRef = ReactDOM.render(
+  <GameBoard />,
+  document.getElementById('line98EntryPoint')
+);
+
+class ResetButton extends React.Component {
+  .....
+
+  resetGame() {
+    //alert('Game reseting...');
+    // invoke GameBoard reference resetGame() method
+    gameBoardRef.resetGame();
+  }
+}
+</textarea>
+</div>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Implement class <i>Ball</i>:
+                            <input
+                              id="ball_class_55$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide resetGame() method source code content"
+                            />
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<div class="ball_class_55$content_is_displayed" style="display: none;">
+<textarea id="jsxsrc:5.6:4" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+
+const COLOUR_LIST = [
+  null,
+  "#00ccff",
+  "#ffff00",
+  "#33cc33",
+  "#0000ff",
+  "#cc3300",
+  "#ff66ff",
+  "#ff9900"
+];
+
+class Ball extends React.Component {
+  getColourId() {
+    return this.props.colourId >= 0 && this.props.colourId <= 7 ?
+      this.props.colourId : 0;
+  }
+
+  getCellStyle() {
+    let thick = 1;
+    let cellSize = 50;
+    let size = cellSize + thick;
+
+    return {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      margin: "auto",
+      position: "absolute",
+      width: size,
+      height: size,
+      left: this.props.left,
+      top: this.props.top
+    };
+  }
+
+  deriveBallStyle(colourId) {
+    let thick = 1;
+    let cellSize = 50;
+    let size = cellSize + thick;
+    let ballSize = Math.floor(size * 60.0 / 100.0);
+
+    return {
+      display: "block",
+      width: ballSize + "px",
+      height: ballSize + "px",
+      background: COLOUR_LIST[colourId],
+      borderRadius: "50%",
+      padding: "0px",
+      borderWidth: "0px",
+      borderStyle: "none",
+    };
+  }
+
+  render() {
+    let colourId = this.getColourId();
+    let cellStyle = this.getCellStyle();
+    let ballStyle = this.deriveBallStyle(colourId);
+
+    return (
+      <div style={cellStyle}>
+        <div style={ballStyle}>
+        </div>
+      </div>
+    );
+  }
+}
+</textarea>
+</div>
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <i>Side effect of 'this.setState'</i>:
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            <i>Side effect</i>: Invoking
+                            <i>this.resetGame()</i> in <i>constructor</i>
+                            context of component class <i>GameBoard</i> does
+                            not results in first render of <i>GameBoard</i>
+                            has full of Balls rendered in cyan colour.
+                            Because invoking:
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:5.6:5" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+this.setState((state, props) => ({
+  balls: balls
+}));</textarea>
+
+
+
+
+
+                        </div>
+                        <div>
+                            does not update state immediately. It just schedules
+                            an update with a callback function. In the case of
+                            <i>constructor</i> context, <i>render()</i> method
+                            will be invoked before this state update.
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            <i>Solution</i>:
+                        </div>
+                        <div class="lindent0b">
+                            <div>
+                                <i>resetGame</i> method implementation should
+                                assign <i>this.state</i> component class
+                                property directly for <i>constructor</i>
+                                <i>resetGame</i> effect (<i>Browser actor
+                                initiates  Reset Game use case</i>).
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:5.6:6" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+this.state = {
+  balls: balls
+};</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="lindent0b">
+                            <div>
+                                <i>resetGame</i> method implementation invokes
+                                method <i>this.forceUpdate()</i> for
+                                <i>ResetButton</i> event handler effect
+                                (<i>Player actor initiates Reset Game use case
+                                by button clicking</i>).
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:5.6:7" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+this.state = {
+  balls: balls
+};
+this.forceUpdate();</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            <i>Final source code:</i>
+                        </div>
+                        <div class="lindent00">
+                            Final source code with this side effect fixing is
+                            as below, github source code is also available at
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="https://github.com/phamsodiep/react_line_98_game/commit/2e2fb708b6568167e8449c1dfcc56257da6a5cdb"
+                            >
+                              link.
+                            </a>
+                            <br />
+                            <input
+                              id="side_effect_fixing_56$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide side effect fixing source code"
+                            />
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<div class="side_effect_fixing_56$content_is_displayed" style="display: none;">
+<textarea id="jsxsrc:5.6:8" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+const COLOUR_LIST = [
+  null,
+  "#00ccff",
+  "#ffff00",
+  "#33cc33",
+  "#0000ff",
+  "#cc3300",
+  "#ff66ff",
+  "#ff9900"
+];
+
+class ResetButton extends React.Component {
+  resetGame() {
+    gameBoardRef.resetGame();
+  }
+
+  render() {
+    let caption = this.props.caption;
+    caption = typeof caption === "string" ? caption : "Reset";
+    return (
+      <div className={this.props.className} onClick={this.resetGame}>
+        {caption}
+      </div>
+    );
+  }
+}
+
+class Ball extends React.Component {
+  getColourId() {
+    return this.props.colourId >= 0 && this.props.colourId <= 7 ?
+      this.props.colourId : 0;
+  }
+
+  getCellStyle() {
+    let thick = 1;
+    let cellSize = 50;
+    let size = cellSize + thick;
+
+    return {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      margin: "auto",
+      position: "absolute",
+      width: size,
+      height: size,
+      left: this.props.left,
+      top: this.props.top
+    };
+  }
+
+  deriveBallStyle(colourId) {
+    let thick = 1;
+    let cellSize = 50;
+    let size = cellSize + thick;
+    let ballSize = Math.floor(size * 60.0 / 100.0);
+
+    return {
+      display: "block",
+      width: ballSize + "px",
+      height: ballSize + "px",
+      background: COLOUR_LIST[colourId],
+      borderRadius: "50%",
+      padding: "0px",
+      borderWidth: "0px",
+      borderStyle: "none",
+    };
+  }
+
+  render() {
+    let colourId = this.getColourId();
+    let cellStyle = this.getCellStyle();
+    let ballStyle = this.deriveBallStyle(colourId);
+
+    return (
+      <div style={cellStyle}>
+        <div style={ballStyle}>
+        </div>
+      </div>
+    );
+  }
+}
+
+class GameBoard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      balls: []
+    };
+    this.resetGame();
+  }
+
+  onCanvasCreate = (bgImg) => {
+    let i = 0;
+    let n = 9; // dimension
+    let thick = 1;
+    let cellSize = 50;
+    let width = n * cellSize + thick * (n + thick);
+
+    // Context retrieving and initializing
+    bgImg.width = width;
+    bgImg.height = width;
+    bgImg.style.position = "absolute";
+    bgImg.style.left = 0;
+    bgImg.style.top = 0;
+    let canvasContext = bgImg.getContext("2d");
+    canvasContext.translate(0, 0);
+    canvasContext.lineWidth = 1;
+
+    // Render board surface
+    canvasContext.fillStyle = "#eeeeee";
+    canvasContext.fillRect(
+      0,
+      0,
+      width,
+      width
+    );
+
+    // Render board cells border
+    // |  |  |...
+    canvasContext.fillStyle = "#000000";
+    for (i = 0; i <= n; i++) {
+      let x = i * (cellSize + thick);
+      canvasContext.fillRect(x, 0, thick, width);
+    }
+    // =
+    for (i = 0; i <= n; i++) {
+      let y = i * (cellSize + thick);
+      canvasContext.fillRect(0, y, width, thick);
+    }
+  }
+
+  render() {
+    // dimension * cellSize + lineWidth * (dimension + 1)
+    let width = 9 * 50 + 1 * (9 + 1);
+    let gameBoardStyle = {
+      position: "relative",
+      width: "100%",
+      height: "100%",
+      borderWidth: "0px",
+      borderStyle: "none",
+      margin: "0px 0px 0px 0px",
+      padding: "0px 0px 0px 0px"
+    };
+    let containerStyle = {
+      position: "static",
+      width: width + "px",
+      height: width + "px",
+      borderWidth: "0px",
+      borderStyle: "none",
+      margin: "0px 0px 0px 0px",
+      padding: "0px 0px 0px 0px"
+    };
+    let balls = this.createBalls();
+
+    return (
+      <div style={containerStyle}>
+        <div style={gameBoardStyle}>
+          <canvas ref={this.onCanvasCreate}>
+          </canvas>
+          {balls}
+        </div>
+      </div>
+    );
+  }
+
+
+  //////////////////////////////////////////////////////////////////////////////
+  // BallManager interface
+  //////////////////////////////////////////////////////////////////////////////
+  resetGame() {
+    let dimension = 9;
+    let i = 0;
+    let j = 0;
+    for (i = 0; i < dimension; i++) {
+      this.state.balls[i] = [];
+      for (j = 0; j < dimension; j++) {
+        this.state.balls[i][j] = 1; // cyan colour
+      }
+    }
+    this.forceUpdate();
+  }
+
+  createBalls() {
+    if (this.state === null) { // this.state is null if resetGame() is not invoked
+      return [];
+    }
+    let dimension = 9;
+    let balls = [];
+    let i = 0;
+    let j = 0;
+    for (i = 0; i < dimension; i++) {
+      for (j = 0; j < dimension; j++) {
+        balls[balls.length] = this.createBall(i, j, this.state.balls[i][j]);
+      }
+    }
+    return balls;
+  }
+
+  createBall(r, c, colourId) {
+    let thick = 1;
+    let cellSize = 50;
+    let sz = cellSize + thick;
+    let left = c * sz;
+    let top = r * sz;
+
+    return (<Ball
+      left={left}
+      top={top}
+      colourId={colourId}
+    />);
+  }
+}
+
+var gameBoardRef = ReactDOM.render(
+  <GameBoard />,
+  document.getElementById('line98EntryPoint')
+);
+
+ReactDOM.render(
+  <ResetButton className="reset_button" caption="重置" />,
+  document.getElementById('line98ResetButton')
+);
+</textarea>
+                        <input
+                          class="view_switch"
+                          type="button"
+                          value="hide final source code"
+                          onclick="document.getElementById('side_effect_fixing_56$').click();"
+                          title="click to hide final source code of exercise 5.6"
+                        />
+</div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+</div>
+
+
+
+
+
         </div>
     </div>
     <div ID=" ???. References" class="para_sep1">
@@ -2244,7 +3384,7 @@ ReactDOM.render(
 
 
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/js-jsx-react-in-a-nutshell.htm</div>
-<div id="githubver" class="hidden">0.0.4</div>
+<div id="githubver" class="hidden">0.0.5</div>
 <script>doDefaultDecorate();</script>
 <script>
 function doScrollIntoViewDecoration() {
