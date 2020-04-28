@@ -1,4 +1,4 @@
-<div id="entry_article">
+﻿<div id="entry_article">
 <details class="hidden">
     <summary>
         <img
@@ -3684,6 +3684,415 @@ initializeAnimationCsses();</textarea>
                 </div>
             </div>
         </div>
+        <div ID=" III.7. Forms" class="para_sep1">
+            <div><b>7. Forms</b></div>
+            <div ID=" III.7.1. Introduction">
+                <div>
+                    <i>7.1. Introduction</i>
+                </div>
+                <div class="lindent00">
+                    HTML form elements work a little bit differently from
+                    other DOM elements in React, because form elements
+                    naturally keep some internal state. For most case, we
+                    need to handle form submission programatically by
+                    JavaScript code (for example REST api client which normal
+                    form submission simply could not solve the problem). This
+                    section and its subsection show how to use
+                    <i>controlled components</i>, a new React concept to
+                    archive this.
+                </div>
+            </div>
+            <div ID=" III.7.2. Controlled Components">
+                <div class="para_sep1">
+                    <i>7.2. Controlled Components</i>
+                </div>
+                <div class="lindent00">
+                    <i>Controlled Components</i> is input form element whose
+                    value is controlled by React so that the React state be
+                    the "single source of truth".
+                </div>
+                <div class="lindent00">
+                    <div>
+                        The attribute of value (<i>null</i>,
+                        <i>literal constant</i>, <i>variable</i>) of components
+                        defines what type of components could be:
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            <i>variable</i>: components could be a
+                            <i>Controlled Components</i>
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:7.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<input type="text" value={this.state.value} /></textarea>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            <i>null</i>: components is editable but it could
+                            not be a <i>Controlled Components</i>.
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:7.2:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<input type="text" value={null} /></textarea>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            <i>literal constant</i>: components is readonly and
+                            it could be a <i>Controlled Components</i>.
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:7.2:3" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<input type="text" value="administrator" /></textarea>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="lindent00">
+                    <div>
+                        For file input tag, since its value is read only, it
+                        could not be a <i>Controlled Components</i>:
+                    </div>
+                    <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:7.2:4" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<input type="file" /></textarea>
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+            <div ID=" III.7.3. Controlled Components Implementation">
+                <div class="para_sep1">
+                    <i>7.3. Controlled Components Implementation</i>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <div>
+                            <i>7.3.1. Implementation</i>
+                        </div>
+                        <div>
+                            To controls input form element whose value:
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                Pass React state to form element value
+                                (React property <i>value</i>):
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:7.3:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+<input
+  type="text"
+  value={this.state.value}
+/></textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                Implement <i>onChange</i> event handler of
+                                form element to handle data change binding
+                                since React property is readonly for two
+                                way binding implementation.
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:7.3:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+handleChange = (e) => {
+  this.setState({
+    value: e.target.value
+  });
+}
+
+.....
+
+render() {
+  return (
+
+        .....
+
+        <input
+          type="text"
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+
+        .....
+
+  );
+}</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="lindent0a">
+                            <div>
+                                Final source code is as below:
+                                <input
+                                  id="controlled_components_impl_demo_73$"
+                                  class="view_switch"
+                                  type="button"
+                                  value="content is hidden"
+                                  onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                                  title="click to show/hide Controlled Components implementation demonstration"
+                                />
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<div class="controlled_components_impl_demo_73$content_is_displayed" style="display: none;">
+<textarea id="jsxsrc:7.3:3" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class WinPriceForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ''
+    };
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      value: e.target.value
+    });
+  }
+
+  render() {
+    return (
+      <form>
+        <label>
+          Player's name:
+          <input
+            type="text"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+        </label>
+        &nbsp;
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+
+ReactDOM.render(
+  <WinPriceForm />,
+  document.getElementById('line98EntryPoint')
+);</textarea>
+</div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="para_sep1">
+                            <i>7.3.2. Handling Multiple Inputs</i>
+                        </div>
+                        <div>
+                            Instead write each handler for each input, we
+                            could write a shared one. To aware which target
+                            input handler is processing, it could test via
+                            <i>event.target.name</i>:
+                        </div>
+
+
+
+
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:7.3:4" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+handleChange = (e) => {
+  if (e.target.name === "name") {
+    this.setState({
+      name: e.target.value
+    });
+  }
+  else if (e.target.name === "email") {
+    this.setState({
+      email: e.target.value
+    });
+  }
+
+  // Without if else conditional check implementation
+  // let updatedValue = {};
+  // updatedValue[e.target.name] = e.target.value;
+  // this.setState(updatedValue);
+}
+
+.....
+
+render() {
+  return (
+
+        .....
+
+        <input
+          type="text"
+          name="name"
+          value={this.state.name}
+          onChange={this.handleChange}
+        />
+
+        .....
+
+        <input
+          type="text"
+          name="email"
+          value={this.state.email}
+          onChange={this.handleChange}
+        />
+
+        .....
+
+  );
+}</textarea>
+
+
+
+
+
+                            </div>
+                    </div>
+                    <div>
+                        <div class="para_sep1">
+                            <i>7.3.3. Handle HTTP request</i>
+                        </div>
+                        <div>
+                            <div>
+                                To handle form submission programatically
+                                by JavaScript code so that we could make an
+                                HTTP request, implement <i>handleSubmit</i>
+                                event handler with an invoking to
+                                <i>preventDefault()</i> to prevent default
+                                form submission:
+                            </div>
+                            <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:7.3:5" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+
+handleSubmit = (e) => {
+  e.preventDefault();
+  let json = JSON.stringify(this.state);
+  alert(json); // @TODO process for HTTP request by axios instead of alerting.
+}
+
+render() {
+  return (
+    <form onSubmit={this.handleSubmit}>
+      <label>
+        Player's name:
+        <input
+          type="text"
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  );
+}</textarea>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.7.4. Exercise">
+                <div class="para_sep1">
+                    <i>7.4. Exercise</i>
+                </div>
+                <div class="lindent00">
+                    T.B.D. (We will implement ContentOnwer system as a
+                    Line98 actor, this is outside the implemeneted system.)
+                </div>
+            </div>
+        </div>
     </div>
     <div ID=" ???. References" class="para_sep1">
         <div>
@@ -3714,7 +4123,7 @@ initializeAnimationCsses();</textarea>
 
 
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/js-jsx-react-in-a-nutshell.htm</div>
-<div id="githubver" class="hidden">0.0.6</div>
+<div id="githubver" class="hidden">0.0.7</div>
 <script>doDefaultDecorate();</script>
 <script>
 function doScrollIntoViewDecoration() {
