@@ -116,7 +116,7 @@
                     <div>
                         <i>0.2:</i>
                         On this version, use case <i>Reset Game</i>
-                        is available.
+                        is available with partial function.
                     </div>
                     <div class="lindent0b">
                         <i>0.2.1:</i>
@@ -131,7 +131,16 @@
                     </div>
                 </div>
                 <div class="lindent0a">
-                    <i>0.3:</i>
+                    <div>
+                        <i>0.3:</i>
+                        On this version, use case <i>Move Ball</i> is
+                        available with partial function.
+                    </div>
+                    <div class="lindent0b">
+                        <i>0.3.1:</i> <i>Player</i> could click a <i>Ball</i>
+                        for selecting, <i>Ball</i> is rendered in <i>Focused</i>
+                        animation to displaying this selecting.
+                    </div>
                 </div>
             </div>
             <div class="lindent00">
@@ -3354,6 +3363,327 @@ ReactDOM.render(
 
 
         </div>
+        <div ID=" III.6. Lifting State Up" class="para_sep1">
+            <div><b>6. Lifting State Up</b></div>
+            <div ID=" III.6.1. Purpose">
+                <div>
+                    <i>6.1. Purpose</i>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        Let's examinine below case to see an example of
+                        lifting state up.
+                        Due to SDD – Software design description,
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_ball_states_diag"
+                        >
+                          <b>Figure</b> 5.2:
+                          <i>Ball state machine diagram</i>,
+                        </a>
+                        ball state is <i>Ball</i> class internal private data,
+                        it should be implemented as React state. Let's review
+                        below scenario:
+                    </div>
+                    <div class="lindent00">
+                        1. <i>Player</i> clicks a cyan ball at cell (2, 7).
+                    </div>
+                    <div class="lindent00">
+                        2. System render ball at cell (2, 7) in <i>Focused</i>
+                        state.
+                    </div>
+                    <div class="lindent00">
+                        3. <i>Player</i> clicks a red ball at cell (6, 5).
+                    </div>
+                    <div class="lindent00">
+                        <div>4. System does below steps:</div>
+                        <div class="lindent00">
+                            4.1. System renders ball at cell (2, 7) as normal
+                            (in <i>OperatingDone</i> state).
+                        </div>
+                        <div class="lindent00">
+                            4.2. System renders ball at cell (6, 5) in
+                            <i>Focused</i> state.
+                        </div>
+                    </div>
+                    <div>
+                        <div>It is noted that:</div>
+                        <div class="lindent0a">
+                            At step #2, ball at cell (2, 7) updates it's state
+                            to <i>Focused</i>. That is enough.
+                        </div>
+                        <div class="lindent0a">
+                            At step #4, ball at cell (6, 5) updates it's
+                            state to <i>Focused</i>. That is not enough, it is
+                            also required that ball at cell (2, 7) updates it's
+                            state to <i>OperatingDone</i> state.
+                        </div>
+                        <div>
+                            <div>
+                                Thus, for this case, we need a way to send
+                                message from ball at cell (6, 5) to ball
+                                at cell (2, 7) to request it updates it's
+                                state to <i>OperatingDone</i> state. To make
+                                thing simple in a manageable way:
+                            </div>
+                            <div class="lindent00">
+                                1. Ball at cell (6, 5) sends message to it's
+                                parent component <i>GameBoard</i> which
+                                implements <i>BallManager</i> interface
+                                to notify it's new state.
+                            </div>
+                            <div class="lindent00">
+                                2. <i>GameBoard</i> notifies (by sending
+                                message) to ball at cell (2, 7) to request it
+                                updates it's state to <i>OperatingDone</i>
+                                state.
+                            </div>
+                            <div>
+                                To do this, <i>GameBoard</i>'s state should
+                                include previous focused ball, so
+                                focused ball information is stored in two
+                                classes: <i>GameBoard</i> and <i>Ball</i>.
+                                Data duplication is not a programming
+                                best practices. To avoid this, we could store
+                                focused ball information in <i>GameBoard</i>,
+                                then <i>GameBoard</i> will share this
+                                information to <i>Ball</i> via React property.
+                                Such approach is lifting state up, because
+                                ball <i>Focused</i> state is lifted up to it's
+                                parent component <i>GameBoard</i>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.6.2. Concept">
+                <div>
+                    <i>6.2. Concept</i>
+                </div>
+                <div class="lindent00">
+                    In React, sharing state is accomplished by moving
+                    it up to the closest common ancestor of the components
+                    that need it. This is called "lifting state up".
+                </div>
+            </div>
+            <div ID=" III.6.3. Exercise">
+                <div>
+                    <i>6.3. Exercise</i>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        We will implement version <i>0.3.1</i> supporting
+                        <i>Player</i> selects <i>Ball</i> and re-selects
+                        <i>Ball</i> (switch <i>Ball</i> focus).
+                        Due to SDD – Software design description,
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#designclasses_png"
+                        >
+                          <b>Figure</b> 5.1:
+                          <i>Implementation class diagram</i>,
+                        </a>
+                        <i>BallManager</i> interface is implemented by class
+                        <i>GameBoard</i> and <i>Ball</i> co-operates as a
+                        sub system. We will implement class <i>Ball</i> with
+                        lifting state up:
+                    </div>
+                    <div class="lindent0a">
+                        <i>GameBoard</i> will pass click handle event call back
+                        function to <i>Ball</i> via <i>onClick(id)</i> property.
+                        This gives <i>Ball</i> a way to notify <i>GameBoard</i>
+                        about <i>Player</i> click event (<i>id</i> is
+                        identifier of <i>Ball</i> object.).
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            <i>GameBoard</i> will pass requested animation
+                            demonstration to <i>Ball</i> via <i>animation</i>
+                            property as a css animation style string. This
+                            results in:
+                        </div>
+                        <div class="lindent0b">
+                            <i>Ball</i>'s state is stored at <i>GameBoard</i>.
+                        </div>
+                        <div class="lindent0b">
+                            <i>GameBoard</i> takes the responsible to compute
+                            animation css for <i>Ball</i>.
+                        </div>
+                    </div>
+                    <div>
+                        Developing from version <i>0.2.2</i> to version
+                        <i>0.3.1</i> is as below, github source code is
+                        also available at
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="#2d158cdff07911b56374cc407de623e58e2ff292"
+                        >
+                          link.
+                        </a>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Develope <i>Ball</i> component to process
+                            <i>animation</i> and <i>onClick</i> properties:
+                            <input
+                              id="impl_ver_031_step1$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide source code demonstration"
+                            />
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<div class="impl_ver_031_step1$content_is_displayed" style="display: none;">
+<textarea id="jsxsrc:6.3:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+onClick = () => {
+  if (typeof this.props.onClick === "function") {
+    this.props.onClick(this.props.id);
+  }
+}
+
+render() {
+  let colourId = this.getColourId();
+  let cellStyle = this.getCellStyle();
+  let ballStyle = this.deriveBallStyle(colourId);
+  ballStyle.animation = this.props.animation;
+
+  return (
+    <div style={cellStyle}>
+      <div style={ballStyle} onClick={this.onClick}>
+      </div>
+    </div>
+  );
+}</textarea>
+</div>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Develope <i>GameBoard</i> component to process
+                            <i>onClick</i> event handler to update current
+                            focused ball and passing processed ball focused
+                            state as it's css animation properties to component
+                            <i>Ball</i> via it's properties in <i>render()</i>
+                            method implementation:
+                            <input
+                              id="impl_ver_031_step2$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide source code demonstration"
+                            />
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<div class="impl_ver_031_step2$content_is_displayed" style="display: none;">
+<textarea id="jsxsrc:6.3:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+constructor(props) {
+  super(props);
+  this.state = {
+    balls: [],
+    focusedBallId: -1
+  };
+  this.resetGame();
+}
+
+onClick = (id) => {
+  this.setState((state, props) => ({
+    focusedBallId: id
+  }));
+}
+
+createBall(r, c, colourId) {
+  let dimension = 9;
+  let ballId = r * dimension + c;
+  let animation = this.state.focusedBallId === ballId ?
+    "ballFocused 0.25s linear 0s infinite alternate" : null;
+
+  .....
+
+  return (<Ball
+    id={ballId}
+    left={left}
+    top={top}
+    colourId={colourId}
+    onClick={this.onClick}
+    animation={animation}
+  />);
+}</textarea>
+</div>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <div>
+                            Implement to create focused animation css:
+                            <input
+                              id="impl_ver_031_step3$"
+                              class="view_switch"
+                              type="button"
+                              value="content is hidden"
+                              onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                              title="click to show/hide source code demonstration"
+                            />
+                        </div>
+                        <div class="lindent00">
+
+
+
+
+
+<div class="impl_ver_031_step3$content_is_displayed" style="display: none;">
+<textarea id="jsxsrc:6.3:3" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+function initializeAnimationCsses() {
+  let cssNode = document.createElement('STYLE');
+  let entryPoint = document.getElementById('line98EntryPoint');
+  let parentNode = entryPoint.parentNode;
+  let cssStr = `
+    @keyframes ballFocused {
+      from {}
+      to {margin-bottom: 15px}
+    }
+  `;
+  cssNode.type = 'text/css';
+  cssNode.innerHTML = cssStr;
+  cssNode = parentNode.insertBefore(cssNode, entryPoint);
+}
+
+initializeAnimationCsses();</textarea>
+</div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div ID=" ???. References" class="para_sep1">
         <div>
@@ -3384,7 +3714,7 @@ ReactDOM.render(
 
 
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/js-jsx-react-in-a-nutshell.htm</div>
-<div id="githubver" class="hidden">0.0.5</div>
+<div id="githubver" class="hidden">0.0.6</div>
 <script>doDefaultDecorate();</script>
 <script>
 function doScrollIntoViewDecoration() {
