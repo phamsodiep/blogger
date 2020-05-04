@@ -51,16 +51,61 @@
                     <i>score</i> = <i>n</i> * (1 + 5 - <i>n</i>)
                 </div>
                 <div>
-                    where <i>n</i> is total removed balls count
+                    where: <i>n</i> is total removed balls count
                 </div>
             </div>
-            <div ID=" I.2 Ambitious points"  class="lindent00">
+            <div ID=" I.2 Interaction Operations"  class="lindent00">
+                <div class="para_sep0">
+                    Interaction Operations:
+                </div>
+                <div class="lindent0a">
+                    <div><i>Reset Game</i>:</div>
+                    <div class="lindent00">
+                        1. Player clicks reset button.
+                    </div>
+                    <div class="lindent00">
+                        2. Game application generates three initial balls.
+                    </div>
+                    <div class="lindent00">
+                        3. Game application waits player for a ball move.
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div><i>Move Ball</i>:</div>
+                    <div class="lindent00">
+                        1. Player clicks a ball.
+                    </div>
+                    <div class="lindent00">
+                        2. Game application displays clicked ball as
+                        focused animation (the ball is moved up then
+                        down alliteratively).
+                    </div>
+                    <div class="lindent00">
+                        3. Player clicks a empty cell, that has a path
+                        to move ball to.
+                    </div>
+                    <div class="lindent00">
+                        4. Game application displays ball moving by a
+                        path that it searches itself.
+                    </div>
+                    <div class="lindent00">
+                    </div>
+                    <div>
+                        <div><i>Notes</i>:</div>
+                        <div class="lindent0a">
+                            <i></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ID=" I.3 Ambitious points" class="lindent00">
                 <div class="para_sep0">
                     Ambitious points and its clarifying (this could be archived
                     by interview with stake-holders in practice):
                 </div>
-                <div class="lindent0a">
+                <div class="lindent00">
                     <div>
+                        <i>Question 1</i>:
                         If there are some straight lines that has 5 or more
                         balls arranged, how scores are done?
                     </div>
@@ -73,8 +118,9 @@
                         </i>
                     </div>
                 </div>
-                <div class="lindent0a">
+                <div class="lindent00">
                     <div>
+                        <i>Question 2</i>:
                         If new generated balls are arranged one or some straight
                         lines, how scores are done?
                     </div>
@@ -87,8 +133,9 @@
                         </i>
                     </div>
                 </div>
-                <div class="lindent0a">
+                <div class="lindent00">
                     <div>
+                        <i>Question 3</i>:
                         How to set preset limitation score?
                     </div>
                     <div class="lindent00">
@@ -98,8 +145,9 @@
                         </i>
                     </div>
                 </div>
-                <div class="lindent0a">
+                <div class="lindent00">
                     <div>
+                        <i>Question 4</i>:
                         How to show the hidden content?
                     </div>
                     <div class="lindent00">
@@ -117,8 +165,9 @@
                         </i>
                     </div>
                 </div>
-                <div class="lindent0a">
+                <div class="lindent00">
                     <div>
+                        <i>Question 5</i>:
                         If after generating or moving ball that results in
                         scores done and board is empty because all of remain
                         balls are removed, how to process the game in this case.
@@ -130,8 +179,9 @@
                         </i>
                     </div>
                 </div>
-                <div class="lindent0a">
+                <div class="lindent00">
                     <div>
+                        <i>Question 6</i>:
                         How to determine if game is over?
                     </div>
                     <div class="lindent00">
@@ -144,6 +194,57 @@
                             (the cells that have no ball occupied) should be
                             greater than 5 cells.
                         </i>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        <i>Question 7</i>:
+                        Does reset button need decoration? Should blogger author
+                        define reset button location and its appearance.
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            &#x261E;
+                            <i>
+                                Yes, the css class of reset button should be
+                                customized, reset button should be implemented
+                                as HTML div tag with a caption, div inner text,
+                                is customizable also. Moreover, there are three
+                                components whose location is defined by placing
+                                component into an existed div tag as its inner
+                                tag. They are: reset button, game board and
+                                score board. The ids of target div are named as
+                                below notes:
+                            </i>
+                        </div>
+                        <div class="lindent0a">
+                            <i>
+                                Id names are prefixed with 'line98' and this
+                                could be customized/changed to avoid id
+                                conflict.
+                            </i>
+                        </div>
+                        <div class="lindent0a">
+                            <i>
+                                Reset button's id is 'line98ResetButton'. The
+                                'ResetButton' part of id is fixed, the prefix
+                                part 'line98' could be changed.
+                            </i>
+                        </div>
+                        <div class="lindent0a">
+                            <i>
+                                Game board's id is 'line98EntryPoint'. The
+                                'EntryPoint' part of id is fixed, the prefix
+                                part 'line98' could be changed.
+                            </i>
+                        </div>
+                        <div class="lindent0a">
+                            <i>
+                                Score board's id is 'line98ScoreBoard'. The
+                                'ScoreBoard' part of id is fixed, the prefix
+                                part 'line98' could be changed.
+                            </i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -586,47 +687,49 @@
             <div>
                 <b>2. Use cases identifying</b>
             </div>
-            <div class="lindent0a">
-                <div>
-                    <i>Player</i>
-                </div>
-                <div class="lindent0b">
-                    <i>Reset Game</i>
-                </div>
-                <div class="lindent0b">
+            <div>
+                <div class="lindent0a">
                     <div>
-                        <i>Move Ball</i>
+                        <i>Player</i>
+                    </div>
+                    <div class="lindent0b">
+                        <i>Reset Game</i>
+                    </div>
+                    <div class="lindent0b">
+                        <div>
+                            <i>Move Ball</i>
+                        </div>
+                        <div class="lindent0c">
+                            «Extend» <i>Notify Gameover</i>
+                        </div>
+                        <div class="lindent0c">
+                            «Extend» <i>Notify win price</i>
+                        </div>
+                    </div>
+                    <div class="lindent0b">
+                        <i>View Score</i>: <i>Score Board</i> process
+                        <i>display</i> request from <i>Game Application</i> and make
+                        this information available to <i>Player</i>. <i>Player</i>  
+                        could view this information at anytime that he/she needs
+                        to.
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div>
+                      <i>Content Owner</i>
                     </div>
                     <div class="lindent0c">
-                        «Extend» <i>Notify Gameover</i>
-                    </div>
-                    <div class="lindent0c">
-                        «Extend» <i>Notify win price</i>
+                        <i>Notify win price</i> (which is extended from
+                        <i>Move Ball</i>)
                     </div>
                 </div>
-                <div class="lindent0b">
-                    <i>View Score</i>: <i>Score Board</i> process
-                    <i>display</i> request from <i>Game Application</i> and make
-                    this information available to <i>Player</i>. <i>Player</i>  
-                    could view this information at anytime that he/she needs
-                    to.
-                </div>
-            </div>
-            <div class="lindent0a">
-                <div>
-	                <i>Content Owner</i>
-                </div>
-                <div class="lindent0c">
-                    <i>Notify win price</i> (which is extended from
-                    <i>Move Ball</i>)
-                </div>
-            </div>
-            <div class="lindent0a">
-                <div>
-                    <i>Browser</i>
-                </div>
-                <div class="lindent0b">
-                    <i>Reset Game</i>
+                <div class="lindent0a">
+                    <div>
+                        <i>Browser</i>
+                    </div>
+                    <div class="lindent0b">
+                        <i>Reset Game</i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -634,48 +737,53 @@
             <div>
                 <b>3. Use cases analyzing</b>
             </div>
-            <div class="lindent00">
+            <div id="uc_identifying_content" class="lindent00">
                 <div>
                     <i>Player</i>
                 </div>
-                <div class="lindent0a">
+                <div ID=" III.3 [Reset Game]" class="lindent0a">
                     <div><i>Reset Game</i></div>
-                    <div class="lindent0b">
-                        Player clicks reset button.
-                    </div>
-                    <div class="lindent0b">
-                        Reset button sends reset event to game application.
-                    </div>
-                    <div class="lindent0b">
-                        Game application renders initial game board.
-                    </div>
-                    <div class="lindent0b">
-                        <div>
-                            Game application generates three initial balls:
+                    <div class="lindent00">
+                        <div><i>Happy path flow:</i></div>
+                        <div class="lindent00">
+                            1. Player clicks reset button.
                         </div>
-                        <div class="lindent0c">
-                            Game application creates new three balls with
-                            random colour and cell position.
+                        <div class="lindent00">
+                            2. Reset button sends reset event to game
+                            application.
                         </div>
-                        <div class="lindent0c">
-                            Game application renders this generating animation.
+                        <div class="lindent00">
+                            3. Game application renders initial game board.
                         </div>
-                    </div>
-                    <div class="lindent0b">
-                        Game application waits player for a ball move.
+                        <div class="lindent00">
+                            <div>
+                                4. Game application generates three
+                                initial balls:
+                            </div>
+                            <div class="lindent0b">
+                                Game application creates new three balls with
+                                random colour and cell position.
+                            </div>
+                            <div class="lindent0b">
+                                Game application renders this generating animation.
+                            </div>
+                        </div>
+                        <div class="lindent00">
+                            5. Game application waits player for a ball move.
+                        </div>
                     </div>
                 </div>
-                <div class="lindent0a">
+                <div ID=" III.3 [Move Ball]" class="lindent0a">
                     <div><i>Move Ball</i></div>
                     <div class="lindent00">
                         <div>
                             To make a move ball, player needs to make two steps:
                         </div>
-                        <div class="lindent0b">
-                            Select a ball.
+                        <div class="lindent00">
+                            1. Select a ball.
                         </div>
-                        <div class="lindent0b">
-                            Select an empty cell to move to.
+                        <div class="lindent00">
+                            2. Select an empty cell to move to.
                         </div>
                     </div>
                     <div class="lindent00">
@@ -712,31 +820,31 @@
                     <div class="lindent00">
                         <div>
                             <i>Alternative flow 1</i> (after moving, game is
-                            over). At step #5 of happy path, the game is over.
+                            over): At step #5 of happy path, the game is over.
                             Process is continued as below steps:
                         </div>
                         <div class="lindent00">
-                            A6. Alert message "Game Over" as an HTML5 alert.
+                            A1.1. Alert message "Game Over" as an HTML5 alert.
                         </div>
                         <div class="lindent00">
-                            A7. Game application puts system into Game Over
-                            state which prevents player make any futher ball
-                            moving.
+                            A1.2. Game application puts
+                            system into Game Over state
+                            which prevents player make any futher ball moving.
                         </div>
                     </div>
                     <div class="lindent00">
                         <div>
                             <i>Alternative flow 2</i> (after moving, some balls
-                            is removed). At step #5 of happy path, some balls is
+                            is removed): At step #5 of happy path, some balls is
                             removed following game logic. Process is continued
                             as below steps:
                         </div>
                         <div class="lindent00">
-                            A6. Game application removes scored balls and
+                            A2.1. Game application removes scored balls and
                             renders this removing animation.
                         </div>
                         <div class="lindent00">
-                            A7. Game application renderes updated total scores
+                            A2.2. Game application renderes updated total scores
                             to score board.
                         </div>
                         <div class="lindent00">
@@ -746,17 +854,17 @@
                     <div class="lindent00">
                         <div>
                             <i>Alternative flow 3</i> (balls generating results
-                            in some score is done). At step #6 of happy path
+                            in some score is done): At step #6 of happy path
                             flow, there are five or more balls of the
                             same colour consecutively in straight lines.
                             Process is continued as below steps: 
                         </div>
                         <div class="lindent00">
-                            A7. Game application removes scored balls and
+                            A3.1. Game application removes scored balls and
                             renders this removing animation.
                         </div>
                         <div class="lindent00">
-                            A8. Game application renderes updated total scores
+                            A3.2. Game application renderes updated total scores
                             to score board.
                         </div>
                         <div class="lindent00">
@@ -765,13 +873,56 @@
                     </div>
                     <div class="lindent00">
                         <div>
-                            <i>Alternative flow 4</i> (Player switchs target
+                            <i>Alternative flow 4</i> (Game board is empty):
+                            At step #A6.2. of alternative flow 3, game board is
+                            empty. Process is continued as below steps:
+                        </div>
+                        <div class="lindent00">
+                            A4.1. Alert message "You won price" as an
+                            HTML5 alert.
+                        </div>
+                        <div class="lindent00">
+                            A4.2. Game application puts system into win price
+                            state which prevents player make any futher ball
+                            moving.
+                        </div>
+                        <div class="lindent00">
+                            A4.3. Game application sends notify to
+                            content onwer about this event.
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Alternative flow 5</i> (total score excesses
+                            <i>preset limitation</i>): After finishing
+                            alternative flow 2 or alternative flow 3 and before
+                            switching back to step #7 of happy path, total score
+                            excesses <i>preset limitation</i> score. Process is
+                            continued as below steps:
+                        </div>
+                        <div class="lindent00">
+                            A5.1. Alert message "You won price" as an
+                            HTML5 alert.
+                        </div>
+                        <div class="lindent00">
+                            A5.2. Game application puts system into
+                            win price state which prevents player make
+                            any futher ball moving.
+                        </div>
+                        <div class="lindent00">
+                            A5.3. Game application sends notify to
+                            content onwer about this event.
+                        </div>
+                    </div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Alternative flow 6</i> (player switchs target
                             ball). At step #4 of happy path flow, Player clicks
                             a ball instead of click an empty cell. Process is
                             continued as below steps:
                         </div>
                         <div class="lindent00">
-                            A5. Game application renders previous focused
+                            A6.1. Game application renders previous focused
                             ball as normal ball (no animation).
                         </div>
                         <div class="lindent00">
@@ -781,26 +932,28 @@
                     </div>
                     <div class="lindent00">
                         <div>
-                            <i>Exception flow 1</i> (Game board is empty)
-                            At step #A6 of alternative flow 2, game board is
-                            empty. Process is continued as below steps:
+                            <i>Exception flow 1</i> (There is no path to move
+                            ball to target destination cell): At step #4 of
+                            happy path flow, player click a target destination
+                            cell that there is no path to move to. Process is
+                            continued as below:
                         </div>
                         <div class="lindent00">
-                            E1. Alert message "You won price" as an HTML5 alert.
-                        </div>
-                        <div class="lindent00">
-                            E2. Game application puts system into win price
-                            state which prevents player make any futher ball
-                            moving.
-                        </div>
-                        <div class="lindent00">
-                            E3. Game application sends notify to content onwer
-                            about this event.
+                            Process is continued at happy path flow's step #4.
+                            (This means that such wrong logic click is ignored.)
                         </div>
                     </div>
                 </div>
-                <div class="lindent0a">
-                    <i>View Score</i>
+                <div ID=" III.3 [View Score]" class="lindent0a">
+                    <div><i>View Score</i></div>
+                    <div class="lindent00">
+                        <div>
+                            <i>Happy path flow</i>:
+                        </div>
+                        <div class="lindent00">
+                            1. Player view <i>Score Board</i>.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -809,26 +962,91 @@
                 <b>4. System state analyzing</b>
             </div>
             <div class="lindent00">
-                <del>
-                Most game is stateful system and this system is too.
-                <br />
-                On use case...
-                <br />
-                If player click a ball ... previous, then click another...
-                <br />
-                If palyer click an empty cell but not click a ball previously...
-                <br />
-                The behavior is differnce because the system is state full.
-                <br />
-                This section try to analyst this base on use case description
-                analyzing.
-                </del>
+                Most games are stateful system, and this system is stateful
+                too. We could analyze use cases to enumerate system states
+                from user perspectives.
             </div>
             <div class="lindent00">
                 <div><i>4.1 State identifying</i></div>
+                <div>
+                    Analyze <i>use cases analyzing</i> output draft,
+                    enumerates system states that are perceived from user
+                    perspective, it is noted that animation demonstration
+                    duration is also a state. This results in below
+                    high-lighted draft. (<i>Note</i>: mouse over the
+                    high-lighted text for state developing details tooltip.)
+                    <input
+                      id="state_identifying_draft_41$"
+                      class="view_switch"
+                      type="button"
+                      value="content is hidden"
+                      onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                      title="click to show/hide high-lighted draft content"
+                    />
+                </div>
+                <div class="lindent00">
+
+
+
+
+
+<div class="state_identifying_draft_41$content_is_displayed" style="display: none;">
+
+
+
+
+
+                    <div class="para_sep1">
+                        <div
+                            class="para_box0"
+                            id="highlighted_uc_identifying_content"
+                        >
+                        </div>
+                    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+                </div>
+                <div>
+                    <div>
+                        We have following states:
+                    </div>
+                    <div class="lindent0a">
+                        <i>Ball Generating</i>
+                    </div>
+                    <div class="lindent0a">
+                        <i>Move Waiting</i>
+                    </div>
+                    <div class="lindent0a">
+                        <i>Focused</i>
+                    </div>
+                    <div class="lindent0a">
+                        <i>Ball Moving</i>
+                    </div>
+                    <div class="lindent0a">
+                        <i>Ball Scoring</i>
+                    </div>
+                    <div class="lindent0a">
+                        <i>Game Over</i>
+                    </div>
+                    <div class="lindent0a">
+                        <i>Win Price</i>
+                    </div>
+                </div>
             </div>
             <div class="lindent00">
-                <div><i>4.2 State machine diagram</i></div>
+                <div class="para_sep1"><i>4.2 State machine diagram</i></div>
+                <div>
+                    <figure id="fig_state_machine_state_machine_diag"></figure>
+                </div>
             </div>
         </div>
 
@@ -1277,18 +1495,59 @@
                         </div>
                     </div>
                 </div>
-                <div class="lindent00">
-                    <div><i>Implementation class diagram</i></div>
-                    <div id="designclasses_png"></div>
-                </div>
             </div>
             <div ID=" V.3.3. Design rationale" class="lindent00">
                 <div><i>3.3. Design rationale</i></div>
-                <div class="lindent0a">
-                    <del>For selecting the architecture</del>
+                <div ID=" V.3.3.1. For selecting the architecture">
+                    <i>3.3.1. For selecting the architecture</i>
                 </div>
-                <div class="lindent0a">
-                    <del>For critical issues and trade/offs clarification</del>
+                <div ID=" V.3.3.2. For critical issues and trade/offs clarification" class="para_sep1">
+                    <div>
+                        <i>3.3.2. For critical issues and trade/offs clarification</i>:
+                    </div>
+                    <div ID=" V.3.3.2.1 CSS animation or javascript animation">
+                        <div>
+                            <i>3.3.2.1 CSS animation or javascript animation</i>:
+                        </div>
+                        CSS animation is selected as implemented solution since
+                        CSS animation offers better performance due to
+                        its browser native nature as
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://stackoverflow.com/questions/10984771/whats-faster-css3-transitions-or-jquery-animations/10984850#10984850"
+                        >
+                          link.
+                        </a>
+                        The system is also so simple to be implemented with
+                        CSS animation as a proposed solution described in
+                        section <i>5.2.1 Ball</i>.
+                    </div>
+                    <div ID=" V.3.3.2.2 Merge Cell responsibility into Ball class responsibility">
+                        <div class="para_sep0">
+                            <i>3.3.2.2 Merge Cell responsibility into Ball class responsibilities</i>:
+                        </div>
+                        <div>
+                            Basing on <i>Ball moving animation displaying</i>
+                            solution introduced in section <i>5.2.1 Ball</i>,
+                            it is a good practice to fill all cells of
+                            <i>GameBoard</i> with <i>Ball</i>s to avoid div tag
+                            insert or removal dynamically for good performance.
+                            To display a none <i>Ball</i> occupied <i>Cell</i>,
+                            <i>Ball</i> is rendered in transparent colour.
+                            Because all cells of <i>GameBoard</i> are filled
+                            with <i>Ball</i>s we could merge <i>onClick</i>
+                            event handler responsibility of <i>Cell</i> into
+                            <i>Ball</i> class responsibilities for simplicity.
+                            This violates <i>Single-responsiblity</i> principle
+                            of S.O.L.I.D, but we do not need to care about
+                            <i>BallManager</i> implementation in details
+                            (KISS principle). This does not break the system
+                            architecture because <i>BallManager</i> interface
+                            is designed for <i>Liskov substitution</i>
+                            principle implementation.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1296,11 +1555,37 @@
             <div>
                 <b>4. Data design</b>
             </div>
-            <div class="lindent00">
+            <div ID=" V.4.1. Data description" class="lindent00">
                 <div><i>4.1. Data description</i></div>
-                <div class="lindent0a">
-                    <del>How the information domain of your system is transformed
-                    into data structures</del>
+                <div ID=" V.4.1.1. Data design" class="lindent00">
+                    <div><i>4.1.1. Data design</i></div>
+                    <div class="lindent0a">
+                        <div>
+                            <i>Ball id</i>: each ball has an id to identify
+                            itself, primary key of <i>Ball</i> could be the
+                            tupe (<i>row index</i>, <i>column index</i>)
+                            where <i>row index</i>, <i>column index</i>
+                            denote <i>Ball</i> location in the
+                            <i>GameBoard</i> grid. We encode the tupe into
+                            one integer value id as below formular:
+                        </div>
+                        <div class="lindent00">
+                            <i>id</i> =
+                            <i>row index</i> * <i>dimension</i> +
+                            <i>column index</i>
+                        </div>
+                        <div>
+                            Where:
+                        </div>
+                        <div class="lindent00">
+                            <i>dimension</i>: as defined in section
+                            <i>4.2. Data dictionary</i>
+                        </div>
+                    </div>
+                    <div class="lindent0a">
+                        <del>How the information domain of your system is transformed
+                        into data structures</del>
+                    </div>
                 </div>
                 <div class="lindent0a">
                     <del>How the major data or system entities are stored, processed
@@ -1310,8 +1595,32 @@
                     <div><del>List any databases or data storage items</del></div>
                 </div>
             </div>
-            <div class="lindent00">
+            <div ID=" V.4.2. Data dictionary" class="lindent00">
                 <div><i>4.2. Data dictionary</i></div>
+                <div class="lindent0a">
+                    <i>Dimension</i>: <i>GameBoard</i>'s dimension in
+                    cells count. This is the row count or column count of the
+                    <i>GameBoard</i> cells. Because the <i>GameBoard</i> is
+                    square, these two values are same.
+                </div>
+                <div class="lindent0a">
+                    <i>Cell</i>: room to put a ball into <i>GameBoard</i>.
+                    This room is defined by <i>GameBoard</i>'s grid.
+                </div>
+                <div class="lindent0a">
+                    <i>Empty cell</i>: cell that has no ball opcupied.
+                </div>
+                <div class="lindent0a">
+                    <i>Move path</i>: an ordered list of cells that a ball
+                    will travel on for a <i>Move Ball</i>. The first cell
+                    of the list is the ball location itself, all the remain
+                    cells of list must be <i>empty cell</i>s. The final cell
+                    of the list is the target destination cell to move ball
+                    to. The ball will be displayed to demonstrate its moving
+                    by being disappeared at <i>cell[i]</i> and being and
+                    appeared at <i>cell[i + 1]</i> where <i>cell[i]</i> is
+                    the <i>i</i><sup>th</sup> item of the list.
+                </div>
                 <div>
                     <del>Alphabetically list the system entities or major data along
                     with their types and descriptions. If you provided a
@@ -1326,7 +1635,7 @@
             <div>
                 <b>5. Component design</b>
             </div>
-            <div class="lindent00">
+            <div ID=" TEMPLATE Component design " class="lindent00">
                 <del>In this section, we take a closer look at what each
                 component does in a more systematic way. If you gave
                 a functional description in section 3.2, provide a summary
@@ -1335,6 +1644,318 @@
                 description, summarize each object member function for all the
                 objects listed in 3.2 in PDL or pseudocode. Describe any local
                 data when necessary.</del>
+            </div>
+            <div ID=" V.5.1. Implementation class diagram" class="lindent00">
+                <div><i>5.1. Implementation class diagram</i></div>
+                <div>
+                    Analyze sequence diagrams to allocate methods (behaviors)
+                    into identifed classes of
+                    <i>System overview class diagram</i> (Figure 3.3.2.1)
+                </div>
+                <div id="designclasses_png"></div>
+                <div>
+                    <div class="para_sep1">
+                        New introduced classes or interfaces:
+                    </div>
+                    <div class="lindent0a">
+                            <i>Ball</i>: this class co-operates with
+                            <i>BallManager</i> interface to fulfill ball
+                            interacts with actor <i>Player</i> responsibility.
+                    </div>
+                </div>
+            </div>
+            <div ID=" V.5.2. Classes design" class="lindent00">
+                <div class="para_sep1">
+                    <i>5.2. Classes design</i>
+                </div>
+                <div ID=" V.5.2.1. Ball">
+                    <div><i>5.2.1. Ball</i></div>
+                    <div ID=" Ball states">
+                        <div>
+                            This class co-operates with
+                            <i>BallManager</i> interface (class
+                            <i>GameBoard</i>) to fulfill ball interacts with
+                            actor <i>Player</i> responsibility. Analyzing
+                            it's behaviors taken part in uses cases, we
+                            could enumerate it's states:
+                        </div>
+                        <div class="lindent0b">
+                            <i>OperatingDone</i>: normal state while system is
+                            in <i>Move Waiting</i> state.
+                        </div>
+                        <div class="lindent0b">
+                            <i>Focused</i>: ball is normally clicked by
+                            <i>Player</i>
+                            (while system state is <i>Focused</i> and this ball
+                            is the target focused one).
+                        </div>
+                        <div class="lindent0b">
+                            <i>Moving</i>: ball is demonstrating moving
+                            animation
+                            (while system state is <i>Ball Moving</i> and this
+                            ball is the target moved one).
+                        </div>
+                        <div class="lindent0b">
+                            <i>Generating</i>: ball is demonstrating generating
+                            animation
+                            (while system state is <i>Ball Generating</i> and
+                            this ball is the target generated one).
+                        </div>
+                        <div class="lindent0b">
+                            <i>Removing</i>: ball is demonstrating removing
+                            animation
+                            (while system state is <i>Ball Scoring</i> and this
+                            ball is the target removed one).
+                        </div>
+                        <div>
+                            It is noted that, <i>Ball</i>'s states are derived
+                            from system state if it is the target ball of the
+                            operation's use case, otherwise, it is in
+                            <i>OperatingDone</i> state.
+                        </div>
+                    </div>
+                </div>
+                <div ID=" V.5.2.2. Ball's State machine diagram">
+                    <div>
+                        <i>Ball</i>'s State machine diagram is as below:
+                    </div>
+                    <div>
+                        <figure id="fig_ball_states_diag"></figure>
+                    </div>
+                </div>
+                <div ID=" V.5.2.3. Propose solution">
+                    <div class="para_sep1">
+                        <div>
+                            <!--  There are two interacts with actor
+                            <i>Player</i>: ball displaying and cell
+                            selecting. The solution is that we will fill
+                            all cells with a <i>Ball</i> for both interacts
+                            implementation. For cells that have no
+                            <i>Ball</i> occupied logically, the rendered
+                            colour for <i>Ball</i> is none (transparent).
+                            Because all cells own a ball, cell
+                            <i>onClick</i> event handling is taken by
+                            <i>Ball</i>. For ball displaying behaviors,
+                            algorithms are as below:  -->
+                            Ball displaying algorithms are as below:
+                        </div>
+                        <div ID=" Normal displaying" class="lindent0a">
+                            <div>
+                                <i>Normal displaying</i> (no animation):
+                                normal css without animation.
+                            </div>
+                        </div>
+                        <div ID=" Focused animation displaying" class="lindent0a">
+                            <div>
+                                <i>Focused animation displaying</i>:
+                                <i>ballFocused</i> css with animation that
+                                change margin-bottom of <i>Ball</i>'s div tag:
+                            </div>
+                            <div class="lindent0b">
+                                <i>Animation properties</i>:
+                                <i>infinite</i>, <i>alternate</i>
+                            </div>
+                            <div class="lindent0b">
+                                <div><i>Keyframes</i>:</div>
+                                <div class="lindent00">
+
+
+
+
+
+<textarea id="jsxsrc:5.2.3:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+@keyframes ballFocused {
+  from {}
+  to {margin-bottom: 15px}
+}</textarea>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div ID=" Ball generating animation displaying" class="lindent0a">
+                            <div>
+                                <i>Ball generating animation displaying</i>:
+                                <i>ballGenerating</i> css with animation that
+                                change width, height of <i>Ball</i>'s div tag.
+                            </div>
+                            <div class="lindent0b">
+                                <div><i>Design</i>:</div>
+                                <div class="lindent0c">
+                                    <i>Ball</i>'s div tag width, height
+                                    increases from 0 to its own values.
+                                </div>
+                                <div class="lindent0c">
+                                    <i>Ball</i>'s div tag background is
+                                    fixed with desired colour. This helps
+                                    a transparent or null <i>Ball</i>
+                                    could taken part in animation without
+                                    changing its current colour state.
+                                    Colour state, then, could be updated
+                                    latter, this results in animation colour
+                                    is independent from <i>Ball</i> colour
+                                    state. We need this characteristic to
+                                    implement
+                                    <i>Ball moving animation displaying</i>,
+                                    and we add this to support css sharing
+                                    or reused with
+                                    <i>Ball moving animation displaying</i>.
+                                </div>
+                            </div>
+                            <div class="lindent0b">
+                                <div>
+                                    <i>Animation properties</i>: <i>normal</i>
+                                </div>
+                            </div>
+                            <div class="lindent0b">
+                                <div><i>Keyframes</i>:</div>
+                                <div class="lindent00">
+
+
+<textarea id="jsxsrc:5.2.3:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+@keyframes ballGenerating1 {
+  from {
+    background: #00ccff;
+    width: 0px;
+    height: 0px;
+  }
+  to {
+    background: #00ccff;
+  }
+}
+
+.....
+
+@keyframes ballGenerating7 {
+  .....
+}</textarea>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div ID=" Ball removing animation displaying" class="lindent0a">
+                            <div>
+                                <i>Ball removing animation displaying</i>
+                            </div>
+                            <div class="lindent0b">
+                                <i>Design</i>:
+                                <i>Ball</i>'s div tag width, height
+                                decrease to 0 from its own values.
+                                This could be archived by decorating
+                                <i>ballGenerating</i> with below
+                                animation properties
+                            </div>
+                            <div class="lindent0b">
+                                <div>
+                                    <i>Animation properties</i>:
+                                    <i>reverse</i>, <i>forwards</i> (it is
+                                    noted that <i>forwards</i> is applied
+                                    to keep width, height values fixed to 0
+                                    after animation so that
+                                    removed <i>Ball</i> is not re-displayed
+                                    because of its current own colour state
+                                    rendering)
+                                </div>
+                            </div>
+                            <div class="lindent0b">
+                                <div><i>Keyframes</i>: n/a
+                                (shared with <i>ballGenerating</i>)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ID=" Ball moving animation displaying" class="lindent0a">
+                        <div>
+                            <i>Ball moving animation displaying</i>
+                        </div>
+                        <div class="lindent0b">
+                            <div>
+                                <i>Design</i>: due to definition in section
+                                <i>4.2. Data dictionary</i> term
+                                <i>Move path</i>, we need css animation that:
+                            </div>
+                            <div class="lindent0c">
+                                <div><i>Cell animation demonstration</i>:</div>
+                                <div class="lindent0c">
+                                    <div>
+                                        For cell not be the first or the final
+                                        item of list:
+                                    </div>
+                                    <div class="lindent00">
+                                        1. First, css animation demonstrates ball is
+                                        generated.
+                                    </div>
+                                    <div class="lindent00">
+                                        2. Then, css animation demonstrates ball is
+                                        removed.
+                                    </div>
+                                </div>
+                                <div class="lindent0c">
+                                    <div>
+                                        For the first cell item of list: css
+                                        animation demonstrates ball is removed.
+                                    </div>
+                                </div>
+                                <div class="lindent0c">
+                                    <div>
+                                        For the final cell item of list: css
+                                        animation demonstrates ball is generated.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lindent0c">
+                                <div>
+                                    <i>Cell animation demonstration start time</i>:
+                                    we will delay start time of each cell
+                                    in the list to demonstrate ball moving.
+                                </div>
+                                <div class="lindent00">
+                                    1. Start time of first cell is not be
+                                    delayed (delay time is 0s)
+                                </div>
+                                <div class="lindent00">
+                                    2. Start time of cell
+                                    <i>i</i><sup>th</sup>
+                                    is <i>i</i> * <i>duration</i> (where
+                                    <i>duration</i> is animation duration
+                                    of a cell)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lindent0b">
+                            <div>
+                                <i>Animation properties</i>:
+                            </div>
+                            <div class="lindent0c">
+                                <div>
+                                    For cell not be the first or the final
+                                    item of list: <i>forwards</i>,
+                                    <i>alternate</i>
+                                </div>
+                            </div>
+                            <div class="lindent0c">
+                                <div>
+                                    For the first cell item of list:
+                                    <i>forwards</i>, <i>reverse</i>
+                                </div>
+                            </div>
+                            <div class="lindent0c">
+                                <div>
+                                    For the final cell item of list:
+                                    <i>forwards</i>, <i>normal</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lindent0b">
+                            <div><i>Keyframes</i>: n/a</div>
+                            (shared with <i>ballGenerating</i>)
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div ID=" V.6. Human interface design" class="lindent00">
@@ -1413,10 +2034,8 @@
 
     </div>
 </div>
-
-
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/huyj2ee/se-iconix-use-case-driven-design-case-2019-04.htm</div>
-<div id="githubver" class="hidden">0.0.2</div>
+<div id="githubver" class="hidden">0.0.3</div>
 <script>doDefaultDecorate();</script>
 <script>
 function fillFigure(
@@ -1541,6 +2160,15 @@ function cloneHtmlContent(srcId, desId) {
   }
 }
 
+
+
+
+
+
+
+
+
+
 function doHighlight(elemId, reqs) {
   const ESPAN = "</span>";
   const CLASSES = [
@@ -1568,6 +2196,61 @@ function doHighlight(elemId, reqs) {
     idx = id + req[0].length;
   }
   let highlightedContent = "";
+  let computeTitle = function (titleStr) {
+    let formatStr = function (str) {
+      let shiftCode = function (str) {
+        if (str.length === 0) {
+          return "";
+        }
+        const FMT_HIGH_CH             = (0xD835);
+        const FMT_BOLD_LOW_UC_CH      = (0xDE08 - 26*2);
+        //const FMT_BOLD_LOW_LC_CH      = (0xDE08 - 26);
+        const FMT_ITALIC_LOW_UC_CH    = (0xDE08);
+        //const FMT_ITALIC_LOW_LC_CH    = (0xDE08 + 26);
+        let fmt_low_uc_ch = 0;
+        let result = "";
+        switch(str.charAt(0)) {
+          case 'b':
+            fmt_low_uc_ch = FMT_BOLD_LOW_UC_CH;
+          break;
+
+          case 'i':
+            fmt_low_uc_ch = FMT_ITALIC_LOW_UC_CH;
+          break;
+
+          default:
+            result = str;
+          break;
+        }
+        if (fmt_low_uc_ch > 0) {
+          let fmt_low_lc_ch = fmt_low_uc_ch + 26;
+          for (let i = 1; i < str.length; i++) {
+            let chCode = str.charCodeAt(i);
+            if (chCode >= 65 && chCode <= 90) { // upper case
+              chCode -= 65;
+              result = result +
+                String.fromCodePoint(FMT_HIGH_CH, fmt_low_uc_ch + chCode);
+            }
+            else if (chCode >= 97 && chCode <= 122) {
+              chCode -= 97;
+              result = result +
+                String.fromCodePoint(FMT_HIGH_CH, fmt_low_lc_ch + chCode);
+            }
+            else {
+              result = result + str.charAt(i);
+            }
+          }
+        }
+        return result;
+      };
+      return str.length === 0 ? "" :
+        str.startsWith("?") ? shiftCode(str.substring("?".length)) : str;
+    }
+    for(let i = 0; i < titleStr.length; i++) {
+      titleStr[i] = formatStr(titleStr[i]);
+    }
+    return `title="${titleStr.join("")}"`;
+  }
   for (let i = 0; i < chunks.length; i++) {
     highlightedContent += content.substring(chunks[i][0], chunks[i][1]);
     let clId = reqs[i][1];
@@ -1584,16 +2267,23 @@ function doHighlight(elemId, reqs) {
         varId = 1;
       }
     }
+    let note = Array.isArray(reqs[i][2]) ? computeTitle(reqs[i][2]): "";
     highlightedContent +=
-      `<span class="${CLASSES[clId]}${varId}">${reqs[i][0]}</span>`;
+      `<span class="${CLASSES[clId]}${varId}" ${note}>${reqs[i][0]}</span>`;
   }
   highlightedContent += content.substring(idx, content.length);
   elem.innerHTML = highlightedContent;
   return true;
 }
 
+
+
+
+
+
 cloneHtmlContent("narrative_source", "srsnarrative");
 cloneHtmlContent("narrative_source", "highlightednarrative");
+
 let highlightResult = doHighlight(
   "highlightednarrative",
   [
@@ -1622,6 +2312,7 @@ let highlightResult = doHighlight(
     ["wins a price", 10],
     ["show", 10],
     ["hidden content", 40],
+    // Ambitious points high lighting
     ["another system", 40],
     ["empty", 20],
   ]
@@ -1629,6 +2320,75 @@ let highlightResult = doHighlight(
 if (!highlightResult) {
   alert('highlight error for div id #highlightednarrative');
 }
+
+cloneHtmlContent("uc_identifying_content", "highlighted_uc_identifying_content");
+
+highlightResult = doHighlight(
+  "highlighted_uc_identifying_content",
+  [
+    [
+      "renders this generating animation", 40,
+      [
+        "developed to ",
+        "?bBall Generating ",
+        "state"
+      ]
+    ],
+    [
+      "waits player for a ball move", 40,
+      [
+        "developed to ",
+        "?bMove Waiting ",
+        "state"
+      ]
+    ],
+    [
+      "renders focused animation", 40,
+      [
+        "developed to ",
+        "?bFocused ",
+        "state"
+      ]
+    ],
+    [
+      "ball moving animation", 40,
+      [
+        "developed to ",
+        "?bBall Moving ",
+        "state"
+      ]
+    ],
+    [
+      "system into Game Over state", 40,
+      [
+        "developed to ",
+        "?bGame Over ",
+        "state"
+      ]
+    ],
+    [
+      "renders this removing animation", 40,
+      [
+        "developed to ",
+        "?bBall Scoring ",
+        "state"
+      ]
+    ],
+    [
+      "win price state", 40,
+      [
+        "developed to ",
+        "?bWin Price ",
+        "state"
+      ]
+    ]
+  ]
+);
+
+if (!highlightResult) {
+  alert('highlight error for div id #highlighted_uc_identifying_content');
+}
+
 
 let ucDesc = UC_DESC_EN;
 let fillUC4_1_1_reset_game_uc = fillUCDesc("4_1_1_reset_game_uc", [
@@ -1663,14 +2423,16 @@ if (!(fillUC4_1_1_reset_game_uc)) {
 fillFigure(
     "designclasses_png",
     [
-      "https://1.bp.blogspot.com/-_H8Iy65rZug/XpLnDlil-uI/AAAAAAAAAPs/",
-      "R483igLaYiIAqnUnb0FcslVPVzt6ny4YwCNcBGAsYHQ/s1600/DesignClasses.png"
+      "https://1.bp.blogspot.com/-T1uICt-4MFg/XqR6r3MiG-I/AAAAAAAAAQE/",
+      "MHwYYrn-uHkZp7izlOGslgYfAPgKOq9SQCNcBGAsYHQ/s1600/DesignClasses.png"
     ].join(""),
     678,
     789,
     -30,
     678,
-    null
+    null,
+    "5.1",
+    "Implementation class diagram"
 );
 fillFigure(
     "fig_domain_model_class_diag",
@@ -1714,7 +2476,222 @@ fillFigure(
     "3.3.2.2",
     "Reset Game sequence diagram"
 );
+fillFigure(
+    "fig_state_machine_state_machine_diag",
+    [
+      "https://1.bp.blogspot.com/-zUxYyIgYICk/XqR3J_O7RyI/AAAAAAAAAYU/",
+      "Ccg84YnwPdIdn2jdMbnc7Hoh2xzr4ij6wCNcBGAsYHQ/s1600/",
+      "StateMachineStateMachine.png"
+    ].join(""),
+    582,
+    648,
+    50,
+    582,
+    null,
+    "4.2",
+    "System state machine diagram"
+);
+fillFigure(
+    "fig_ball_states_diag",
+    [
+      "https://1.bp.blogspot.com/-Zagux39eR-M/XqaI4sEEEqI/AAAAAAAAAQU/",
+      "TQiZLkWYl4kOUAGPlHlkrrv_ExNAdOyaACNcBGAsYHQ/s1600/BallStates.png"
+    ].join(""),
+    814,
+    581,
+    -120,
+    581,
+    null,
+    "5.2",
+    "Ball state machine diagram"
+);
+
 </script>
-<script>doScrollIntoViewDecoration();</script>
+
+<script>
+doScrollIntoViewDecoration();
+
+const DiepSrcCode = {
+  FORMAT_JAVA: 0,
+  FORMAT_JS: 1,
+
+  FORMATS: [
+    // FORMAT_JAVA
+    [
+      ["  ", "&nbsp;&nbsp;"],
+      ["package", "<b style='color: olive;'>package</b>"],
+      ["import", "<b style='color: olive;'>import</b>"],
+      ["public", "<b style='color: green;'>public</b>"],
+      ["private", "<b style='color: green;'>private</b>"],
+      ["void", "<b style='color: green;'>void</b>"],
+      ["for", "<b style='color: maroon;'>for</b>"],
+      ["if", "<b style='color: maroon;'>if</b>"],
+      ["this", "<b style='color: maroon;'>this</b>"],
+      ["return", "<b style='color: maroon;'>return</b>"]
+    ],
+    // FORMAT_JS
+    [
+      ["  ", "&nbsp;&nbsp;"],
+      // keywords
+      ["import[ ]", "<b style='color: blue;'>import</b>&nbsp;"],
+      ["export[ ]", "<b style='color: blue;'>export</b>&nbsp;"],
+      ["class[ ]", "<b style='color: blue;'>class</b>&nbsp;"],
+      ["extends[ ]", "<b style='color: blue;'>extends</b>&nbsp;"],
+      ["super[(]", "<b style='color: blue;'>super</b>("],
+      ["new[ ]", "<b style='color: blue;'>new</b>&nbsp;"],
+      ["constructor[(]", "<b style='color: darkgoldenrod;'>constructor</b>("],
+      ["[ ]undefined", "&nbsp;<b style='color: blueviolet;'>undefined</b>"],
+      ["[ ]null", "&nbsp;<b style='color: blue;'>null</b>"],
+      ["[ ]false", "&nbsp;<b style='color: blue;'>false</b>"],
+      ["[ ]true", "&nbsp;<b style='color: blue;'>true</b>"],
+      ["const[ ]", "<b style='color: blue;'>const</b>&nbsp;"],
+      ["let[ ]", "<b style='color: blue;'>let</b>&nbsp;"],
+      ["var[ ]", "<b style='color: blue;'>var</b>&nbsp;"],
+      ["for[ ]", "<b style='color: blue;'>for</b>&nbsp;"],
+      ["if[ ]", "<b style='color: blue;'>if</b>&nbsp;"],
+      ["else[ ]", "<b style='color: blue;'>else</b>&nbsp;"],
+      ["switch[(]", "<b style='color: blue;'>switch</b>("],
+      ["case[ ]", "<b style='color: blue;'>case</b>&nbsp;"],
+      ["break", "<b style='color: blue;'>break</b>"],
+      ["default:", "<b style='color: blue;'>default</b>:"],
+      ["this", "<b style='color: blue;'>this</b>"],
+      ["return[ ]", "<b style='color: blue;'>return</b>&nbsp;"],
+      ["typeof[ ]", "<b style='color: blue;'>typeof</b>&nbsp;"],
+      ["function[ ]", "<b style='color: blue;'>function</b>&nbsp;"],
+
+      // objects
+      ["document[.]", "<b style='color: darkgoldenrod;'>document</b>."],
+      ["Array", "<b style='color: blueviolet;'>Array</b>"],
+      ["Math[.]", "<b style='color: blueviolet;'>Math</b>."],
+      //["Object", "<b style='color: blueviolet;'>Object</b>"],
+      // methods
+      ["toString[(][)]", "<b style='color: blueviolet;'>toString</b>()"],
+      ["setTimeout[(]", "<b style='color: darkgoldenrod;'>setTimeout</b>("],
+      ["alert[(]", "<b style='color: darkgoldenrod;'>alert</b>("],
+      ["Object.assign[(]",
+        [
+          "<b style='color: blueviolet;'>Object</b>",
+          ".",
+          "<b style='color: darkgoldenrod;'>assign</b>("
+        ].join("")
+      ],
+      ["[\u262F]", ""]
+    ]
+  ],
+
+  commentedOutHtmlWrap: function (s, skipBreak) {
+    if (skipBreak) {
+        return "<i style='color: teal;'>".concat(s, "</i>");
+    }
+    return "<i style='color: teal;'>".concat(s, "</i><br />");
+  },
+
+  formatLine: function (formatId, line, skipBreak) {
+    let formats = DiepSrcCode.FORMATS[formatId];
+    for (let j = 0; j < formats.length; j++) {
+        let format = formats[j];
+        let regExp = new RegExp(format[0], 'g');
+        line = line.replace(regExp, format[1])
+    }
+    if (skipBreak) {
+        return line;
+    }
+    return line.concat("<br />");
+  },
+
+  processCommentedOut: function (line, formatId) {
+    let idx = line.indexOf("//");
+    if (idx >= 0) {
+        let html =
+          DiepSrcCode.formatLine(formatId, line.substring(0, idx), true);
+        html = html.concat(
+          DiepSrcCode.commentedOutHtmlWrap(line.substring(idx, line.length))
+        );
+        return [true, html];
+    }
+    idx = line.indexOf("/*");
+    if (idx >= 0) {
+        let html =
+          DiepSrcCode.formatLine(formatId, line.substring(0, idx), true);
+        html = html.concat(
+          DiepSrcCode.commentedOutHtmlWrap(line.substring(idx, line.length))
+        );
+        return [false, html];;
+    }
+    return null;
+  },
+
+  detectCommentedOutClose: function (line, formatId) {
+      let idx = line.indexOf("*/");
+      if (idx >= 0) {
+          idx += 2;
+          let html =
+            DiepSrcCode.commentedOutHtmlWrap(line.substring(0, idx), true);
+          html = html.concat(
+            DiepSrcCode.formatLine(formatId, line.substring(idx, line.length))
+          );
+          return [false, html];
+      }
+      return [true, DiepSrcCode.commentedOutHtmlWrap(line)];
+  },
+
+  escapeJSX: function (txtId) {
+    let txtComp = document.getElementById(txtId);
+    if (txtComp !== null) {
+      let str = txtComp.value.toString();
+      let regExp = new RegExp("[<]", 'g');
+      str = str.replace(regExp, "&lt;");
+      regExp = new RegExp("[>]", 'g');
+      str = str.replace(regExp, "&gt;");
+      txtComp.value = str;
+    }
+  },
+
+  fillCFamilySourceCode: function (txtId, formatId) {
+    // parse and convert source code
+    let html = "";
+    let txtComp = document.getElementById(txtId);
+    let onCommentedOut = false;
+    if (txtComp) {
+      let lines = txtComp.value.split(/\r?\n/);
+      for (let i = 0; i < lines.length; i++) {
+          let line = lines[i];
+          if (onCommentedOut) {
+              let detect = DiepSrcCode.detectCommentedOutClose(line, formatId);
+              onCommentedOut = detect[0];
+              html = html.concat(detect[1]);
+              continue;
+          }
+          let commentedOut = DiepSrcCode.processCommentedOut(line, formatId);
+          if (commentedOut == null) {
+              html = html.concat(DiepSrcCode.formatLine(formatId, line));
+          }
+          else {
+              if (commentedOut[0]) {
+                  html = html.concat(commentedOut[1]);
+              }
+              else {
+                  html = html.concat(commentedOut[1]);
+                  onCommentedOut = true;
+              }
+          }
+      }
+
+      // apply converted source code to target div
+      let divElement = document.createElement("DIV");
+      divElement.innerHTML = html;
+      divElement.className = "txt_sourcecodefont1";
+      txtComp.parentNode.insertBefore(divElement, txtComp);
+    }
+  }
+};
+
+let snippets  = document.querySelectorAll('*[id^="jsxsrc:"]');
+for (let i = 0; i<snippets.length; i++) {
+  let id = snippets[i].id;
+  DiepSrcCode.escapeJSX(id);
+  DiepSrcCode.fillCFamilySourceCode(id, DiepSrcCode.FORMAT_JS);
+}
+</script>
 </div>
 
