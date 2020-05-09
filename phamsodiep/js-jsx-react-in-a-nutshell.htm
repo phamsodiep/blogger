@@ -84,6 +84,7 @@
                     </div>
                 </div>
             </div>
+            <!-- git commit  -  npm install -->
         </div>
     </div>
     <div ID=" II. Line 98 implementation introduction" class="para_sep1">
@@ -93,7 +94,7 @@
         <div ID=" II.1. Introduction">
             <div><b>1. Introduction</b></div>
             <div class="lindent00">
-                We will implement Line 98 game in React with design is located 
+                We shall implement Line 98 game in React with design is located 
                 at <i>https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html</i>
             </div>
         </div>
@@ -150,6 +151,19 @@
                     </div>
                     <div class="lindent0b">
                         <i>0.4.1:</i>
+                        Use case <i>Reset Game</i> is available. This is
+                        also the final version for exercises.
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div>
+                        <i>0.5:</i> On this version, use case
+                        <i>Move Ball</i> is available.
+                        Since this version, implemented
+                        source code is not available as exercises but
+                        as <i>the code story</i> instead. Source code
+                        is only available in github. Its implementation
+                        stories are told in section <i>9. The code story</i>.
                     </div>
                 </div>
             </div>
@@ -5173,7 +5187,768 @@ export function getGameBoardStyle() {
                     <i>9.1. Introduction</i>
                 </div>
                 <div class="lindent00">
-                    T.B.D.
+                    <div>
+                        React learning sharing is finished at
+                        section <i>8. Code Splitting</i> but
+                        the game <i>Line 98</i> is not ready
+                        yet. This section tell the story about
+                        <i>Line 98</i> implementation so that
+                        audience who is curious about its
+                        implementation could go futher.
+                    </div>
+                    <div><i>My note:</i></div>
+                    <div class="lindent00">
+                        <i>I have no practice experience in
+                        user story writing. Maybe, my user story
+                        writing is incorrect.</i>
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.9.2. History" class="para_sep1">
+                <div>
+                    <i>9.2. History</i>
+                </div>
+                <div ID=" III.9.2.1. Use case Reset Game" class="lindent00">
+                    <div>
+                        <i>9.2.1. Use case Reset Game</i>
+                    </div>
+                    <div>
+                        <i>Version</i>:
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://github.com/phamsodiep/react_line_98_game/commit/d8ffc483c26cba237ca6e24e4f450c6cf54599fa"
+                        >
+                          0.4.1
+                        </a>
+                    </div>
+                    <div>
+                        <i>User story</i>: As a <i>Player</i>, I can
+                        <i>Reset Game</i>, so that I have a new game
+                        available.
+                    </div>
+                    <div>
+                        <div>
+                            <i>My story</i>:
+                        </div>
+                        <div class="lindent00">
+                            1. Base on the flow of
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_reset_game_seq_diag"
+                            >
+                              <i>Reset Game sequence diagram</i>
+                            </a>
+                            to implement the message flow between the
+                            system objects. The co-operation consumes
+                            <i>onClick</i> event triggered by <i>Player</i>
+                            clicking <i>Reset Button</i>.
+                        </div>
+                        <div class="lindent00">
+                            2. Refer
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#designclasses_png"
+                            >
+                              <i>Component design</i>
+                            </a>
+                            for class design.
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.9.2.2. Use case Move Ball - ball selecting" class="lindent00">
+                    <div class="para_sep0">
+                        <i>9.2.2. Use case Move Ball - ball selecting</i>
+                    </div>
+                    <div>
+                        <i>Version</i>:
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://github.com/phamsodiep/react_line_98_game/commit/7d77ff3e5c6bf27823ca924120e45b7412f226d2"
+                        >
+                          0.5.1
+                        </a>
+                    </div>
+                    <div>
+                        <i>User story</i>: As a <i>Player</i>, I can
+                        select a ball or reselect another ball, so that I
+                        can do the first step of use case <i>Move Ball</i>.
+                    </div>
+                    <div>
+                        <div>
+                            <i>My story</i>:
+                        </div>
+                        <div class="lindent00">
+                            <div>
+                                Base on the flow of
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_move_ball_0_seq_diag"
+                                >
+                                    <i>Move Ball score none sequence diagram</i>,
+                                </a>
+                                implement to consume <i>Ball</i>'s
+                                <i>onClick</i> event for ball focusing case
+                                (first click event of the sequence diagram).
+                                Below steps are enumerated base on the order
+                                of the sequence diagram flow:
+                            </div>
+                            <div class="lindent00">
+                                1. Implement <i>Ball</i>'s <i>onClick</i> event
+                                handler which then notify <i>Ball Manager</i>.
+                            </div>
+                            <div class="lindent00">
+                                2. Implement <i>Ball Manager</i>'s
+                                <i>onClick()</i> method to process notify
+                                from #1 which invokes <i>GameEngine</i>'s
+                                <i>select()</i> method.
+                            </div>
+                            <div class="lindent00">
+                                <div>
+                                    3. Implement <i>GameEngine</i>'s
+                                    <i>select()</i> method
+                                    (<i>BallManagerListener</i> interface)
+                                    for the first click event.
+                                </div>
+                                <div class="lindent00">
+                                    3.1 Implement <i>GameState</i>'s
+                                    <i>isOccupied()</i> method
+                                </div>
+                                <div class="lindent00">
+                                    3.2 Implement <i>GameState</i>'s
+                                    property <i>focusedBall</i>
+                                    (getter and setter methods)
+                                </div>
+                                <div class="lindent00">
+                                    3.3 Implement <i>Ball Manager</i>'s
+                                    <i>focusBall()</i> method.
+                                </div>
+                                <div class="lindent00">
+                                    3.4 Implement to display focused ball,
+                                    implement <i>Ball Manager</i>'s
+                                    <i>createBall()</i> method to produce css
+                                    animation for focused ball.
+                                </div>
+                                <div class="lindent00">
+                                    3.5 Implement function
+                                    <i>initializeAnimationCsses</i>, add
+                                    'ballFocused' keyframe (file: index.js).
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.9.2.3. Use case Move Ball - move ball command" class="lindent00">
+                    <div class="para_sep0">
+                        <i>9.2.3. Use case Move Ball - move ball command</i>
+                    </div>
+                    <div>
+                        <i>Version</i>:
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://github.com/phamsodiep/react_line_98_game/commit/76c459a009b9a7e42ef4132e3ee1d9138ef0da7e"
+                        >
+                          0.5.2
+                        </a>
+                    </div>
+                    <div>
+                        <i>User story</i>: As a <i>Player</i>, I can make a
+                        move a ball command, so that I can enter my move
+                        in game play.
+                    </div>
+                    <div>
+                        <div>
+                            <i>My story</i>:
+                        </div>
+                        <div class="lindent00">
+                            <div>
+                                A move ball command needs two
+                                input parameters:
+                            </div>
+                            <div class="lindent0a">
+                                The cell of target ball
+                            </div>
+                            <div class="lindent0a">
+                                Destination cell to move ball to
+                            </div>
+                            <div>
+                                The first parameter is implemented
+                                in user story <i>9.2.2. Use case Move Ball
+                                - ball selecting</i>, we just need to
+                                implement to process the second parameter.
+                                This means that we shall implement to consume
+                                <i>Ball</i>'s <i>onClick</i> event handler for
+                                the second click event of
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_move_ball_0_seq_diag"
+                                >
+                                    <i>the sequence diagram</i>
+                                </a>
+                                one.
+                            </div>
+                        </div>
+                        <div class="lindent00">
+                            <div class="para_sep0">
+                                Enumerate base on the order of
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_move_ball_0_seq_diag"
+                                >
+                                    <i>sequence diagram flow</i>
+                                </a>
+                                start with the second click event and
+                                finished before sending message
+                                <i>searchPath(src,des)</i> to <i>GameState</i>
+                                to identify implementation steps.
+                            </div>
+                            <div class="lindent00">
+                                <div>
+                                    1. Implement <i>GameEngine</i>'s
+                                    <i>select()</i> method
+                                    (<i>BallManagerListener</i> interface)
+                                    for the second click event.
+                                </div>
+                                <div class="lindent00">
+                                    <div>
+                                        1.1 Test to identify second click event
+                                        case:
+                                    </div>
+                                    <div class="lindent0a">
+                                        getState() === Focused
+                                    </div>
+                                    <div class="lindent0a">
+                                        isOccupied(des) === no
+                                    </div>
+                                </div>
+                                <div class="lindent00">
+                                    1.2 Invoke <i>getFocusedBall()</i> to get
+                                    the first parameter.
+                                </div>
+                                <div class="lindent00">
+                                    1.3 (optional) Invoke
+                                    <i>alert(src + " - " + desc)</i> for debug
+                                    purpose.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.9.2.4. Use case Move Ball - move ball demonstration" class="lindent00">
+                    <div class="para_sep0">
+                        <i>9.2.4. Use case Move Ball - move ball demonstration</i>
+                    </div>
+                    <div>
+                        <i>Version</i>:
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://github.com/phamsodiep/react_line_98_game/commit/0b1c745f8400459b92ba917b1f854682a4a6f708"
+                        >
+                          0.5.3
+                        </a>
+                    </div>
+                    <div>
+                        <i>User story</i>: As a <i>Player</i>, I can see
+                        my move ball command demonstration so that I can
+                        aware game play.
+                    </div>
+                    <div>
+                        <div>
+                            <i>My story</i>:
+                        </div>
+                        <div class="lindent00">
+                            Base on the flow of
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_move_ball_0_seq_diag"
+                            >
+                                <i>the sequence diagram</i>,
+                            </a>
+                            start from sending message
+                            <i>searchPath(src, des)</i> (continue previous
+                            processing of user story <i>9.2.3</i>), finish at
+                            <i>moveBallWithAnimation(path)</i>.
+                        </div>
+                        <div class="lindent00">
+                            <div>Implementation steps are:</div>
+                            <div class="lindent00">
+                                1. Implement <i>GameState</i>'s
+                                <i>searchPath()</i> method to find a
+                                ball moving path.
+                            </div>
+                            <div class="lindent00">
+                                <div>
+                                    2. Implement to display ball moving
+                                    demonstration:
+                                </div>
+                                <div class="lindent00">
+                                    2.1. Implement method
+                                    <i>moveBallWithAnimation(path)</i>
+                                    of <i>BallManager</i> for state update.
+                                </div>
+                                <div class="lindent00">
+                                    2.2. Implement to demonstrate ball moving
+                                    as updated state in step #2.1, implement
+                                    <i>Ball Manager</i>'s <i>createBall()</i>
+                                    method to produce this css animation.
+                                </div>
+                            </div>
+                            <div class="lindent00">
+                                3. Implement to send message as sequence
+                                diagram flow in <i>GameEngine</i>
+                                (<i>BallManagerListener</i> interface).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.9.2.5. Use case Move Ball - game processing for move ball score none case" class="lindent00">
+                    <div class="para_sep0">
+                        <i>9.2.5. Use case Move Ball - game processing for move ball score none case</i>
+                    </div>
+                    <div>
+                        <i>Version</i>:
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://github.com/phamsodiep/react_line_98_game/commit/f99c3098ea0a2ce436e46e629145dd681a0a0a18"
+                        >
+                          0.5.4
+                        </a>
+                    </div>
+                    <div>
+                        <i>User story</i>: As a <i>Player</i>, I can see
+                        my move ball command processed for the case no
+                        score are done.
+                    </div>
+                    <div>
+                        <div>
+                            <i>My story</i>:
+                        </div>
+                        <div class="lindent00">
+                            <div>
+                                Base on the flow of
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_move_ball_0_seq_diag"
+                                >
+                                    <i>Move Ball score none sequence diagram</i>,
+                                </a>
+                                implement to process all remain steps of
+                                the flow. Below steps are enumerated base
+                                on the order of the sequence diagram flow:
+                            </div>
+                            <div class="lindent00">
+                                <div>
+                                    1. Implement method <i>animationDone()</i>
+                                    for the case of processing of <i>9.2.4.
+                                    Use case Move Ball - move ball
+                                    demonstration</i> is finished as entry
+                                    point for move ball command process.
+                                </div>
+                                <div class="lindent00">
+                                    <div>
+                                        1.1. Test for move ball
+                                        <i>demonstration</i> finishing.
+                                    </div>
+                                    <div class="lindent0a">
+                                        <i>getState()</i> === <i>BallMoving</i>
+                                    </div>
+                                </div>
+                                <div class="lindent00">
+                                    1.2. Update game state by sending
+                                    <i>moveDone(src, des)</i> to
+                                    <i>GameState</i>.
+                                </div>
+                                <div class="lindent00">
+                                    1.3. Implement method <i>moveDone()</i>
+                                    of <i>GameState</i>.
+                                </div>
+                                <div class="lindent00">
+                                    1.4. Send <i>doScore(des)</i> message
+                                    to <i>GameState</i> for removal balls
+                                    result.
+                                </div>
+                                <div class="lindent00">
+                                    1.5. Declare <i>doScore()</i> method for
+                                    <i>GameState</i> which just return empty
+                                    list (we shall implement this method
+                                    latter).
+                                </div>
+                                <div class="lindent00">
+                                    <div>
+                                        1.6. Implement to process for the case
+                                        removal balls result is empty list:
+                                    </div>
+                                    <div class="lindent00">
+                                        1.6.1 Reference to <i>Reset Game</i>
+                                        use case, implement to generate ball
+                                        for this case.
+                                    </div>
+                                    <div class="lindent00">
+                                        1.6.2 Develop method
+                                        <i>animationDone()</i> of
+                                        <i>GameEngine</i> for the case of
+                                        <i>BallGenerating</i> so that it will
+                                        test if new generated balls are
+                                        arranged one or some straight lines
+                                        for new addition scores (See question 2
+                                        of section
+                                        <a
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html"
+                                        >
+                                          <i>I. Game introduction</i>
+                                        </a>)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.9.2.6. Use case Move Ball - game processing for move ball score some case" class="lindent00">
+                    <div class="para_sep0">
+                        <i>9.2.6. Use case Move Ball - game processing for move ball score some case</i>
+                    </div>
+                    <div>
+                        <i>Version</i>:
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://github.com/phamsodiep/react_line_98_game/commit/4d509de10f693c6cc3c731b295185d2b45155ffe"
+                        >
+                          0.5.5
+                        </a>
+                    </div>
+                    <div>
+                        <i>User story</i>: As a <i>Player</i>, I can see
+                        my move ball command processed for the case some
+                        score are done.
+                    </div>
+                    <div>
+                        <div>
+                            <i>My story</i>:
+                        </div>
+                        <div class="lindent00">
+                            <div>
+                                Base on the flow of
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_move_ball_1_seq_diag"
+                                >
+                                    <i>Move Ball do score</i>,
+                                </a>
+                                search for the step that sends message
+                                <i>doScore()</i> to <i>GameState</i> which
+                                returns <i>removedBalls</i> to enumerate next
+                                new implementation steps:
+                            </div>
+                            <div class="lindent00">
+                                1. First, implement <i>doScore()</i> method
+                                for <i>GameState</i>, we did not
+                                implement it in user story <i>9.2.5.</i>
+                                because of K.I.S.S. principle.
+                            </div>
+                            <div class="lindent00">
+                                <div>
+                                    2. Develop method <i>animationDone()</i>
+                                    of interface <i>BallManagerListener</i>
+                                    for case <i>BALL_MOVING</i> with nonempty
+                                    <i>removedBalls</i> list:
+                                </div>
+                                <div class="lindent00">
+                                    2.1. Implement method
+                                    <i>removeWithAnimation()</i> of
+                                    class <i>BallManager</i>.
+                                </div>
+                                <div class="lindent00">
+                                    2.2. Develop method <i>createBall</i> of
+                                    class <i>BallManager</i> to produce css
+                                    animation for case <i>REMOVING</i>.
+                                </div>
+                            </div>
+                            <div class="lindent00">
+                                <div>
+                                    3. Develop method <i>animationDone()</i>
+                                    of interface <i>BallManagerListener</i>
+                                    for case <i>BALL_SCORING</i>:
+                                </div>
+                                <div class="lindent00">
+                                    3.1. Test for this case: <i>getState()</i>
+                                        === <i>BALL_SCORING</i>
+                                </div>
+                                <div class="lindent00">
+                                    <div>
+                                        3.2. Implement to display score:
+                                    </div>
+                                    <div class="lindent00">
+                                        3.2.1 Implement class <i>ScoreBoard</i>
+                                        with <i>display()</i> method.
+                                    </div>
+                                    <div class="lindent00">
+                                        3.2.2 Implement method
+                                        <i>getTotalScore()</i> of class
+                                        <i>GameState</i>.
+                                    </div>
+                                    <div class="lindent00">
+                                        3.2.3 Develop method <i>resetGame()</i>
+                                        of <i>ResetListener</i> to display
+                                        score value of 0 on game reset.
+                                    </div>
+                                    <div class="lindent00">
+                                        3.2.4 Implement to attach
+                                        <i>ScoreBoard</i>
+                                        to <i>GameEngine</i>.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.9.2.7. Use case Move Ball - game processing for move ball score some then win price" class="lindent00">
+                    <div class="para_sep0">
+                        <i>9.2.7. Use case Move Ball - game processing for move ball score some then win price</i>
+                    </div>
+                    <div>
+                        <i>Version</i>:
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://github.com/phamsodiep/react_line_98_game/commit/fdf8546a34de8923e3e06dd46959d61e538d4ecc"
+                        >
+                          0.5.6
+                        </a>
+                    </div>
+                    <div>
+                        <i>User story</i>: As a <i>Player</i>, I can
+                        <i>Win Price</i> following game logic, so that I
+                        could view the hidden content.
+                    </div>
+                    <div>
+                        <div>
+                            <i>My story</i>:
+                        </div>
+                        <div class="lindent00">
+                            <div>
+                                Base on the flow of
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_move_ball_2_seq_diag"
+                                >
+                                    <i>Move Ball do score then win price sequence diagram</i>,
+                                </a>
+                                analyse from the message <i>doScore()</i>,
+                                notify the <i>Description</i> note that
+                                method <i>setState()</i> return
+                                <i>error</i> to notify that finished state
+                                is reached. Next new implementation steps
+                                are enumerated as below:
+                            </div>
+                            <div class="lindent00">
+                                <div>
+                                    1. Develop class <i>GameState</i> to
+                                    process the case that finished state
+                                    <i>WinPrice</i> is reached:
+                                </div>
+                                <div class="lindent00">
+                                    1.1. Develop method <i>getState()</i>
+                                    of class <i>GameState</i> so that
+                                    it could return false in the case of
+                                    finished state is reached.
+                                </div>
+                                <div class="lindent00">
+                                    1.2. Develop class <i>GameState</i> to
+                                    detect state <i>WinPrice</i>.
+                                </div>
+                            </div>
+                            <div class="lindent00">
+                                <div>
+                                    2. Implement to process <i>WinPrice</i>
+                                    state:
+                                </div>
+                                <div class="lindent00">
+                                    2.1. Implement to attach <i>onWinPrice()</i>
+                                    call back function to <i>GameEngine</i>.
+                                </div>
+                                <div class="lindent00">
+                                    2.2. Develop method <i>animationDone()</i>
+                                    of <i>BallManagerListener</i> to process
+                                    the case of <i>WinPrice</i> state.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.9.2.8. Use case Move Ball - game processing for new generated balls are scored" class="lindent00">
+                    <div class="para_sep0">
+                        <i>9.2.8. Use case Move Ball - game processing for new generated balls are scored</i>
+                    </div>
+                    <div>
+                        <i>Version</i>:
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://github.com/phamsodiep/react_line_98_game/commit/65648342a82b4ffee6e0534fec92ad4516b21ea8"
+                        >
+                          0.5.7
+                        </a>
+                    </div>
+                    <div>
+                        <i>User story</i>: As a <i>Player</i>, I can see
+                        my move ball command processed for the case new
+                        generated balls do some score (as <i>Question 2</i>)
+                        of section
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html"
+                        >
+                          <i>I. Game introduction</i>.
+                        </a>
+                    </div>
+                    <div>
+                        <div>
+                            <i>My story</i>:
+                        </div>
+                        <div class="lindent00">
+                            <div>
+                                Base on the flow of
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html#fig_move_ball_3_seq_diag"
+                                >
+                                    <i>Move Ball score none then some sequence diagram</i>,
+                                </a>
+                                analyse from the message <i>animationDone()</i>
+                                with <i>getState() === BallGenerating</i>
+                                context for process doing score for new
+                                generated balls:
+                            </div>
+                            <div class="lindent00">
+                                <div>
+                                    1. Develop method <i>animationDone()</i> for
+                                    case <i>getState() === BallGenerating</i>
+                                    to process do score for new generated balls.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ID=" III.9.2.9. Use case Move Ball - game processing for game over case" class="lindent00">
+                    <div class="para_sep0">
+                        <i>9.2.9. Use case Move Ball - game processing for game over case</i>
+                    </div>
+                    <div>
+                        <i>Version</i>:
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://github.com/phamsodiep/react_line_98_game/commit/32a5198da1fdf587fa9307119980e52119ac6ab0"
+                        >
+                          0.5.8
+                        </a>
+                    </div>
+                    <div>
+                        <i>User story</i>: As a <i>Player</i>, I can see
+                        my move ball command processed for the case game
+                        over.
+                    </div>
+                    <div>
+                        <div>
+                            <i>My story</i>:
+                        </div>
+                        <div class="lindent00">
+                            <div>
+                                Base on section <i>I. Game introduction</i>,
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href="https://huyj2ee.blogspot.com/2019/04/se-iconix-use-case-driven-design-case.html"
+                                >
+                                    <i>Question 6</i>:
+                                </a>
+                            </div>
+                            <div class="lindent0a">
+                                Game over is detected while generating
+                                new ball.
+                            </div>
+                            <div class="lindent0a">
+                                To block next ball move just invoke method
+                                <i>setState()</i> with parameter
+                                <i>GAME_OVER</i> in class <i>GameState</i>
+                                since <i>GameEngine</i>'s <i>select()</i> method
+                                (<i>BallManagerListener</i> interface) does
+                                not execute move ball in that case.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ID=" III.9.3. Mystery" class="para_sep1">
+                <div>
+                    <i>9.3. Mystery</i>
+                </div>
+                <div class="lindent00">
+                    <div>
+                        Below is my private sharing about my mistakes or lack of
+                        experience in developing this game.
+                    </div>
+                    <div class="lindent00">
+                        1. Javascript divisor gives result of type float not
+                        integer like Java or C/C++. To get an integer version,
+                        an invoking to Math.floor() could help.
+                    </div>
+                    <div class="lindent00">
+                        2. Array.slice method could clone an one dimension
+                        array, but could not for matrix (two dimension ones).
+                    </div>
+                    <div class="lindent00">
+                        3. Declare a function inside a method, function could
+                        not access this reference of the method. To make
+                        this is available without new binding, declare a
+                        variable _this point to this, then invoke the _this
+                        version in the inner function.
+                    </div>
+                    <div class="lindent00">
+                        4. Setting css animation properties does not force
+                        animation reset (if animation is done, it will not redo
+                        after setting). To solve this, use the shorthand version
+                        of css animation.
+                    </div>
+                    <div class="lindent00">
+                        5. React reference (ref properties) method is only
+                        invoked one time, update component state does not
+                        result this method is re-invoked.
+                    </div>
+                    <div class="lindent00">
+                        6. ReactDOM.render() returns reference to component
+                        class.
+                    </div>
+                    <div class="lindent00">
+                        7. Avoid to store JSX elements in component state since
+                        it causes side effect.
+                    </div>
+                    <div class="lindent00">
+                        8. Process in onAnimationEnd to produce a new animation
+                        css does not result the next produced one results in
+                        invoking onAnimationEnd again after animation is
+                        finished. To make it happen, invoke onAnimationEnd
+                        again with setTimeout function because next event is
+                        not fired.
+                    </div>
                 </div>
             </div>
         </div>
@@ -5207,7 +5982,7 @@ export function getGameBoardStyle() {
 
 
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/js-jsx-react-in-a-nutshell.htm</div>
-<div id="githubver" class="hidden">0.0.9</div>
+<div id="githubver" class="hidden">0.1.0</div>
 <script>doDefaultDecorate();</script>
 <script>
 function doScrollIntoViewDecoration() {
