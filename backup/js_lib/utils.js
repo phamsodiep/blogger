@@ -107,11 +107,10 @@ function fillFigure(
   if (typeof figId === "string") {
     figcaption = `<figcaption><b>Figure</b> ${figId}: ${figCap}</figcaption>`;
   }
-  // <div style="width:${ww}px; height:${hh}px">
   elem.innerHTML = `
     <div style="position: relative; left: ${leftAdj}px; width: ${clippedW}px;">
         ${scrollDiv}
-            <div style="width:${ww}px;>
+            <div style="width:${ww}px;">
                 <img
                   border="0"
                   data-original-height="${height}"
