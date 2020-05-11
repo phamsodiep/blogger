@@ -80,6 +80,77 @@ fillUCDesc("4_1_1_reset_game", [
   [ucDesc.other, ""]
 ]);*/
 
+function fillFigure(
+  elemId,
+  imgSrc,
+  orgW,
+  height,
+  leftAdj,
+  clippedW,
+  scrollClass,
+  figId,
+  figCaption
+) {
+  let elem = document.getElementById(elemId);
+  if (!(elem !== null && typeof elem.innerHTML === "string")) {
+    return false;
+  }
+  let ww = orgW;
+  let hh = height;
+  let scrollDiv =
+    typeof scrollClass === "string" ?
+    `<div class="${scrollClass}">`:
+    "<div>";
+  let figCap = typeof figCaption === "string" ?
+    `<i>${figCaption}</i>` : "";
+  let figcaption = "";
+  if (typeof figId === "string") {
+    figcaption = `<figcaption><b>Figure</b> ${figId}: ${figCap}</figcaption>`;
+  }
+  // <div style="width:${ww}px; height:${hh}px">
+  elem.innerHTML = `
+    <div style="position: relative; left: ${leftAdj}px; width: ${clippedW}px;">
+        ${scrollDiv}
+            <div style="width:${ww}px;>
+                <img
+                  border="0"
+                  data-original-height="${height}"
+                  data-original-width="${orgW}"
+                  height="${height}
+                  width="${orgW}"
+                  src="${imgSrc}"
+                />
+            </div>
+        </div>
+        <div style="text-align: center" class="para_sep0">${figcaption}</div>
+    </div>
+  `;
+  return true;
+}
+
+function addMoreImgsToFigure(elemId, imgs) {
+  if (typeof imgs !== "string"){
+    return false;
+  }
+  let elem = document.getElementById(elemId);
+  if (!(elem !== null && typeof elem.innerHTML === "string")) {
+    return false;
+  }
+  let curHTML = elem.innerHTML;
+  let idx = curHTML.indexOf("<img");
+  if (idx < 0) {
+    return false;
+  }
+  idx = curHTML.indexOf(">",idx);
+  if (idx < 0) {
+    return false;
+  }
+  idx++;
+  let prePart = curHTML.substring(0, idx);
+  let subPart = curHTML.substring(idx);
+  elem.innerHTML = prePart + imgs + subPart;
+}
+
 function cloneHtmlContent(srcId, desId) {
   let srcElem = document.getElementById(srcId);
   if (srcElem !== null && typeof srcElem.innerHTML === "string") {
