@@ -48,7 +48,7 @@
             </div>
             <div class="lindent00">
                 <div class="lindent00">
-                    <i>score</i> = <i>n</i> * (1 + 5 - <i>n</i>)
+                    <i>score</i> = <i>n</i> * (<i>n</i> - 4)
                 </div>
                 <div>
                     where: <i>n</i> is total removed balls count
@@ -182,7 +182,8 @@
                 <div class="lindent00">
                     <div>
                         <i>Question 6</i>:
-                        How to determine if game is over?
+                        How to determine if game is over and how to process
+                        for that case.
                     </div>
                     <div class="lindent00">
                         &#x261E;
@@ -193,6 +194,13 @@
                             over if remains empty cells count of the game board
                             (the cells that have no ball occupied) should be
                             greater than 5 cells.
+                        </i>
+                    </div>
+                    <div class="lindent00">
+                        &#x261E;
+                        <i>
+                            Once game is over, alert a message 'Game is over'
+                            and block next ball move.
                         </i>
                     </div>
                 </div>
@@ -700,10 +708,10 @@
                             <i>Move Ball</i>
                         </div>
                         <div class="lindent0c">
-                            «Extend» <i>Notify Gameover</i>
+                            ï¿½Extendï¿½ <i>Notify Gameover</i>
                         </div>
                         <div class="lindent0c">
-                            «Extend» <i>Notify win price</i>
+                            ï¿½Extendï¿½ <i>Notify win price</i>
                         </div>
                     </div>
                     <div class="lindent0b">
@@ -1061,9 +1069,9 @@
 
 
     </div>
-    <div ID=" IV. SRS – Software requirements specification" class="para0">
+    <div ID=" IV. SRS ï¿½ Software requirements specification" class="para0">
         <div>
-            <b>IV. SRS – Software requirements specification</b>
+            <b>IV. SRS ï¿½ Software requirements specification</b>
             <input
               id="srs_doc$"
               class="view_switch"
@@ -1352,9 +1360,9 @@
 
 
     </div>
-    <div ID=" V. SDD – Software design description" class="para0">
+    <div ID=" V. SDD ï¿½ Software design description" class="para0">
         <div>
-            <b>V. SDD – Software design description</b>
+            <b>V. SDD ï¿½ Software design description</b>
             <input
               id="sdd_doc$"
               class="view_switch"
@@ -1375,7 +1383,7 @@
 
 
 
-    <div ID=" V. SDD – Software design description" class="para0">
+    <div ID=" V. SDD ï¿½ Software design description" class="para0">
         <div ID=" V.1. Introduction" class="lindent00">
             <div>
                 <b>1. Introduction</b>
@@ -1410,7 +1418,7 @@
             <div class="lindent00">
                 <div><i>1.4. Reference material</i></div>
                 <div class="lindent0a">
-                    SRS – Software requirements specification
+                    SRS ï¿½ Software requirements specification
                 </div>
             </div>
             <div class="lindent00">
@@ -2003,7 +2011,7 @@
             <div>
                 <div><b>7. Requirements matrix</b></div>
                 <div class="lindent00">
-                    <del>Provide a cross­reference that traces components and data
+                    <del>Provide a crossï¿½reference that traces components and data
                     structures to the requirements in your SRS document.
                     Use  a  tabular  format to show  which system  components
                     satisfy each of the  functional requirements from the SRS.
@@ -2035,7 +2043,7 @@
     </div>
 </div>
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/huyj2ee/se-iconix-use-case-driven-design-case-2019-04.htm</div>
-<div id="githubver" class="hidden">0.0.3</div>
+<div id="githubver" class="hidden">0.0.4</div>
 <script>doDefaultDecorate();</script>
 <script>
 function fillFigure(
