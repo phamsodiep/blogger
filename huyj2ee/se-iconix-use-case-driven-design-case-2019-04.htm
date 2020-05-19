@@ -1496,7 +1496,13 @@
                         </div>
                         <div class="lindent00">
                             <div><i>Move Ball</i></div>
-                            <div id="reset_game__"></div>
+                            <figure id="fig_move_ball_0_seq_diag"></figure>
+                            <br />
+                            <figure id="fig_move_ball_1_seq_diag"></figure>
+                            <br />
+                            <figure id="fig_move_ball_2_seq_diag"></figure>
+                            <br />
+                            <figure id="fig_move_ball_3_seq_diag"></figure>
                         </div>
                         <div class="lindent00">
                             <div><i>View Score</i></div>
@@ -2043,7 +2049,7 @@
     </div>
 </div>
 <div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/huyj2ee/se-iconix-use-case-driven-design-case-2019-04.htm</div>
-<div id="githubver" class="hidden">0.0.4</div>
+<div id="githubver" class="hidden">0.0.5</div>
 <script>doDefaultDecorate();</script>
 <script>
 function fillFigure(
@@ -2076,7 +2082,7 @@ function fillFigure(
   elem.innerHTML = `
     <div style="position: relative; left: ${leftAdj}px; width: ${clippedW}px;">
         ${scrollDiv}
-            <div style="width:${ww}px; height:${hh}px">
+            <div style="width:${ww}px;">
                 <img
                   border="0"
                   data-original-height="${height}"
@@ -2282,6 +2288,32 @@ function doHighlight(elemId, reqs) {
   highlightedContent += content.substring(idx, content.length);
   elem.innerHTML = highlightedContent;
   return true;
+}
+
+
+
+
+function addMoreImgsToFigure(elemId, imgs) {
+  if (typeof imgs !== "string"){
+    return false;
+  }
+  let elem = document.getElementById(elemId);
+  if (!(elem !== null && typeof elem.innerHTML === "string")) {
+    return false;
+  }
+  let curHTML = elem.innerHTML;
+  let idx = curHTML.indexOf("<img");
+  if (idx < 0) {
+    return false;
+  }
+  idx = curHTML.indexOf(">",idx);
+  if (idx < 0) {
+    return false;
+  }
+  idx++;
+  let prePart = curHTML.substring(0, idx);
+  let subPart = curHTML.substring(idx);
+  elem.innerHTML = prePart + imgs + subPart;
 }
 
 
@@ -2514,6 +2546,101 @@ fillFigure(
     "Ball state machine diagram"
 );
 
+fillFigure(
+    "fig_move_ball_0_seq_diag",
+    [
+      "https://1.bp.blogspot.com/-_2rm_NhAmdI/XrK71S3AxDI/AAAAAAAAAQ8/",
+      "8IlLXIUro8Q853veN3NeQ3e7wuiieHc4wCNcBGAsYHQ/s1600/MoveBallScoreNone_UC_1.png"
+    ].join(""),
+    688,
+    678,
+    0,
+    688,
+    null,
+    "3.3.2.3",
+    "Move Ball score none sequence diagram"
+);
+
+addMoreImgsToFigure(
+  "fig_move_ball_0_seq_diag",
+  [
+    '<div style="top:-5px; position: relative;">',
+    '<img border="0" data-original-height="1432" data-original-width="688" src="https://1.bp.blogspot.com/-qoBEcmU06HA/XrK78W3fvnI/AAAAAAAAARA/aThySsy2ZOQMBj0mxuHv0iw9x2DMjSLLACNcBGAsYHQ/s1600/MoveBallScoreNone_UC_2.png" />',
+    '</div>'
+  ].join("")
+);
+
+fillFigure(
+    "fig_move_ball_1_seq_diag",
+    [
+      "https://1.bp.blogspot.com/-5j2BmLFZGo4/XrVXpkuFc7I/AAAAAAAAAR0/",
+      "n-YPlo0Rdn009uroudXQMvB3i1W_tLQhACNcBGAsYHQ/s1600/MoveBallScoreSome_UC_1.png"
+    ].join(""),
+    765,
+    1222,
+    -150,
+    765,
+    null,
+    "3.3.2.4",
+    "Move Ball do score"
+);
+
+addMoreImgsToFigure(
+  "fig_move_ball_1_seq_diag",
+  [
+    '<div style="top:-7px; position: relative;">',
+    '<img border="0" data-original-height="727" data-original-width="765" src="https://1.bp.blogspot.com/-ISbpdxLVzjI/XrVXzn9WUuI/AAAAAAAAAR4/tn3_D5CiDhANz6qkSk9LsrtK3ziECTcaACNcBGAsYHQ/s1600/MoveBallScoreSome_UC_2.png" />',
+    '</div>'
+  ].join("")
+);
+
+fillFigure(
+    "fig_move_ball_2_seq_diag",
+    [
+      "https://1.bp.blogspot.com/-3W-8D81T4Kw/XrQOqWOLVgI/AAAAAAAAARg/",
+      "uGbYtbsTIVYTE9YG2H6Elrs4Cop5PrnwwCNcBGAsYHQ/s1600/MoveBallDoScoreWinPrice_UC_1.png"
+    ].join(""),
+    1142,
+    1240,
+    -200,
+    860,
+    "hscrollable_container",
+    "3.3.2.5",
+    "Move Ball do score then win price sequence diagram"
+);
+
+addMoreImgsToFigure(
+  "fig_move_ball_2_seq_diag",
+  [
+    '<div style="top:-7px; position: relative;">',
+    '<img border="0" data-original-height="780" data-original-width="1142" src="https://1.bp.blogspot.com/-tynVaqMlwEg/XrQOz2KdN3I/AAAAAAAAARk/bJc49b9bSKo4lXpBn6BrLr1MFxYDxK8SACNcBGAsYHQ/s1600/MoveBallDoScoreWinPrice_UC_2.png" />',
+    '</div>'
+  ].join("")
+);
+
+fillFigure(
+    "fig_move_ball_3_seq_diag",
+    [
+      "https://1.bp.blogspot.com/-yS6o7UDlNlk/XrZuUv6elBI/AAAAAAAAASw/",
+      "P1iJlFsKBlofikNX0yzrucRpmFjzUXxPQCNcBGAsYHQ/s1600/MoveBallScoreNoneThenSome_UC_1_op.png"
+    ].join(""),
+    680,
+    1282,
+    -100,
+    680,
+    null,
+    "3.3.2.6",
+    "Move Ball score none then some sequence diagram"
+);
+
+addMoreImgsToFigure(
+  "fig_move_ball_3_seq_diag",
+  [
+    '<div style="top:-7px; position: relative;">',
+    '<img border="0" data-original-height="1068" data-original-width="680" src="https://1.bp.blogspot.com/-3LEOE-QE-_Y/XrZupiXBCWI/AAAAAAAAAS4/LrImaRYQOoAHSJeA9_4eT8eUHX8FxzrSACNcBGAsYHQ/s1600/MoveBallScoreNoneThenSome_UC_2_op.png" />',
+    '</div>'
+  ].join("")
+);
 </script>
 
 <script>
