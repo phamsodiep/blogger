@@ -1,0 +1,436 @@
+﻿<div id="entry_article">
+<details class="hidden">
+    <summary>
+        <div id="entry_brief"><em><i>
+            Assuming that your router is too old, it does not support
+            iptable management and you need this feature. You could setup
+            another embedded PC like Raspberry Pi to do this and route all
+            router network traffic into this L2TP VPN Server. Almost old
+            routers support this L2TP VPN Client, you just need to setup a
+            server. This article about this server setup.
+        </i></em></div>
+    </summary>
+    <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+</details>
+
+
+<div class="naturalsciencefont0">
+    <!-- div class="para0">
+        T.B.D.
+    </div>
+    <br / -->
+    <div class="para0">
+        <div>
+            <b>I. Install software package:</b>
+        </div>
+        <div class="lindent00">
+            apt-get install xl2tpd
+        </div>
+        <div>
+            <b>II. Configure xl2tpd:</b>
+        </div>
+        <!-- div class="lindent0a">
+            <div>
+                Default content files (untouched): 
+            </div>
+            <div class="lindent0b">
+                /etc/ipsec.conf:
+            </div>
+            <div class="lindent0b">
+                /etc/ipsec.secrets:
+            </div>
+        </div -->
+        <div class="lindent0a">
+            <div>
+                Configuration files: 
+            </div>
+            <div class="lindent0b">
+                <div>
+                    /etc/xl2tpd/xl2tpd.conf:
+                    <input
+                      id="xl2tpd$"
+                      class="view_switch"
+                      type="button"
+                      value="content is hidden"
+                      onclick="switchDisplay(this, ['sample content is displayed', 'content is hidden']);"
+                      title="click to show/hide sample content"
+                    >
+                        &nbsp;
+                    </input>
+                </div>
+                <div class="xl2tpd$sample_content_is_displayed" style="display: none;">
+                    <div class="lindent00">
+                        [global] <br />
+                        ipsec saref = yes <br />
+                        listen-addr = 10.0.2.112 <br />
+                        [lns default] <br />
+                        ip range = 192.168.2.201-192.168.2.250 <br />
+                        local ip = 192.168.2.112 <br />
+                        assign ip = yes <br />
+                        refuse pap = yes <br />
+                        require authentication = yes <br />
+                        name = linkVPN <br />
+                        ppp debug = yes <br />
+                        pppoptfile = /etc/ppp/options.xl2tpd <br />
+                        length bit = yes <br />
+                    </div>
+                </div>
+            </div>
+            <div class="lindent0b">
+                <div>
+                    /etc/ppp/options.xl2tpd:
+                    <input
+                      id="options$"
+                      class="view_switch"
+                      type="button"
+                      value="content is hidden"
+                      onclick="switchDisplay(this, ['sample content is displayed', 'content is hidden']);"
+                      title="click to show/hide sample content"
+                    >
+                        &nbsp;
+                    </input>
+                </div>
+                <div class="options$sample_content_is_displayed" style="display: none;">
+                    <div class="lindent00">
+                        ipcp-accept-local <br />
+                        ipcp-accept-remote <br />
+                        ms-dns 8.8.8.8 <br />
+                        asyncmap 0 <br />
+                        auth <br />
+                        crtscts <br />
+                        lock <br />
+                        idle 1800 <br />
+                        mtu 1200 <br />
+                        mru 1200 <br />
+                        modem <br />
+                    </div>
+                </div>
+            </div>
+            <div class="lindent0b">
+                <div>
+                    /etc/ppp/chap-secrets:
+                    <input
+                      id="chapsec$"
+                      class="view_switch"
+                      type="button"
+                      value="content is hidden"
+                      onclick="switchDisplay(this, ['sample content is displayed', 'content is hidden']);"
+                      title="click to show/hide sample content"
+                    >
+                        &nbsp;
+                    </input>
+                </div>
+                <div class="chapsec$sample_content_is_displayed" style="display: none;">
+                    <div class="lindent00">
+                        # Secrets for authentication using CHAP  <br />
+                        # client        server  secret                  IP addresses  <br />
+                        user    *       keke        *  <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <b>III. Start xl2tpd service:</b>
+        </div>
+        <div class="lindent00">
+            /etc/init.d/xl2tpd restart
+        </div>
+        <div>
+            <b>IV. Test with Windows 8.1 client:</b>
+        </div>
+        <div class="lindent0a">
+            <div>
+                Create connection and connect
+                <input
+                  id="win8conn$"
+                  class="view_switch"
+                  type="button"
+                  value="content is hidden"
+                  onclick="switchDisplay(this, ['content is displayed', 'content is hidden']);"
+                  title="click to show/hide instruction content"
+                >
+                    &nbsp;
+                </input>
+            </div>
+            <div class="win8conn$content_is_displayed" style="display: none;">
+                <div class="lindent00">
+                    <div>
+                        1. Right click <i>Network</i> icon which is located near by
+                        clock icon on taskbar (it may be a Wifi icon or a LAN icon)
+                        for popup menu. Then select <i>Open Network and Sharing Center.</i>
+                    </div>
+                    <div style="text-align: center; width: 100%;">
+                        <img
+                          border="0"
+                          data-original-width="311"
+                          data-original-height="105"
+                          width="311"
+                          height="105"
+                          src="https://1.bp.blogspot.com/-k0xY4H9vwVU/XeYkZg-oqnI/AAAAAAAAALA/V6ECWXLybkUbUCfnPWNlcSErnqIGTsa4ACLcBGAsYHQ/s1600/Win8VPN_01.jpg"
+                        />
+                        <!-- div>
+                            <b>Figure</b> 0: <i>Figure 0</i>
+                        </div -->
+                    </div>                
+                    <br />
+                </div>
+                <div class="lindent00">
+                    <div>
+                        2. Select the red highlight item as below image:
+                    </div>
+                    <div style="text-align: center; width: 100%;">
+                        <img
+                          border="0"
+                          data-original-width="728"
+                          data-original-height="372"
+                          width="728"
+                          height="372"
+                          src="https://1.bp.blogspot.com/-70cnHvhHVdM/XeYknOvw03I/AAAAAAAAALE/7tDNVuCk0-0ngXOR8RdXHrh4Ec8isLL4QCLcBGAsYHQ/s1600/Win8VPN_02.jpg"
+                        />
+                        <!-- div>
+                            <b>Figure</b> 0: <i>Figure 0</i>
+                        </div -->
+                    </div>                
+                    <br />
+                </div>
+                <div class="lindent00">
+                    <div>
+                        3. Select the red highlight item as below image:
+                    </div>
+                    <div style="text-align: center; width: 100%;">
+                        <img
+                          border="0"
+                          data-original-width="628"
+                          data-original-height="466"
+                          width="628"
+                          height="466"
+                          src="https://1.bp.blogspot.com/-N8CRoSCgh-Q/XeYkytWBUWI/AAAAAAAAALI/BIaFtTA_KP0jBquAspom3ykY9hApz_TtQCLcBGAsYHQ/s1600/Win8VPN_03.jpg"
+                        />
+                        <!-- div>
+                            <b>Figure</b> 0: <i>Figure 0</i>
+                        </div -->
+                    </div>                
+                    <br />
+                </div>
+                <div class="lindent00">
+                    <div>
+                        4. Select the red highlight item as below image:
+                    </div>
+                    <div style="text-align: center; width: 100%;">
+                        <img
+                          border="0"
+                          data-original-width="628"
+                          data-original-height="466"
+                          width="628"
+                          height="466"
+                          src="https://1.bp.blogspot.com/-yhQUQ4q3dY4/XeYlCmSMl6I/AAAAAAAAALQ/ZZin0h5r-54zgP_RUHxUtcDQTVT9-FKhwCLcBGAsYHQ/s1600/Win8VPN_04.jpg"
+                        />
+                        <!-- div>
+                            <b>Figure</b> 0: <i>Figure 0</i>
+                        </div -->
+                    </div>                
+                    <br />
+                </div>
+                <div class="lindent00">
+                    <div>
+                        5. Enter <i></i> and <i></i> then click <i>Create</i> as below image:
+                    </div>
+                    <div style="text-align: center; width: 100%;">
+                        <img
+                          border="0"
+                          data-original-width="628"
+                          data-original-height="466"
+                          width="628"
+                          height="466"
+                          src="https://1.bp.blogspot.com/-DesdFLAGPsk/XeYlG3ltrLI/AAAAAAAAALY/lZ8-F2zWQcQnLNznphvH1bgXfhQSEXOtgCLcBGAsYHQ/s1600/Win8VPN_05.jpg"
+                        />
+                        <!-- div>
+                            <b>Figure</b> 0: <i>Figure 0</i>
+                        </div -->
+                    </div>                
+                    <br />
+                </div>
+                <div class="lindent00">
+                    <div>
+                        6. Redo <i>Open Network and Sharing Center</i> as step 1
+                        instruction then select the red highlight item as below image:
+                    </div>
+                    <div style="text-align: center; width: 100%;">
+                        <img
+                          border="0"
+                          data-original-width="728"
+                          data-original-height="372"
+                          width="728"
+                          height="372"
+                          src="https://1.bp.blogspot.com/-jBse8gG5mc8/XeYlLRdzg1I/AAAAAAAAALc/bx_GO70Li_IlVM2YrN2Q0OiMpeobw5AkwCLcBGAsYHQ/s1600/Win8VPN_06.jpg"
+                        />
+                        <!-- div>
+                            <b>Figure</b> 0: <i>Figure 0</i>
+                        </div -->
+                    </div>                
+                    <br />
+                </div>
+                <div class="lindent00">
+                    <div>
+                        7. Right click <i>VPN Connection</i> for popup menu, then click <i>Properties</i>:
+                    </div>
+                    <div style="text-align: center; width: 100%;">
+                        <img
+                          border="0"
+                          data-original-width="728"
+                          data-original-height="397"
+                          width="728"
+                          height="397"
+                          src="https://1.bp.blogspot.com/-j3OqyL6a2PM/XeadG9mg6QI/AAAAAAAAAMc/wH1-07X1pFo5_90WSbud-cjFoKVIhUf7wCLcBGAsYHQ/s1600/Win8VPN_07.jpg"
+                        />
+                        <!-- div>
+                            <b>Figure</b> 0: <i>Figure 0</i>
+                        </div -->
+                    </div>                
+                    <br />
+                </div>
+                <div class="lindent00">
+                    <div>
+                        8. Select the red highlight item as below image:
+                    </div>
+                    <div style="text-align: center; width: 100%;">
+                        <img
+                          border="0"
+                          data-original-width="377"
+                          data-original-height="482"
+                          width="377"
+                          height="482"
+                          src="https://1.bp.blogspot.com/--cqDisPcmEA/XeYlU0z0jFI/AAAAAAAAALk/m3ma6Cg6v3sBZeQ6vItvTdgrVPKECZ55ACLcBGAsYHQ/s1600/Win8VPN_08.jpg"
+                        />
+                        <!-- div>
+                            <b>Figure</b> 0: <i>Figure 0</i>
+                        </div -->
+                    </div>                
+                    <br />
+                </div>
+                <div class="lindent00">
+                    <div>
+                        9. Select radio button <i>Allow these protocols</i>, check <i>Microsoft CHAP Version 2 (MS-CHAP v2)</i> then click <i>OK</i>:
+                    </div>
+                    <div style="text-align: center; width: 100%;">
+                        <img
+                          border="0"
+                          data-original-width="377"
+                          data-original-height="482"
+                          width="377"
+                          height="482"
+                          src="https://1.bp.blogspot.com/-o_bBWn3pTyA/XeYlZ0P4DtI/AAAAAAAAALs/UYRWvtU3L4w36QYuF7LEfvqUAdGHbT-2QCLcBGAsYHQ/s1600/Win8VPN_09.jpg"
+                        />
+                        <!-- div>
+                            <b>Figure</b> 0: <i>Figure 0</i>
+                        </div -->
+                    </div>                
+                    <br />
+                </div>
+                <div class="lindent00">
+                    <div>
+                        10. Click <i>Network</i> icon which is located near by
+                        clock icon on taskbar (it may be a Wifi icon or a LAN icon)
+                        for a connection list menu. Then select <i>VPN Connection</i>
+                        and <i>Connect</i>.
+                        Once <i>Sign-in</i> form is displayed, enter your
+                        <i>user name/password</i> as the content of file
+                        <i>/etc/ppp/chap-secrets.</i>
+                    </div>
+                    <div style="text-align: center; width: 100%;">
+                        <img
+                          border="0"
+                          data-original-width="346"
+                          data-original-height="768"
+                          width="346"
+                          height="768"
+                          src="https://1.bp.blogspot.com/-uLzABgVjuno/XeYldi3e3AI/AAAAAAAAAL0/qyKi60ifb-MW6CBb-BTl_C_HgcgnHpPdQCLcBGAsYHQ/s1600/Win8VPN_10.jpg"
+                        />
+                        <!-- div>
+                            <b>Figure</b> 0: <i>Figure 0</i>
+                        </div -->
+                    </div>                
+                    <br />
+                </div>            
+            </div>
+        </div>
+        <div class="lindent0a">
+            <div>
+                Create a simple http server for test
+                <input
+                  id="testser$"
+                  class="view_switch"
+                  type="button"
+                  value="content is hidden"
+                  onclick="switchDisplay(this, ['sample content is displayed', 'content is hidden']);"
+                  title="click to show/hide sample content"
+                >
+                    &nbsp;
+                </input>
+            </div>
+            <div class="testser$sample_content_is_displayed" style="display: none;">
+                <div class="lindent0b">
+                    <div>
+                        Create a static <i>index.html</i> file:
+                    </div>
+                    <div class="lindent00">
+                        nano index.html
+                    </div>
+                    <div class="lindent00">
+                        &lt;h1&gt;Hello from VPN Server&lt;/h1&gt;
+                    </div>
+                </div>
+                <div class="lindent0b">
+                    <div>
+                        Start simple Python web server (root privilege is needed since port 80):
+                    </div>
+                    <div class="lindent00">
+                        python -m SimpleHTTPServer 80
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <b>V. Block all traffic to L2TPD server except the VPN connection:</b>
+        </div>
+        <div class="lindent0a">
+            <div>
+                nano <i>iptablerule</i>
+                <input
+                  id="iprules$"
+                  class="view_switch"
+                  type="button"
+                  value="content is hidden"
+                  onclick="switchDisplay(this, ['sample content is displayed', 'content is hidden']);"
+                  title="click to show/hide sample content"
+                >
+                    &nbsp;
+                </input>
+            </div>
+            <div class="iprules$sample_content_is_displayed" style="display: none;">
+                <div class="lindent00">
+                    *filter <br />
+                    :INPUT DROP [0:0] <br />
+                    :OUTPUT ACCEPT [0:0] <br />
+                    :FORWARD ACCEPT [0:0] <br />
+                    -A INPUT -i lo -j ACCEPT <br />
+                    -A INPUT -s 10.0.2.9/32 -i enp0s9 -p udp -m mac --mac-source 0A:00:27:00:00:08 -m udp --dport 1701 -j ACCEPT <br />
+                    -A INPUT -i ppp0 -j ACCEPT <br />
+                    -A INPUT -j REJECT --reject-with icmp-port-unreachable <br />
+                    COMMIT <br />
+                </div>
+            </div>
+        </div>
+        <div class="lindent0a">
+            <div>
+                /sbin/iptables-restore &lt; <i>iptablerule</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/linuxos-setup-your-own-l2tp-vpn-server.htm</div>
+<div id="githubver" class="hidden">0.1.0</div>
+<script>doDefaultDecorate();</script>
+</div>
+
