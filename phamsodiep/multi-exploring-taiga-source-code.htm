@@ -1,0 +1,245 @@
+<div id="entry_article">
+<details class="hidden">
+    <summary>
+        <div id="entry_brief"><em><i>
+            Taiga is a free and open-source project management system for
+            startups. Its frontend is written in AngularJS and CoffeeScript;
+            backend, in Django and Python. Exploring Taiga source code is
+            helpfull for improving Django and AngularJS programming skills.
+            This blog entry shares steps to setup a developing environment
+            for such exploring.
+            <br />
+            <br />
+            <b>Audience:</b> software engineer
+            – <b>Topic:</b> Django, AngularJS programming
+        </i></em></div>
+    </summary>
+    <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+</details>
+
+
+<div class="naturalsciencefont0">
+    <div ID=" I. Introduction">
+        <h2>I. Introduction</h2>
+        <div>
+            Taiga is composed by two mandatory components: Taiga back-end and
+            Taiga front-end. The back-end one provides services as REST apis.
+            The front-end one consumes apis to create web GUI interfaces.
+            We shall setup development environment so that the back-end is
+            hosted on an embedded Linux PC like RPi 3 or Nano Pi. The
+            front-end is developed on Windows PC machine. For product release,
+            the front-end could be exported as static HTML which then could
+            be hosted on embedded Linux PC.
+        </div>
+    </div>
+    <div ID=" II. Prerequisites" class="para_sep2">
+        <h2>II. Prerequisites</h2>
+        <div ID=" II.1. Prerequisite software packages">
+            <div><b>1. Prerequisite software packages</b></div>
+            <div>
+                <div><i>Back-end</i>:</div>
+                <div class="lindent0a">
+                    Python3
+                </div>
+                <div class="lindent0a">
+                    PostgreSQL
+                </div>
+            </div>
+            <div>
+                <div><i>Front-end</i>:</div>
+                <div class="lindent0a">
+                    Python2
+                </div>
+                <div class="lindent0a">
+                    Visual C++ Build Environment
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://visualstudio.microsoft.com/pl/thank-you-downloading-visual-studio/?sku=Community"
+                    >
+                        Visual Studio 2017 Community:
+                    </a>
+                    (using the "Desktop development with C++" workload)
+                </div>
+                <div class="lindent0a">
+                    NodeJS (version 10.x)
+                </div>
+            </div>
+        </div>
+        <div ID=" II.2. Source code" class="para_sep1">
+            <div><b>2. Source code</b></div>
+            <div>
+                <i>Back-end</i>:
+                 Taiga back-end at
+                 <a
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   href="https://github.com/taigaio/taiga-back"
+                 >
+                     link
+                 </a>
+            </div>
+            <div>
+                <i>Front-end</i>:
+                 Taiga front-end at
+                 <a
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   href="https://github.com/taigaio/taiga-front"
+                 >
+                     link
+                 </a>
+            </div>
+        </div>
+    </div>
+    <div ID=" III. Setup development environment" class="para_sep2">
+        <h2>III. Setup development environment</h2>
+        <div ID=" III.1. Back-end">
+            <div><b>1. Back-end</b></div>
+            <div>
+                <div><i>Steps</i>:</div>
+                <div class="lindent0a">
+                    <div>Prepare database:</div>
+                    <div class="lindent00">
+                        <code>
+                            apt-get install postgresql <br />
+                            shutdown -r now <br />
+                            passwd postgres
+                        </code>
+                    </div>
+                    <div class="lindent00">
+                        <div class="para_sep1"><code>
+                            su postgres <br />
+                            psql
+                        </code></div>
+                        <div class="lindent00">
+                            <code>
+                                create user taiga with password 'nonepassword';
+                                <br />
+                                create database taiga; <br />
+                                grant all on database taiga to taiga;
+                            </code>
+                        </div>
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div class="para_sep1">Install prerequisite packages:</div>
+                    <div class="lindent00">
+                        <code>
+                            python -m venv pyenv <br />
+                            chmod +x pyenv/bin/activate <br />
+                            pyenv/bin/activate <br />
+                            pyenv/bin/pip install -r requirements.txt <br />
+                        </code>
+                    </div>
+                </div>
+                <div class="lindent0a">
+                    <div class="para_sep1">Create initial data:</div>
+                    <div class="lindent00">
+                        <code>
+                            cp settings\local.py.example  settings\local.py 
+                            <br />
+                            nano local.py <i># change postgres setting to
+                            taiga@127.0.0.1:5432</i>
+                        </code>
+                    </div>
+                    <div class="lindent00">
+                        <div class="para_sep1"><code>
+                            pyenv/bin/python3 manage.py migrate --noinput <br />
+                            pyenv/bin/python3 manage.py loaddata initial_user
+                            <br />
+                            pyenv/bin/python3 manage.py loaddata
+                            initial_project_templates <br />
+                        </code></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ID=" III.2. Front-end" class="para_sep1">
+            <div><b>2. Front-end</b></div>
+            <div>
+                <div>
+                    Make sure Python2, Visual C++ Build Environment path is
+                    available with NodeJS (version 10.x).
+                </div>
+                <div class="lindent00">
+                    <code>
+                        npm install -g gulp <br />
+                        npm install
+                    </code>
+                </div>
+            </div>
+            <div>
+                <div>
+                    Workaround to overcome <i>gulp-sass</i> post install script
+                    error:
+                </div>
+                <div class="lindent0a">
+                    Change <i>"gulp-sass"</i> to version <i>"3.2.1"</i> in file
+                    <i>package.json</i>.
+                </div>
+                <div class="lindent0a">
+                    Copy style sheet from
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://github.com/taigaio/taiga-front-dist"
+                    >
+                        https://github.com/taigaio/taiga-front-dist
+                    </a>
+                    (folder <i>dist\v-1589301622195\styles</i>) to
+                    front-end project counterpart folder.
+                </div>
+            </div>
+        </div>
+        <div ID=" III.3. Test" class="para_sep1">
+            <div><b>3. Test</b></div>
+            <div>
+                <i>Back-end</i>: launch below command
+                <div class="lindent00"><code>
+                    pyenv/bin/python3 manage.py runserver
+                    192.168.1.100:8000
+                </code></div>
+            </div>
+            <div>
+                <div><i>Front-end</i>:</div>
+                <div class="lindent0a">
+                    Set <i>back-end</i> url end point in file
+                    <i>app-loader\app-loader.coffee</i>.
+                </div>
+                <div class="lindent0a">
+                    <div>Launch command:</div>
+                    <div class="lindent00"><code>
+                        gulp
+                    </code></div>
+                </div>
+                <div class="lindent0a">
+                    <div>To test generated static HTML files:</div>
+                    <div class="lindent00"><code>
+                        cd dist <br />
+                        python -m SimpleHTTPServer 9001
+                    </code></div>
+                </div>
+            </div>
+            <div>
+                <div><i>Browser</i>: open below url</div>
+                <div class="lindent00">
+                    <i>http://192.168.1.101:9001/index.html</i>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <!-- div ID=" IV. B" class="para_sep2">
+        <h2>IV. B</h2>
+        <div ID=" III.1. a">
+            <div><b>1. a</b></div>
+        </div>
+    </div -->
+</div>
+
+
+<div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/template.htm</div>
+<div id="githubver" class="hidden">1.0.0</div>
+<script>doDefaultDecorate();doScrollIntoViewDecoration();</script>
+</div>
+
