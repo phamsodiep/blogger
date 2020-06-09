@@ -1,0 +1,1214 @@
+<div id="entry_article">
+<details class="hidden">
+    <summary>
+        <div id="entry_brief_tmp"><em><i>
+            React uses lifting state up to share state between components. The
+            truthful source of state is lifted and stored in the higher level
+            component. If we change the class hierarchy, the state redesign may
+            be need. Redux is a framework support decouple the state to an
+            independence truthful source to make state source is more
+            predictable. This blog entry shares some concepts and how to
+            implement an application powered by React, Redux framework.
+            <br />
+            <b>Audience</b>: software engineer with Javascript knowledge 
+            – <b>Topic</b>: React, Redux programming
+        </i></em></div>
+    </summary>
+    <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+</details>
+
+
+<div class="naturalsciencefont0">
+<!-- DELMEPLEASE --><input id="notyet$" style="display: none;" type="button" value="off" onclick="switchDisplay(this, ['on', 'off']);"/><div style="display: none;" class="notyet$on"><div id="minpage233">&nbsp;</div>
+    <div ID=" I. Introduction">
+        <h2>I. Introduction</h2>
+        <div ID=" I.1. Principles of Redux">
+            <div><b>1. Principles of Redux</b></div>
+<del>
+            <div>
+                Predictability of Redux is determined by three most important
+                principles as given below
+            </div>
+            <div class="lindent00">
+                1. <i>Single Source of Truth</i>: store object / decopling
+                access
+            </div>
+            <div class="lindent00">
+                2. <i>State is Read-only</i>: write access control via
+                request action
+            </div>
+            <div class="lindent00">
+                3. <i>Changes are made with pure functions</i>: such pure
+                function is named as reducer, it takes state and action as
+                arguments, and returns a newly updated state.
+            </div>
+</del>
+            <div>
+                Analyzing:
+            </div>
+            <div class="lindent0a">
+                #1 decouples state to an object of class <i>Store</i>.
+            </div>
+            <div class="lindent0a">
+                #2, #3 design a method to describle access behaviors to Store
+                descriptive way instead of programmactically way.
+            </div>
+        </div>
+        <div ID=" I.2. Dispatch Subscribe model" class="para_sep1">
+            <div><b>2. Dispatch Subscribe model</b></div>
+            <div>
+                To make access decoupled, dispatch subscribe model is employed.
+                Store is designed as a server, client (client code, the code
+                that invokes library function) sends "message" to server to
+                fulfill its need.
+            </div>
+            <div class="lindent0a">
+                <i>Action</i>: "message" sent to server for state change request
+            </div>
+            <div class="lindent0a">
+                <i>Dispatch</i>: invoking from client to send an <i>Action</i>
+                to server.
+            </div>
+            <div class="lindent0a">
+                <i>Subscribe</i>: invoking from client to send an interest to
+                server about state change notifying. Client sends a call back
+                function that the Redux framework will invoke this function
+                once the state is changed.
+            </div>
+        </div>
+        <!-- div ID=" I.1. Principles of Redux">
+            <div><b>1. Principles of Redux</b></div>
+                    <div><figure id="ClassDiagram_png"/></div>
+        </div -->
+    </div>
+    <div ID=" II. Concepts" class="para_sep2">
+        <h2>II. Concepts</h2>
+        <div ID=" II.1. Redux Concepts">
+            <div><b>1. Redux Concepts</b></div>
+            <div><b>Store</b></div>
+            <div class="para_sep0"><b>Action</b></div>
+            <div class="para_sep0"><b>Action Creator</b></div>
+            <div class="para_sep0"><b>Reducer</b></div>
+        </div>
+        <div ID=" II.2. React Redux Concepts" class="para_sep1">
+            <div><b>2. React Redux Concepts</b></div>
+            <div><b>Provider</b></div>
+            <div class="para_sep0">
+                <b>Generic Component / Presentation Component</b>
+            </div>
+            <div class="para_sep0">
+                <b>Container Component</b>
+            </div>
+            <div class="para_sep0">
+                <b>State to properties Map</b>
+            </div>
+            <div class="para_sep0">
+                <b>Dispatch to properties Map</b>
+            </div>
+        </div>
+    </div>
+    <div ID=" III. Programming" class="para_sep2">
+        <h2>III. Programming</h2>
+        <div ID=" II.1. Programming steps">
+            <div><b>1. Programming steps</b></div>
+            <div>
+                As my opinions, I propose a programming steps as below:
+            </div>
+            <div class="lindent00">
+                <div><i>Store preparation</i></div>
+                <div class="lindent00">
+                    1. Program to describle Store.
+
+    <!--
+    reducer/index.js
+    const reducer = (state = 0, action) => {
+       switch (action.type) {
+          case 'INCREMENT': return state + 1
+          case 'DECREMENT': return state - 1
+          case 'RESET' : return 0 default: return state
+       }
+    }
+    export default reducer;
+    -->
+
+                </div>
+                <div class="lindent00">
+                    2. Create store with <i>reducer</i> created by #1.
+
+    <!--
+    const store = createStore(
+       reducer,
+       window.__REDUX_DEVTOOLS_EXTENSION__ && 
+       window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+    -->
+
+                </div>
+                <div class="lindent00">
+                    3. Made this store visible with React Redux component
+                    <i>Provider </i>.
+
+
+    <!--
+    render(
+       <Provider store = {store}>
+          <App />
+       </Provider>, document.getElementById('root')
+    )
+    -->
+
+
+                </div>
+            </div>
+            <div class="lindent00">
+                <div class="para_sep0">
+                    <i>Program Container Component</i>
+                </div>
+                <div class="lindent00">
+                    1. Program Action Creator (optional)
+                </div>
+                <div class="lindent00">
+                    2. Program <i>State to properties Map</i>
+                </div>
+                <div class="lindent00">
+                    3. Program <i>Dispatch to properties Map</i>
+                </div>
+                <div class="lindent00">
+                    4. Declare Container Component with React Redux
+                    <i>connect</i> function.
+                </div>
+            </div>
+            <div class="lindent00">
+                <div class="para_sep0"><i>Program Generic Component</i></div>
+                <div>
+                    Program Generic Component with extra properties created by
+                    Container Component:
+                </div>
+                <div>
+                    <div class="lindent0a">
+                        Property access to read only state of <i>Store</i>
+                        (declared by <i>State to properties Map</i>)
+                    </div>
+                    <div class="lindent0a">
+                        Property to dispatch function
+                        (declared by <i>Dispatch to properties Map</i>)
+                    </div>
+                </div>
+            </div>
+            <div class="lindent00">
+                <div class="para_sep0">
+                    React Reduct framework class diagram is as below, you could
+                    mouse over on a class or interface for a <i>tooltip</i>
+                    describing about implement instances for that class.
+                </div>
+                <div>
+                    <figure id="ClassDiagram_png"/>
+                </div>
+            </div>
+        </div>
+        <div ID=" II.2. Programming example">
+            <div><b>2. Programming example</b></div>
+            <div><b>Example</b></div>
+            <div>
+                We shall implement a three way light switches demostration. It
+                is a circuit system composed by three components: switch SW1,
+                switch SW2 and lamp L as the <i>Figure 2</i> follow.
+                The circuit is designed to control (turn on or off) the lamp by
+                any one of two switches. Our objective is implementing a
+                demostration to turn on or off the lamp once the SW1 or SW2 is
+                toggled.
+            </div>
+            <div class="para_sep2">
+                <div class="para_sep2">
+                    <figure id="cir_dom_obj.png" />
+                </div>
+            </div>
+            <div class="para_sep2">
+                <div>
+                    In the circuit, lines connected SW1 and SW2 named as
+                    Traveler1, Traveler2. Let's analyze domain objects and
+                    its behaviors.
+                </div>
+                <div class="lindent0a">
+                    Domain classes: Switch, Lamp, Traveler
+                </div>
+                <div class="lindent0a">
+                    Domain objects: SW1, SW2, Traveler1, Traveler2
+                </div>
+                <div class="para_sep0">
+                    Behaviors:
+                </div>
+                <div class="lindent0a">
+                    SW1's role is offer Vcc.
+                    It <i>knows</i> which traveler that Vcc is offered.
+                </div>
+                <div class="lindent0a">
+                    SW2's role is used Vcc.
+                    It <i>knows</i> which traveler is used (but it do not know
+                    if the used traveler connected to Vcc or not).
+                </div>
+                <div class="lindent0a">
+                    <div>
+                        Lamp uses Vcc.
+                        It <i>needs to know</i>:
+                    </div>
+                    <div class="lindent0a">
+                        Which traveler has Vcc.
+                    </div>
+                    <div class="lindent0a">
+                        Which traveler is used.
+                    </div>
+                </div>
+            </div>
+            <!-- div class="para_sep0">                
+            </div -->
+            <div class="para_sep1"><b>Dispatch Subscribe model design</b></div>
+            <div>
+                Dispatching object is an object that provides information while
+                subscribing object is an object that consumes information.
+                Based on domain objects analyzing result, we could design
+                dispatch subscribe model as below:
+            </div>
+            <div class="lindent0a">
+                <div><i>State data structure</i>:</div>
+                <div class="lindent00">
+                    <div>Information:</div>
+                    <div class="lindent0b">
+                        Which traveler has Vcc.
+                    </div>
+                    <div class="lindent0b">
+                        Which traveler it is used. 
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>Data structure:</div>
+                    <div class="lindent00"><code>
+                        { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;vcc: tx, <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;use: ty <br />
+                        } <br />
+                    </code></div>
+                    <div class="lindent00">
+                        <div>Where:</div>
+                        <div class="lindent0b">
+                            <div>
+                                <i>tx</i>: traveler that has Vcc.
+                            </div>
+                            <div class="lindent0c">
+                                <i>tx</i> = 0: Traveler1 has Vcc.
+                            </div>
+                            <div class="lindent0c">
+                                <i>tx</i> = 1: Traveler2 has Vcc.
+                            </div>
+                        </div>
+                        <div class="lindent0b">
+                            <div>
+                                <i>ty</i>: traveler that Lamp uses.
+                            </div>
+                            <div class="lindent0c">
+                                <i>ty</i> = 0: Lamp uses Traveler1.
+                            </div>
+                            <div class="lindent0c">
+                                <i>ty</i> = 1: Lamp uses Traveler2.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lindent0a">
+                <div><i>Dispatching Subscribing objects</i>:</div>
+                We could analyze "<i>know</i>" and "<i>need to know</i>"
+                verbs in the domain object analyzing result to design this.
+                Object <i>know</i>s some thing is a candidate of Dispatching
+                objects. Object <i>needs to know</i> some thing is a candidate
+                of Subscribing objects.
+                <div>
+                <div class="lindent00">
+                    <div>Dispatching objects:</div>
+                    <div class="lindent0b">
+                        SW1: dispatch <i>vcc</i> = <i>tx</i>
+                    </div>
+                    <div class="lindent0b">
+                        SW2: dispatch <i>use</i> = <i>ty</i>
+                    </div>
+                </div>
+                <div class="lindent00">
+                    <div>Subscribing objects:</div>
+                    <div class="lindent0b">
+                        L: subscribe for state
+                        (both <i>vcc</i> and <i>use</i> values)
+                    </div>
+                </div>
+            </div>
+            <!-- div class="para_sep0">                
+            </div -->
+        </div>
+        <div class="para_sep1"><b>No shared state implementation</b></div>
+        <div>
+            <div>
+                We shall first implement domain classes with out share state to
+                other class, to form a none shared state version.
+                You could consult sharing steps at blog entry
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://phamsodiep.blogspot.com/2020/03/js-jsx-react-in-a-nutshell.html"
+                >
+                    React in a nutshell
+                </a>
+                for such implementation. Follows are proposed class diagram,
+                source code and demostration application (it is noted that
+                because of none shared state version, the lamp is alway on).
+                <div class="para_sep0"><i>Class diagram</i></div>
+                <div>
+                    For simplicity, we render whole circuit in <i>App</i>
+                    component as a background image. Then let <i>Switch</i>
+                    and <i>Lamp</i> components decorate the background image
+                    to demostrate its state.
+                    <div class="para_sep0">
+                    </div>
+                    <figure id="class_diagram_react.png" />
+                    <div class="para_sep0">
+                    </div>
+                </div>
+                <div class="para_sep0"><i>Source code</i></div>
+                <div class="para_sep0">
+
+
+
+
+
+<textarea id="jsxsrc:3.2:1" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import { render } from 'react-dom';
+
+class Lamp extends React.Component {
+    render() {
+        let style = {
+            borderWidth: 0,
+            borderStyle: "none",
+            margin: "0px 0px 0px 0px",
+            position: "absolute",
+            lineHeight: 0.5,
+            fontSize: 35,
+            color: "black",
+            left: 676,
+            top: 0,
+        };
+        let symbol = this.props.isOn ? "\u2197" : "";
+        return (
+            <div style={style}>
+                {symbol}<br />{symbol}
+            </div>
+        );
+    }
+}
+
+class Switch extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: 0
+        };
+    }
+
+    onClick = () => {
+        this.setState((state, props) => {
+            if (typeof props.onToggle === "function") {
+                props.onToggle(props.type, state.value);
+            }
+            return {
+                value: (state.value + 1) % 2
+            }; 
+        });
+    }
+
+    render() {
+        let val = this.state.value;
+        let isTypeUse = this.props.type === "use";
+        let url = "closed_sw.png";
+        let bgImg = `url("${url}")`;
+        let x = isTypeUse ? 427 : 127;
+        let y = 18;
+        let trans = "";
+        if (isTypeUse) {
+            trans = "scaleX(-1) " + (val === 0 ? "" : "scaleY(-1)");
+        }
+        else {
+            trans = (val === 0 ? "" : "scaleY(-1)")
+        }
+        let style = {
+            borderWidth: 0,
+            borderStyle: "none",
+            margin: "0px 0px 0px 0px",
+            position: "absolute",
+            width: 96,
+            height: 90,
+            left: x,
+            top: y,
+            transform: trans,
+            backgroundSize: "fit",
+            backgroundImage: bgImg
+        };
+        return <div style={style} onClick={this.onClick}></div>;
+    }
+}
+
+class App extends React.Component {
+    render() {
+        let containerStyle = {
+            borderWidth: 0,
+            borderStyle: "none",
+            margin: "0px 0px 0px 0px",
+            position: "relative",
+            width: 816,
+            height: 148,
+            backgroundSize: "fit",
+            backgroundImage: "url('cir_bg.png')"
+        };
+
+        return (
+            <div style={containerStyle}>
+                <Switch type="vcc" />
+                <Switch type="use" />
+                <Lamp isOn="true" />
+            </div>
+        );
+    }
+}
+
+render(
+    <App />,
+    document.getElementById('reactExampleApp')
+)
+</textarea>
+
+
+
+
+
+                </div>
+                <div class="para_sep0">
+                    <div><i>Demostration application</i></div>
+                    <div class="para_sep2">
+                    </div>
+                    <div class="para_sep2">
+                        <div id="reactExampleApp"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="para_sep0">
+            &nbsp;
+        </div>
+        <div class="para_sep1">
+            <b>Shared state (redux integration) implementation</b>
+        </div>
+        <div class="para_sep0">
+            <i>Class diagram</i>
+        </div>
+        <div class="para_sep0">
+                <figure id="class_diagram_react_redux.png" />
+        </div>
+        <div class="para_sep0">
+            <i>Programming steps</i>
+        </div>
+        <div class="para_sep0">
+            <i>Source code</i>
+        </div>
+        <div class="para_sep0">
+
+
+
+
+
+<textarea id="jsxsrc:3.2:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+// 1. Import more from redux and react-redux
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { connect } from 'react-redux';
+
+// 2. Program to describe LampContainer
+const stateToPropsLampMap = (state) => {
+   return {
+      isOn: state.vcc === state.use
+   };
+};
+
+const LampContainer = connect(stateToPropsLampMap, null)(Lamp);
+
+// 3. Program to describe SwitchContainer
+function switchChange(type, val) {
+    switch (type) {
+        case "vcc":
+            return {
+                type: "VCC_CHANGE",
+                value: val
+            };
+
+        case "use":
+            return {
+                type: "USE_CHANGE",
+                value: val
+            };
+        default:
+            break;
+    }
+    return {};
+}
+
+const dispatchToPropsSwitchMap = dispatch => {
+    return {
+        onToggle: (type, val) => {
+            dispatch(switchChange(type, val))
+        }
+    }
+}
+
+const SwitchContainer = connect(null, dispatchToPropsSwitchMap)(Switch);
+
+
+// 4. Compose App from SwitchContainer, LampContainer, instead of Switch, Lamp
+class App extends React.Component {
+    render() {
+        let containerStyle = {
+            borderWidth: 0,
+            borderStyle: "none",
+            margin: "0px 0px 0px 0px",
+            position: "relative",
+            width: 816,
+            height: 148,
+            backgroundSize: "fit",
+            backgroundImage: "url('cir_bg.png')"
+        };
+
+        return (
+            <div style={containerStyle}>
+                <SwitchContainer type="vcc" />
+                <SwitchContainer type="use" />
+                <LampContainer />
+            </div>
+        );
+    }
+}
+
+// 5. Program to describe store
+const reducer = (state = 0, action) => {
+    switch (action.type) {
+        case "VCC_CHANGE":
+            return Object.assign(
+                {},
+                state,
+                {
+                    vcc: action.value
+                }
+            );
+
+        case "USE_CHANGE":
+            return Object.assign(
+                {},
+                state,
+                {
+                    use: action.value
+                }
+            );
+
+        default:
+            return state;
+    }
+}
+
+const store = createStore(
+    reducer,
+    {
+        vcc: 1,
+        use: 1
+    }
+)
+
+// 6. Render with store as provider
+render(
+    <Provider store = {store}>
+        <App />
+    </Provider>,
+    document.getElementById('reactReduxExampleApp')
+)
+</textarea>
+<!-- textarea id="jsxsrc:3.2:2" rows="10" cols="80"  class="txt_sourcecodefont0" readonly="true" style="display: none;">
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { connect } from 'react-redux';
+
+class Lamp extends React.Component {
+    render() {
+        let style = {
+            borderWidth: 0,
+            borderStyle: "none",
+            margin: "0px 0px 0px 0px",
+            position: "absolute",
+            lineHeight: 0.5,
+            fontSize: 35,
+            color: "black",
+            left: 676,
+            top: 0,
+        };
+        let symbol = this.props.isOn ? "\u2197" : "";
+        return (
+            <div style={style}>
+                {symbol}<br />{symbol}
+            </div>
+        );
+    }
+}
+
+class Switch extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: 0
+        };
+    }
+
+    onClick = () => {
+        this.setState((state, props) => {
+            if (typeof props.onToggle === "function") {
+                props.onToggle(props.type, state.value);
+            }
+            return {
+                value: (state.value + 1) % 2
+            };
+        });
+    }
+
+    render() {
+        let val = this.state.value;
+        let isTypeUse = this.props.type === "use";
+        let url = "https://1.bp.blogspot.com/-SmHsAPZP70I/Xt6G5mjcQMI/AAAAAAAAAYQ/JqLWip5JJ04JSrXNheZpHLCQS_ip3I-xACK4BGAsYHg/closed_sw.png";
+        let bgImg = `url("${url}")`;
+        let x = isTypeUse ? 427 : 127;
+        let y = 18;
+        let trans = "";
+        if (isTypeUse) {
+            trans = "scaleX(-1) " + (val === 0 ? "" : "scaleY(-1)");
+        }
+        else {
+            trans = (val === 0 ? "" : "scaleY(-1)")
+        }
+        let style = {
+            borderWidth: 0,
+            borderStyle: "none",
+            margin: "0px 0px 0px 0px",
+            position: "absolute",
+            width: 96,
+            height: 90,
+            left: x,
+            top: y,
+            transform: trans,
+            backgroundSize: "fit",
+            backgroundImage: bgImg
+        };
+        return <div style={style} onClick={this.onClick}></div>;
+    }
+}
+
+const stateToPropsLampMap = (state) => {
+   return {
+      isOn: state.vcc === state.use
+   };
+};
+
+const LampContainer = connect(stateToPropsLampMap, null)(Lamp);
+
+
+function switchChange(type, val) {
+    switch (type) {
+        case "vcc":
+            return {
+                type: "VCC_CHANGE",
+                value: val
+            };
+
+        case "use":
+            return {
+                type: "USE_CHANGE",
+                value: val
+            };
+        default:
+            break;
+    }
+    return {};
+}
+
+const dispatchToPropsSwitchMap = dispatch => {
+    return {
+        onToggle: (type, val) => {
+            dispatch(switchChange(type, val))
+        }
+    }
+}
+
+const SwitchContainer = connect(null, dispatchToPropsSwitchMap)(Switch);
+
+
+class App extends React.Component {
+    render() {
+        let containerStyle = {
+            borderWidth: 0,
+            borderStyle: "none",
+            margin: "0px 0px 0px 0px",
+            position: "relative",
+            width: 816,
+            height: 148,
+            backgroundSize: "fit",
+            backgroundImage: "url('https://1.bp.blogspot.com/-4S2stc3Ifrk/Xt6GQ99nKAI/AAAAAAAAAX8/iX3oUiPzHlg5GeGTf2r5GkIcWszd-JfRgCK4BGAsYHg/d/cir_bg.png')"
+        };
+
+        return (
+            <div style={containerStyle}>
+                <SwitchContainer type="vcc" />
+                <SwitchContainer type="use" />
+                <LampContainer />
+            </div>
+        );
+    }
+}
+
+const reducer = (state = 0, action) => {
+    switch (action.type) {
+        case "VCC_CHANGE":
+            return Object.assign(
+                {},
+                state,
+                {
+                    vcc: action.value
+                }
+            );
+
+        case "USE_CHANGE":
+            return Object.assign(
+                {},
+                state,
+                {
+                    use: action.value
+                }
+            );
+
+        default:
+            return state;
+    }
+}
+
+const store = createStore(
+    reducer,
+    {
+        vcc: 1,
+        use: 1
+    }
+)
+
+render(
+    <Provider store = {store}>
+        <App />
+    </Provider>,
+    document.getElementById('reactReduxExampleApp')
+)
+</textarea-->
+
+
+
+
+
+        </div>
+        <div class="para_sep0">
+            <div><i>Demostration application</i></div>
+            <div class="para_sep2">
+            </div>
+            <div class="para_sep2">
+                <div id="reactReduxExampleApp"></div>
+            </div>
+        </div>
+        <!-- div ID=" II.2. ?">
+            <div><b>2. P</b></div>
+        </div -->
+    </div>
+    <div ID=" IV. References" class="para_sep2">
+        <h2>IV. References</h2>
+        <div>
+            https://www.tutorialspoint.com/redux/index.htm
+        </div>
+        <div>
+        </div>
+    </div>
+    <!-- div ID=" II. B" class="para_sep2">
+        <h2>II. B</h2>
+        <div ID=" II.1. a">
+            <div><b>1. a</b></div>
+        </div>
+        <div><figure id="ClassDiagram_png"/></div>
+    </div -->
+<!-- DELMEPLEASE --></div>
+</div>
+
+
+<div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/js-jsx-react-redux.htm</div>
+<div id="githubver" class="hidden">0.1.0</div>
+<script>doDefaultDecorate();doScrollIntoViewDecoration();</script>
+<script>
+
+const DiepSrcCode = {
+  FORMAT_JAVA: 0,
+  FORMAT_JS: 1,
+
+  FORMATS: [
+    // FORMAT_JAVA
+    [
+      ["  ", "&nbsp;&nbsp;"],
+      ["package", "<b style='color: olive;'>package</b>"],
+      ["import", "<b style='color: olive;'>import</b>"],
+      ["public", "<b style='color: green;'>public</b>"],
+      ["private", "<b style='color: green;'>private</b>"],
+      ["void", "<b style='color: green;'>void</b>"],
+      ["for", "<b style='color: maroon;'>for</b>"],
+      ["if", "<b style='color: maroon;'>if</b>"],
+      ["this", "<b style='color: maroon;'>this</b>"],
+      ["return", "<b style='color: maroon;'>return</b>"]
+    ],
+    // FORMAT_JS
+    [
+      ["  ", "&nbsp;&nbsp;"],
+      // keywords
+      ["import[ ]", "<b style='color: blue;'>import</b>&nbsp;"],
+      ["export[ ]", "<b style='color: blue;'>export</b>&nbsp;"],
+      ["class[ ]", "<b style='color: blue;'>class</b>&nbsp;"],
+      ["extends[ ]", "<b style='color: blue;'>extends</b>&nbsp;"],
+      ["super[(]", "<b style='color: blue;'>super</b>("],
+      ["new[ ]", "<b style='color: blue;'>new</b>&nbsp;"],
+      ["constructor[(]", "<b style='color: darkgoldenrod;'>constructor</b>("],
+      ["[ ]undefined", "&nbsp;<b style='color: blueviolet;'>undefined</b>"],
+      ["[ ]null", "&nbsp;<b style='color: blue;'>null</b>"],
+      ["[ ]false", "&nbsp;<b style='color: blue;'>false</b>"],
+      ["[ ]true", "&nbsp;<b style='color: blue;'>true</b>"],
+      ["const[ ]", "<b style='color: blue;'>const</b>&nbsp;"],
+      ["let[ ]", "<b style='color: blue;'>let</b>&nbsp;"],
+      ["var[ ]", "<b style='color: blue;'>var</b>&nbsp;"],
+      ["for[ ]", "<b style='color: blue;'>for</b>&nbsp;"],
+      ["if[ ]", "<b style='color: blue;'>if</b>&nbsp;"],
+      ["else[ ]", "<b style='color: blue;'>else</b>&nbsp;"],
+      ["switch[(]", "<b style='color: blue;'>switch</b>("],
+      ["case[ ]", "<b style='color: blue;'>case</b>&nbsp;"],
+      ["break", "<b style='color: blue;'>break</b>"],
+      ["default:", "<b style='color: blue;'>default</b>:"],
+      ["this", "<b style='color: blue;'>this</b>"],
+      ["return[ ]", "<b style='color: blue;'>return</b>&nbsp;"],
+      ["typeof[ ]", "<b style='color: blue;'>typeof</b>&nbsp;"],
+      ["function[ ]", "<b style='color: blue;'>function</b>&nbsp;"],
+
+      // objects
+      ["document[.]", "<b style='color: darkgoldenrod;'>document</b>."],
+      ["Array", "<b style='color: blueviolet;'>Array</b>"],
+      ["Math[.]", "<b style='color: blueviolet;'>Math</b>."],
+      //["Object", "<b style='color: blueviolet;'>Object</b>"],
+      // methods
+      ["toString[(][)]", "<b style='color: blueviolet;'>toString</b>()"],
+      ["setTimeout[(]", "<b style='color: darkgoldenrod;'>setTimeout</b>("],
+      ["alert[(]", "<b style='color: darkgoldenrod;'>alert</b>("],
+      ["Object.assign[(]",
+        [
+          "<b style='color: blueviolet;'>Object</b>",
+          ".",
+          "<b style='color: darkgoldenrod;'>assign</b>("
+        ].join("")
+      ],
+      ["[\u262F]", ""]
+    ]
+  ],
+
+  commentedOutHtmlWrap: function (s, skipBreak) {
+    if (skipBreak) {
+        return "<i style='color: teal;'>".concat(s, "</i>");
+    }
+    return "<i style='color: teal;'>".concat(s, "</i><br />");
+  },
+
+  formatLine: function (formatId, line, skipBreak) {
+    let formats = DiepSrcCode.FORMATS[formatId];
+    for (let j = 0; j < formats.length; j++) {
+        let format = formats[j];
+        let regExp = new RegExp(format[0], 'g');
+        line = line.replace(regExp, format[1])
+    }
+    if (skipBreak) {
+        return line;
+    }
+    return line.concat("<br />");
+  },
+
+  processCommentedOut: function (line, formatId) {
+    let idx = line.indexOf("//");
+    if (idx >= 0) {
+        let html =
+          DiepSrcCode.formatLine(formatId, line.substring(0, idx), true);
+        html = html.concat(
+          DiepSrcCode.commentedOutHtmlWrap(line.substring(idx, line.length))
+        );
+        return [true, html];
+    }
+    idx = line.indexOf("/*");
+    if (idx >= 0) {
+        let html =
+          DiepSrcCode.formatLine(formatId, line.substring(0, idx), true);
+        html = html.concat(
+          DiepSrcCode.commentedOutHtmlWrap(line.substring(idx, line.length))
+        );
+        return [false, html];;
+    }
+    return null;
+  },
+
+  detectCommentedOutClose: function (line, formatId) {
+      let idx = line.indexOf("*/");
+      if (idx >= 0) {
+          idx += 2;
+          let html =
+            DiepSrcCode.commentedOutHtmlWrap(line.substring(0, idx), true);
+          html = html.concat(
+            DiepSrcCode.formatLine(formatId, line.substring(idx, line.length))
+          );
+          return [false, html];
+      }
+      return [true, DiepSrcCode.commentedOutHtmlWrap(line)];
+  },
+
+  escapeJSX: function (txtId) {
+    let txtComp = document.getElementById(txtId);
+    if (txtComp !== null) {
+      let str = txtComp.value.toString();
+      let regExp = new RegExp("[<]", 'g');
+      str = str.replace(regExp, "&lt;");
+      regExp = new RegExp("[>]", 'g');
+      str = str.replace(regExp, "&gt;");
+      txtComp.value = str;
+    }
+  },
+
+  fillCFamilySourceCode: function (txtId, formatId) {
+    // parse and convert source code
+    let html = "";
+    let txtComp = document.getElementById(txtId);
+    let onCommentedOut = false;
+    if (txtComp) {
+      let lines = txtComp.value.split(/\r?\n/);
+      for (let i = 0; i < lines.length; i++) {
+          let line = lines[i];
+          if (onCommentedOut) {
+              let detect = DiepSrcCode.detectCommentedOutClose(line, formatId);
+              onCommentedOut = detect[0];
+              html = html.concat(detect[1]);
+              continue;
+          }
+          let commentedOut = DiepSrcCode.processCommentedOut(line, formatId);
+          if (commentedOut == null) {
+              html = html.concat(DiepSrcCode.formatLine(formatId, line));
+          }
+          else {
+              if (commentedOut[0]) {
+                  html = html.concat(commentedOut[1]);
+              }
+              else {
+                  html = html.concat(commentedOut[1]);
+                  onCommentedOut = true;
+              }
+          }
+      }
+
+      // apply converted source code to target div
+      let divElement = document.createElement("DIV");
+      divElement.innerHTML = html;
+      divElement.className = "txt_sourcecodefont1";
+      txtComp.parentNode.insertBefore(divElement, txtComp);
+    }
+  }
+};
+
+function fillFigure(
+  elemId,
+  imgSrc,
+  orgW,
+  height,
+  leftAdj,
+  clippedW,
+  scrollClass,
+  figId,
+  figCaption
+) {
+  let elem = document.getElementById(elemId);
+  if (!(elem !== null && typeof elem.innerHTML === "string")) {
+    return false;
+  }
+  let ww = orgW;
+  let hh = height;
+  let scrollDiv =
+    typeof scrollClass === "string" ?
+    `<div class="${scrollClass}">`:
+    "<div>";
+  let figCap = typeof figCaption === "string" ?
+    `<i>${figCaption}</i>` : "";
+  let figcaption = "";
+  if (typeof figId === "string") {
+    figcaption = `<figcaption><b>Figure</b> ${figId}: ${figCap}</figcaption>`;
+  }
+  elem.innerHTML = `
+    <div style="position: relative; left: ${leftAdj}px; width: ${clippedW}px;">
+        ${scrollDiv}
+            <div style="width:${ww}px;">
+                <img
+                  border="0"
+                  data-original-height="${height}"
+                  data-original-width="${orgW}"
+                  height="${height}
+                  width="${orgW}"
+                  src="${imgSrc}"
+                />
+            </div>
+        </div>
+        <div style="text-align: center" class="para_sep0">${figcaption}</div>
+    </div>
+  `;
+  return true;
+}
+
+function addMoreImgsToFigure(elemId, imgs) {
+  if (typeof imgs !== "string"){
+    return false;
+  }
+  let elem = document.getElementById(elemId);
+  if (!(elem !== null && typeof elem.innerHTML === "string")) {
+    return false;
+  }
+  let curHTML = elem.innerHTML;
+  let idx = curHTML.indexOf("<img");
+  if (idx < 0) {
+    return false;
+  }
+  idx = curHTML.indexOf(">",idx);
+  if (idx < 0) {
+    return false;
+  }
+  idx++;
+  let prePart = curHTML.substring(0, idx);
+  let subPart = curHTML.substring(idx);
+  elem.innerHTML = prePart + imgs + subPart;
+}
+
+function fillImgMap(figId, maps, onClickCallBack) {
+  let mapName = figId + "_map";
+  if (!Array.isArray(maps)) {
+    return;
+  }
+  let img = document.querySelector(`#${figId} img`);
+  if (img.tagName !== "IMG") {
+    return;
+  }
+  let areasHtml = '';
+  for (let i = 0; i < maps.length; i++) {
+    let map = maps[i]
+    let coordDim = map[0];
+    let titleStr = map[1].join("");
+    let coords = coordDim.join(",");
+    let title = titleStr;
+    areasHtml += `<area shape="rect" coords="${coords}" href="#" title="${title}" />`;
+  }
+  let mapEle = document.createElement("MAP");
+  mapEle.name = mapName;
+  mapEle.innerHTML = areasHtml;
+  img.useMap = "#" + mapName;
+  img.parentNode.appendChild(mapEle);
+}
+
+fillFigure(
+    "ClassDiagram_png",
+    [
+      "https://1.bp.blogspot.com/-DeV3TxLjt2Y/Xt4XcYlakMI/AAAAAAAAAWU/--YY5rfT",
+      "0bIiuoIvzvGLcmOpyKyx6SXHgCK4BGAsYHg/d/ClassDiagram.png"
+    ].join(""),
+    491,
+    424,
+    80,
+    491,
+    null,
+    "1",
+    "React Redux framework class diagram"
+);
+
+fillFigure(
+    "cir_dom_obj.png",
+    [
+      "https://1.bp.blogspot.com/-MyaBErNQOu8/Xt9DbbZm3FI/AAAAAAAAAYw/",
+      "qE9U8kevS_AB7Eh9_3I_f5A9e-H2jsldgCK4BGAsYHg/d/cir_dom_obj.png"
+    ].join(""),
+    816,
+    152,
+    -40,
+    816,
+    null,
+    "2.1",
+    "Three way light switches system"
+);
+
+fillFigure(
+    "class_diagram_react.png",
+    [
+      "https://1.bp.blogspot.com/-wY7wKYCKRgg/Xt-oe_HEI8I/AAAAAAAAAZM/",
+      "3YP0KP9FhCc730RUR60pvAf2zosgRwezACK4BGAsYHg/d/class_diagram_react.png"
+    ].join(""),
+    442,
+    473,
+    130,
+    442,
+    null,
+    "2.2",
+    "X"
+);
+
+fillFigure(
+    "class_diagram_react_redux.png",
+    [
+      "https://1.bp.blogspot.com/-AhqBTrub34U/Xt-rohVYBrI/AAAAAAAAAZo/ensz1z7",
+      "UuDAqxOd83gE4pbX_0YjWgzXOgCK4BGAsYHg/d/class_diagram_react_redux.png"
+    ].join(""),
+    483,
+    1000,
+    130,
+    483,
+    null,
+    "2.3",
+    "Y"
+);
+
+fillImgMap(
+    "ClassDiagram_png",
+    // 0
+    [
+        [
+            [1,1,270,150],
+            [
+                "this ",
+                "is ",
+                "an apple",
+            ]
+        ]
+    ],
+    null
+);
+
+let snippets  = document.querySelectorAll('*[id^="jsxsrc:"]');
+for (let i = 0; i<snippets.length; i++) {
+  let id = snippets[i].id;
+  DiepSrcCode.escapeJSX(id);
+  DiepSrcCode.fillCFamilySourceCode(id, DiepSrcCode.FORMAT_JS);
+}
+</script>
+</div>
+
