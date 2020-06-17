@@ -62,7 +62,13 @@ export function U(props) {
   const headerTag = props.tag === undefined ? "div" : props.tag;
   const headerText = props.h;
   const createHeaderElement = function (context) {
-    const className = props.c;
+    if (typeof headerText !== "string" || headerText === "") {
+      return null;
+    }
+    const lv = ctx.level;
+    const sepLv = 3 - lv >= 0 ? 3 - lv : 0;
+    const isSep = ctx.indexes[lv] > 1 && props.s !== true;
+    const className = isSep ? "para_sep" + sepLv : null;
     const content = React.createElement(
       headerTag,
       null,
