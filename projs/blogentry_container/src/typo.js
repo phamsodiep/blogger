@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 
-export const IndexContext = React.createContext({});
+export const DocumentContext = React.createContext({});
 
 function computeHeaderString(ctx, headerText, format) {
   const createElement = function (txt) {
@@ -57,7 +57,7 @@ export function def(children, src, tooltip) {
 }
 
 export function U(props) {
-  const ctx = useContext(IndexContext);
+  const ctx = useContext(DocumentContext);
   let headerElement = null;
   const headerTag = props.tag === undefined ? "div" : props.tag;
   const headerText = props.h;
@@ -82,8 +82,13 @@ export function U(props) {
       ) :
       content
   }
-  
+
   ctx.level++;
+  // @REVIEW ME
+  for (let i = ctx.level + 1; i < ctx.indexes.length; i++) {
+      ctx.indexes[i] = undefined;
+  }
+  // @REVIEW ME
   function ReleaseContext() {
     ctx.level--;
     return null;
@@ -183,6 +188,69 @@ export function S(props) {
     <React.Fragment>
       {children}
     </React.Fragment>
+  );
+}
+
+export function Figure(props) {
+  const ctx = useContext(DocumentContext);
+  const figure = ctx.figure.list[props.id];
+  const params = figure[2][props.var === undefined ? 0 : props.var];
+  if (figure === undefined || params === undefined) {
+    return null;
+  }
+  const computeFigcaption = function() {
+    const lv = ctx.level + 1;
+    const indexes = ctx.indexes.slice(1, lv);
+    let index = indexes.join(".");
+    if (ctx.figure.indexes[index] === undefined) {
+      ctx.figure.indexes[index] = 1;
+    }
+    else {
+      ctx.figure.indexes[index]++;
+    }
+    index += "." + ctx.figure.indexes[index];
+    return (
+      <React.Fragment>
+          <b>Figure</b> {index}: &nbsp;
+          <i>{figure[0]}</i>
+      </React.Fragment>
+    );
+  };
+  const figcaption = computeFigcaption();
+  const wrapperStyle = {
+    position: "relative",
+    left: params[2] + "px",
+    width: params[3] + "px"
+  };
+  const containerStyle = params[4] === null ? {} : {
+    overflowX: "scroll",
+    overflowY: "hidden",
+    width: "100%",
+    height: "100%"
+  };
+  const imgScaleStyle = {
+    width: params[0] + "px"
+  };
+  const captionStyle = {
+    textAlign: "center"
+  };
+
+  return (
+    <div style={wrapperStyle}>
+        <div style={containerStyle}>
+            <div style={imgScaleStyle}>
+                <img
+                    border="0"
+                    data-original-height={params[1]}
+                    data-original-width={params[0]}
+                    height={params[1]}
+                    width={params[0]}
+                    src={figure[1]}
+                />
+            </div>
+        </div>
+        <div style={captionStyle}>{figcaption}</div>
+    </div>
   );
 }
 

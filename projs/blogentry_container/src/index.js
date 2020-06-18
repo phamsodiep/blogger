@@ -9,5 +9,5 @@ render(
   </React.Fragment>,
   document.getElementById('react_entry_article')
 );
-// Version 0.0.1
+// Version 0.0.2
 
