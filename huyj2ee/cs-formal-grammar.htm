@@ -1,0 +1,383 @@
+﻿import React from 'react';
+import { DocumentContext, def, Sect, U, S, Figure } from './typo.js';
+import { M } from './math.js';
+
+
+const figureList = {
+  chomskyHierarchy : [
+    "Chomsky hierarchy Venn diagram",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Chomsky-hierarchy.svg/200px-Chomsky-hierarchy.svg.png",
+    [
+      [200, 144, 180, 400, null]
+    ]
+  ],
+};
+
+export const ctx = {
+  indexes: [],
+  level: 0,
+  figure : {
+    list: figureList,
+    indexes: {}
+  }
+};
+
+
+const FormalLanguage = def(
+  "formal language",
+  "https://huyj2ee.blogspot.com/2020/06/cs-formal-language.html",
+  ""
+);
+
+const FormContent = def(
+  "Form and content",
+  "https://vi.wikipedia.org/wiki/N%E1%BB%99i_dung_v%C3%A0_h%C3%ACnh_th%E1%BB%A9c_(Ch%E1%BB%A7_ngh%C4%A9a_Marx-Lenin)",
+  ""
+);
+
+const KarlMarx = def(
+  "Karl Marx",
+  "https://en.wikipedia.org/wiki/Karl_Marx",
+  ""
+);
+
+const MatDiaCat = def(
+  "Categories of the materialist dialectic",
+  "https://vi.wikipedia.org/wiki/Hai_nguy%C3%AAn_l%C3%BD_c%E1%BB%A7a_ph%C3%A9p_bi%E1%BB%87n_ch%E1%BB%A9ng_duy_v%E1%BA%ADt",
+  ""
+);
+
+const ChomskyHierarchy = def(
+  "Chomsky hierarchy",
+  "https://en.wikipedia.org/wiki/Chomsky_hierarchy",
+  ""
+);
+
+const ContainmentHierarchy = def(
+  "containment hierarchy",
+  "https://en.wikipedia.org/wiki/Hierarchy#Containment_hierarchy",
+  ""
+);
+
+const FormalGrammar = def("formal grammar", "#", null);
+const CtxFreeGrammar = def("context free grammar", "#", null);
+const CtxSenGrammar = def("context sensitive grammar", "#", null);
+const NonTerm = def("nonterminal symbol", "#", null);
+const Term = def("terminal symbol", "#", null);
+
+
+function ChomskyHierarchyRestrictLevel(props) {
+  const data = [
+    {
+      name: "Phrase structure",
+      restrict: "nonrestricted",
+      ruleForm: (
+        <React.Fragment>
+          Production rules form: <M>αAβ ⟶ δ</M> (As definition in
+          section <Sect to="sec_2.1"/>)
+        </React.Fragment>
+      )
+    },
+    {
+      name: "Context sensitive",
+      restrict: (
+        <React.Fragment>
+          context is conserved after replacing (after replacing, <M>γ</M> must
+          be prefixed by <M>α</M> and subfixed by <M>β</M>)
+        </React.Fragment>
+      ),
+      ruleForm: (
+        <React.Fragment>
+          Production rules form: <M>αAβ ⟶ αγβ</M>
+        </React.Fragment>
+      )
+    },
+    {
+      name: "Context free",
+      restrict: "context matching is not required",
+      ruleForm: (
+        <React.Fragment>
+          Production rules form: <M>A ⟶ α</M>
+        </React.Fragment>
+      )
+    },
+    {
+      name: "Regular",
+      restrict: (
+        <React.Fragment>
+          replaced by a string contented a <Term /> or a <Term /> followed by
+          a <NonTerm />.
+        </React.Fragment>
+      ),
+      ruleForm: (
+        <React.Fragment>
+          Production rules form: <M>A ⟶ a</M> or <M>A ⟶ aB</M>
+        </React.Fragment>
+      )
+    }
+  ];
+
+  return data.map((rec, idx) => (
+    <U sub="b">
+        <S>
+            <dfn><M>Type-{idx}</M></dfn>:
+        </S>
+        <S><U sub="b">
+            <S>Grammar class name: {rec.name}</S>
+            <S>Restrict: {rec.restrict}</S>
+            <S>{rec.ruleForm}</S>
+        </U></S>
+    </U>
+  ));
+}
+
+export const ARTICLE = (
+<DocumentContext.Provider value={ctx}>
+
+
+<U h="Introduction" tag="h2">
+    <S><U h="Language formed from grammar" f="b">
+        <S><U>
+            <S><FormContent /> is a is a couple of <KarlMarx /> <MatDiaCat />:</S>
+            <S><U sub="b">
+                <S><dfn>Content</dfn> includes aspects, elements, the procedures
+                or processes to form matter.</S>
+                <S><dfn>Form</dfn> is the way of existence and evoluation.</S>
+            </U></S>
+            <S>According to previous bog entry <FormalLanguage />, we knew that:</S>
+            <S><U sub="b">
+                <S><FormalLanguage u /> could be defined by <FormalGrammar />.</S>
+                <S>A <dfn>formal language</dfn> <M>L</M> over an
+                alphabet <M>Σ</M> is a subset of <M>Σ</M><sup>*</sup>.</S>
+            </U></S>
+            <S>Given <M>L ⊂ Σ</M> <sup>*</sup> <M>∧ x ∈ L</M> defined by
+            a <FormalGrammar /> G (<CtxFreeGrammar />), let's view it from the point
+            of view <MatDiaCat l />:</S>
+            <S><U sub="b">
+                <S>Content of <M>x</M> is a string of symbols taken
+                from <M>Σ</M>.</S>
+                <S>Form of <M>x</M> is a string
+                of <NonTerm s /> or <Term s /> of <M>G</M>:</S>
+                <S><U sub="b">
+                    <S><Term u s /> are taken from <M>Σ</M>.</S>
+                    <S><NonTerm u s /> set is <M>N</M>, this set is disjoined
+                    with <M>Σ</M>.</S>
+                    <S><M>S</M> ∈ <M>N</M> is the first form or orginal form
+                    of <M>x</M>.</S>
+                    <S><M>A ⟶ α</M> is a rule of <M>G</M>, transform <M>x</M> to
+                    another form by replace all occurrence of <M>A</M> in
+                    string <M>x</M> by <M>α</M>:</S>
+                    <S><U sub="b">
+                        <S><M>A</M> is a <NonTerm />, that means, if <M>x</M> is in
+                        a form of a string of all <Term s/>, no more transformation
+                        could be conducted. Such final form of <M>x</M> is called
+                        as a sentence.</S>
+                        <S>If more transformation could be conducted on <M>x</M>, it
+                        is called as a sentential form.</S>
+                    </U></S>
+                </U></S>
+            </U></S>
+            <S>According to <FormalLanguage />, language is constructed from
+            alphabet whereas <FormalGrammar />, language is formed based
+            on <Term /> and <NonTerm />, this leads to a confusion about what is
+            alphabet of language by <FormalGrammar /> definition. <MatDiaCat /> view
+            point is taken into account for such inspecting. Sentence term in
+            the <FormalGrammar /> definition is the word
+            of <FormalLanguage /> definition.</S>
+        </U></S>
+    </U></S>
+    <S><U h="Chomsky hierarchy" f="b">
+            <S>
+                <ChomskyHierarchy /> will be inspected detailly in
+                section <Sect to="sec_2.2">2.2. Chomsky hierarchy</Sect>, in
+                this section we just have an overview about it for concept
+                grasping. There are four classes of grammar, they are
+                difference in the nature of production rule. They are classified
+                into a <ContainmentHierarchy />. The root of the hierarchy is
+                the <i>unrestricted grammar</i> and the hierarchy is terminated
+                by the most restricted one name <i>regular grammar</i>.
+                The production rules are designed to transform the string.
+            </S>
+            <S><U sub="b">
+                <S>
+                    <dfn>Regular grammar</dfn>: each production rule transforms
+                    a <NonTerm /> to an empty string or to a <Term /> so that:
+                </S>
+                <S><U sub="b">
+                    <S>
+                        After transformation, a new <Term /> is produced.
+                    </S>
+                    <S>
+                        And at most one <NonTerm /> could be produced which must
+                        be placed right after the <Term /> one.
+                    </S>
+                </U></S>
+                <S>
+                    By this way, the production rules will expands the string
+                    to the right and the group of <Term /> generated which
+                    is located at the left is fixed and is not transformed any
+                    more.
+                </S>
+            </U></S>
+            <S><U sub="b">
+                <S>
+                    <dfn>Context free grammar</dfn>: least restrict
+                    than <i>Regular grammar</i>, it allows:
+                </S>
+                <S><U sub="b">
+                    <S>
+                        More than one <NonTerm /> could be produced.
+                    </S>
+                    <S>
+                        And new <Term /> is produced is not required.
+                    </S>
+                    <S>
+                        And the order place <NonTerm /> right after <Term /> is
+                        not required.
+                    </S>
+                </U></S>
+                <S>
+                    By this way, the production rules will expands
+                    the <NonTerm /> to zero or some <NonTerm /> or <Term />.
+                    The rule is applied without care the occurence context of
+                    the <NonTerm />. The <Term /> generated is fixed and is not
+                    transformed any more.
+                </S>
+            </U></S>
+            <S><U sub="b">
+                <S>
+                    <dfn>Context sensitive grammar</dfn>: least restrict
+                    than <i>Context free grammar</i>, it allows rule required
+                    the occurence context of the <NonTerm />.
+                </S>
+            </U></S>
+            <S><U sub="t">
+                <S>
+                    By this way, it could generated language that need verb
+                    arggrement like: "I am student", "You are students". The
+                    verb is replaced by "am" if it followed by "I", and
+                    replaced by "are" if it followd by "You".
+                </S>
+            </U></S>
+            <S><U sub="b">
+                <S>
+                    <dfn>Unrestricted grammar</dfn>: most least restrict,
+                    whereas the other grammars replacements are conducted
+                    on <NonTerm />, unrestricted grammar also have a name of
+                    phrase structure grammars, which means replacements are
+                    conducted on pharase. That is, a string
+                    of <NonTerm /> sourrounded by a context could be replaced
+                    by an arbitrary string (sequence
+                    of <NonTerm /> or <Term />).
+                </S>
+                <S><U>
+                    <S>
+                        By this way, it allows restructure the string to create
+                        a sentence like: <i>"The man who lives in this house
+                        has not been seen for days"</i>.
+                    </S>
+                    <S><U sub="t">
+                        <S>
+                            1. A / man / has not been seen for days
+                            / lives in this house
+                        </S>
+                        <S>
+                            2. The / man / who / lives in this house
+                            / has not been seen for days
+                        </S>
+                    </U></S>
+                </U></S>
+            </U></S>
+    </U></S>
+</U>
+
+
+<U h="Formal Grammar" tag="h2">
+    <S><U h="Formal definition" f="b">
+        <S>
+            We investigated <CtxFreeGrammar /> in section <Sect to="sec_1" />,
+            let's examine a formal definition which is proposed by Noam Chomsky in
+            the 1950s. A grammar <M>G = (N, Σ, P, S)</M> consists
+            of the following components:
+        </S>
+        <S><U sub="b">
+            <S>
+                A finite set <M>N</M> of nonterminal symbols, that is disjoint
+                with the strings formed from G.
+            </S>
+            <S>
+                A finite set <M>Σ</M> of terminal symbols that is disjoint
+                from <M>N</M>.
+            </S>
+            <S>
+                A finite set <M>P</M> of production rules, each rule of the
+                form: <M>(Σ ⋃ N)*N(Σ ⋃ N)* ⟶ (Σ ⋃ N)*</M>
+            </S>
+            <S>A distinguished symbol <M>S ∈ N</M> that is the start symbol.</S>
+        </U></S>
+    </U></S>
+
+    <S><U h="Chomsky hierarchy" f="b">
+        <S>
+            <ChomskyHierarchy /> is a <ContainmentHierarchy /> of classes of
+            formal grammars. The root of the hierarchy is class Type-0
+            grammars, the hierarchy is terminated by class Type-3 grammars:
+        </S>
+        <S><div className="lindent00">
+            <M>Type-0 ⊋ Type-1 ⊋ Type-2 ⊋ Type-3</M>
+            <div className="para_sep2">
+                <Figure id="chomskyHierarchy" />
+            </div>
+        </div></S>
+        <S>
+            <b>Restrict levels:</b>
+        </S>
+        <S>
+            Given:
+        </S>
+        <S><U sub="b">
+            <S>
+                <M>a</M>: <Term />
+            </S>
+            <S>
+                <M>A, B</M>: <NonTerm />
+            </S>
+            <S>
+                <M>α, β, γ, δ</M>: string of <Term /> and/or <NonTerm />
+            </S>
+            <S><U sub="b">
+                <S>
+                    <M>β, γ, δ</M>: may be empty
+                </S>
+                <S>
+                    <M>γ</M>: never empty
+                </S>
+            </U></S>
+        </U></S>
+        <S>
+            Restrict level is as below:
+        </S>
+        <S>
+            <ChomskyHierarchyRestrictLevel />
+        </S>
+    </U></S>
+
+    <S><U h="Examples" f="b">
+        <S>
+            T.B.D.
+        </S>
+    </U></S>
+</U>
+
+</DocumentContext.Provider>
+);
+
+
+//https://github.com/phamsodiep/blogger/blob/master/huyj2ee/cs-formal-grammar.htm
+//0.0.1
+/*
+            T.B.D.
+            <br />
+            <b>Audience</b>: T.B.D.
+            – <b>Topic</b>: T.B.D.
+*/
