@@ -35,6 +35,12 @@ const FormContent = def(
   ""
 );
 
+const NecessityChance = def(
+  "necessity and chance",
+  "https://vi.wikipedia.org/wiki/Quan_h%E1%BB%87_gi%E1%BB%AFa_t%E1%BA%A5t_nhi%C3%AAn_v%C3%A0_ng%E1%BA%ABu_nhi%C3%AAn",
+  ""
+);
+
 const KarlMarx = def(
   "Karl Marx",
   "https://en.wikipedia.org/wiki/Karl_Marx",
@@ -369,15 +375,99 @@ export const ARTICLE = (
     </U></S>
 </U>
 
+
+<U h="Addendum" tag="h2">
+    <S><U h="Term transformation" f="b">
+        <S>
+            <FormalGrammar u /> transforms <NonTerm /> <M>S</M> to <Term s />
+            &nbsp;while its production rules are applied. In this addendum, we
+            use <dfn>term</dfn> to denoted both <NonTerm /> and <Term />.
+        </S>
+        <S>
+            In section <Sect to="sec_1.2"/>, we inspected the characteristics
+            differencing the transformation between classes of grammar. In this
+            section, we shall investigate the order (or the trend) of this
+            transformation.
+        </S>
+        <S>
+            <dfn>Order</dfn> and <dfn>entropy</dfn> are two concepts of
+            information theory, from the philosophy view, as <MatDiaCat l />,
+            the trend is denoted by two categories <NecessityChance />.
+        </S>
+        <S><U sub="b">
+            <S h>
+                The transformation is as below:
+            </S>
+            <S>
+                <dfn>Type-0</dfn>: the trend is not governed by the production
+                rules as its type name denoted <i>unrestricted grammar</i>.
+            </S>
+            <S>
+                <dfn>Type-1</dfn> and <dfn>Type-2</dfn>: during transformation,
+                the <i>term</i> is transformed from the most generic&nbsp;
+                <i>form</i> <M>S</M> to most specific <i>form</i> <NonTerm />:
+            </S>
+            <S><U sub="b">
+                <S>
+                    Necessity: no <NonTerm /> is consumed (vanished).
+                </S>
+                <S>
+                    Chance: branch to another <NonTerm /> that is more specific.
+                </S>
+            </U></S>
+            <S rb>
+                The difference between <i>Type-1</i> and <i>Type-2</i> is about
+                the <i>term</i> matching. <i>Type-2</i> does not require context
+                for matching, matching is conducted barely
+                on <NonTerm /> whereas <i>Type-1</i> requires context,
+                a <i>term</i> needs a prefix <i>term</i>, a
+                subfix <i>term</i> for matching. So rules applying are:
+            </S>
+            <S><U sub="b">
+                <S>
+                    Necessity: for <i>Type-2</i> (context free grammar)
+                </S>
+                <S>
+                    Chance: for <i>Type-1</i> (context sensitive grammar)
+                    because context also governs the transformation.
+                </S>
+            </U></S>
+            <S>
+                <dfn>Type-3</dfn>: during transformation, the <i>term</i> is
+                transformed from <NonTerm /> to:
+            </S>
+            <S><U sub="b">
+                <S>
+                    <Term u />: placed at the left.
+                </S>
+                <S>
+                    Another <NonTerm /> (optional): placed at the right.
+                </S>
+                <S h>
+                    So:
+                </S>
+                <S>
+                    Necessity: new <Term /> is producted, no <NonTerm /> is
+                    consumed (vanished).
+                </S>
+                <S>
+                    Chance: branch to another <NonTerm /> that is more specific.
+                </S>
+            </U></S>
+        </U></S>
+    </U></S>
+</U>
+
+
 </DocumentContext.Provider>
 );
 
 
 //https://github.com/phamsodiep/blogger/blob/master/huyj2ee/cs-formal-grammar.htm
-//0.0.1
+//0.0.2
 /*
             T.B.D.
             <br />
             <b>Audience</b>: T.B.D.
-            – <b>Topic</b>: T.B.D.
+            - <b>Topic</b>: T.B.D.
 */
