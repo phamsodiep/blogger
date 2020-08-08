@@ -1,0 +1,615 @@
+﻿import React from 'react';
+import { DocumentContext, def, Sect, U, S, D } from './typo.js';
+import { M } from './math.js';
+
+
+const figureList = {};
+
+export const ctx = {
+  indexes: [],
+  level: 0,
+  figure : {
+    list: figureList,
+    indexes: {}
+  }
+};
+
+
+const SyntaxDiagram = def(
+  "Syntax diagram",
+  "https://en.wikipedia.org/wiki/Syntax_diagram",
+  ""
+);
+
+const FormalLanguage = def(
+  "term transformation section of formal grammar",
+  "https://huyj2ee.blogspot.com/2020/06/cs-formal-grammar.html#sec_3.1",
+  ""
+);
+
+function ProductionRule(props) {
+  let rule = props.r;
+  let wheres = props.children;
+  if (typeof wheres === "string") {
+    wheres = wheres.trim();
+    wheres = wheres.split("\n");
+    wheres = wheres.length > 0 ? wheres.map(where =>
+      <S math>
+          {where}
+      </S>
+    ) : null;
+    if (wheres !== null) {
+      wheres.splice(0, 0, <S h>Where:</S>);
+      wheres.splice(wheres.length, 0, <S h>&nbsp;</S>);
+    }
+    wheres = wheres === null ? "" :
+      <S><U sub="b">
+          {wheres}
+      </U></S>
+    ;
+  }
+  else {
+    wheres = "";
+  }
+  return (
+    <U>
+        <S math>
+            {rule}
+        </S>
+        {wheres}
+    </U>
+  );
+}
+
+export const ARTICLE = (
+<DocumentContext.Provider value={ctx}>
+
+
+<U h="Introduction" tag="h2">
+    <S><U h="Production rules group" f="b">
+        <S>
+            According to <FormalLanguage /> blog entry, context free grammar
+            rule transforms a nonterminal symbol to terms. From a nonterminal
+            symbol, there are many branchs to transform to, each branch
+            corresponds to a production rule, so we could group the production
+            rules into a group of rule that all branchs share a same left hand
+            side of nonterminal symbol. Such group could be described by an
+            EBNF non-terminal production rule description.
+        </S>
+    </U></S>
+    <S><U h="EBNF code and its problems" f="b">
+        <S>
+            EBNF code is proposed to solve above production rules group problem,
+            an example for it is as below:.
+        </S>
+        <S><U sub="t">
+            <S><U sub="t">
+                <S h>EBNF description:</S>
+                <S math>
+                    digit excluding zero = "1" | "2" | "3" | "4" | "5"
+                    | "6" | "7" | "8" | "9" ;
+                </S>
+            </U></S>
+            <S><U sub="b">
+                <S h>
+                    Describled production rules:
+                </S>
+                <S math>
+                    digit_excluding_zero ⟶ "1"
+                </S>
+                <S rb>
+                    <div class="lindent00">...</div>
+                </S>
+                <S math>
+                    digit_excluding_zero ⟶ "9"
+                </S>
+            </U></S>
+        </U></S>
+        <S>
+            EBNF code uses alphanumeric characters to describle
+            both <i>terminal</i> and <i>non-terminal</i> symbol. For
+            differencing, the quotation marks are employed to
+            describle <i>non-terminal</i>. For example:
+        </S>
+        <S><U sub="b">
+            <S>
+                <dfn>Terminal</dfn>: <M>"1"</M>
+            </S>
+            <S>
+                <dfn>None-terminal</dfn>: <M>digit excluding zero</M>
+            </S>
+        </U></S>
+    </U></S>
+</U>
+
+
+<U h="EBNF code" tag="h2">
+    <S><U h="Syntax chart" f="b">
+        <D>
+            <S>Def: la dang bieu dien do thi cho context free grammar</S>
+            <S>
+                Cac production group duoc bieu dien boi 1 diagram
+                (=> Toan bo van pham la 1 set cac diagram)
+            </S>
+            Tinh da dang cua 1 group:
+            <br />
+            1 production rules la 1 path (duong di) tren graph
+            <br />
+            Da dang cua group la da dang cua duong di. No nho vao:
+            <br />
+            Alterantive path
+            <br />
+            Repeat sub-path (graph cycle)
+            <br />
+            
+        </D>
+
+        <S><U sub="b">
+            <S h>
+                As stated in section <Sect to="sec_1.1" />, a production rules
+                group represents a list of branches from a <i>non-terminal</i>,
+                to many destination that each branch corresponds to a
+                production rule. Because of this nature, a graph could also
+                represent a production rules group. <SyntaxDiagram /> is a
+                kind of such graph proposed for this problem:
+            </S>
+            <S>
+                <i>Non-terminal</i> and <i>terminal</i> are presented by graph
+                vertex:
+            </S>
+            <S><U sub="b">
+                <S>
+                    <dfn>Non-terminal</dfn>: is presented by a rectangular
+                    box vertex.
+                </S>
+                <S>
+                    <dfn>Terminal</dfn>: is presented by a round box vertex.
+                </S>
+            </U></S>
+            <D>
+                A path from entry point which is presented left hand side of
+                production rule to end point represents a production rule that
+                its right hand side is vertex sequence of the path. The
+                diversity of production rules group is formed by diversity
+                nature of graph path:
+            </D>
+            <S>
+                A path from entry point to end point represented by vertexes
+                sequence of the path corresponds to a production rule that its
+                right side is the vertexes sequence and the left hand side is
+                the shared non-terminal symbol of the group that the diagram
+                represent. The diversity of production rules group is formed by
+                diversity nature of graph path:
+            </S>
+            <S><U sub="b">
+                <S>
+                    Difference alternative path
+                </S>
+                <S>
+                    Graph cycle
+                </S>
+            </U></S>
+        </U></S>
+        <D>
+            As stated in section, a production rules group present a list of branch from
+            one nonterm to many destination that each barnch corespo to, so a graph also
+            represent this very well:
+              term/nonerm presented by graph vertex
+              a path from start point (present the left hand side) of production rules //  entry point and an end point.
+                to end point represent a production rule that the right hand side is
+                  a path is the right hand side of a production rule.
+              Vi vay su da dang cua cach branch co duoc tu su:
+                cac duong di re nhanh khac nhau tu 1 nut cua graph
+                cac chu trinh tren graph
+              Toan bo van pham se la...
+        </D>
+
+    </U></S>
+    <S><U h="EBNF code" f="b">
+        <S><U sub="b">
+            <S h>
+                As stated in section <Sect to="sec_2.1" />, diversity of
+                production rules is formed by:
+            </S>
+            <S>Difference alternative path</S>
+            <S>Graph cycle</S>
+        </U></S>
+        <S><U sub="b">
+            <S h>
+                EBNF code is a equivalent to <SyntaxDiagram l /> text form that
+                its diversity nature is implemented by operations:
+            </S>
+
+            <S>Difference alternative path opertation:</S>
+            <S><U sub="b">
+                <S>
+                    Multiple choices operation: <M>|</M>
+                </S>
+                <S>
+                    Select or reject operation: <M>[]</M>
+                </S>
+            </U></S>
+
+            <S>Graph cycle:</S>
+            <S><U sub="b">
+                <S >
+                    Repetition operation: <M>{"{}"}</M>
+                </S>
+            </U></S>
+
+            <S>Operation order (priority):</S>
+            <S><U sub="b">
+                <S >
+                    Group operation: <M>()</M>
+                </S>
+            </U></S>
+        </U></S>
+
+        <S><U h="Syntax" f="b">
+            <S>
+                <i>Terminal, non-terminal denotation</i>:
+            </S>
+            <S><U sub="t">
+                <S h>
+                    <dfn>Non-terminal</dfn>: alphanumeric characters in lower
+                    case.
+                </S>
+                <S>
+                    Example: <M>digits</M>
+                </S>
+            </U></S>
+            <S><U sub="t">
+                <S h>
+                    <dfn>Terminal</dfn>:
+                    symbols written between quotation marks "".
+                </S>
+                <S>
+                    Example:&nbsp;
+                    <M>
+                        "1" | "2" | "3" | "4" | "5" |
+                        "6" | "7" | "8" | "9" | "0"
+                    </M>
+                </S>
+            </U></S>
+            
+            <S><div class="para_sep1">
+                <i>Production rules group description syntax</i>:
+            </div></S>
+            <S><U sub="b">
+                <S h>
+                    <M>
+                        non-terminal = list of operations on
+                        terminal/non-terminal;
+                    </M>
+                </S>
+                <S h>
+                    Where:
+                </S>
+                <S>
+                    Left hand side <M>non-terminal</M>:  non-terminal symbol of
+                    production rules group needs to be defined.
+                </S>
+                <S>
+                    Right hand side <M>list of operations on
+                    terminal/non-terminal</M>: production rules group
+                    definition describled by <i>operations</i> applying
+                    on terminal/non-terminal symbols.
+                </S>
+                <S>
+                    The token <M>=</M> is used to seperate left hand side with
+                    right hand side. The token <M>;</M> is used to denote the
+                    end of an EBNF description.
+                </S>
+            </U></S>
+
+            <S><div class="para_sep1">
+                <i>Operator on terminal/non-terminal symbols</i>:
+            </div></S>
+            <S><U sub="b">
+                <S>Sequence (concatenation operator):</S>
+                <S><U sub="b">
+                    <S>Operator: <M>,</M></S>
+                    <S>Example:</S>
+                    <S><U sub="t">
+                        <S math>twelve = "1", "2";</S>
+                        <S math>three hundred twelve = "3", twelve;</S>
+                    </U></S>
+                    <S>Context free grammar converted form:</S>
+                    <S><U sub="t">
+                        <S math>A ⟶ ab</S>
+                        <S math>B ⟶ cA</S>
+                    </U></S>
+                    <S><U sub="t">
+                        <S h>Where:</S>
+                        <S><M>A</M>: <M>twelve</M></S>
+                        <S><M>B</M>: <M>three hundred twelve</M></S>
+                        <S><M>a</M>: 1</S>
+                        <S><M>b</M>: 2</S>
+                        <S><M>c</M>: 3</S>
+                    </U></S>
+                </U></S>
+
+                <S>Multiple choices (selection operator)</S>
+                <S><U sub="b">
+                    <S>Operator: <M>|</M></S>
+
+                    <S>Example:</S>
+                    <S><U sub="t">
+                        <S math>
+                            digits = "1" | "2" | "3" | "4" | "5" |
+                            "6" | "7" | "8" | "9" | "0"
+                        </S>
+                    </U></S>
+
+                    <S>Context free grammar converted form:</S>
+                    <S><U sub="t">
+                        <S><U sub="t">
+                            <S math>A ⟶ a</S>
+                            <S><div class="lindent00">...</div></S>
+                            <S math>A ⟶ j</S>
+                        </U></S>
+                    </U></S>
+
+                    <S><U sub="t">
+                        <S h>Where:</S>
+                        <S><M>A</M>: digits</S>
+                        <S><M>a</M>: 1</S>
+                        <S rb><div class="lindent00">...</div></S>
+                        <S><M>j</M>: 0</S>
+                    </U></S>
+                </U></S>
+
+                <S>Select or reject (option operator)</S>
+                <S><U sub="b">
+                    <S>Operator: <M>[</M> and <M>]</M></S>
+
+                    <S>Example:</S>
+                    <S><U sub="t">
+                        <S math>non-zero integer = ["-"], natural number ;</S>
+                    </U></S>
+
+                    <S>Context free grammar converted form:</S>
+                    <S><U sub="t">
+                        <S math>A ⟶ aB</S>
+                        <S math>A ⟶ B</S>
+                    </U></S>
+
+                    <S><U sub="t">
+                        <S h>Where:</S>
+                        <S><M>A</M>: <M>non-zero integer</M></S>
+                        <S><M>B</M>: <M>natural number</M></S>
+                        <S><M>a</M>: <M>-</M></S>
+                    </U></S>
+                </U></S>
+
+                <S>Repetition (repetition operator)</S>
+                <S><U sub="b">
+                    <S>Operator: <M>{"{"}</M> and <M>{"}"}</M></S>
+                    <S>Example:</S>
+                    <S><U sub="t">
+                        <S math>alphabet = a | b | ... | z ;</S>
+                        <S math>identifier = {"{"}alphabet{"}"} ;</S>
+                    </U></S>
+                    <S>Context free grammar converted form:</S>
+                    <S><U sub="t">
+                        <S math>A ⟶ a</S>
+                        <S math>A ⟶ b</S>
+                        <S><div class="lindent00">...</div></S>
+                        <S math>A ⟶ z</S>
+                        <S math>B ⟶ AB</S>
+                        <S math>B ⟶ A</S>
+                        <S math>B ⟶ ε</S>
+                        
+                    </U></S>
+                    <S><U sub="t">
+                        <S h>Where:</S>
+                        <S><M>A</M>: <M>alphabet</M></S>
+                        <S><M>a</M>: a</S>
+                        <S><M>b</M>: b</S>
+                        <S><div class="lindent00">...</div></S>
+                        <S><M>z</M>: z</S>
+                        <S><M>B</M>: <M>identifier</M></S>
+                        <S><M>ε</M>: <i>empty string</i></S>
+                    </U></S>
+                </U></S>
+
+                <S>Operation order or priority (group operator)</S>
+                <S><U sub="b">
+                    <S>Operator: <M>(</M> and <M>)</M></S>
+                    <S>Example:</S>
+                    <S><U sub="t">
+                        <S math>name = ("Mr." | "Ms."), "Tú";</S>
+                    </U></S>
+                    <S>Context free grammar converted form:</S>
+                    <S><U sub="t">
+                        <S math>A ⟶ ac</S>
+                        <S math>A ⟶ bc</S>
+                    </U></S>
+                    <S><U sub="t">
+                        <S h>Where:</S>
+                        <S><M>A</M>: <M>name</M></S>
+                        <S><M>a</M>: Mr.</S>
+                        <S><M>b</M>: Ms.</S>
+                        <S><M>c</M>: Tú</S>
+                    </U></S>
+                    <S><U sub="t">
+                        <S h>
+                            Explanation: without group operator, EBNF
+                            description <M>name = ("Mr." | "Ms."), "Tú";</M> is
+                            converted to:
+                        </S>
+                        <S math>A ⟶ a</S>
+                        <S math>A ⟶ bc</S>
+
+                        <S h>
+                            because the operator <M>,</M> is applied before
+                            operator <M>|</M> is applied as following section
+                            &nbsp;
+                            <Sect to="sec_2.2.2">2.2.2. conventions</Sect>.
+                        </S>
+                    </U></S>
+                </U></S>
+            </U></S>
+        </U></S>
+
+        <S><U h="Conventions" f="b">
+            <S><U h="Generic Conventions" f="b">
+                <S>
+                    Default operator applied order: repetition, concatenation,
+                    selection.
+                </S>
+                <S>
+                    Operator applied order could be overriden by operators:
+                    <M>()</M>, <M>[]</M>, <M>{"{}"}</M>.
+                </S>
+            </U></S>
+            <S><U h="ANTLR Conventions" f="b">
+                <S>
+                    https://github.com/antlr/antlr4/blob/master/doc/grammars.md
+                </S>
+            </U></S>
+        </U></S>
+    </U></S>
+    <S><U h="Example" f="b">
+        <S>T.B.D.</S>
+    </U></S>
+</U>
+
+
+<U h="EBNF description conversation" tag="h2">
+    <S><U h="Grammar generating EBNF description" f="b">
+        <S math>
+            G0 = (N0, Σ0, P0, S0)
+        </S>
+        <S>
+            Where:
+        </S>
+        <S><U sub="b">
+            <S>
+                <M>N</M>: T.B.D.
+            </S>
+            <S>
+                <M>Σ</M>: T.B.D.
+            </S>
+            <S>
+                <M>P</M>: T.B.D.
+            </S>
+            <S>
+                <M>S</M>: T.B.D.
+            </S>
+        </U></S>
+    </U></S>
+    <S><U h="Grammar converting EBNF description to production rules" f="b">
+
+        <S><U>
+            <S>
+                Given <M>G0 = (N0, Σ0, P0, S0)</M> is grammar of object
+                language generated by EBNF descriptions.
+                Where: <M>N0</M> and <M>P0</M> is unknown and needed to be
+                generated by another language (grammar G).
+            </S>
+            <S>
+                Given <M>G1 = (N1, Σ1, P1, S1)</M> is grammar of language
+                generating EBNF descriptions.
+            </S>
+        </U></S>
+        <S>
+            <M>G = (N, Σ, P, S)</M> is EBNF description to
+            production rules conversation grammar which is defined
+            as below:
+        </S>
+        <S><U sub="t">
+            <S h>
+                <b>Nonterminal set:</b>
+            </S>
+            <S math>
+                {`N = {'(', ')', '∣', ',', '[', ']', '{', '}', '='}`}
+            </S>
+        </U></S>
+        <S><U sub="t">
+            <S h>
+                <b>Terminal set:</b>
+            </S>
+            <S math>
+                {`Σ = N0 ⋃ Σ0 ⋃ {'→', '/'}`}
+            </S>
+        </U></S>
+        <S><U>
+            <S>
+                <b>Production rules:</b>
+            </S>
+            <S><U sub="t">
+                <S><ProductionRule r="S ⟶ a">
+                  {`
+                    Where a ∈ Σ1
+                  `}
+                </ProductionRule></S>
+                <S><ProductionRule r="A = α, (γ), β;  ⟶  A = α, YA, β; YA = γ;">
+                  {`
+                    A, YA ∈ N0
+                    α ∈ N1 ⋃ Σ1 ∖ {'('}
+                    β ∈ N1 ⋃ Σ1 ∖ {')'}
+                    γ ∈ N1 ⋃ Σ1 ∖ {'ε'}
+                  `}
+                </ProductionRule></S>
+                <S><ProductionRule r="A = α ∣ β; ⟶ A = α; A = β;">
+                  {`
+                    A ∈ N0
+                    α ∈ N1 ⋃ Σ1 ∖ {'(', ')', '[', ']', '{', '}'}
+                    β ∈ N1 ⋃ Σ1 ∖ {'(', ')', '[', ']', '{', '}'}
+                  `}
+                </ProductionRule></S>
+                <S><ProductionRule r="A = α[γ]β; ⟶ A = α, (γ), β; A = α, β;">
+                  {`
+                    A ∈ N0
+                    α ∈ N1 ⋃ Σ1 ∖ {'['}
+                    β ∈ N1 ⋃ Σ1 ∖ {']'}
+                    γ ∈ N1 ⋃ Σ1 ∖ {'ε'}
+                  `}
+                </ProductionRule></S>
+                <S><ProductionRule r="A = α{γ}β; ⟶ A = α , YA, β; YA = γYA; YA = ε;">
+                  {`
+                    A, YA ∈ N0
+                    α ∈ N1 ⋃ Σ1 ∖ {'{'}
+                    β ∈ N1 ⋃ Σ1 ∖ {'}'}
+                    γ ∈ N1 ⋃ Σ1 ∖ {'ε'}
+                  `}
+                </ProductionRule></S>
+                <S><ProductionRule r="A = B,C; ⟶ A = BC;">
+                  <D>{`
+                    @TODO: review-me, can B, C is terminal?
+                    A, B, C ∈ N0
+                  `}</D>
+                </ProductionRule></S>
+                <S><ProductionRule r="A = B; ⟶ A → B /">
+                  <D>{`
+                    @TODO: review-me, can B is terminal?
+                    A, B ∈ N0
+                  `}</D>
+                </ProductionRule></S>
+                <S h>
+                    Such grammar will re-write EBNF description to a terminal
+                    string like: <M>{"A → B / B → C / B → D / "}</M> which
+                    means that the generated production rules are the
+                    set <M>{"{A → B, B → C, B → D}"}</M>.
+                    The token <M>'/'</M> is list seperator.
+                </S>
+            </U></S>
+        </U></S>
+    </U></S>
+</U>
+
+
+</DocumentContext.Provider>
+);
+
+
+//https://github.com/phamsodiep/blogger/blob/master/huyj2ee/cs-formal-grammar-ebnf-code.htm
+//0.0.1
+/*
+            T.B.D.
+            <br />
+            <b>Audience</b>: T.B.D.
+            - <b>Topic</b>: T.B.D.
+*/
+
