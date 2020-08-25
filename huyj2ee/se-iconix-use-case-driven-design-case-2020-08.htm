@@ -1,0 +1,405 @@
+﻿import React from 'react';
+import { def, Sect, U, S, D } from './typo.js';
+import { M } from './math.js';
+
+
+export const FigureList = {};
+/*export const FigureList = {
+  chomskyHierarchy : [
+    "Chomsky hierarchy Venn diagram",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Chomsky-hierarchy.svg/200px-Chomsky-hierarchy.svg.png",
+    [
+      [200, 144, 180, 400, null]
+    ]
+  ],
+};*/
+
+export const ARTICLE = (
+<React.Fragment>
+
+
+<U h="Introduction" tag="h2">
+    <S>
+        Iconix Use-case Driven Design has been demonstrated for both cases:
+        software design and hardware design in former blog entries. This blog
+        entry proposes a new demonstration case for library design. The former
+        blog entries deal with an existed yet not analyzed requirement. This
+        blog entry deals with a new type of customer, ourself. For such case,
+        the library usage does not exist and need to be defined, hence the
+        problem scope is not fixed and could be aligned with the solution
+        proposal. So, the approach for this case is difference.
+    </S>
+
+    <S><U sub="b">
+        <S h>
+            There are some challenges:
+        </S>
+        <S><U sub="b">
+            <S hb>
+                How to design usage in the problem domain?
+            </S>
+            <S>
+                How to identify actors, use cases?
+            </S>
+            <S>
+                How to analyze interactions?
+            </S>
+        </U></S>
+        <S>
+            Since both problem domain and solution domain are not completely
+            defined yet, how to optimally define them?
+        </S>
+    </U></S>
+    <S>
+        We shall find an approach for this case in the following sections by
+        an example of React Typography library.
+    </S>
+</U>
+
+<U h="React Typography library example" tag="h2">
+    <S><U h="Introduction" tag="h2">
+        <S>
+            HTML5 is not only flexible for documentation representation, it 
+            also supports semantic. However, there is no such library
+            available implemented in React. This project is conducted to
+            implement that library.
+        </S>
+
+        <S><U h="Purpose" tag="h3">
+            <S>
+                The library contains markup tags that supports user to edit
+                their document. The tags could be used to portray document
+                structure (the section, sub-section hierarchy).
+            </S>
+        </U></S>
+
+        <S><U h="Document Convention" tag="h3">
+            <S>
+                T.B.D.
+            </S>
+        </U></S>
+
+        <S><U h="Intended Audience and Reading Suggestions" tag="h3">
+            <S>
+                <i>Intended Audience</i>: software product teams
+            </S>
+            <S>
+                <i>Reading Suggestions</i>: T.B.D.
+            </S>
+        </U></S>
+
+        <S><U h="Product Scope" tag="h3">
+            <S><U sub="b">
+                <S h>
+                    Markup tags implementation to support:
+                </S>
+                <S>
+                    Section number: document is organized into sections and
+                    sub-sections (nested sections) to form a section hierarchy.
+                    Sections are numerated by section numbers automatically to
+                    support user re-arrange sections into a new order without
+                    caring their number order update (the libary should do this
+                    for the user).
+                </S>
+                <S>
+                    Markup tags support to automatically numerate figure
+                    numbers derived from section numbers.
+                </S>
+                <S>
+                    Markup tags support user to arrange their sections into a
+                    hierarchy structure.
+                </S>
+            </U></S>
+        </U></S>
+
+        <S><U h="References" tag="h3">
+            <S>
+                T.B.D.
+            </S>
+        </U></S>
+    </U></S>
+
+
+    <S><U h="Overall Description" tag="h2">
+        <D><S>
+            T.B.D
+        </S></D>
+
+        <S><U h="Product Perspective" tag="h3">
+            <S>
+                This library is invoked by a host React application to fulfill
+                a document content rendering. The document is encoded in JSX
+                with library's markup tags and other React tags. It exports
+                the content as a javascript variable or constant named
+                as <i>ARTICLE</i>, host React application renders document
+                content by referencing this variable or constant.
+            </S>
+            <S>
+                <i>@TODO: give instances</i>
+            </S>
+        </U></S>
+
+        <S><U h="Product Functions" tag="h3">
+            <S>
+                Use case diagram
+            </S>
+
+            <S><U h="First Actor" tag="h4">
+                <S>
+                    Operations that are supported by system for first actor
+                </S>
+            </U></S>
+
+            <S><U h="Second Actor" tag="h4">
+                <S>
+                    ...
+                </S>
+            </U></S>
+        </U></S>
+
+        <S><U h="User Classes and Characteristics" tag="h3">
+            <S><U sub="b">
+                <S>
+                    <dfn>Class of user 1:</dfn> Who are they? How are about
+                    their skills? Could they administrate PC? How about
+                    experience level using PC software of them?...
+                </S>
+
+                <S>
+                    <dfn>Class of user 2:</dfn> ...
+                </S>
+            </U></S>
+        </U></S>
+
+        <S><U h="Operating Environment" tag="h3">
+            <S>
+                T.B.D.
+            </S>
+        </U></S>
+
+        <S><U h="Design and Implementation Constraints" tag="h3">
+            <S>
+                T.B.D.
+            </S>
+        </U></S>
+
+        <S><U h="User Documentation" tag="h3">
+            <S>
+                T.B.D.
+            </S>
+        </U></S>
+
+        <S><U h="Assumptions and Dependencies" tag="h3">
+            <S>
+                T.B.D.
+            </S>
+        </U></S>
+    </U></S>
+
+
+    <S><U h="External Interface Requirements" tag="h2">
+        <S>
+            T.B.D
+        </S>
+
+        <S><U h="User Interfaces" tag="h3">
+            <S>
+                T.B.D
+            </S>
+        </U></S>
+
+        <S><U h="Hardware Interfaces" tag="h3">
+            <S>
+                T.B.D
+            </S>
+        </U></S>
+
+        <S><U h="Software Interfaces" tag="h3">
+            <S>
+                T.B.D
+            </S>
+        </U></S>
+
+        <S><U h="Communications Interfaces" tag="h3">
+            <S>
+                T.B.D
+            </S>
+        </U></S>
+    </U></S>
+
+
+    <S><U h="System Features" tag="h2">
+        <S><U h="First actor" tag="h3">
+            <S>All use cases descriptions of first actor</S>
+        </U></S>
+
+        <S><U h="Second actor" tag="h3">
+            <S>...</S>
+        </U></S>
+    </U></S>
+
+
+    <S><U h="Other Nonfunctional Requirements" tag="h2">
+        <S>
+            T.B.D
+        </S>
+
+        <S><U h="Performance Requirements" tag="h3">
+            <S>
+                T.B.D
+            </S>
+        </U></S>
+
+        <S><U h="Safety Requirements" tag="h3">
+            <S>
+                T.B.D
+            </S>
+        </U></S>
+
+        <S><U h="Security Requirements" tag="h3">
+            <S>
+                T.B.D
+            </S>
+        </U></S>
+
+        <S><U h="Software Quality Attributes" tag="h3">
+            <S>
+                T.B.D
+            </S>
+        </U></S>
+
+        <S><U h="Business Rules" tag="h3">
+            <S>
+                T.B.D
+            </S>
+        </U></S>
+
+        <S><U h="User documentation" tag="h3">
+            <S>
+                T.B.D
+            </S>
+        </U></S>
+    </U></S>
+</U>
+
+<U h="Approach" tag="h2">
+    <S>
+        There are two candidate approaches to answer the questions mentioned in
+        section <Sect to="sec_1" />. The first one is about developping the
+        requirement into a family of requirements (furry problem scope). Base
+        on this scope, we derive a class of requirement. Base on some merics,
+        we conduct decision to select the best or optimal requirement. The
+        second one is about analyzing the existing systems (the host or whole
+        system) to develop the requirement.
+    </S>
+
+    <S><U sub="b">
+        <S h>
+            So the optimal requirement is conducted by:
+        </S>
+        <S>
+            <dfn>Requirement base</dfn> (the first one): decision metrics
+        </S>
+        <S>
+            <dfn>Existing systems base</dfn> (the second one): the developing
+            process
+        </S>
+    </U></S>
+
+    <S>
+        Both approaches have the same tactic, they analyze the fixed constraints
+        first. The second one is preferred because it deals with a large fixed
+        constraints, it takes the host or existing system into account whereas
+        the former can lead to a large set of candidate requirement for
+        selecting.
+    </S>
+
+    <S>
+        So this section just investigages the second one:&nbsp;
+        <i>existing systems base approach</i>.
+    </S>
+
+    <S><U h="Proposal steps" tag="h3">
+        <S>
+            1. Conduct initial constraints base on the fixed requirements and
+            the existing system.
+        </S>
+
+        <S>
+            2. Define the system boundary base on the initial constraints. If
+            this can not be done, add some assumptions for analyzing and take
+            note for decision selection making.
+        </S>
+
+        <S>
+            3. Base on the system boundary, identify the actors.
+        </S>
+
+        <S>
+            4. Base on the host system, analyze actors behaviors.
+        </S>
+
+        <S>
+            5. Base on the host system, analyze for design preferred metrics,
+            this will guide or drive the next step #6.
+        </S>
+
+        <S>
+            6. Design the target design system (the library) usage base on
+            actors behaviors and host system behaviors.
+        </S>
+
+        <S>
+            7. The usage is defined, now that requirement is fixed, we could
+            apply Iconix Use-case Driven Design process as usual.
+        </S>
+    </U></S>
+
+    <S><U h="Guideline" tag="h3">
+        <S>T.B.D.</S>
+        <D>Lấy nhân hòa làm trung tâm?</D>
+        <D>
+            Use case diagram don gian, nhung actor co the se phuc tap hoac
+            use case phuc tap
+        </D>
+        <D>
+            Cach align giua problem space va solution space: negotiation?
+            De "nhân hòa" toi uu
+              Bai toan doi ngau // 對偶
+              Cach danh gia solution cost va customer benefits values de align?
+        </D>
+    </U></S>
+</U>
+
+<D><U h="Conclusion" tag="h2">
+    <S>
+        Approach 1 (work outside in) [usage driven] <br />
+        1. Analyze fixed requirement for a furry problem scope. <br />
+        2. The fixed requirements conduct furry problem scope via a class
+        of decisions. If alternative decisions count is small, analyst them
+        for the optimal one searching (DAR. process could be applied). <br />
+    </S>
+    <S>
+        Approach 2 (work in the middle in & out) [decisions driven / disipline base],
+        you do not go so far. <br />
+        WHY?: The framework // partial solution.
+
+        1. Analyze fixed requirement for design constrains. <br />
+        2. Analyze the interraction (perspective) form the framework. <br />
+    </S>
+</U></D>
+
+
+</React.Fragment>
+);
+
+
+//https://github.com/phamsodiep/blogger/blob/master/huyj2ee/se-iconix-use-case-driven-design-case-2020-08.htm
+//0.0.2
+/*
+            T.B.D.
+            <br />
+            <b>Audience</b>: T.B.D.
+            - <b>Topic</b>: T.B.D.
+*/
+
