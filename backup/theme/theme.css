@@ -64,10 +64,18 @@ div.para_sep1 {
     padding-top: 12px;
 }
 
+div.para_sep2 {
+    padding-top: 24px;
+}
+
 div.para_box0 {
     padding: 10px;
     border-style: solid;
     border-width: 1px;
+}
+
+div.lindenthb {
+    margin: 0 0 0 0px;
 }
 
 div.lindent00 {
