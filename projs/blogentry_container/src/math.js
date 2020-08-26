@@ -13,14 +13,19 @@ export function set(name, list) {
   );
 }
 
-export function num(txt) {
+// https://en.wikipedia.org/wiki/Mathematical_operators_and_symbols_in_Unicode
+// x is odd ⟶ x mod 2 != 0
+// U & interset ⋃ & ⋂         ∖ reject
+// belong | not belong  ->    ∈	/ ∉
+// epsilon: ε
+export function M(props) {
   const style = {
     fontFamily: "'Courier New', 'Courier', 'monospace'",
     fontSize: 14
   }
   return (
     <span style={style}>
-      {txt}
+      {props.children}
     </span>
   );
 }

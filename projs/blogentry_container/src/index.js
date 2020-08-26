@@ -1,12 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { ARTICLE } from './article.js';
+import { DocumentContextProvider } from './context.js';
+import { ARTICLE, FigureList } from './article.js';
 
 
 render(
-  <React.Fragment>
+  <DocumentContextProvider figureList={FigureList}>
     {ARTICLE}
-  </React.Fragment>,
+  </DocumentContextProvider>,
   document.getElementById('react_entry_article')
 );
 // Version 0.0.2
