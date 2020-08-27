@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="React Example App" version="4">
+  <OBJECT>
+    <ID name="React Example App" mc="Standard.Package" uid="12638cdc-0f44-4120-8d51-61b282093b9b"/>
+    <PID name="js-jsx-react-redux" mc="Standard.Package" uid="cb7bfcc5-a786-4dbe-a7b9-026468b55a05"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[React Example App]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="App" mc="Standard.Class" uid="03b1b5b6-fe35-451d-960e-304cf8e6ee5b"/>
+        <COMPID name="Image" mc="Standard.Class" uid="c2c03650-e076-464b-b2da-a891ad8c8a2f"/>
+        <COMPID name="Switch" mc="Standard.Class" uid="f14797bb-cec4-4f9e-a9cb-da058ce417ec"/>
+        <COMPID name="Lamp" mc="Standard.Class" uid="9b06e89b-bbab-480f-92b8-f95477df402b"/>
+        <COMPID name="Lamp Property" mc="Standard.Interface" uid="83cfb579-bd54-4991-a46c-95df3320c968"/>
+        <COMPID name="Switch Property" mc="Standard.Interface" uid="8912539b-ed01-4e6b-adcf-d41256ca15fa"/>
+        <COMPID name="SwitchContainer" mc="Standard.Class" uid="c5aff235-747a-4e42-a56e-7cd7cb6ec7dd"/>
+        <COMPID name="LampContainer" mc="Standard.Class" uid="e95e2589-bca7-4149-81c2-8fad9191d31d"/>
+        <COMPID name="DispatchToPropsMap" mc="Standard.Interface" uid="1451018f-d7a7-4cf7-bb30-0df15b92479e"/>
+        <COMPID name="StateToPropsMap" mc="Standard.Interface" uid="43dcf8dd-3380-46d9-913c-0b095fb9116c"/>
+        <COMPID name="StateToPropsLampMap" mc="Standard.Class" uid="40e0fc8c-b3b0-4994-ba13-73df4b107067"/>
+        <COMPID name="DispatchToPropsSwitchMap" mc="Standard.Class" uid="90a77e06-1f14-4996-947d-778d692a370f"/>
+        <COMPID name="Container Component" mc="Standard.Interface" uid="399438be-c3c1-47db-8c15-433d942b5ad6"/>
+        <COMPID name="Reducer" mc="Standard.Interface" uid="f2615288-2d24-4b5b-9063-621d7271c022"/>
+        <COMPID name="Store" mc="Standard.Interface" uid="6338924d-caf0-49ea-bb91-3d568658faf4"/>
+        <COMPID name="Provider" mc="Standard.Class" uid="66ec1ed6-11b4-4f0e-bec1-d80235587589"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Class diagram" mc="Standard.ClassDiagram" uid="b8601b8b-15d0-484d-b486-7c5eb486265e"/>
+        <COMPID name="Class diagram Redux" mc="Standard.ClassDiagram" uid="5f1719e0-6fe5-4b03-87bc-b7d94d69ccbe"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

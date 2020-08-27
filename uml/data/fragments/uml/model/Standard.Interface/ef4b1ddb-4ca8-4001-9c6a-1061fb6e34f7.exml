@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="DispatchToProps Map" version="4">
+  <OBJECT>
+    <ID name="DispatchToProps Map" mc="Standard.Interface" uid="ef4b1ddb-4ca8-4001-9c6a-1061fb6e34f7"/>
+    <PID name="js-jsx-react-redux" mc="Standard.Package" uid="cb7bfcc5-a786-4dbe-a7b9-026468b55a05"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">true</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[DispatchToProps Map]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

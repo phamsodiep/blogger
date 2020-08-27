@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="StateToProps Map" version="4">
+  <OBJECT>
+    <ID name="StateToProps Map" mc="Standard.Interface" uid="74148d2f-38c5-4c8e-bb07-0c8064c0446a"/>
+    <PID name="js-jsx-react-redux" mc="Standard.Package" uid="cb7bfcc5-a786-4dbe-a7b9-026468b55a05"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">true</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[StateToProps Map]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

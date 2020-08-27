@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="StateToPropsMap" version="4">
+  <OBJECT>
+    <ID name="StateToPropsMap" mc="Standard.Interface" uid="43dcf8dd-3380-46d9-913c-0b095fb9116c"/>
+    <PID name="React Example App" mc="Standard.Package" uid="12638cdc-0f44-4120-8d51-61b282093b9b"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">true</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[StateToPropsMap]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

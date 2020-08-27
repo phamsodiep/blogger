@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="uml" version="4">
+  <OBJECT>
+    <ID name="uml" mc="Infrastructure.DiagramSet" uid="c235149f-a949-4794-892d-c1d4154a1ca6"/>
+    <PID name="uml" mc="Standard.Project" uid="25c76281-b47b-4a99-bbed-ada77171c166"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[uml]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

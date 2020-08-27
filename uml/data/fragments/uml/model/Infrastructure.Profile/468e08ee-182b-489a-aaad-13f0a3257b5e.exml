@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="React" version="4">
+  <OBJECT>
+    <ID name="React" mc="Infrastructure.Profile" uid="468e08ee-182b-489a-aaad-13f0a3257b5e"/>
+    <PID name="LocalModule" mc="Infrastructure.ModuleComponent" uid="9f46be30-4b0f-49ce-8e5e-f494cb397325"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[React]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="DefinedStereotype">
+        <COMPID name="Property" mc="Infrastructure.Stereotype" uid="45253458-bc8a-4091-bb23-11d4d7fd02b1"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

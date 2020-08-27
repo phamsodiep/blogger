@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="LocalModule" version="4">
+  <OBJECT>
+    <ID name="LocalModule" mc="Infrastructure.ModuleComponent" uid="9f46be30-4b0f-49ce-8e5e-f494cb397325"/>
+    <ATTRIBUTES>
+      <ATT name="LicenseKey">0</ATT>
+      <ATT name="MajVersion">0</ATT>
+      <ATT name="MinVersion">0</ATT>
+      <ATT name="MinMinVersion"></ATT>
+      <ATT name="MinBinVersionCompatibility"></ATT>
+      <ATT name="JavaClassName"></ATT>
+      <ATT name="Name"><![CDATA[LocalModule]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedProfile">
+        <COMPID name="React" mc="Infrastructure.Profile" uid="468e08ee-182b-489a-aaad-13f0a3257b5e"/>
+        <COMPID name="Profile" mc="Infrastructure.Profile" uid="a78c1081-24be-4a2b-991d-dd5b00eb7f1c"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
