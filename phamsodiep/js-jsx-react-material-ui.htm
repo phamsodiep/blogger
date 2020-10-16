@@ -1,0 +1,625 @@
+import React from 'react';
+import { def, Sect, U, S, D } from './typo.js';
+import { M } from './math.js';
+
+
+export const FigureList = {
+  chomskyHierarchy : [
+    "Chomsky hierarchy Venn diagram",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Chomsky-hierarchy.svg/200px-Chomsky-hierarchy.svg.png",
+    [
+      [200, 144, 180, 400, null]
+    ]
+  ],
+};
+
+const MaterialDesign = def(
+  "Material Design",
+  "https://en.wikipedia.org/wiki/Material_Design",
+  ""
+);
+
+function Ref(props) {
+  let impl = def (props.children, props.src, props.tooltip);
+  return impl({});
+}
+
+
+export const ARTICLE = (
+<React.Fragment>
+
+
+<U h="Introduction" tag="h2">
+    <S>
+        <MaterialDesign /> is a design language that Google developed in 2014
+        which is based on paper and ink but implementation takes place in an
+        advanced manner.
+    </S>
+    <S><U sub="b">
+        <S h>Its supports:</S>
+        <S>Scale your ideal:</S>
+        <S><U sub="b">
+            <S>Single sheet to system</S>
+            <S>Colour is applied dynamically.</S>
+            <S>Typography is adaptable (by CSS).</S>
+            <S>
+                Adaptable design system (make your branch company
+                as a unique view)
+            </S>
+            <S>Multiple platform (responsitive)</S>
+        </U></S>
+        <S>
+            Roboto Font: support multiple weight, width, space, size, typographic niceties, italic level.
+        </S>
+        <S>Font Icons</S>
+        <S>SVG Icons</S>
+    </U></S>
+    <S><U sub="b">
+        <S h>Its characteristics:</S>
+        <S>Concepts is built from the realworld (inspire by paper and ink).</S>
+        <S>Interaction (touch) design</S>
+    </U></S>    
+</U>
+
+
+<U h="Installation" tag="h2">
+    <S><U sub="t">
+        <S h>Material ui core</S>
+        <S math>npm install @material-ui/core</S>
+    </U></S>
+    <S><U sub="t">
+        <S h>Roboto Font</S>
+        <S math pre>{`<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+/>`}
+        </S>
+    </U></S>
+    <S><U sub="t">
+        <S h>Font Icons</S>
+        <S math>
+            {`<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />`}
+        </S>
+    </U></S>
+    <S><U sub="t">
+        <S h>SVG Icons</S>
+        <S math>
+            npm install @material-ui/icons
+        </S>
+    </U></S>
+</U>
+
+
+<U h="Example" tag="h2">
+    <S><U h="Source code" f="b">
+        <S math pre>
+{`import React from 'react';
+import ReactDOM from 'react-dom';
+import Button from '@material-ui/core/Button';
+
+function App() {
+  return (
+    <Button variant="contained" color="primary">
+      Hello World
+    </Button>
+  );
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'));`}
+        </S>
+    </U></S>
+
+    <S><U h="Globals" f="b">
+        <S><U sub="t">
+            <S h>Responsive meta tag</S>
+            <S html="[]">
+                To ensure proper rendering and touch zooming for all devices,
+                add below responsive viewport meta tag to your [head] element:
+            </S>
+            <S math html="[]">
+                [meta
+                  name="viewport"
+                  content="minimum-scale=1, initial-scale=1, width=device-width"
+                /]
+            </S>
+        </U></S>
+        <S><U sub="t">
+            <S h>CssBaseline</S>
+            <S html="">
+                Material-UI provides an optional CssBaseline component. It fixes
+                some inconsistencies across browsers and devices while providing
+                slightly more opinionated resets to common HTML elements.
+            </S>
+            <S math html="[]">
+                [CssBaseline /]
+            </S>
+        </U></S>
+    </U></S>
+</U>
+
+
+<U h="Components" tag="h2">
+    <S><U h="Layout" tag="h3">
+        <S>
+            1. Box
+        </S>
+        <S>
+            2. Container
+        </S>
+        <S>
+            3. Grid
+        </S>
+        <S>
+            4. Grid List
+        </S>
+        <S>
+            5. Hidden
+        </S>
+        <S>
+            35. [*] Divider: used with layout
+        </S>
+    </U></S>
+
+    <S><U h="Input" tag="h3">
+        <S><U h="Single input" tag="h4">
+            <S>
+                6. Button
+            </S>
+            <S>
+                8. Checkbox
+            </S>
+            <S>
+                10. (Date time picker)
+            </S>
+            <S>
+                12. Selects
+            </S>
+            <S>
+                13. Slider
+            </S>
+            <S>
+                14. Switch
+            </S>
+            <S>
+                15. TextField
+            </S>
+        </U></S>
+        <S><U h="Multiple input" tag="h4">
+            <S>
+                7. ButtonGroup
+            </S>
+            <S>
+                11. Radio Buttons
+            </S>
+            <S>
+                16. Transfer List
+            </S>
+            <S>
+                21. Menu
+            </S>
+        </U></S>
+        <S><U h="Special input" tag="h4">
+            <S>
+                9. FAB Floating Action Button
+            </S>
+        </U></S>
+        <S><U h="Form input" tag="h4">
+            <S>
+                29. Dialog
+            </S>
+        </U></S>
+    </U></S>
+
+    <S><U h="Feedback or output" tag="h3">
+        <S>
+            19. [*] Drawer: Navigation drawers (or "sidebars")
+            //////////Notification
+        </S>
+        <S>
+            22. Stepper (slider with difference meaning, slideshare similar)
+            // Feed back as input also
+        </S>
+        <S>
+            28. Progress -> unspecified wait time (CSS animation)
+        </S>
+        <S>
+            30. Snackbar -> a type of notified
+        </S>
+        <S>
+            31. [*] Backdrop -> backdrop component will add a dimmed layer over your application.
+        </S>
+        <S>
+            33. Badge
+        </S>
+        <S>
+            40. Tooltip -> customized html attribute title= with many features rich content
+        </S>
+        <D>
+            Notification Feed back:
+              Snackbar ---) a type of notified
+              Backdrop
+              Badge
+              Tooltip  ---) Hover
+        </D>
+    </U></S>
+
+    <S><U h="Navigation" tag="h3">
+        <S>
+            17. BottomNavigation
+        </S>
+        <S>
+            18. Breadcrumbs
+        </S>
+        <S>
+            20. Links
+        </S>
+        <S>
+            23. Tabs
+        </S>
+    </U></S>
+
+    <S><U h="Data" tag="h3">
+        <S>
+            38. Lists -] customized html [l] tag with many features rich content
+        </S>
+        <S>
+            39. Table -] customized html [table] tag with many features rich content
+        </S>
+        <S>
+            41. Typography -] h1...h6 & p tag with customized
+        </S>
+    </U></S>
+
+    <S><U h="Realworld / Sprites" tag="h3">
+        <S>
+            18. Breadcrumbs
+        </S>
+        <S>
+            20. Links
+        </S>
+        <S>
+            23. Tabs
+        </S>
+        <S>
+            24. App Bar (complex component, multiple inputs, navigation)
+        </S>
+        <S>
+            25. Paper
+        </S>
+        <S>
+            26. Cards
+        </S>
+        <S>
+            27. [*] Expansion Panel -. Expansed able card (similar to [sumary] [detail] tag)              // Accordion
+        </S>
+        <S>
+            32. Avatar
+        </S>
+        <S>
+            34. Chip ????? chon / xoa tren may cai card => CAN TIM HIEU GOOGLE them - object able selection
+        </S>
+        <S>
+            36. Icons
+        </S>
+        <S>
+            37. Material Icons
+        </S>
+    </U></S>
+
+    <S><U h="Typography" tag="h3">
+        <S>
+            T.B.D. <br />
+            41. Typography -] h1...h6 & p tag with customized
+        </S>
+        <D>{`
+            <Typography variant="h1" component="h2">
+              h1. Heading
+            </Typography>
+        `}</D>
+        <D>{`
+            const theme = createMuiTheme({
+              props: {
+                MuiTypography: {
+                  variantMapping: {
+                    h1: 'h2',
+                    h2: 'h2',
+                    h3: 'h2',
+                    h4: 'h2',
+                    h5: 'h2',
+                    h6: 'h2',
+                    subtitle1: 'h2',
+                    subtitle2: 'h2',
+                    body1: 'span',
+                    body2: 'span',
+                  },
+                },
+              },
+            });
+        `}</D>
+    </U></S>
+
+    <S><U h="Other: T.B.D." tag="h3">
+        <S>
+            42. Click away listener
+            Detect if a click event happened outside of an element. It listens for clicks that occur somewhere in the document.
+        </S>
+        <S>
+            43. CSS Baseline
+            Material-UI provides a CssBaseline component to kickstart an elegant, consistent, and simple baseline to build upon.
+        </S>
+        <S>
+            44. Modal
+            The modal component provides a solid foundation for creating dialogs, popovers, lightboxes, or whatever else.
+            Feature of feed back, but has modal feature.
+        </S>
+        <S>
+            45. No SSR
+            NoSsr purposely removes components from the subject of Server Side Rendering (SSR).
+        </S>
+        <S>
+            46. Popover
+            can be used to display some content on top of another.
+        </S>
+        <S>
+            47. Popper
+            A Popover can be used to display some content on top of another.
+        </S>
+        <S>
+            48. Portal
+            The portal component renders its children into a new "subtree" outside of current DOM hierarchy.
+        </S>
+        <S>
+            49. Textarea Autosize
+            A textarea component for React which grows with content.
+        </S>
+        <S>
+            50. Transitions
+            Transition helps make a UI expressive and easy to use.
+        </S>
+        <S>
+            *51*. useMediaQuery
+            This is a CSS media query hook for React. It listens for matches to a CSS media query. It allows the rendering of components based on whether the query matches or not.
+        </S>
+        <S>
+            *52*. About the lab <br />
+            This package hosts the incubator components that are not yet ready to move to the core. <br />
+            STOP HERE! <br />
+            Alert <br />
+        </S>
+    </U></S>
+</U>
+
+
+<U h="References" tag="h2">
+    <S><U sub="b">
+        <S>
+            https://material-ui.com/getting-started/usage/<br />
+            https://material-ui.com/components/box/
+        </S>
+        <S>
+            https://www.youtube.com/playlist?list=PLJ21zHI2TNh-rX-Xr_xi9KIEcbdee_1Ah
+        </S>
+    </U></S>
+</U>
+
+
+<D h="Ideas" tag="h2">
+    <S><U h="Gallery" f="b">
+        <S>Collarborative tools for design works</S>
+        <S>gallery.io</S>
+    </U></S>
+
+    <S><U h="Principle" f="b">
+      <S>
+          Responsitive, nature, aware, intensition,
+          Motion responsitive
+            A component move -> other move as the real world
+          Motion give hint or guide you
+            ==> Motion principle
+      </S>
+    </U></S>
+</D>
+
+
+<D h="Components" tag="h2">
+    <S><U h="Box" f="b">
+        <S>
+            The Box component wraps your component. You could use this component
+            to logically group your components or decorate your inner component
+            by: css, clone or passing render props.
+        </S>
+        <S>
+            Link:&nbsp;
+            <Ref src="https://material-ui.com/components/box/">
+                Box React Component - Material-UI.
+            </Ref>
+        </S>
+    </U></S>
+
+    <S><U h="Grid" f="b">
+        <S>
+            The Grid component implements Material Design responsive layout
+            feature. It supports five grid breakpoints: xs, sm, md, lg, and xl.
+        </S>
+        <S><U sub="t">
+            <S h>
+                Responsive layout is implemented by:
+            </S>
+            <S>
+                1. Specifying difference values for multiple grid breakpoints.
+            </S>
+            <S>
+                2. Auto-layout: for items without values specifying for grid
+                breakpoints, they are automatically scaled to fit.
+            </S>
+            <S>
+                3. Interactive: setting is changed by interactive inputs
+                (radio buttton, for example).
+            </S>
+        </U></S>
+        <S>
+            Link:&nbsp;
+            <Ref src="https://material-ui.com/components/grid/">
+                Grid React Component - Material-UI.
+            </Ref>
+        </S>
+    </U></S>
+
+    <S><U h="Grid List" f="b">
+        <S>
+            The Grid List component displays a collection of images in an
+            organized grid. It supports to implement repeated pattern.
+        </S>
+        <S>
+            Link:&nbsp;
+            <Ref src="https://material-ui.com/components/grid-list">
+                Grid List React Component - Material-UI.
+            </Ref>
+        </S>
+    </U></S>
+
+    <S><U h="Hidden" f="b">
+        <S>
+            The Hidden component quickly and responsively toggle the visibility
+            value of components. The components are hiden or displayed according
+            to screen size (breakpoints).
+        </S>
+        <S>
+            Link:&nbsp;
+            <Ref src="https://material-ui.com/components/hidden">
+                Hidden React Component - Material-UI.
+            </Ref>
+        </S>
+    </U></S>
+
+    <S><U h="Button" f="b">
+        <S><U sub="b">
+            <S h>
+                The Button component triggers a command to support user's actions
+                and choices. There are following button types:
+            </S>
+            <S>
+                <dfn>Contained buttons</dfn> are high-emphasis, distinguished
+                by their use of elevation and fill. They contain actions that
+                are primary to your app.
+            </S>
+            <S>
+                <dfn>Text Buttons</dfn> are typically used for less-pronounced
+                actions.
+            </S>
+            <S>
+                <dfn>Outlined Buttons</dfn> are medium-emphasis buttons. They
+                contain actions that are important, but aren’t the primary
+                action in an app.
+            </S>
+            <S>
+                <dfn>Upload button</dfn> is implemented by event bubbling from
+                Material-UI button component to label component with
+                <i>htmlFor</i> attribute. Because HTML5 required fixed upload
+                button component with type="file" for this purpose. There is no
+                programmatically method to implement this.
+            </S>
+            <S>
+                <dfn>Buttons with icons and label</dfn>: is supported.
+            </S>
+            <S>
+                <dfn>Customized buttons</dfn>: is supported.
+            </S>
+            <S>
+                <dfn>Complex Buttons</dfn>: is supported by extending the
+                ButtonBase component.
+            </S>
+        </U></S>
+        <S>
+            Link:&nbsp;
+            <Ref src="https://material-ui.com/components/buttons">
+                Button React Component - Material-UI.
+            </Ref>
+        </S>
+    </U></S>
+
+    <S><U h="Button group" f="b">
+        <S>
+            The ButtonGroup component can be used to group related buttons. It
+            supports to render the group: separator, boundary. It also supports
+            <dfn>Split button</dfn>, a button added a dropdown that can change
+            the button action.
+        </S>
+        <S>
+            Link:&nbsp;
+            <Ref src="https://material-ui.com/components/button-group">
+                Button group React Component - Material-UI.
+            </Ref>
+        </S>
+    </U></S>
+
+    <S><U h="Check box" f="b">
+        <S>
+            The Checkbox component allows the user to select one or more items
+            from a set.
+        </S>
+        <S>
+            Link:&nbsp;
+            <Ref src="https://material-ui.com/components/checkboxes">
+                Check box React Component - Material-UI.
+            </Ref>
+        </S>
+    </U></S>
+
+    <S><U h="Floating Buttons (FAB)" f="b">
+        <S>
+            The Floating Buttons (FAB) performs the primary, or most common,
+            action on a screen.
+        </S>
+        <S>
+            Link:&nbsp;
+            <Ref
+              src="https://material-ui.com/components/floating-action-button"
+            >
+                FAB React Component - Material-UI.
+            </Ref>
+        </S>
+    </U></S>
+
+    <S><U h="Date / Time pickers" f="b">
+        <S>
+            Date pickers and Time pickers provide a simple way to select a
+            single value from a pre-determined set.
+        </S>
+        <S>
+            Link:&nbsp;
+            <Ref src="https://material-ui.com/components/pickers">
+                Date pickers and Time pickers React Component - Material-UI.
+            </Ref>
+        </S>
+    </U></S>
+
+    <S><U h="Radio" f="b">
+        <S>
+            The Radio button allows the user to select one option from a set.
+            It shows all available values whereas dropdown collapses its values
+            set.
+        </S>
+        <S>
+            Link:&nbsp;
+            <Ref src="https://material-ui.com/components/radio-buttons">
+                Radio React Component - Material-UI.
+            </Ref>
+        </S>
+    </U></S>
+</D>
+
+
+</React.Fragment>
+);
+
+
+//https://github.com/phamsodiep/blogger/blob/master/?/??.htm
+//0.0.2
+/*
+            T.B.D.
+            <br />
+            <b>Audience</b>: T.B.D.
+            - <b>Topic</b>: T.B.D.
+*/
+
