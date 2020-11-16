@@ -1,7 +1,492 @@
-﻿<div id="entry_article">
-<details class="hidden">
-    <summary>
-        <div id="entry_brief"><em><i>
+import React from 'react';
+import { def, Sect, U, S, D, Figure } from './typo.js';
+import { M } from './math.js';
+
+
+export const FigureList = {
+  architectureDiagram : [
+    "Django Rest framework architecture diagram",
+    "https://1.bp.blogspot.com/-ZySZXc0yKjc/Xrqmmcy0wJI/AAAAAAAAATQ/_7b_4kAHnpktF3l_rIjp6J5GwpN0T18mACNcBGAsYHQ/s1600/Architecture.png",
+    [
+      [829, 341, -10, 833, null]
+    ]
+  ],
+  configurationDiagram : [
+    "Django Rest framework configuration diagram",
+    "https://1.bp.blogspot.com/-XxYk7rli8_0/XrvJUiMfyzI/AAAAAAAAAT0/pme2U31UuWkCbuQSTmP0gBpSmNkza19FwCNcBGAsYHQ/s1600/Configuration.png",
+    [
+      [802, 581, -30, 806, null]
+    ]
+  ],
+};
+
+/*const FormalLanguage = def(
+  "formal language",
+  "https://huyj2ee.blogspot.com/2020/06/cs-formal-language.html",
+  ""
+);*/
+
+//const Term = def("terminal symbol", "#", null);
+
+export const ARTICLE = (
+<React.Fragment>
+
+
+<U h="Architecture" tag="h2">
+    <S><U h="Concepts" tag="h3">
+        <S><U h="Web resources" tag="h4">
+            <S>
+                Web resource is any identifiable thing.
+            </S>
+            <S><U sub="b">
+                <S>
+                    Uniform Resource Identifier (URI): a string of characters that unambiguously identifies a particular resource
+                </S>
+                <S>
+                    Uniform Resource Locator (URL): a specific form of URI based on https or http. (REST apis use URL to identify web resource.)
+                </S>
+            </U></S>
+        </U></S>
+        <S><U h="REST api" tag="h4">
+            <S>
+                Web services that conform to the REST architectural style. They allow the requesting systems to access and manipulate textual representations of Web resources by using a uniform and predefined set of stateless operations.
+            </S>
+        </U></S>
+        <S><U h='ViewSet and "Resource service"' tag="h4">
+            <S>
+                "Resource Service" is my introduced term for this share blog entry. It represents a REST api implementation for a C.R.U.D. access to resource. (C.R.U.D.: create or read or update or delete operation.)
+            </S>
+            <S><U sub="b">
+                <S>
+                    "Access Function" is my introduced term for this share blog entry. It implements "Resource Service" as function.
+                </S>
+                <S>
+                    ViewSet (Django Rest framework term) represents REST apis implementation for C.R.U.D. accesses to resource.
+                </S>
+            </U></S>
+        </U></S>
+        <S><U h="Serializer" tag="h4">
+            <S>
+                Class is implemented to convert data between Web (browser) or
+                Api client (REST client) with plain Python object (JSON ↔
+                Python object converter).
+            </S>
+        </U></S>
+        <S><U h="Model" tag="h4">
+            <S>
+                Class is implemented to persist plain Python object to database.
+            </S>
+        </U></S>
+    </U></S>
+
+    <S><U h="Architecture" tag="h3">
+        <S>
+            Django Rest framework architecture is portrayed by below diagram:
+        </S>
+        <S>
+            <Figure id="architectureDiagram" />
+        </S>
+    </U></S>
+</U>
+
+<U h="Configuration" tag="h2">
+    <S><U h="Setup development environment" tag="h3">
+        <S><U h="Prerequisites" tag="h4">
+            <S><U sub="b">
+                <S>
+                    django
+                </S>
+                <S>
+                    django-rest-framework
+                </S>
+            </U></S>
+        </U></S>
+        <S><U h="Download source code" tag="h4">
+            <S><U sub="b">
+                <S>
+                    <dfn>django</dfn>:&nbsp;
+                    <M>"c:\Program Files\Git\mingw32\bin\curl.exe"
+                    https://codeload.github.com/django/django/zip/master
+                    -o django.zip</M>
+                </S>
+                <S>
+                    <dfn>django-rest-framework</dfn>:&nbsp;
+                    <M>"c:\Program Files\Git\mingw32\bin\curl.exe"
+                    https://codeload.github.com/encode/django-rest-framework/zip/master
+                    -o django-rest-framework.zip</M>
+                </S>
+            </U></S>
+        </U></S>
+        <S><U h="Install" tag="h4">
+            <S><U sub="b">
+                <S>
+                    <dfn>django</dfn>:
+                </S>
+                <S><U sub="t">
+                    <S math>c:\Java\jdk1.8.0_241\bin\jar.exe xf django.zip</S>
+                    <S math>del django.zip</S>
+                    <S math>c:\Users\Guest\mybin>cd django-master</S>
+                    <S math>c:\Python38\python.exe setup.py build</S>
+                    <S math>c:\Python38\python.exe setup.py install --user</S>
+                </U></S>
+                <S>
+                    <dfn>django-rest-framework</dfn>:
+                </S>
+                <S><U sub="t">
+                    <S math>c:\Java\jdk1.8.0_241\bin\jar.exe xf django-rest-framework.zip</S>
+                    <S math>del django-rest-framework.zip</S>
+                    <S math>c:\Users\Guest\mybin>cd django-rest-framework-master</S>
+                    <S math>c:\Python38\python.exe setup.py build</S>
+                    <S math>c:\Python38\python.exe setup.py install --user</S>
+                </U></S>
+            </U></S>
+        </U></S>
+    </U></S>
+    <S><U h="Create project and app" tag="h3">
+        <S><U h="Create project" tag="h4">
+            <S math>
+                c:\Users\Guest\myws>c:\Python38\python.exe
+                c:\Users\Guest\mybin\django-master\django\bin\django-admin.py
+                startproject django_rest_api_howto .
+            </S>
+        </U></S>
+        <S><U h="Create app" tag="h4">
+            <S math>
+                c:\Users\Guest\myws>c:\Python38\python.exe manage.py
+                startapp tasklogs
+            </S>
+        </U></S>
+    </U></S>
+    <S><U h="Configuration setting" tag="h3">
+        <S><U h="Configuration loading process" tag="h4">
+            <S><U sub="b">
+                <S>
+                    Configuration is programmed in <M>settings.py</M> and&nbsp;
+                    <M>urls.py</M>.
+                </S>
+                <S>
+                    The loading process is portrayed by below diagram:
+                    <Figure id="configurationDiagram" />
+                </S>
+            </U></S>
+        </U></S>
+        <S><U h="Configuration setting" tag="h4">
+            <S>
+                Notice descriptions of figure 4.1:
+                <i>Django Rest framework configuration diagram</i> for setting
+                values, program the values into
+                files: <M>settings.py</M> and <M>urls.py</M>.
+            </S>
+            <S><U sub="b">
+                <S>
+                  <M>settings.py</M>:
+                </S>
+                <S><U sub="s">
+                    <S math>INSTALLED_APPS = [</S>
+                    <S><U sub="t">
+                        <S math>    ...</S>
+                        <S math>    'rest_framework',</S>
+                        <S math>    'tasklogs.apps.TasklogsConfig'</S>
+                    </U></S>
+                    <S math>]</S>
+                </U></S>
+                <S>
+                  <M>urls.py</M>:
+                </S>
+                <S><U sub="s">
+                    <S math>from django.contrib import admin</S>
+                    <S math>from django.urls import path, include</S>
+                    <S math>from tasklogs import views</S>
+                    <S math>from rest_framework import routers</S>
+                    <S math></S>
+                    <S math>router=routers.DefaultRouter()</S>
+                    <S math>router.register(r'tasklog', views.TasklogViewSet)</S>
+                    <S math></S>
+                    <S math>urlpatterns = [</S>
+                        <S math>&nbsp;&nbsp;&nbsp;&nbsp;path('', include(router.urls)),</S>
+                        <S math>&nbsp;&nbsp;&nbsp;&nbsp;path('api-auth/',include('rest_framework.urls', namespace='rest_framework'))</S>
+                    <S math>]</S>
+                </U></S>
+            </U></S>
+        </U></S>
+    </U></S>
+    <S><U h="Create or update database" tag="h3">
+        <S><U h="Create model" tag="h4">
+            <S>
+                Please consult
+                sub-sections <Sect to="sec_3.3">3.3. Create model</Sect>,&nbsp;
+                <Sect to="sec_3.4">3.4. Implement serializer</Sect>,&nbsp;
+                <Sect to="sec_3.5">3.5. Implement ViewSet</Sect> of section
+                3. Implement a simple api for detail.
+            </S>
+        </U></S>
+        <S><U h="Create table tasklogs" tag="h4">
+            <S math>c:\Python38\python.exe manage.py makemigrations tasklogs</S>
+        </U></S>
+        <S><U h="Migrate" tag="h4">
+            <S math>c:\Python38\python.exe manage.py migrate</S>
+        </U></S>
+        <S><U h="Create user for REST api authentication" tag="h4">
+            <S math>
+                c:\Python38\python.exe manage.py createsuperuser
+                --email admin@example.com --username admin
+            </S>
+        </U></S>
+    </U></S>
+</U>
+<U h="Implement a simple api" tag="h2">
+    <S><U h="Create project and app" tag="h3">
+        <S>
+            Please reference to sub-section <Sect to="sec_2.2" /> of
+            section 2. Configuration for details.
+        </S>
+    </U></S>
+    <S><U h="Program configuration settings" tag="h3">
+        <S>
+            Please reference to sub-section <Sect to="sec_2.3" /> of
+            section 2. Configuration for details.
+        </S>
+    </U></S>
+    <S><U h="Create model" tag="h3">
+        <S><dfn>models.py</dfn>:</S>
+        <S><U sub="t">
+            <S math>from django.db import models</S>
+            <S math></S>
+            <S math># Create your models here.</S>
+            <S math>class Tasklog(models.Model):</S>
+                <S math>&nbsp;&nbsp;&nbsp;&nbsp;created = models.DateTimeField(auto_now_add=True)</S>
+                <S math>&nbsp;&nbsp;&nbsp;&nbsp;log = models.TextField()</S>
+                <S math></S>
+                <S math>&nbsp;&nbsp;&nbsp;&nbsp;class Meta:</S>
+                <S math>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ordering = ['created']</S>
+        </U></S>
+    </U></S>
+    <S><U h="Implement serializer" tag="h3">
+        <S><dfn>serializers.py</dfn>:</S>
+        <S><U sub="t">
+            <S math>from tasklogs.models import Tasklog</S>
+            <S math>from rest_framework import serializers</S>
+            <S math></S>
+            <S math>class TasklogSerializer(serializers.HyperlinkedModelSerializer):</S>
+            <S math>&nbsp;&nbsp;&nbsp;&nbsp;class Meta:</S>
+            <S math>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;model = Tasklog</S>
+            <S math>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fields = ['id', 'log']</S>
+        </U></S>
+    </U></S>
+    <S><U h="Implement ViewSet" tag="h3">
+        <S><dfn>views.py</dfn>:</S>
+        <S><U sub="t">
+            <S math>from django.shortcuts import render</S>
+            <S math>from rest_framework import viewsets</S>
+            <S math>from tasklogs.models import Tasklog</S>
+            <S math>from tasklogs.serializers import TasklogSerializer</S>
+            <S math>from rest_framework import permissions</S>
+            <S math>from django.http import HttpResponse, JsonResponse</S>
+            <S math>from rest_framework.parsers import JSONParser</S>
+            <S math></S>
+            <S math># Create your views here.</S>
+            <S math>class TasklogViewSet(viewsets.ModelViewSet):</S>
+            <S math>&nbsp;&nbsp;&nbsp;&nbsp;"""</S>
+            <S math>&nbsp;&nbsp;&nbsp;&nbsp;API endpoint that allows users to be viewed or edited.</S>
+            <S math>&nbsp;&nbsp;&nbsp;&nbsp;"""</S>
+            <S math>&nbsp;&nbsp;&nbsp;&nbsp;queryset = Tasklog.objects.all()</S>
+            <S math>&nbsp;&nbsp;&nbsp;&nbsp;serializer_class = TasklogSerializer</S>
+            <S math>&nbsp;&nbsp;&nbsp;&nbsp;permission_classes = [permissions.IsAuthenticated]</S>
+        </U></S>
+    </U></S>
+    <S><U h="Prepare database" tag="h3">
+        <S>
+            Reference to sub-section <Sect to="sec_2.4"/> of
+            section 2. Configuration for details.
+        </S>
+    </U></S>
+</U>
+
+<U h="Test with curl" tag="h2">
+    <S><U h="Start REST server" tag="h3">
+        <S math>
+            c:\Python38\python.exe manage.py runserver
+        </S>
+    </U></S>
+    <S><U h="Create a tasklog" tag="h3">
+        <S><U h="Create a json file store new tasklog" tag="h4">
+            <S math>
+                copy con newtask.json
+            </S>
+            <S math>
+                {`{"log": "Setting development environment"} ^Z`}
+            </S>
+        </U></S>
+        <S><U h="Request to create this new tasklog via POST method" tag="h4">
+            <S math>
+                "c:\Program Files\Git\mingw32\bin\curl.exe" -X POST -H
+                "Content-Type: application/json" -u admin:nonepassword
+                -d @newtask.json http://127.0.0.1:8000/tasklog/
+            </S>
+        </U></S>
+    </U></S>
+    <S><U h="List all tasklog" tag="h3">
+        <S math>
+            "c:\Program Files\Git\mingw32\bin\curl.exe"
+            -H "Accept: application/json; indent=4"
+            -u admin:nonepassword http://127.0.0.1:8000/tasklog/
+        </S>
+    </U></S>
+    <S><U h="Delete tasklog" tag="h3">
+        <S>
+            To delete a tasklog with id = 1.
+        </S>
+        <S math>
+            "c:\Program Files\Git\mingw32\bin\curl.exe" -X DELETE
+            -H "Content-Type: application/json"
+            -u admin:nonepassword http://127.0.0.1:8000/tasklog/1/
+        </S>
+    </U></S>
+    <S><U h="Update tasklog" tag="h3">
+        <S>
+            To update tasklog with id = 2 with new log content is
+            "I change my mind":
+        </S>
+        <S><U sub="b">
+            <S>
+                Create a json file store new tasklog:
+            </S>
+            <S><U sub="t">
+                <S math>
+                    copy con updatedtask.json
+                </S>
+                <S math>
+                    {`{"log": "I change my mind"} ^Z`}
+                </S>
+            </U></S>
+        </U></S>
+        <S><U sub="b">
+            <S>
+                Request to update this new tasklog via PUT method:
+            </S>
+            <S><U sub="t">
+                <S math>
+                    "c:\Program Files\Git\mingw32\bin\curl.exe" -X PUT
+                    -H "Content-Type: application/json"
+                    -u admin:nonepassword -d @updatedtask.json
+                    http://127.0.0.1:8000/tasklog/2/
+                </S>
+            </U></S>
+        </U></S>
+    </U></S>
+</U>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<U h="Test with React" tag="h2">
+    <S><U h="Create and implement React test project" tag="h3">
+        <S>
+            Please consult blog entry <i>[Js][Jsx] React in a nutshell</i> for
+            details.
+        </S>
+    </U></S>
+    <S><U h="Export React test project as static html files" tag="h3">
+        <S>
+            To export React test project as static html files which could be
+            hosted at http://127.0.0.1:8000/static:
+        </S>
+        <S><U sub="b">
+            <S>
+                Update file <i>package.json</i> of React project add
+                property <i>homepage</i>:
+            </S>
+            <S><U sub="t">
+                <S math>{`{`}</S>
+                <S math>&nbsp;&nbsp;&nbsp;&nbsp;...</S>
+                <S math>&nbsp;&nbsp;&nbsp;&nbsp;"homepage": "/static",</S>
+                <S math>&nbsp;&nbsp;&nbsp;&nbsp;...</S>
+                <S math>{`}`}</S>
+            </U></S>
+            <S>
+                Launch command to export static html files:
+            </S>
+            <S><U sub="t">
+                <S math>npm run build</S>
+            </U></S>
+            <S><U sub="rb">
+                <S>
+                    The exported files is located in folder <i>build</i>.
+                </S>
+            </U></S>
+        </U></S>
+    </U></S>
+    <S><U h="Import React static html files" tag="h3">
+        <S>
+            To import React static html files to <i>Django development
+            server</i>:
+        </S>
+        <S><U sub="b">
+            <S>
+                Open file <i>settings.py</i>, configure <i>Django development
+                server</i> input static html files source folder and
+                destination store source folder:
+            </S>
+            <S><U sub="t">
+                <S math>STATIC_URL = '/static/'</S>
+                <S math>STATIC_ROOT = "c:\\Users\\Guest\\mygit\\django_howto\\static"</S>
+                <S math>STATICFILES_DIRS = ("c:\\Guest\\Guest\\mygit\\django_howto\\tasklogsfrontend\\build",)</S>
+            </U></S>
+            <S><U sub="rb">
+                <S><i>Note:</i></S>
+            </U></S>
+            <S><U sub="t">
+                <S>
+                    <dfn>STATIC_URL</dfn>: url prefix to access to these html
+                    file resources (the 'directory path' of url). This must
+                    matches with property <i>homepage</i> of
+                    file <i>package.json</i>.
+                </S>
+                <S>
+                    <dfn>STATIC_ROOT</dfn>: folder to store html file resources.
+                </S>
+                <S>
+                    <dfn>STATICFILES_DIRS</dfn>: folder to import html file
+                    resources once collectstatic command is launched.
+                </S>
+            </U></S>
+            <S>
+                Invoke below command to import resources to <i>Django
+                development server</i>:
+            </S>
+            <S><U sub="t">
+                <S math>python manage.py collectstatic</S>
+            </U></S>
+        </U></S>
+    </U></S>
+</U>
+
+
+</React.Fragment>
+);
+
+
+//https://github.com/phamsodiep/blogger/blob/master/phamsodiep/py-django-rest-framework.htm
+//0.1.1
+/*
             Django REST framework is a powerful and flexible toolkit for
             building Web APIs. Authentication policies including packages
             for OAuth1a and OAuth2. Serialization that supports both ORM
@@ -10,1052 +495,6 @@
             <br />
             <br />
             <b>Audience:</b> software engineer with Python 3 programming
-            language knowledge –
+            language knowledge -
             <b>Topic:</b> Python REST API programming.
-        </i></em></div>
-    </summary>
-    <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
-</details>
-
-
-<div class="naturalsciencefont0">
-    <div ID=" I. Architecture">
-        <h2>I. Architecture</h2>
-        <div ID=" I.1. Concepts">
-            <div>
-                <b>1. Concepts</b>
-            </div>
-            <div ID=" I.1.1. Web resources">
-                <div>
-                    <b>1.1. Web resources</b>
-                </div>
-                <div>
-                    <div>
-                        Web resource is any identifiable thing.
-                    </div>
-                    <div class="lindent0a">
-                        Uniform Resource Identifier (URI): a string of
-                        characters that unambiguously identifies a particular
-                        resource
-                    </div>
-                    <div class="lindent0a">
-                        Uniform Resource Locator (URL): a specific form of URI
-                        based on https or http. (REST apis use URL to identify
-                        web resource.)
-                    </div>
-                </div>
-            </div>
-            <div ID=" I.1.2. REST api" class="para_sep0">
-                <div>
-                    <b>1.2. REST api</b>
-                </div>
-                <div>
-                    <div>
-                        Web services that conform to the REST architectural
-                        style. They allow the requesting systems to access
-                        and manipulate textual representations of Web
-                        resources by using a uniform and predefined set
-                        of stateless operations.
-                    </div>
-                </div>
-            </div>
-            <div ID=" I.1.3. 'Resource service'" class="para_sep0">
-                <div>
-                    <b>1.3. ViewSet and "Resource service"</b>
-                </div>
-                <div>
-                    <div>
-                        "Resource Service" is my introduced term for this
-                        share blog entry. It represents a REST api
-                        implementation for a C.R.U.D. access to resource.
-                        (C.R.U.D.: create or read or update or delete
-                        operation.)
-                    </div>
-                    <div class="lindent0a">
-                        "Access Function" is my introduced term for this
-                        share blog entry. It implements "Resource Service"
-                        as function.
-                    </div>
-                    <div class="lindent0a">
-                        ViewSet (Django Rest framework term) represents REST
-                        apis implementation for C.R.U.D. accesses to resource.
-                    </div>
-                </div>
-            </div>
-            <div ID=" I.1.4. Serializer" class="para_sep0">
-                <div>
-                    <b>1.4. Serializer</b>
-                </div>
-                <div>
-                    <div>
-                        Class is implemented to convert data between Web
-                        (browser) or Api client (REST client) with plain Python
-                        object (JSON &#x2194; Python object converter).
-                    </div>
-                </div>
-            </div>
-            <div ID=" I.1.5. Model" class="para_sep0">
-                <div>
-                    <b>1.5. Model</b>
-                </div>
-                <div>
-                    <div>
-                        Class is implemented to persist plain Python object
-                        to database.
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div ID=" I.2. Architecture" class="para_sep1">
-            <div>
-                <b>2. Architecture</b>
-            </div>
-            <div>
-                <div>
-                    Django Rest framework architecture is portrayed by
-                    below diagram:
-                </div>
-                <div>
-                    <figure id="architecture_diag" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div ID=" II. Configuration" class="para_sep2">
-        <h2>II. Configuration</h2>
-        <div ID=" II.1. Setup development environment">
-            <div>
-                <b>1. Setup development environment</b>
-            </div>
-            <div>
-                <div>
-                    <b>1.1. Prerequisites</b>
-                </div>
-                <div class="lindent0a">
-                    django
-                </div>
-                <div class="lindent0a">
-                    django-rest-framework
-                </div>
-            </div>
-            <div class="para_sep0">
-                <div>
-                    <b>1.2. Download source code</b>
-                </div>
-                <div class="lindent0a">
-                    <i>django</i>: "c:\Program Files\Git\mingw32\bin\curl.exe"
-                    https://codeload.github.com/django/django/zip/master
-                    -o django.zip
-                </div>
-                <div class="lindent0a">
-                    <i>django-rest-framework</i>:
-                    "c:\Program Files\Git\mingw32\bin\curl.exe"
-                    https://codeload.github.com/encode/django-rest-framework/zip/master
-                    -o django-rest-framework.zip
-                </div>
-            </div>
-            <div class="para_sep0">
-                <div>
-                    <b>1.3. Install</b>
-                </div>
-                <div class="lindent0a">
-                    <div><i>django</i>:</div>
-                    <div class="lindent00">
-                        <div>
-                            c:\Java\jdk1.8.0_241\bin\jar.exe xf django.zip
-                        </div>
-                        <div>
-                            del django.zip
-                        </div>
-                        <div>
-                            c:\Users\Guest\mybin>cd django-master
-                        </div>
-                        <div>
-                            c:\Python38\python.exe setup.py build <br /> 
-                            c:\Python38\python.exe setup.py install --user
-                        </div>
-                    </div>
-                </div>
-                <div class="lindent0a">
-                    <div><i>django-rest-framework</i>:</div>
-                    <div class="lindent00">
-                        <div>
-                            c:\Java\jdk1.8.0_241\bin\jar.exe xf django-rest-framework.zip
-                        </div>
-                        <div>
-                            del django-rest-framework.zip
-                        </div>
-                        <div>
-                            c:\Users\Guest\mybin>cd django-rest-framework-master
-                        </div>
-                        <div>
-                            c:\Python38\python.exe setup.py build <br /> 
-                            c:\Python38\python.exe setup.py install --user
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div ID=" II.2. Create project and app" class="para_sep1">
-            <div id="sect:II.2">
-                <b>2. Create project and app</b>
-            </div>
-            <div>
-                <div><b>2.1. Create project</b></div>
-                <div class="lindent00">
-                    <div>
-                        c:\Users\Guest\myws>c:\Python38\python.exe
-                        c:\Users\Guest\mybin\django-master\django\bin\django-admin.py
-                        startproject django_rest_api_howto .
-                    </div>
-                </div>
-            </div>
-            <div class="para_sep0">
-                <div><b>2.2. Create app</b></div>
-                <div class="lindent00">
-                    <div>
-                        c:\Users\Guest\myws>c:\Python38\python.exe
-                        manage.py startapp tasklogs
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div ID=" II.3. Configuration setting" class="para_sep1">
-            <div id="sect:II.3">
-                <b>3. Configuration setting</b>
-            </div>
-            <div ID=" II.3.1. Configuration loading process">
-                <div><b>3.1. Configuration loading process</b></div>
-                <div class="lindent0a">
-                    <div>
-                        Configuration is programmed in <i>settings.py</i> and
-                        <i>urls.py</i>.
-                    </div>
-                </div>
-                <div class="lindent0a">
-                    <div>
-                        The loading process is portrayed by below diagram:
-                    </div>
-                    <div>
-                        <figure id="configuration_diag" />
-                    </div>
-                </div>
-            </div>
-            <div ID=" II.3.2. Configuration setting">
-                <div><b>3.2. Configuration setting</b></div>
-                <div>
-                    Notice descriptions of figure 4.1: <i>Django Rest framework
-                    configuration diagram</i> for setting values, program
-                    the values into files: <i>settings.py</i> and
-                    <i>urls.py</i>.
-                </div>
-            </div>
-        </div>
-        <div ID=" II.4. Create or update database" class="para_sep1">
-            <div id="sect:II.4">
-                <b>4. Create or update database</b>
-            </div>
-            <div ID=" II.4.1. Create model">
-                <div><b>4.1. Create model</b></div>
-                <div>
-                    Please consult sub-section
-                    <a href="#Sect:III.3.1">
-                        <i>3.1. Create model</i>
-                    </a>
-                    of section <i>III. Implement a simple api</i> for detail.
-                </div>
-            </div>
-            <div ID=" II.4.2. Create table tasklogs" class="para_sep0">
-                <div><b>4.2. Create table tasklogs</b></div>
-                <div class="lindent00">
-                    c:\Python38\python.exe manage.py makemigrations tasklogs
-                </div>
-            </div>
-            <div ID=" II.4.3. Migrate" class="para_sep0">
-                <div><b>4.3. Migrate</b></div>
-                <div class="lindent00">
-                    c:\Python38\python.exe manage.py migrate
-                </div>
-            </div>
-            <div ID=" II.4.4. Create user for REST api authentication" class="para_sep0">
-                <div><b>4.4. Create user for REST api authentication</b></div>
-                <div class="lindent00">
-                    c:\Python38\python.exe manage.py createsuperuser
-                    --email admin@example.com --username admin
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div ID=" III. Implement a simple api" class="para_sep2">
-        <h2>III. Implement a simple api</h2>
-        <div ID=" III.1. Create project and app">
-            <div>
-                <b>1. Create project and app</b>
-            </div>
-            <div>
-                Reference to sub-section
-                <a href="#sect:II.2">
-                    <i>2.1. Create project</i>
-                </a>
-                of section <i>II. Configuration</i>
-            </div>
-        </div>
-        <div ID=" III.2. Program configuration settings" class="para_sep1">
-            <div>
-                <b>2. Program configuration settings</b>
-            </div>
-            <div>
-                Reference to sub-section
-                of section
-                <a href="#sect:II.3">
-                    <i>3. Configuration setting</i>
-                </a>
-                of section <i>II. Configuration</i>.
-            </div>
-        </div>
-        <div ID=" III.3. Create model and prepare database" class="para_sep1">
-            <div>
-                <b>3. Create model and prepare database</b>
-            </div>
-            <div>
-                <div id="Sect:III.3.1"><b>3.1. Create model</b></div>
-                <div>
-                    <div><i>models.py:</i></div>
-                    <div class="lindent00">
-
-
-
-
-
-<textarea id="pysrc:2.1:1" rows="10" cols="80" class="txt_sourcecodefont0" readonly="true" style="display: none;">
-from django.db import models
-
-# Create your models here.
-class Tasklog(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    log = models.TextField()
-
-    class Meta:
-        ordering = ['created']</textarea>
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="para_sep0">
-                <div><b>3.2. Create database</b></div>
-                <div>
-                    Reference to sub-section
-                    <a href="#sect:II.4">
-                        <i>4. Create or update database</i>
-                    </a>
-                    of section <i>II. Configuration</i> for details.
-                </div>
-            </div>
-        </div>
-        <div class="para_sep1">
-            <div>
-                <b>4. Implement serializer</b>
-            </div>
-            <div>
-                <div>
-                    <div><i>serializers.py:</i></div>
-                    <div class="lindent00">
-
-
-
-
-
-<textarea id="pysrc:2.1:2" rows="10" cols="80" class="txt_sourcecodefont0" readonly="true" style="display: none;">
-from tasklogs.models import Tasklog
-from rest_framework import serializers
-
-class TasklogSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Tasklog
-        fields = ['id', 'log']</textarea>
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="para_sep1">
-            <div>
-                <b>5. Implement ViewSet</b>
-            </div>
-            <div>
-                <div>
-                    <div><i>views.py:</i></div>
-                    <div class="lindent00">
-
-
-
-
-
-<textarea id="pysrc:2.1:3" rows="10" cols="80" class="txt_sourcecodefont0" readonly="true" style="display: none;">
-from django.shortcuts import render
-from rest_framework import viewsets
-from tasklogs.models import Tasklog
-from tasklogs.serializers import TasklogSerializer
-from rest_framework import permissions
-from django.http import HttpResponse, JsonResponse
-from rest_framework.parsers import JSONParser
-
-# Create your views here.
-class TasklogViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = Tasklog.objects.all()
-    serializer_cl☯ass = TasklogSerializer
-    permission_cl☯asses = [permissions.IsAuthenticated]</textarea>
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div ID=" V. Test with curl" class="para_sep2">
-        <h2>V. Test with curl</h2>
-        <div>
-            <div>
-                <b>1. Create a tasklog</b>
-            </div>
-            <div>
-                <div><b>1.1. Create a json file store new tasklog</b></div>
-                <div class="lindent00">
-                    <code>
-                        copy con newtask.json<br />
-                        {"log": "Setting development environment"} ^Z <br />
-                    </code>
-                </div>
-            </div>
-            <div class="para_sep0">
-                <div><b>
-                    1.2. Request to create this new tasklog via POST method
-                </b></div>
-                <div class="lindent00">
-                    <code>
-                        "c:\Program Files\Git\mingw32\bin\curl.exe"
-                        -X POST -H "Content-Type: application/json"
-                        -u admin:nonepassword -d @newtask.json
-                        http://127.0.0.1:8000/tasklog/
-                    </code>
-                </div>
-            </div>
-        </div>
-        <div class="para_sep1">
-            <div>
-                <b>2. List all tasklog</b>
-            </div>
-            <div class="lindent00">
-                <code>
-                    "c:\Program Files\Git\mingw32\bin\curl.exe"
-                    -H "Accept: application/json; indent=4"
-                    -u admin:nonepassword http://127.0.0.1:8000/tasklog/
-                </code>
-            </div>
-        </div>
-        <div class="para_sep1">
-            <div>
-                <b>3. Delete tasklog</b>
-            </div>
-            <div>
-                To delete a tasklog with id = 1.
-            </div>
-            <div class="lindent00">
-                <code>
-                    "c:\Program Files\Git\mingw32\bin\curl.exe" -X DELETE
-                    -H "Content-Type: application/json"
-                    -u admin:nonepassword http://127.0.0.1:8000/tasklog/1/
-                </code>
-            </div>
-        </div>
-        <div class="para_sep1">
-            <div>
-                <b>4. Update tasklog</b>
-            </div>
-            <div>
-                <div>
-                    To update tasklog with id = 2 with new log content is
-                    "I change my mind":
-                </div>
-                <div class="lindent0a">
-                    <div>Create a json file store new tasklog:</div>
-                    <div class="lindent00">
-                        <code>
-                            copy con updatedtask.json<br />
-                            {"log": "I change my mind"} ^Z <br />
-                        </code>
-                    </div>
-                </div>
-                <div class="lindent0a">
-                    <div>
-                        Request to update this new tasklog via PUT method:
-                    </div>
-                    <div class="lindent00">
-                        <code>
-                            "c:\Program Files\Git\mingw32\bin\curl.exe"
-                            -X PUT -H "Content-Type: application/json"
-                            -u admin:nonepassword -d @updatedtask.json
-                            http://127.0.0.1:8000/tasklog/2/
-                        </code>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div ID=" VI. Test with React" class="para_sep2">
-        <h2>VI. Test with React</h2>
-        <div>
-            <div>
-                <b>1. Create and implement React test project</b>
-            </div>
-            <div>
-                Please reference sub-section
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://phamsodiep.blogspot.com/2020/03/js-jsx-react-in-a-nutshell.html#sect:III.7.4"
-                >
-                    <i>7.4. Exercise</i>
-                </a>
-                of section <i>III. Learning React by Line 98 implementation</i>
-                at
-                <i>
-                    [Js][Jsx] React in a nutshell
-                </i>.
-            </div>
-        </div>
-        <div class="para_sep1">
-            <div>
-                <b>2. Export React test project as static html files</b>
-            </div>
-            <div>
-                <div>
-                    To export React test project as static html files which
-                    could be hosted at http://127.0.0.1:8000/static:
-                </div>
-                <div class="lindent0a">
-                    <div>
-                        Update file <i>package.json</i> of React project add
-                        property <i>homepage</i>:
-                    </div>
-                    <div class="lindent00">
-                        <code>
-                            { <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;... <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;"homepage": "/static",<br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;... <br />
-                            } <br />
-                        </code>
-                    </div>
-                </div>
-                <div class="lindent0a">
-                    <div>
-                        Launch command to export static html files:
-                    </div>
-                    <div class="lindent00">
-                        <code>
-                            npm run build
-                        </code>
-                    </div>
-                </div>
-                <div>
-                    The exported files is located in folder <i>build</i>. To
-                    bypass step #1, #2, shared exported files from github maybe
-                    help full:
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="#"
-                        >
-                          link.
-                        </a>
-                </div>
-            </div>
-        </div>
-    </div>
-        <div class="para_sep1">
-            <div>
-                <b>3. Import React static html files</b>
-            </div>
-            <div>
-                <div>
-                    To import React static html files to
-                    <i>Django development server</i>:
-                </div>
-                <div class="lindent0a">
-                    <div>
-                        Configure <i>Django development server</i> input static
-                        html files source folder and destination store source
-                        folder in file<i>settings.py</i>:
-                    </div>
-                    <div class="lindent00">
-                        <code>
-                            STATIC_URL = '/static/' <br /> 
-                            STATIC_ROOT = "c:\\Users\\Guest\\mygit\\django_howto\\static" <br />
-                            STATICFILES_DIRS = ("c:\\Guest\\Guest\\mygit\\django_howto\\tasklogsfrontend\\build",) <br />
-                        </code>
-                    </div>
-                    <div>
-                        <div>
-                            <i>Note:</i>
-                        </div>
-                        <div class="lindent0a">
-                            <i>STATIC_URL</i>: url prefix to access to these
-                            html file resources (the 'directory path' of url).
-                            This must matches with property <i>homepage</i>
-                            of file <i>package.json</i>.
-                        </div>
-                        <div class="lindent0a">
-                            <i>STATIC_ROOT</i>: folder to store html file
-                            resources.
-                        </div>
-                        <div class="lindent0a">
-                            <i>STATICFILES_DIRS</i>: folder to import html file
-                            resources once <i>collectstatic</i> command is
-                            launched.
-                        </div>
-                    </div>
-                </div>
-                <div class="lindent0a">
-                    <div>
-                        Invoke below command to import resources to
-                        <i>Django development server</i>:
-                    </div>
-                    <div class="lindent00">
-                        <code>
-                            python manage.py collectstatic
-                        </code>
-                    </div>
-                </div>
-            </div>
-        </div>
-<!--
-    <div ID=" VII. C" class="para_sep2">
-        <h2>VII. C</h2>
-        <div>
-            <div>
-                <b>1. S</b>
-            </div>
-            <div>
-                <b>1.1. Concepts</b>
-            </div>
-        </div>
-    </div>
--->
-</div>
-
-
-<div id="githubsrc" class="hidden">Source: https://github.com/phamsodiep/blogger/blob/master/phamsodiep/py-django-rest-framework.htm</div>
-<div id="githubver" class="hidden">0.1.0</div>
-<script>doDefaultDecorate();</script>
-</div>
-
-
-<script>
-const DiepSrcCode = {
-  FORMAT_JAVA: 0,
-  FORMAT_JS: 1,
-  FORMAT_PYTHON: 2,
-
-  FORMATS: [
-    // FORMAT_JAVA
-    [
-      ["  ", "&nbsp;&nbsp;"],
-      ["package", "<b style='color: olive;'>package</b>"],
-      ["import", "<b style='color: olive;'>import</b>"],
-      ["public", "<b style='color: green;'>public</b>"],
-      ["private", "<b style='color: green;'>private</b>"],
-      ["void", "<b style='color: green;'>void</b>"],
-      ["for", "<b style='color: maroon;'>for</b>"],
-      ["if", "<b style='color: maroon;'>if</b>"],
-      ["this", "<b style='color: maroon;'>this</b>"],
-      ["return", "<b style='color: maroon;'>return</b>"]
-    ],
-    // FORMAT_JS
-    [
-      ["  ", "&nbsp;&nbsp;"],
-      // keywords
-      ["import[ ]", "<b style='color: blue;'>import</b>&nbsp;"],
-      ["export[ ]", "<b style='color: blue;'>export</b>&nbsp;"],
-      ["class[ ]", "<b style='color: blue;'>class</b>&nbsp;"],
-      ["extends[ ]", "<b style='color: blue;'>extends</b>&nbsp;"],
-      ["super[(]", "<b style='color: blue;'>super</b>("],
-      ["new[ ]", "<b style='color: blue;'>new</b>&nbsp;"],
-      ["constructor[(]", "<b style='color: darkgoldenrod;'>constructor</b>("],
-      ["[ ]undefined", "&nbsp;<b style='color: blueviolet;'>undefined</b>"],
-      ["[ ]null", "&nbsp;<b style='color: blue;'>null</b>"],
-      ["[ ]false", "&nbsp;<b style='color: blue;'>false</b>"],
-      ["[ ]true", "&nbsp;<b style='color: blue;'>true</b>"],
-      ["const[ ]", "<b style='color: blue;'>const</b>&nbsp;"],
-      ["let[ ]", "<b style='color: blue;'>let</b>&nbsp;"],
-      ["var[ ]", "<b style='color: blue;'>var</b>&nbsp;"],
-      ["for[ ]", "<b style='color: blue;'>for</b>&nbsp;"],
-      ["if[ ]", "<b style='color: blue;'>if</b>&nbsp;"],
-      ["else[ ]", "<b style='color: blue;'>else</b>&nbsp;"],
-      ["switch[(]", "<b style='color: blue;'>switch</b>("],
-      ["case[ ]", "<b style='color: blue;'>case</b>&nbsp;"],
-      ["break", "<b style='color: blue;'>break</b>"],
-      ["default:", "<b style='color: blue;'>default</b>:"],
-      ["this", "<b style='color: blue;'>this</b>"],
-      ["return[ ]", "<b style='color: blue;'>return</b>&nbsp;"],
-      ["typeof[ ]", "<b style='color: blue;'>typeof</b>&nbsp;"],
-      ["function[ ]", "<b style='color: blue;'>function</b>&nbsp;"],
-
-      // objects
-      ["document[.]", "<b style='color: darkgoldenrod;'>document</b>."],
-      ["Array", "<b style='color: blueviolet;'>Array</b>"],
-      ["Math[.]", "<b style='color: blueviolet;'>Math</b>."],
-      //["Object", "<b style='color: blueviolet;'>Object</b>"],
-      // methods
-      ["toString[(][)]", "<b style='color: blueviolet;'>toString</b>()"],
-      ["setTimeout[(]", "<b style='color: darkgoldenrod;'>setTimeout</b>("],
-      ["alert[(]", "<b style='color: darkgoldenrod;'>alert</b>("],
-      ["Object.assign[(]",
-        [
-          "<b style='color: blueviolet;'>Object</b>",
-          ".",
-          "<b style='color: darkgoldenrod;'>assign</b>("
-        ].join("")
-      ],
-      ["[\u262F]", ""]
-    ],
-    // FORMAT_PYTHON
-    [
-     ["  ", "&nbsp;&nbsp;"],
-     ["from", "<b style='color: blue;'>from</b>"],
-     ["import", "<b style='color: blue;'>import</b>"],
-     ["class", "<b style='color: blue;'>class</b>"],
-     ["[\u262F]", ""]
-   ],
-  ],
-
-  commentedOutHtmlWrap: function (s, skipBreak) {
-    if (skipBreak) {
-        return "<i style='color: teal;'>".concat(s, "</i>");
-    }
-    return "<i style='color: teal;'>".concat(s, "</i><br />");
-  },
-
-  formatLine: function (formatId, line, skipBreak) {
-    let formats = DiepSrcCode.FORMATS[formatId];
-    for (let j = 0; j < formats.length; j++) {
-        let format = formats[j];
-        let regExp = new RegExp(format[0], 'g');
-        line = line.replace(regExp, format[1])
-    }
-    if (skipBreak) {
-        return line;
-    }
-    return line.concat("<br />");
-  },
-
-  processCommentedOut: function (line, formatId) {
-    let idx = line.indexOf("//");
-    if (idx >= 0) {
-        let html =
-          DiepSrcCode.formatLine(formatId, line.substring(0, idx), true);
-        html = html.concat(
-          DiepSrcCode.commentedOutHtmlWrap(line.substring(idx, line.length))
-        );
-        return [true, html];
-    }
-    idx = line.indexOf("/*");
-    if (idx >= 0) {
-        let html =
-          DiepSrcCode.formatLine(formatId, line.substring(0, idx), true);
-        html = html.concat(
-          DiepSrcCode.commentedOutHtmlWrap(line.substring(idx, line.length))
-        );
-        return [false, html];;
-    }
-    return null;
-  },
-
-  detectCommentedOutClose: function (line, formatId) {
-      let idx = line.indexOf("*/");
-      if (idx >= 0) {
-          idx += 2;
-          let html =
-            DiepSrcCode.commentedOutHtmlWrap(line.substring(0, idx), true);
-          html = html.concat(
-            DiepSrcCode.formatLine(formatId, line.substring(idx, line.length))
-          );
-          return [false, html];
-      }
-      return [true, DiepSrcCode.commentedOutHtmlWrap(line)];
-  },
-
-  escapeJSX: function (txtId) {
-    let txtComp = document.getElementById(txtId);
-    if (txtComp !== null) {
-      let str = txtComp.value.toString();
-      let regExp = new RegExp("[<]", 'g');
-      str = str.replace(regExp, "&lt;");
-      regExp = new RegExp("[>]", 'g');
-      str = str.replace(regExp, "&gt;");
-      txtComp.value = str;
-    }
-  },
-
-  fillCFamilySourceCode: function (txtId, formatId) {
-    // parse and convert source code
-    let html = "";
-    let txtComp = document.getElementById(txtId);
-    let onCommentedOut = false;
-    if (txtComp) {
-      let lines = txtComp.value.split(/\r?\n/);
-      for (let i = 0; i < lines.length; i++) {
-          let line = lines[i];
-          if (onCommentedOut) {
-              let detect = DiepSrcCode.detectCommentedOutClose(line, formatId);
-              onCommentedOut = detect[0];
-              html = html.concat(detect[1]);
-              continue;
-          }
-          let commentedOut = DiepSrcCode.processCommentedOut(line, formatId);
-          if (commentedOut == null) {
-              html = html.concat(DiepSrcCode.formatLine(formatId, line));
-          }
-          else {
-              if (commentedOut[0]) {
-                  html = html.concat(commentedOut[1]);
-              }
-              else {
-                  html = html.concat(commentedOut[1]);
-                  onCommentedOut = true;
-              }
-          }
-      }
-
-      // apply converted source code to target div
-      let divElement = document.createElement("DIV");
-      divElement.innerHTML = html;
-      divElement.className = "txt_sourcecodefont1";
-      txtComp.parentNode.insertBefore(divElement, txtComp);
-    }
-  },
-
-  fillPythonSourceCode: function (txtId) {
-    formatId = DiepSrcCode.FORMAT_PYTHON;
-    // parse and convert source code
-    let html = "";
-    let txtComp = document.getElementById(txtId);
-    if (txtComp) {
-      let lines = txtComp.value.split(/\r?\n/);
-      for (let i = 0; i < lines.length; i++) {
-          let line = lines[i];
-          let commentedOut = line.trim().charAt(0) === "#";
-          if (commentedOut) {
-              //html = html.concat(DiepSrcCode.formatLine(formatId, line));
-              html = html.concat(DiepSrcCode.commentedOutHtmlWrap(line));
-          }
-          else {
-              html = html.concat(DiepSrcCode.formatLine(formatId, line));
-          }
-      }
-
-      // apply converted source code to target div
-      let divElement = document.createElement("DIV");
-      divElement.innerHTML = html;
-      divElement.className = "txt_sourcecodefont1";
-      txtComp.parentNode.insertBefore(divElement, txtComp);
-    }
-  }
-};
-
-function getBackgroundBlogColour() {
-  let htmlSrc = document.getElementsByTagName('html')[0].innerHTML;
-  let lines = htmlSrc.split("\n");
-  for (let i = 0; i < lines.length - 1; i++) {
-    if (lines[i].endsWith(".post-outer-container{") || lines[i].endsWith(".post-outer-container{\r")) {
-      i++;
-      let idx = lines[i].indexOf("background:");
-      if (idx >= 0) {
-        return lines[i].substring(idx + "background:".length);
-      }
-    }
-  }
-  return "";
-}
-
-let bgColour = getBackgroundBlogColour();
-if (bgColour.length > 0) {
-  bgColour = "background-color:" + bgColour;
-}
-
-function fillFigure(
-  elemId,
-  imgSrc,
-  orgW,
-  height,
-  leftAdj,
-  clippedW,
-  scrollClass,
-  figId,
-  figCaption
-) {
-  let elem = document.getElementById(elemId);
-  if (!(elem !== null && typeof elem.innerHTML === "string")) {
-    return false;
-  }
-  let ww = orgW;
-  let hh = height;
-  let scrollDiv =
-    typeof scrollClass === "string" ?
-    `<div class="${scrollClass}">`:
-    "<div>";
-  let figCap = typeof figCaption === "string" ?
-    `<i>${figCaption}</i>` : "";
-  let figcaption = "";
-  if (typeof figId === "string") {
-    figcaption = `<figcaption><b>Figure</b> ${figId}: ${figCap}</figcaption>`;
-  }
-  elem.innerHTML = `
-    <div style="position: relative; left: ${leftAdj}px; width: ${clippedW}px;">
-        ${scrollDiv}
-            <div style="width:${ww}px;">
-                <img
-                  border="0"
-                  data-original-height="${height}"
-                  data-original-width="${orgW}"
-                  height="${height}
-                  width="${orgW}"
-                  src="${imgSrc}"
-                />
-            </div>
-        </div>
-        <div style="text-align: center" class="para_sep0">${figcaption}</div>
-    </div>
-  `;
-  return true;
-}
-
-function addMoreImgsToFigure(elemId, imgs, jsToHtml) {
-  if (typeof imgs !== "string"){
-    return false;
-  }
-  let elem = document.getElementById(elemId);
-  if (!(elem !== null && typeof elem.innerHTML === "string")) {
-    return false;
-  }
-  let curHTML = elem.innerHTML;
-  let idx = curHTML.indexOf("<img");
-  if (idx < 0) {
-    return false;
-  }
-  idx = curHTML.indexOf(">",idx);
-  if (idx < 0) {
-    return false;
-  }
-  if (typeof jsToHtml === "boolean" && jsToHtml) {
-    imgs = imgs.split("  ").join("&nbsp; ");
-    imgs = imgs.split("\n").join("<br />");
-  }
-  idx++;
-  let prePart = curHTML.substring(0, idx);
-  let subPart = curHTML.substring(idx);
-  elem.innerHTML = prePart + imgs + subPart;
-}
-
-fillFigure(
-  "architecture_diag",
-  [
-    "https://1.bp.blogspot.com/-ZySZXc0yKjc/Xrqmmcy0wJI/AAAAAAAAATQ/",
-    "_7b_4kAHnpktF3l_rIjp6J5GwpN0T18mACNcBGAsYHQ/s1600/Architecture.png"
-  ].join(""),
-  829,
-  341,
-  -50,
-  829,
-  null,
-  "2.1",
-  "Django Rest framework architecture diagram"
-);
-fillFigure(
-  "configuration_diag",
-  [
-    "https://1.bp.blogspot.com/-XxYk7rli8_0/XrvJUiMfyzI/AAAAAAAAAT0/",
-    "pme2U31UuWkCbuQSTmP0gBpSmNkza19FwCNcBGAsYHQ/s1600/Configuration.png"
-  ].join(""),
-  802,
-  581,
-  -60,
-  802,
-  null,
-  "4.1",
-  "Django Rest framework configuration diagram"
-);
-
-bgColour = bgColour + "border: 0px; margin: 0px; padding: 0px;";
-addMoreImgsToFigure(
-  "configuration_diag",
-  [
-    //
-    '<div style="position: absolute; z-index: 100; left: 13px; top: 355px;',
-      bgColour,
-      'font-size:11px; line-height: 1.4;">',
-      '<code>',
-      '# settings module\n',
-      'INSTALLED_APPS = [\n',
-      '    ...\n',
-      '    \'rest_framework\',\n',
-      ']\n',
-      '\n',
-      '# pagination\n',
-      'REST_FRAMEWORK = {\n',
-      '    \'DEFAULT_PAGINATION_CLASS\':\n',
-      '    \'rest_framework.pagination.PageNumber  \n',
-      '    Pagination\',\n',
-      '    \'PAGE_SIZE\': 10\n',
-      '}\n',
-      '</code>',
-    '</div>',
-    //
-    '<div style="position: absolute; z-index: 100; left: 355px; top: 355px;',
-      bgColour,
-      'font-size:11px; line-height: 1.4;">',
-    '<code>',
-      '#from tasklogs import views\n',
-      '\n',
-      '\n',
-      'router=routers.DefaultRouter()\n',
-      'router.register(r\'tasklog\',\n',
-      'views.TasklogViewSet)\n',
-    '</code>',
-    '</div>',
-    //
-    '<div style="position: absolute; z-index: 100; left: 595px; top: 355px;',
-      'width: 190px;',
-      bgColour,
-      'font-size:11px; line-height: 1.4;">',
-    '<code>',
-      'urlpatterns = [\n',
-      '    path(\'\', include(router.urls)),\n',
-      '    path(\'api-auth/\',\ninclude(\'rest_framework.urls\',\nnamespace=\'rest_framework\'))]',
-      '</code>',
-      '</div>'
-  ].join(""),
-  true
-);
-
-let snippets  = document.querySelectorAll('*[id^="pysrc:"]');
-for (let i = 0; i<snippets.length; i++) {
-  let id = snippets[i].id;
-  DiepSrcCode.fillPythonSourceCode(id);
-}
-</script>
+*/
