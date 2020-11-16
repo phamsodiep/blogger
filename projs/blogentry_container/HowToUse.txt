@@ -1,0 +1,49 @@
+#####
+# U #
+#####
+    Header tag
+    ##########
+    f =b,i,u -> wrap tag b/i/u over text for Format
+    tag: header render tag: h1, h2, h3...
+    h : header text
+    s: seperate for header
+
+    Sub content tag:
+    ################
+    sub: b/t/s
+      b: bullet:
+          "lindent0a", "lindent0b", "lindent0c"
+      t: indent tab
+          "lindent00"
+      s: "para_sep0"
+    rb: // remove bullet
+      remove parent bullet by applying "lindent00"
+    hb: // indent back
+      remove parent tab by applying lindenthb // margin: 0 0 0 0px;
+    w:
+      no wrap div over sub content
+
+
+#####
+# S #
+#####
+  math: wrap <M> tag to child
+  pre: wrap <pre> tag to child
+  html: replace html[0], html[1] as '<', '>' to display html content
+      ONLY effect if child type is string
+
+
+########
+# Sect # jump to section (a href tag) with tooltip
+########
+  to: section id to jump to href
+  t: tooltip
+Q/A: How section id is indexed?
+
+
+##########
+# Figure #
+##########
+  id: reference id in the context
+  var: ? array index => width height variant??? // access params
+    variable index
